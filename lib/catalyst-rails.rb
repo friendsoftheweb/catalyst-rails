@@ -104,6 +104,7 @@ module Catalyst
   end
 end
 
+require_relative './catalyst/version'
 require_relative './catalyst/errors'
 require_relative './catalyst/builder'
 require_relative './catalyst/helpers'
