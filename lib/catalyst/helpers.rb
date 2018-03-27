@@ -9,7 +9,7 @@ module Catalyst
 
     def catalyst_javascript_vendor_include_tag
       if Catalyst.development?
-        content_tag(:script, nil, src: ::Catalyst::Manifest['vendor-dll.js'])
+        catalyst_javascript_include_tag('vendor-dll')
       end
     end
 
@@ -19,8 +19,9 @@ module Catalyst
       content_tag(
         :script,
         nil,
-        src: ::Catalyst::Manifest["#{path}.js"],
-        type: 'text/javascript'
+        type: 'text/javascript',
+        crossorigin: 'anonymous',
+        src: ::Catalyst::Manifest["#{path}.js"]
       )
     end
 
