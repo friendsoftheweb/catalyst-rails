@@ -19,6 +19,8 @@ module Catalyst
   setting :environment, default_environment
   setting :manifest_path, default_manifest_path
   setting :assets_base_path, '/assets'
+  setting :assets_host, ENV.fetch('HOST') { nil }
+  setting :assets_host_protocol, 'https'
   setting :dev_server_host, ENV.fetch('DEV_SERVER_HOST') { 'localhost' }
   setting :dev_server_port, ENV.fetch('DEV_SERVER_PORT') { 8080 }.to_i
   setting :running_feature_tests, -> {

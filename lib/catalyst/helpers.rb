@@ -44,10 +44,10 @@ module Catalyst
     end
 
     def catalyst_asset_url(path)
-      if Catalyst.development? || ENV['HOST'].blank?
-        webpack_asset_path(path)
+      if Catalyst.development? || Catalyst.config.assets_host.nil?
+        catalyst_asset_path(path)
       else
-        "https://#{ENV['HOST']}#{webpack_asset_path(path)}"
+        "#{Catalyst.config.assets_host_protocol}://#{Catalyst.config.assets_host}#{catalyst_asset_path(path)}"
       end
     end
   end

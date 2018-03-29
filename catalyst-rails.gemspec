@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name        = 'catalyst-rails'
-  spec.version     = '0.0.3'
+  spec.version     = '0.0.4'
   spec.date        = '2018-03-29'
   spec.summary     = 'Ruby helpers for the "catalyst" node package'
   spec.authors     = ['Dan Martens']
