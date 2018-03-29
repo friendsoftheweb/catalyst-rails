@@ -68,10 +68,12 @@ module Catalyst
     $catalyst_server_pid = wait_thr.pid
 
     Thread.new do
-      while line = stdout.gets
-        puts line
+      begin
+        while line = stdout.gets
+          puts line
+        end
+      rescue IOError
       end
-    rescue IOError
     end
 
     at_exit do
