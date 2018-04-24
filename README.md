@@ -8,23 +8,6 @@ Next add the necessary script/link tag(s) to your Rails layout:
 
 ```erb
 <%= catalyst_stylesheet_link_tag(:application) %>
-
-<%= catalyst_javascript_vendor_include_tag %>
-<%= catalyst_javascript_include_tag(:application) %>
-```
-
-The `catalyst_javascript_vendor_include_tag` method only adds a script tag in
-development mode to load prebuilt vendor packages. It _must_ be added before
-any tags added via `catalyst_javascript_include_tag`.
-
-If you have common chunks enabled, you'll need to load the common JavaScript
-file as well:
-
-```erb
-<%= catalyst_stylesheet_link_tag(:application) %>
-
-<%= catalyst_javascript_vendor_include_tag %>
-<%= catalyst_javascript_include_tag(:common) %>
 <%= catalyst_javascript_include_tag(:application) %>
 ```
 
@@ -33,11 +16,11 @@ file as well:
 No configuration is required to get started with Catalyst, but you can change
 the following values using a configuration block:
 
-- `environment`: The environment passed to the `catalyst` command when building assets.
-- `assets_base_path`: The path which is used by the view helpers when building `<script>` and `<link>` tags in non-development environments. If you are using a CDN which proxies asset requests through a different URL, you should change this in production.
-- `dev_server_host`: The host for the Catalyst development server. This should match the host used when running `catalyst server` for development.
-- `dev_server_port`: The port for the Catalyst development server. This should match the port used when running `catalyst server` for development.
-- `running_feature_tests`: A proc which should return `true` if any RSpec feature tests are being run. By default it returns true if any specs with the metadata `type: :system` are being run.
+* `environment`: The environment passed to the `catalyst` command when building assets.
+* `assets_base_path`: The path which is used by the view helpers when building `<script>` and `<link>` tags in non-development environments. If you are using a CDN which proxies asset requests through a different URL, you should change this in production.
+* `dev_server_host`: The host for the Catalyst development server. This should match the host used when running `catalyst server` for development.
+* `dev_server_port`: The port for the Catalyst development server. This should match the port used when running `catalyst server` for development.
+* `running_feature_tests`: A proc which should return `true` if any RSpec feature tests are being run. By default it returns true if any specs with the metadata `type: :system` are being run.
 
 An example of customizing `assets_base_path`:
 
@@ -56,7 +39,7 @@ add this to the RSpec configuration block in your `spec/rails_helper.rb`:
 config.before(:suite) { Catalyst.build! }
 ```
 
-By default, assets are only recompiled if the `yarn.lock` or any JS/SCSS  files
+By default, assets are only recompiled if the `yarn.lock` or any JS/SCSS files
 have changed and specs with the type `:system` are being run.
 
 If you are not using RSpec or your feature tests are differentiated in another

@@ -3,15 +3,18 @@
 require 'singleton'
 require 'forwardable'
 
+require_relative './errors'
+
 module Catalyst
   class Manifest
-    AssetMissing = Class.new(StandardError)
+    AssetMissing = Class.new(::Catalyst::CatalystError)
+    DuplicateAssetReference = Class.new(::Catalyst::CatalystError)
 
     include Singleton
 
     class << self
       extend Forwardable
-      def_delegator :instance, :[]
+      def_delegators :instance, :[], :has?
     end
 
     def initialize
@@ -23,6 +26,16 @@ module Catalyst
         end
 
         @manifest = JSON.parse(File.read(Catalyst.config.manifest_path))
+      end
+    end
+
+    def has?(path)
+      path = path.to_s.gsub(/\A\/+/, '')
+
+      if Catalyst.development?
+        false
+      else
+        @manifest.key?(path)
       end
     end
 
