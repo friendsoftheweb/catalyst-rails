@@ -48,7 +48,10 @@ module Catalyst
 
       if system("NODE_ENV=test #{BUILD_COMMAND}")
         unless assets_last_built_file_path.nil?
-          FileUtils.touch(assets_last_built_file_path)
+          begin
+            FileUtils.touch(assets_last_built_file_path)
+          rescue Errno::ENOENT
+          end
         end
       else
         puts <<~MESSAGE
