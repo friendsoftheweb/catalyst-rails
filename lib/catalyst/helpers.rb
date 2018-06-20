@@ -8,7 +8,7 @@ module Catalyst
     include ActionView::Helpers::TagHelper
     include ActionView::Helpers::OutputSafetyHelper
 
-    def catalyst_javascript_include_tag(path)
+    def catalyst_javascript_include_tag(path, common: true)
       path = path.to_s.sub(/\.js\z/, '') + '.js'
 
       if catalyst_referenced_files.include?(path)
@@ -17,6 +17,16 @@ module Catalyst
       end
 
       catalyst_referenced_files << path
+
+      if !common
+        return content_tag(
+          :script,
+          nil,
+          type: 'text/javascript',
+          crossorigin: 'anonymous',
+          src: ::Catalyst::Manifest[path]
+        )
+      end
 
       safe_join([
         catalyst_javascript_vendor_include_tag,
