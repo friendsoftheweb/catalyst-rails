@@ -11,6 +11,13 @@ Next add the necessary script/link tag(s) to your Rails layout:
 <%= catalyst_javascript_include_tag(:application) %>
 ```
 
+If you need to include a javascript bundle without the `common` or `vendor` files,
+you can use the `:common` option:
+
+```erb
+<%= catalyst_javascript_include_tag(:ie, common: false) %>
+```
+
 ## Configuration
 
 No configuration is required to get started with Catalyst, but you can change
