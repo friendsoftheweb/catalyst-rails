@@ -60,7 +60,7 @@ module Catalyst
           assets_base_path = Catalyst.config.assets_base_path
 
           if assets_base_path.nil?
-            raise 'Missing "assets_base_path" configuration.'
+            return @manifest[path]
           end
 
           return "#{assets_base_path}/#{@manifest[path]}"
