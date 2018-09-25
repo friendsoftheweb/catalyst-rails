@@ -71,6 +71,8 @@ module Catalyst
     def production_build!
       unless system("NODE_ENV=production #{BUILD_COMMAND}")
         Catalyst.log('Failed to compile assets!')
+
+        exit 1
       end
     end
 
