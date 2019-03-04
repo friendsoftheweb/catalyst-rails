@@ -23,11 +23,11 @@ you can use the `:common` option:
 No configuration is required to get started with Catalyst, but you can change
 the following values using a configuration block:
 
-* `environment`: The environment passed to the `catalyst` command when building assets.
-* `assets_base_path`: The path which is used by the view helpers when building `<script>` and `<link>` tags in non-development environments. If you are using a CDN which proxies asset requests through a different URL, you should change this in production.
-* `dev_server_host`: The host for the Catalyst development server. This should match the host used when running `catalyst server` for development.
-* `dev_server_port`: The port for the Catalyst development server. This should match the port used when running `catalyst server` for development.
-* `running_feature_tests`: A proc which should return `true` if any RSpec feature tests are being run. By default it returns true if any specs with the metadata `type: :system` are being run.
+- `environment`: The environment passed to the `catalyst` command when building assets.
+- `assets_base_path`: The path which is used by the view helpers when building `<script>` and `<link>` tags in non-development environments. If you are using a CDN which proxies asset requests through a different URL, you should change this in production.
+- `dev_server_host`: The host for the Catalyst development server. This should match the host used when running `catalyst server` for development.
+- `dev_server_port`: The port for the Catalyst development server. This should match the port used when running `catalyst server` for development.
+- `running_feature_tests`: A proc which should return `true` if any RSpec feature tests are being run. By default it returns true if any specs with the metadata `type: :system` are being run.
 
 An example of customizing `assets_base_path`:
 
@@ -73,6 +73,10 @@ task in `lib/tasks/assets.rake` to override the default Rails task:
 namespace :assets do
   desc 'Compile assets with Catalyst'
   task :precompile => 'catalyst:build'
+
+  task :clean do
+    # This task left intentionally blank
+  end
 end
 ```
 
@@ -80,5 +84,7 @@ If you want to compile assets with Catalyst in addition to running the default
 Rails task, you can use this instead:
 
 ```ruby
-Rake::Task['assets:precompile'].enhance(['catalyst:build'])
+Rake::Task['assets:precompile'].enhance do
+  Rake::Task['catalyst:build'].invoke
+end
 ```

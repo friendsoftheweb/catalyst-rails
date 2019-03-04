@@ -101,7 +101,7 @@ module Catalyst
     unless system 'yarn run which catalyst > /dev/null 2>&1'
       raise NotInstalled, <<~MESSAGE
         The catalyst binary is not available in this directory.
-        Please follow the instructions here to intall it:
+        Please follow the instructions here to install it:
         https://github.com/friendsoftheweb/catalyst
       MESSAGE
     end
