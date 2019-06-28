@@ -81,9 +81,11 @@ module Catalyst
     end
 
     def asset_paths
-      if ::Catalyst::Config.root_path
-        Dir.glob(File.join(::Catalyst::Config.root_path, '**/*.{js,ts,tsx,scss}')) + [
-          File.join(Dir.pwd, 'yarn.lock')
+      if ::Catalyst::Config.context_path
+        Dir.glob(File.join(::Catalyst::Config.context_path, '**/*.{js,ts,tsx,scss}')) + [
+          File.join(Dir.pwd, 'package.json'),
+          File.join(Dir.pwd, 'yarn.lock'),
+          File.join(Dir.pwd, 'catalyst.config.json')
         ]
       else
         []

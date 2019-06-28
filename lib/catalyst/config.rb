@@ -7,22 +7,25 @@ require_relative './errors'
 
 module Catalyst
   class Config
+    CATALYST_CONFIG_PATH = File.expand_path('./catalyst.config.json', Dir.pwd)
     PACKAGE_PATH = File.expand_path('./package.json', Dir.pwd)
 
     include Singleton
 
     class << self
       extend Forwardable
-      def_delegators :instance, :root_path, :build_path
+      def_delegators :instance, :context_path
     end
 
     def initialize
-      unless File.exists?(PACKAGE_PATH)
+      @values = if File.exists?(CATALYST_CONFIG_PATH)
+        JSON.parse(File.read(CATALYST_CONFIG_PATH))
+      elsif File.exists?(PACKAGE_PATH)
+        JSON.parse(File.read(PACKAGE_PATH))['catalyst']
+      else
         raise ::Catalyst::MissingConfig,
-              "Missing package.json file in: #{Dir.pwd}"
+              "Missing 'catalyst.config.json' or 'package.json' file in: #{Dir.pwd}"
       end
-
-      @values = JSON.parse(File.read(PACKAGE_PATH))['catalyst']
 
       if @values.nil?
         raise ::Catalyst::MissingConfig, <<~MESSAGE
@@ -33,12 +36,8 @@ module Catalyst
       end
     end
 
-    def root_path
-      File.join(Dir.pwd, @values['rootPath'])
-    end
-
-    def build_path
-      File.join(Dir.pwd, @values['buildPath'])
+    def context_path
+      File.join(Dir.pwd, @values['contextPath'] || @values['rootPath'])
     end
   end
 end

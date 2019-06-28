@@ -57,13 +57,7 @@ module Catalyst
         return "http://#{dev_server_host}:#{dev_server_port}/#{path}"
       else
         if @manifest.key?(path)
-          assets_base_path = Catalyst.config.assets_base_path
-
-          if assets_base_path.nil?
-            return @manifest[path]
-          end
-
-          return "#{assets_base_path}/#{@manifest[path]}"
+          return @manifest[path]
         else
           raise AssetMissing, "Couldn't find an asset for path: #{path}"
         end
