@@ -113,4 +113,4 @@ require_relative './catalyst/errors'
 require_relative './catalyst/builder'
 require_relative './catalyst/helpers'
 require_relative './catalyst/manifest'
-require_relative './catalyst/railtie' if defined? Rails
+require_relative './catalyst/railtie' if defined? ::Rails::Railtie

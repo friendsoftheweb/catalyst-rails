@@ -1,6 +1,7 @@
 # typed: ignore
 # frozen_string_literal: true
 
+require 'rails'
 require_relative './helpers'
 
 module Catalyst

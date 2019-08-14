@@ -78,7 +78,11 @@ module Catalyst
     end
 
     def assets_last_modified
-      asset_paths.lazy.map { |path| File.ctime(path) }.max || Time.now
+      asset_paths.lazy.select do |path|
+        File.exists?(path)
+      end.map do |path|
+        File.ctime(path)
+      end.max || Time.now
     end
 
     def asset_paths
