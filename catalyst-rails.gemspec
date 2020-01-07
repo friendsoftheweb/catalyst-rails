@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name        = 'catalyst-rails'
-  spec.version     = '0.1.1'
+  spec.version     = '0.1.2'
   spec.date        = '2019-08-14'
   spec.summary     = 'Ruby helpers for the "catalyst" node package'
   spec.authors     = ['Dan Martens']
@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.license     = 'MIT'
 
   spec.add_runtime_dependency 'dry-configurable', '~> 0.7'
-  spec.add_runtime_dependency 'actionview', '>= 3.0', '<= 6.0'
+  spec.add_runtime_dependency 'actionview', '>= 3.0', '< 7.0'
   spec.add_runtime_dependency 'sorbet-runtime', '~> 0.4.0'
 
   spec.add_development_dependency 'sorbet', '~> 0.4.0'
