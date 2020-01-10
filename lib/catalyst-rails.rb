@@ -98,7 +98,7 @@ module Catalyst
   def self.check_for_catalyst!
     check_for_yarn!
 
-    unless system 'yarn run which catalyst > /dev/null 2>&1'
+    unless File.exist?(File.join(Dir.pwd, 'node_modules/catalyst/lib/index.js'))
       raise NotInstalled, <<~MESSAGE
         The catalyst binary is not available in this directory.
         Please follow the instructions here to install it:
