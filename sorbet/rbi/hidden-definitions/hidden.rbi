@@ -8,187 +8,104 @@ module ActionView
 end
 
 class ActionView::AbstractRenderer
-  def any_templates?(*args, &block); end
+  def any_templates?(*_, &_1); end
 
-  def find_file(*args, &block); end
-
-  def find_template(*args, &block); end
-
-  def formats(*args, &block); end
+  def formats(*_, &_1); end
 
   def initialize(lookup_context); end
 
   def render(); end
 
-  def template_exists?(*args, &block); end
+  def template_exists?(*_, &_1); end
+  NO_DETAILS = ::T.let(nil, ::T.untyped)
+end
 
-  def with_fallbacks(*args, &block); end
+module ActionView::AbstractRenderer::ObjectRendering
+  def initialize(lookup_context, options); end
+  IDENTIFIER_ERROR_MESSAGE = ::T.let(nil, ::T.untyped)
+  OPTION_AS_ERROR_MESSAGE = ::T.let(nil, ::T.untyped)
+  PREFIXED_PARTIAL_NAMES = ::T.let(nil, ::T.untyped)
+end
 
-  def with_layout_format(*args, &block); end
+module ActionView::AbstractRenderer::ObjectRendering
+end
+
+class ActionView::AbstractRenderer::RenderedCollection
+  def body(); end
+
+  def format(); end
+
+  def initialize(rendered_templates, spacer); end
+
+  def rendered_templates(); end
+end
+
+class ActionView::AbstractRenderer::RenderedCollection::EmptyCollection
+  def body(); end
+
+  def format(); end
+
+  def initialize(format); end
+end
+
+class ActionView::AbstractRenderer::RenderedCollection::EmptyCollection
+end
+
+class ActionView::AbstractRenderer::RenderedCollection
+  def self.empty(format); end
+end
+
+class ActionView::AbstractRenderer::RenderedTemplate
+  def body(); end
+
+  def format(); end
+
+  def initialize(body, template); end
+
+  def template(); end
+  EMPTY_SPACER = ::T.let(nil, ::T.untyped)
+end
+
+class ActionView::AbstractRenderer::RenderedTemplate
 end
 
 class ActionView::AbstractRenderer
 end
 
-class ActionView::ActionViewError
-end
+class ActionView::Base
+  def annotate_rendered_view_with_filenames(); end
 
-class ActionView::ActionViewError
+  def annotate_rendered_view_with_filenames=(val); end
+
+  def prefix_partial_path_with_controller_namespace?(); end
 end
 
 class ActionView::Base
-  include ::ActionView::Context
-  include ::ActionView::CompiledTemplates
-  include ::ERB::Util
-  include ::ActionView::Helpers::AssetTagHelper
-  include ::ActionView::Helpers::UrlHelper
-  include ::ActionView::Helpers::FormTagHelper
-  include ::ActionView::Helpers::FormHelper
-  include ::ActionView::RecordIdentifier
-  include ::ActionView::ModelNaming
-  include ::ActionView::Helpers::TranslationHelper
-  include ::ActionView::Helpers
-  include ::ActiveSupport::Benchmarkable
-  include ::ActionView::Helpers::ActiveModelHelper
-  include ::ActionView::Helpers::AssetUrlHelper
-  include ::ActionView::Helpers::AtomFeedHelper
-  include ::ActionView::Helpers::CacheHelper
-  include ::ActionView::Helpers::ControllerHelper
-  include ::ActionView::Helpers::CspHelper
-  include ::ActionView::Helpers::CsrfHelper
-  include ::ActionView::Helpers::DateHelper
-  include ::ActionView::Helpers::DebugHelper
-  include ::ActionView::Helpers::FormOptionsHelper
-  include ::ActionView::Helpers::SanitizeHelper
-  include ::ActionView::Helpers::TagHelper
-  include ::ActionView::Helpers::CaptureHelper
-  include ::ActionView::Helpers::TextHelper
-  include ::ActionView::Helpers::OutputSafetyHelper
-  include ::ActionView::Helpers::JavaScriptHelper
-  include ::ActionView::Helpers::NumberHelper
-  include ::ActionView::Helpers::RecordTagHelper
-  include ::ActionView::Helpers::RenderingHelper
-  def _routes(); end
+  def self.annotate_rendered_view_with_filenames(); end
 
-  def _routes=(val); end
+  def self.annotate_rendered_view_with_filenames=(val); end
 
-  def _routes?(); end
-
-  def assign(new_assigns); end
-
-  def assigns(); end
-
-  def assigns=(assigns); end
-
-  def automatically_disable_submit_tag(); end
-
-  def automatically_disable_submit_tag=(obj); end
-
-  def config(); end
-
-  def config=(config); end
-
-  def debug_missing_translation(); end
-
-  def debug_missing_translation=(obj); end
-
-  def default_formats(); end
-
-  def default_formats=(obj); end
-
-  def field_error_proc(); end
-
-  def field_error_proc=(obj); end
-
-  def formats(*args, &block); end
-
-  def formats=(arg); end
-
-  def initialize(context=T.unsafe(nil), assigns=T.unsafe(nil), controller=T.unsafe(nil), formats=T.unsafe(nil)); end
-
-  def locale(*args, &block); end
-
-  def locale=(arg); end
-
-  def logger=(val); end
-
-  def logger?(); end
-
-  def lookup_context(*args, &block); end
-
-  def prefix_partial_path_with_controller_namespace(); end
-
-  def prefix_partial_path_with_controller_namespace=(obj); end
-
-  def raise_on_missing_translations(); end
-
-  def raise_on_missing_translations=(obj); end
-
-  def streaming_completion_on_exception(); end
-
-  def streaming_completion_on_exception=(obj); end
-
-  def view_paths(*args, &block); end
-
-  def view_paths=(arg); end
-
-  def view_renderer(); end
-
-  def view_renderer=(view_renderer); end
+  def self.prefix_partial_path_with_controller_namespace?(); end
 end
 
-class ActionView::Base
-  def self._routes(); end
+class ActionView::CacheExpiry
+  def clear_cache(); end
 
-  def self._routes=(val); end
+  def clear_cache_if_necessary(); end
 
-  def self._routes?(); end
+  def initialize(watcher:); end
+end
 
-  def self.automatically_disable_submit_tag(); end
+class ActionView::CacheExpiry::Executor
+  def before(target); end
 
-  def self.automatically_disable_submit_tag=(obj); end
+  def initialize(watcher:); end
+end
 
-  def self.cache_template_loading(); end
+class ActionView::CacheExpiry::Executor
+end
 
-  def self.cache_template_loading=(value); end
-
-  def self.debug_missing_translation(); end
-
-  def self.debug_missing_translation=(obj); end
-
-  def self.default_form_builder(); end
-
-  def self.default_form_builder=(obj); end
-
-  def self.default_formats(); end
-
-  def self.default_formats=(obj); end
-
-  def self.erb_trim_mode=(arg); end
-
-  def self.field_error_proc(); end
-
-  def self.field_error_proc=(obj); end
-
-  def self.logger(); end
-
-  def self.logger=(val); end
-
-  def self.logger?(); end
-
-  def self.prefix_partial_path_with_controller_namespace(); end
-
-  def self.prefix_partial_path_with_controller_namespace=(obj); end
-
-  def self.raise_on_missing_translations(); end
-
-  def self.raise_on_missing_translations=(obj); end
-
-  def self.streaming_completion_on_exception(); end
-
-  def self.streaming_completion_on_exception=(obj); end
-
-  def self.xss_safe?(); end
+class ActionView::CacheExpiry
 end
 
 module ActionView::CollectionCaching
@@ -196,33 +113,55 @@ end
 
 module ActionView::CollectionCaching
   extend ::ActiveSupport::Concern
-  extend ::T::Sig
 end
 
-module ActionView::CompiledTemplates
+class ActionView::CollectionRenderer
+  include ::ActionView::AbstractRenderer::ObjectRendering
+  def render_collection_derive_partial(collection, context, block); end
+
+  def render_collection_with_partial(collection, partial, context, block); end
 end
 
-module ActionView::CompiledTemplates
-  extend ::T::Sig
+class ActionView::CollectionRenderer::CollectionIterator
+  include ::Enumerable
+  def each(&blk); end
+
+  def initialize(collection); end
+
+  def size(); end
 end
 
-module ActionView::Context
-  include ::ActionView::CompiledTemplates
-  def _layout_for(name=T.unsafe(nil)); end
-
-  def _prepare_context(); end
-
-  def output_buffer(); end
-
-  def output_buffer=(output_buffer); end
-
-  def view_flow(); end
-
-  def view_flow=(view_flow); end
+class ActionView::CollectionRenderer::CollectionIterator
 end
 
-module ActionView::Context
-  extend ::T::Sig
+class ActionView::CollectionRenderer::MixedCollectionIterator
+  def each_with_info(); end
+
+  def initialize(collection, paths); end
+end
+
+class ActionView::CollectionRenderer::MixedCollectionIterator
+end
+
+class ActionView::CollectionRenderer::PreloadCollectionIterator
+  def initialize(collection, path, variables, relation); end
+end
+
+class ActionView::CollectionRenderer::PreloadCollectionIterator
+end
+
+class ActionView::CollectionRenderer::SameCollectionIterator
+  def each_with_info(); end
+
+  def from_collection(collection); end
+
+  def initialize(collection, path, variables); end
+end
+
+class ActionView::CollectionRenderer::SameCollectionIterator
+end
+
+class ActionView::CollectionRenderer
 end
 
 class ActionView::Digestor
@@ -279,30 +218,16 @@ end
 class ActionView::Digestor::Partial
 end
 
-module ActionView::Digestor::PerExecutionDigestCacheExpiry
-end
-
-module ActionView::Digestor::PerExecutionDigestCacheExpiry
-  extend ::T::Sig
-  def self.before(target); end
-end
-
 class ActionView::Digestor
-  def self.digest(name:, finder:, dependencies: T.unsafe(nil)); end
+  def self.digest(name:, finder:, format: T.unsafe(nil), dependencies: T.unsafe(nil)); end
 
   def self.logger(); end
 
   def self.tree(name, finder, partial=T.unsafe(nil), seen=T.unsafe(nil)); end
 end
 
-class ActionView::EncodingError
-end
-
-class ActionView::EncodingError
-end
-
 class ActionView::FallbackFileSystemResolver
-  def decorate(*_); end
+  def build_unbound_template(template, _); end
 end
 
 class ActionView::FallbackFileSystemResolver
@@ -314,7 +239,9 @@ class ActionView::FileSystemResolver
 
   def eql?(resolver); end
 
-  def initialize(path, pattern=T.unsafe(nil)); end
+  def initialize(path); end
+
+  def path(); end
 
   def to_path(); end
 end
@@ -322,488 +249,37 @@ end
 class ActionView::FileSystemResolver
 end
 
-module ActionView::Helpers::ActiveModelHelper
-  extend ::T::Sig
-end
+module ActionView::Helpers::TagHelper
+  def class_names(*args); end
 
-module ActionView::Helpers::ActiveModelInstanceTag
-  extend ::T::Sig
-end
-
-module ActionView::Helpers::AssetTagHelper
-  extend ::T::Sig
-end
-
-module ActionView::Helpers::AssetUrlHelper
-  ASSET_EXTENSIONS = ::T.let(nil, ::T.untyped)
-  ASSET_PUBLIC_DIRECTORIES = ::T.let(nil, ::T.untyped)
-  URI_REGEXP = ::T.let(nil, ::T.untyped)
-end
-
-module ActionView::Helpers::AssetUrlHelper
-  extend ::T::Sig
-end
-
-module ActionView::Helpers::AtomFeedHelper
-  extend ::T::Sig
-end
-
-module ActionView::Helpers::CacheHelper
-  extend ::T::Sig
-end
-
-module ActionView::Helpers::CaptureHelper
-  extend ::T::Sig
-end
-
-module ActionView::Helpers::ControllerHelper
-  CONTROLLER_DELEGATES = ::T.let(nil, ::T.untyped)
-end
-
-module ActionView::Helpers::ControllerHelper
-  extend ::T::Sig
-end
-
-module ActionView::Helpers::CspHelper
-  extend ::T::Sig
-end
-
-module ActionView::Helpers::CsrfHelper
-  extend ::T::Sig
-end
-
-module ActionView::Helpers::DateHelper
-  MINUTES_IN_QUARTER_YEAR = ::T.let(nil, ::T.untyped)
-  MINUTES_IN_THREE_QUARTERS_YEAR = ::T.let(nil, ::T.untyped)
-  MINUTES_IN_YEAR = ::T.let(nil, ::T.untyped)
-end
-
-module ActionView::Helpers::DateHelper
-  extend ::T::Sig
-end
-
-class ActionView::Helpers::DateTimeSelector
-  AMPM_TRANSLATION = ::T.let(nil, ::T.untyped)
-  DEFAULT_PREFIX = ::T.let(nil, ::T.untyped)
-  POSITION = ::T.let(nil, ::T.untyped)
-end
-
-module ActionView::Helpers::DebugHelper
-  extend ::T::Sig
-end
-
-module ActionView::Helpers::FormHelper
-  extend ::T::Sig
-end
-
-module ActionView::Helpers::FormOptionsHelper
-  extend ::T::Sig
-end
-
-module ActionView::Helpers::FormTagHelper
-  extend ::T::Sig
-end
-
-module ActionView::Helpers::JavaScriptHelper
-  JS_ESCAPE_MAP = ::T.let(nil, ::T.untyped)
-end
-
-module ActionView::Helpers::JavaScriptHelper
-  extend ::T::Sig
-end
-
-module ActionView::Helpers::NumberHelper
-  extend ::T::Sig
-end
-
-module ActionView::Helpers::OutputSafetyHelper
-  extend ::T::Sig
-end
-
-module ActionView::Helpers::RecordTagHelper
-  extend ::T::Sig
-end
-
-module ActionView::Helpers::RenderingHelper
-  extend ::T::Sig
-end
-
-module ActionView::Helpers::SanitizeHelper
-  extend ::T::Sig
+  def token_list(*args); end
+  ARIA_PREFIXES = ::T.let(nil, ::T.untyped)
+  DATA_PREFIXES = ::T.let(nil, ::T.untyped)
+  TAG_TYPES = ::T.let(nil, ::T.untyped)
 end
 
 module ActionView::Helpers::TagHelper
-  BOOLEAN_ATTRIBUTES = ::T.let(nil, ::T.untyped)
-  PRE_CONTENT_STRINGS = ::T.let(nil, ::T.untyped)
-  TAG_PREFIXES = ::T.let(nil, ::T.untyped)
-end
-
-module ActionView::Helpers::TagHelper
-  extend ::T::Sig
-end
-
-module ActionView::Helpers::Tags
-end
-
-class ActionView::Helpers::Tags::Base
-  include ::ActionView::Helpers::UrlHelper
-  include ::ActionView::Helpers::FormTagHelper
-  include ::ActionView::Helpers::ActiveModelInstanceTag
-  include ::ActionView::Helpers::FormOptionsHelper
-  include ::ActionView::Helpers::SanitizeHelper
-  include ::ActionView::Helpers::TagHelper
-  include ::ActionView::Helpers::CaptureHelper
-  include ::ActionView::Helpers::TextHelper
-  include ::ActionView::Helpers::OutputSafetyHelper
-  def initialize(object_name, method_name, template_object, options=T.unsafe(nil)); end
-
-  def render(); end
-end
-
-class ActionView::Helpers::Tags::Base
-end
-
-class ActionView::Helpers::Tags::CheckBox
-  include ::ActionView::Helpers::Tags::Checkable
-  def initialize(object_name, method_name, template_object, checked_value, unchecked_value, options); end
-end
-
-class ActionView::Helpers::Tags::CheckBox
-end
-
-module ActionView::Helpers::Tags::Checkable
-  def input_checked?(options); end
-end
-
-module ActionView::Helpers::Tags::Checkable
-  extend ::T::Sig
-end
-
-class ActionView::Helpers::Tags::CollectionCheckBoxes
-  include ::ActionView::Helpers::Tags::CollectionHelpers
-  def render(&block); end
-end
-
-class ActionView::Helpers::Tags::CollectionCheckBoxes::CheckBoxBuilder
-  def check_box(extra_html_options=T.unsafe(nil)); end
-end
-
-class ActionView::Helpers::Tags::CollectionCheckBoxes::CheckBoxBuilder
-end
-
-class ActionView::Helpers::Tags::CollectionCheckBoxes
-end
-
-module ActionView::Helpers::Tags::CollectionHelpers
-  def initialize(object_name, method_name, template_object, collection, value_method, text_method, options, html_options); end
-end
-
-class ActionView::Helpers::Tags::CollectionHelpers::Builder
-  def initialize(template_object, object_name, method_name, object, sanitized_attribute_name, text, value, input_html_options); end
-
-  def label(label_html_options=T.unsafe(nil), &block); end
-
-  def object(); end
-
-  def text(); end
-
-  def value(); end
-end
-
-class ActionView::Helpers::Tags::CollectionHelpers::Builder
-end
-
-module ActionView::Helpers::Tags::CollectionHelpers
-  extend ::T::Sig
-end
-
-class ActionView::Helpers::Tags::CollectionRadioButtons
-  include ::ActionView::Helpers::Tags::CollectionHelpers
-  def render(&block); end
-end
-
-class ActionView::Helpers::Tags::CollectionRadioButtons::RadioButtonBuilder
-  def radio_button(extra_html_options=T.unsafe(nil)); end
-end
-
-class ActionView::Helpers::Tags::CollectionRadioButtons::RadioButtonBuilder
-end
-
-class ActionView::Helpers::Tags::CollectionRadioButtons
-end
-
-class ActionView::Helpers::Tags::CollectionSelect
-  def initialize(object_name, method_name, template_object, collection, value_method, text_method, options, html_options); end
-end
-
-class ActionView::Helpers::Tags::CollectionSelect
-end
-
-class ActionView::Helpers::Tags::ColorField
-end
-
-class ActionView::Helpers::Tags::ColorField
-end
-
-class ActionView::Helpers::Tags::DateField
-end
-
-class ActionView::Helpers::Tags::DateField
-end
-
-class ActionView::Helpers::Tags::DateSelect
-  def initialize(object_name, method_name, template_object, options, html_options); end
-end
-
-class ActionView::Helpers::Tags::DateSelect
-  def self.select_type(); end
-end
-
-class ActionView::Helpers::Tags::DatetimeField
-end
-
-class ActionView::Helpers::Tags::DatetimeField
-end
-
-class ActionView::Helpers::Tags::DatetimeLocalField
-end
-
-class ActionView::Helpers::Tags::DatetimeLocalField
-end
-
-class ActionView::Helpers::Tags::DatetimeSelect
-end
-
-class ActionView::Helpers::Tags::DatetimeSelect
-end
-
-class ActionView::Helpers::Tags::EmailField
-end
-
-class ActionView::Helpers::Tags::EmailField
-end
-
-class ActionView::Helpers::Tags::FileField
-end
-
-class ActionView::Helpers::Tags::FileField
-end
-
-class ActionView::Helpers::Tags::GroupedCollectionSelect
-  def initialize(object_name, method_name, template_object, collection, group_method, group_label_method, option_key_method, option_value_method, options, html_options); end
-end
-
-class ActionView::Helpers::Tags::GroupedCollectionSelect
-end
-
-class ActionView::Helpers::Tags::HiddenField
-end
-
-class ActionView::Helpers::Tags::HiddenField
-end
-
-class ActionView::Helpers::Tags::Label
-  def initialize(object_name, method_name, template_object, content_or_options=T.unsafe(nil), options=T.unsafe(nil)); end
-
-  def render(&block); end
-end
-
-class ActionView::Helpers::Tags::Label::LabelBuilder
-  def initialize(template_object, object_name, method_name, object, tag_value); end
-
-  def object(); end
-
-  def translation(); end
-end
-
-class ActionView::Helpers::Tags::Label::LabelBuilder
-end
-
-class ActionView::Helpers::Tags::Label
-end
-
-class ActionView::Helpers::Tags::MonthField
-end
-
-class ActionView::Helpers::Tags::MonthField
-end
-
-class ActionView::Helpers::Tags::NumberField
-end
-
-class ActionView::Helpers::Tags::NumberField
-end
-
-class ActionView::Helpers::Tags::PasswordField
-end
-
-class ActionView::Helpers::Tags::PasswordField
-end
-
-module ActionView::Helpers::Tags::Placeholderable
-  def initialize(*_); end
-end
-
-module ActionView::Helpers::Tags::Placeholderable
-  extend ::T::Sig
-end
-
-class ActionView::Helpers::Tags::RadioButton
-  include ::ActionView::Helpers::Tags::Checkable
-  def initialize(object_name, method_name, template_object, tag_value, options); end
-end
-
-class ActionView::Helpers::Tags::RadioButton
-end
-
-class ActionView::Helpers::Tags::RangeField
-end
-
-class ActionView::Helpers::Tags::RangeField
-end
-
-class ActionView::Helpers::Tags::SearchField
-end
-
-class ActionView::Helpers::Tags::SearchField
-end
-
-class ActionView::Helpers::Tags::Select
-  def initialize(object_name, method_name, template_object, choices, options, html_options); end
-end
-
-class ActionView::Helpers::Tags::Select
-end
-
-class ActionView::Helpers::Tags::TelField
-end
-
-class ActionView::Helpers::Tags::TelField
-end
-
-class ActionView::Helpers::Tags::TextArea
-  include ::ActionView::Helpers::Tags::Placeholderable
-end
-
-class ActionView::Helpers::Tags::TextArea
-end
-
-class ActionView::Helpers::Tags::TextField
-  include ::ActionView::Helpers::Tags::Placeholderable
-end
-
-class ActionView::Helpers::Tags::TextField
-  def self.field_type(); end
-end
-
-class ActionView::Helpers::Tags::TimeField
-end
-
-class ActionView::Helpers::Tags::TimeField
-end
-
-class ActionView::Helpers::Tags::TimeSelect
-end
-
-class ActionView::Helpers::Tags::TimeSelect
-end
-
-class ActionView::Helpers::Tags::TimeZoneSelect
-  def initialize(object_name, method_name, template_object, priority_zones, options, html_options); end
-end
-
-class ActionView::Helpers::Tags::TimeZoneSelect
-end
-
-class ActionView::Helpers::Tags::Translator
-  def initialize(object, object_name, method_and_value, scope:); end
-
-  def method_and_value(); end
-
-  def model(); end
-
-  def object_name(); end
-
-  def scope(); end
-
-  def translate(); end
-end
-
-class ActionView::Helpers::Tags::Translator
-end
-
-class ActionView::Helpers::Tags::UrlField
-end
-
-class ActionView::Helpers::Tags::UrlField
-end
-
-class ActionView::Helpers::Tags::WeekField
-end
-
-class ActionView::Helpers::Tags::WeekField
-end
-
-module ActionView::Helpers::Tags
-  extend ::ActiveSupport::Autoload
-  extend ::T::Sig
-end
-
-module ActionView::Helpers::TextHelper
-  extend ::T::Sig
+  def self.build_tag_values(*args); end
 end
 
 module ActionView::Helpers::TranslationHelper
-  extend ::T::Sig
+  def self.i18n_option?(name); end
 end
 
 module ActionView::Helpers::UrlHelper
-  BUTTON_TAG_METHOD_VERBS = ::T.let(nil, ::T.untyped)
-  STRINGIFIED_COMMON_METHODS = ::T.let(nil, ::T.untyped)
-end
+  def phone_to(phone_number, name=T.unsafe(nil), html_options=T.unsafe(nil), &block); end
 
-module ActionView::Helpers::UrlHelper
-  extend ::T::Sig
+  def sms_to(phone_number, name=T.unsafe(nil), html_options=T.unsafe(nil), &block); end
 end
 
 module ActionView::Helpers
-  extend ::T::Sig
-end
-
-module ActionView::Layouts
-  def _layout_conditions(*args, &block); end
-
-  def _normalize_options(options); end
-
-  def action_has_layout=(action_has_layout); end
-
-  def action_has_layout?(); end
-
-  def initialize(*_); end
-end
-
-module ActionView::Layouts::ClassMethods
-  def _write_layout_method(); end
-
-  def inherited(klass); end
-
-  def layout(layout, conditions=T.unsafe(nil)); end
+  extend ::ActiveSupport::Autoload
 end
 
 module ActionView::Layouts::ClassMethods::LayoutConditions
 end
 
 module ActionView::Layouts::ClassMethods::LayoutConditions
-  extend ::T::Sig
-end
-
-module ActionView::Layouts::ClassMethods
-  extend ::T::Sig
-end
-
-module ActionView::Layouts
-  extend ::ActiveSupport::Concern
-  extend ::T::Sig
 end
 
 class ActionView::LookupContext
@@ -814,7 +290,7 @@ class ActionView::LookupContext
 
   def fallbacks(); end
 
-  def fallbacks=(obj); end
+  def fallbacks=(val); end
 
   def formats=(values); end
 
@@ -826,11 +302,13 @@ class ActionView::LookupContext
 
   def registered_details(); end
 
-  def registered_details=(obj); end
+  def registered_details=(val); end
 
   def rendered_format(); end
 
   def rendered_format=(rendered_format); end
+
+  def with_prepended_formats(formats); end
 end
 
 module ActionView::LookupContext::Accessors
@@ -861,7 +339,6 @@ module ActionView::LookupContext::Accessors
 end
 
 module ActionView::LookupContext::Accessors
-  extend ::T::Sig
 end
 
 module ActionView::LookupContext::DetailsCache
@@ -875,7 +352,6 @@ module ActionView::LookupContext::DetailsCache
 end
 
 module ActionView::LookupContext::DetailsCache
-  extend ::T::Sig
 end
 
 class ActionView::LookupContext::DetailsKey
@@ -884,9 +360,13 @@ end
 class ActionView::LookupContext::DetailsKey
   def self.clear(); end
 
+  def self.details_cache_key(details); end
+
+  def self.digest_cache(details); end
+
   def self.digest_caches(); end
 
-  def self.get(details); end
+  def self.view_context_class(klass); end
 end
 
 module ActionView::LookupContext::ViewPaths
@@ -900,8 +380,6 @@ module ActionView::LookupContext::ViewPaths
 
   def find_all(name, prefixes=T.unsafe(nil), partial=T.unsafe(nil), keys=T.unsafe(nil), options=T.unsafe(nil)); end
 
-  def find_file(name, prefixes=T.unsafe(nil), partial=T.unsafe(nil), keys=T.unsafe(nil), options=T.unsafe(nil)); end
-
   def find_template(name, prefixes=T.unsafe(nil), partial=T.unsafe(nil), keys=T.unsafe(nil), options=T.unsafe(nil)); end
 
   def html_fallback_for_js(); end
@@ -910,38 +388,36 @@ module ActionView::LookupContext::ViewPaths
 
   def view_paths(); end
 
-  def view_paths=(paths); end
-
   def with_fallbacks(); end
 end
 
 module ActionView::LookupContext::ViewPaths
-  extend ::T::Sig
 end
 
 class ActionView::LookupContext
   def self.fallbacks(); end
 
-  def self.fallbacks=(obj); end
+  def self.fallbacks=(val); end
 
   def self.register_detail(name, &block); end
 
   def self.registered_details(); end
 
-  def self.registered_details=(obj); end
+  def self.registered_details=(val); end
 end
 
 class ActionView::MissingTemplate
   def initialize(paths, path, prefixes, partial, details, *_); end
-
-  def path(); end
 end
 
-class ActionView::MissingTemplate
+class ActionView::ObjectRenderer
+  include ::ActionView::AbstractRenderer::ObjectRendering
+  def render_object_derive_partial(object, context, block); end
+
+  def render_object_with_partial(object, partial, context, block); end
 end
 
-module ActionView::ModelNaming
-  extend ::T::Sig
+class ActionView::ObjectRenderer
 end
 
 class ActionView::OptimizedFileSystemResolver
@@ -982,24 +458,20 @@ class ActionView::PartialRenderer
   include ::ActionView::CollectionCaching
   def collection_cache(); end
 
-  def collection_cache=(obj); end
+  def collection_cache=(val); end
 
-  def initialize(*_); end
+  def initialize(lookup_context, options); end
 
-  def render(context, options, block); end
-  IDENTIFIER_ERROR_MESSAGE = ::T.let(nil, ::T.untyped)
-  OPTION_AS_ERROR_MESSAGE = ::T.let(nil, ::T.untyped)
-  PREFIXED_PARTIAL_NAMES = ::T.let(nil, ::T.untyped)
+  def render(partial, context, block); end
 end
 
 class ActionView::PartialRenderer
   def self.collection_cache(); end
 
-  def self.collection_cache=(obj); end
+  def self.collection_cache=(val); end
 end
 
 class ActionView::PathResolver
-  def initialize(pattern=T.unsafe(nil)); end
   DEFAULT_PATTERN = ::T.let(nil, ::T.untyped)
   EXTENSIONS = ::T.let(nil, ::T.untyped)
 end
@@ -1013,13 +485,13 @@ class ActionView::PathSet
 
   def <<(*args); end
 
-  def [](*args, &block); end
+  def [](*_, &_1); end
 
   def compact(); end
 
   def concat(*args); end
 
-  def each(*args, &block); end
+  def each(*_, &_1); end
 
   def exists?(path, prefixes, *args); end
 
@@ -1029,9 +501,7 @@ class ActionView::PathSet
 
   def find_all_with_query(query); end
 
-  def find_file(path, prefixes=T.unsafe(nil), *args); end
-
-  def include?(*args, &block); end
+  def include?(*_, &_1); end
 
   def initialize(paths=T.unsafe(nil)); end
 
@@ -1039,11 +509,11 @@ class ActionView::PathSet
 
   def paths(); end
 
-  def pop(*args, &block); end
+  def pop(*_, &_1); end
 
   def push(*args); end
 
-  def size(*args, &block); end
+  def size(*_, &_1); end
 
   def to_ary(); end
 
@@ -1051,15 +521,6 @@ class ActionView::PathSet
 end
 
 class ActionView::PathSet
-end
-
-module ActionView::RecordIdentifier
-  JOIN = ::T.let(nil, ::T.untyped)
-  NEW = ::T.let(nil, ::T.untyped)
-end
-
-module ActionView::RecordIdentifier
-  extend ::T::Sig
 end
 
 class ActionView::Renderer
@@ -1077,13 +538,21 @@ class ActionView::Renderer
 
   def render_partial(context, options, &block); end
 
+  def render_partial_to_object(context, options, &block); end
+
   def render_template(context, options); end
+
+  def render_template_to_object(context, options); end
+
+  def render_to_object(context, options); end
 end
 
 class ActionView::Renderer
 end
 
 module ActionView::Rendering
+  def initialize(); end
+
   def process(*_); end
 
   def render_to_body(options=T.unsafe(nil)); end
@@ -1094,36 +563,33 @@ module ActionView::Rendering
 
   def view_context_class(); end
 
-  def view_context_class=(view_context_class); end
-
   def view_renderer(); end
 end
 
 module ActionView::Rendering::ClassMethods
-  def view_context_class(); end
-end
+  def _helpers(); end
 
-module ActionView::Rendering::ClassMethods
-  extend ::T::Sig
+  def _routes(); end
+
+  def build_view_context_class(klass, supports_path, routes, helpers); end
+
+  def view_context_class(); end
 end
 
 module ActionView::Rendering
   extend ::ActiveSupport::Concern
-  extend ::T::Sig
 end
 
 class ActionView::Resolver
   def caching(); end
 
-  def caching=(obj); end
+  def caching=(val); end
 
-  def caching?(*args, &block); end
+  def caching?(*_, &_1); end
 
   def clear_cache(); end
 
   def find_all(name, prefix=T.unsafe(nil), partial=T.unsafe(nil), details=T.unsafe(nil), key=T.unsafe(nil), locals=T.unsafe(nil)); end
-
-  def find_all_anywhere(name, prefix, partial=T.unsafe(nil), details=T.unsafe(nil), key=T.unsafe(nil), locals=T.unsafe(nil)); end
 
   def find_all_with_query(query); end
 end
@@ -1173,10 +639,19 @@ class ActionView::Resolver::Path
   def self.build(name, prefix, partial); end
 end
 
+class ActionView::Resolver::PathParser
+  def build_path_regex(); end
+
+  def parse(path); end
+end
+
+class ActionView::Resolver::PathParser
+end
+
 class ActionView::Resolver
   def self.caching(); end
 
-  def self.caching=(obj); end
+  def self.caching=(val); end
 
   def self.caching?(); end
 end
@@ -1208,6 +683,7 @@ class ActionView::StreamingFlow
 end
 
 class ActionView::StreamingTemplateRenderer
+  def render_template(view, template, layout_name=T.unsafe(nil), locals=T.unsafe(nil)); end
 end
 
 class ActionView::StreamingTemplateRenderer::Body
@@ -1222,28 +698,30 @@ end
 class ActionView::StreamingTemplateRenderer
 end
 
+class ActionView::SyntaxErrorInTemplate
+  def initialize(template, offending_code_string); end
+end
+
 class ActionView::Template
   def encode!(); end
 
-  def formats(); end
-
-  def formats=(formats); end
+  def format(); end
 
   def handler(); end
 
   def identifier(); end
 
-  def initialize(source, identifier, handler, details); end
+  def initialize(source, identifier, handler, locals:, format: T.unsafe(nil), variant: T.unsafe(nil), virtual_path: T.unsafe(nil)); end
 
   def locals(); end
 
-  def locals=(locals); end
+  def marshal_dump(); end
 
-  def original_encoding(); end
+  def marshal_load(array); end
 
-  def refresh(view); end
+  def render(view, locals, buffer=T.unsafe(nil), add_to_stack: T.unsafe(nil), &block); end
 
-  def render(view, locals, buffer=T.unsafe(nil), &block); end
+  def short_identifier(); end
 
   def source(); end
 
@@ -1251,20 +729,15 @@ class ActionView::Template
 
   def type(); end
 
-  def updated_at(); end
+  def variable(); end
 
-  def variants(); end
-
-  def variants=(variants); end
+  def variant(); end
 
   def virtual_path(); end
-
-  def virtual_path=(virtual_path); end
-  Finalizer = ::T.let(nil, ::T.untyped)
 end
 
 class ActionView::Template::Error
-  def annoted_source_code(); end
+  def annotated_source_code(); end
 
   def file_name(); end
 
@@ -1272,7 +745,7 @@ class ActionView::Template::Error
 
   def line_number(); end
 
-  def source_extract(indentation=T.unsafe(nil), output=T.unsafe(nil)); end
+  def source_extract(indentation=T.unsafe(nil)); end
 
   def sub_template_message(); end
 
@@ -1280,23 +753,18 @@ class ActionView::Template::Error
   SOURCE_CODE_RADIUS = ::T.let(nil, ::T.untyped)
 end
 
-class ActionView::Template::Error
-end
-
 class ActionView::Template::HTML
-  def formats(); end
+  def format(); end
 
   def identifier(); end
 
-  def initialize(string, type=T.unsafe(nil)); end
+  def initialize(string, type); end
 
   def render(*args); end
 
   def to_str(); end
 
   def type(); end
-
-  def type=(type); end
 end
 
 class ActionView::Template::HTML
@@ -1317,11 +785,11 @@ module ActionView::Template::Handlers
 end
 
 class ActionView::Template::Handlers::Builder
-  def call(template); end
+  def call(template, source); end
 
   def default_format(); end
 
-  def default_format=(val); end
+  def default_format=(default_format); end
 
   def default_format?(); end
 end
@@ -1329,31 +797,31 @@ end
 class ActionView::Template::Handlers::Builder
   def self.default_format(); end
 
-  def self.default_format=(val); end
+  def self.default_format=(value); end
 
   def self.default_format?(); end
 end
 
 class ActionView::Template::Handlers::ERB
-  def call(template); end
+  def call(template, source); end
 
   def erb_implementation(); end
 
-  def erb_implementation=(val); end
+  def erb_implementation=(erb_implementation); end
 
   def erb_implementation?(); end
 
   def erb_trim_mode(); end
 
-  def erb_trim_mode=(val); end
+  def erb_trim_mode=(erb_trim_mode); end
 
   def erb_trim_mode?(); end
 
-  def escape_whitelist(); end
+  def escape_ignore_list(); end
 
-  def escape_whitelist=(val); end
+  def escape_ignore_list=(escape_ignore_list); end
 
-  def escape_whitelist?(); end
+  def escape_ignore_list?(); end
 
   def handles_encoding?(); end
 
@@ -1370,25 +838,25 @@ class ActionView::Template::Handlers::ERB::Erubi
 end
 
 class ActionView::Template::Handlers::ERB
-  def self.call(template); end
+  def self.call(template, source); end
 
   def self.erb_implementation(); end
 
-  def self.erb_implementation=(val); end
+  def self.erb_implementation=(value); end
 
   def self.erb_implementation?(); end
 
   def self.erb_trim_mode(); end
 
-  def self.erb_trim_mode=(val); end
+  def self.erb_trim_mode=(value); end
 
   def self.erb_trim_mode?(); end
 
-  def self.escape_whitelist(); end
+  def self.escape_ignore_list(); end
 
-  def self.escape_whitelist=(val); end
+  def self.escape_ignore_list=(value); end
 
-  def self.escape_whitelist?(); end
+  def self.escape_ignore_list?(); end
 end
 
 class ActionView::Template::Handlers::Html
@@ -1398,21 +866,73 @@ class ActionView::Template::Handlers::Html
 end
 
 class ActionView::Template::Handlers::Raw
-  def call(template); end
+  def call(template, source); end
 end
 
 class ActionView::Template::Handlers::Raw
 end
 
 module ActionView::Template::Handlers
-  extend ::T::Sig
   def self.extended(base); end
 
   def self.extensions(); end
 end
 
+class ActionView::Template::Inline
+  Finalizer = ::T.let(nil, ::T.untyped)
+end
+
+class ActionView::Template::Inline
+end
+
+class ActionView::Template::RawFile
+  def format(); end
+
+  def format=(format); end
+
+  def identifier(); end
+
+  def initialize(filename); end
+
+  def render(*args); end
+
+  def type(); end
+
+  def type=(type); end
+end
+
+class ActionView::Template::RawFile
+end
+
+class ActionView::Template::Renderable
+  def format(); end
+
+  def identifier(); end
+
+  def initialize(renderable); end
+
+  def render(context, *args); end
+end
+
+class ActionView::Template::Renderable
+end
+
+module ActionView::Template::Sources
+end
+
+class ActionView::Template::Sources::File
+  def initialize(filename); end
+end
+
+class ActionView::Template::Sources::File
+end
+
+module ActionView::Template::Sources
+  extend ::ActiveSupport::Autoload
+end
+
 class ActionView::Template::Text
-  def formats(); end
+  def format(); end
 
   def identifier(); end
 
@@ -1433,7 +953,7 @@ end
 class ActionView::Template::Types
   def type_klass(); end
 
-  def type_klass=(obj); end
+  def type_klass=(val); end
 end
 
 class ActionView::Template::Types::Type
@@ -1464,7 +984,7 @@ class ActionView::Template::Types
 
   def self.type_klass(); end
 
-  def self.type_klass=(obj); end
+  def self.type_klass=(val); end
 end
 
 class ActionView::Template
@@ -1472,13 +992,20 @@ class ActionView::Template
   extend ::ActionView::Template::Handlers
 end
 
-ActionView::TemplateError = ActionView::Template::Error
-
 class ActionView::TemplateRenderer
   def render(context, options); end
 end
 
 class ActionView::TemplateRenderer
+end
+
+class ActionView::UnboundTemplate
+  def bind_locals(locals); end
+
+  def initialize(source, identifier, handler, options); end
+end
+
+class ActionView::UnboundTemplate
 end
 
 module ActionView::VERSION
@@ -1490,23 +1017,22 @@ module ActionView::VERSION
 end
 
 module ActionView::VERSION
-  extend ::T::Sig
 end
 
 module ActionView::ViewPaths
   def _prefixes(); end
 
-  def any_templates?(*args, &block); end
+  def any_templates?(*_, &_1); end
 
   def append_view_path(path); end
 
   def details_for_lookup(); end
 
-  def formats(*args, &block); end
+  def formats(*_, &_1); end
 
   def formats=(arg); end
 
-  def locale(*args, &block); end
+  def locale(*_, &_1); end
 
   def locale=(arg); end
 
@@ -1514,15 +1040,17 @@ module ActionView::ViewPaths
 
   def prepend_view_path(path); end
 
-  def template_exists?(*args, &block); end
+  def template_exists?(*_, &_1); end
 
-  def view_paths(*args, &block); end
+  def view_paths(*_, &_1); end
 end
 
 module ActionView::ViewPaths::ClassMethods
   def _prefixes(); end
 
-  def append_view_path(path); end
+  def _view_paths(); end
+
+  def _view_paths=(paths); end
 
   def prepend_view_path(path); end
 
@@ -1531,30 +1059,57 @@ module ActionView::ViewPaths::ClassMethods
   def view_paths=(paths); end
 end
 
-module ActionView::ViewPaths::ClassMethods
-  extend ::T::Sig
-end
-
 module ActionView::ViewPaths
   extend ::ActiveSupport::Concern
-  extend ::T::Sig
+  def self.all_view_paths(); end
+
+  def self.get_view_paths(klass); end
+
+  def self.set_view_paths(klass, paths); end
 end
 
 class ActionView::WrongEncodingError
   def initialize(string, encoding); end
 end
 
-class ActionView::WrongEncodingError
-end
-
 module ActionView
-  extend ::T::Sig
+  extend ::ActiveSupport::Autoload
+  def self.gem_version(); end
+
+  def self.version(); end
 end
 
 module ActiveSupport
   def parse_json_times(); end
 
-  def parse_json_times=(obj); end
+  def parse_json_times=(val); end
+
+  def test_order(); end
+
+  def test_order=(val); end
+end
+
+module ActiveSupport::ActionableError
+end
+
+module ActiveSupport::ActionableError::ClassMethods
+  def action(name, &block); end
+end
+
+module ActiveSupport::ActionableError::ClassMethods
+end
+
+class ActiveSupport::ActionableError::NonActionable
+end
+
+class ActiveSupport::ActionableError::NonActionable
+end
+
+module ActiveSupport::ActionableError
+  extend ::ActiveSupport::Concern
+  def self.actions(error); end
+
+  def self.dispatch(error, name); end
 end
 
 class ActiveSupport::ArrayInquirer
@@ -1564,29 +1119,17 @@ end
 class ActiveSupport::ArrayInquirer
 end
 
-module ActiveSupport::Autoload
-  extend ::T::Sig
-end
-
 class ActiveSupport::BacktraceCleaner
   def add_filter(&block); end
 
   def add_silencer(&block); end
-
-  def clean(backtrace, kind=T.unsafe(nil)); end
 
   def filter(backtrace, kind=T.unsafe(nil)); end
 
   def remove_filters!(); end
 
   def remove_silencers!(); end
-end
-
-class ActiveSupport::BacktraceCleaner
-end
-
-module ActiveSupport::Benchmarkable
-  extend ::T::Sig
+  FORMATTED_GEMS_PATTERN = ::T.let(nil, ::T.untyped)
 end
 
 module ActiveSupport::BigDecimalWithDefaultFormat
@@ -1594,7 +1137,6 @@ module ActiveSupport::BigDecimalWithDefaultFormat
 end
 
 module ActiveSupport::BigDecimalWithDefaultFormat
-  extend ::T::Sig
 end
 
 module ActiveSupport::Cache
@@ -1602,6 +1144,8 @@ module ActiveSupport::Cache
 end
 
 class ActiveSupport::Cache::Entry
+  def bytesize(); end
+
   def dup_value!(); end
 
   def expired?(); end
@@ -1614,8 +1158,6 @@ class ActiveSupport::Cache::Entry
 
   def mismatched?(version); end
 
-  def size(); end
-
   def value(); end
 
   def version(); end
@@ -1625,124 +1167,43 @@ end
 class ActiveSupport::Cache::Entry
 end
 
-class ActiveSupport::Cache::FileStore
-  include ::ActiveSupport::Cache::Strategy::LocalCache
-  def cache_path(); end
+ActiveSupport::Cache::MemoryStore::DEFAULT_CODER = ActiveSupport::Cache::MemoryStore::DupCoder
 
-  def initialize(cache_path, options=T.unsafe(nil)); end
-  DIR_FORMATTER = ::T.let(nil, ::T.untyped)
-  EXCLUDED_DIRS = ::T.let(nil, ::T.untyped)
-  FILENAME_MAX_SIZE = ::T.let(nil, ::T.untyped)
-  FILEPATH_MAX_SIZE = ::T.let(nil, ::T.untyped)
-  GITKEEP_FILES = ::T.let(nil, ::T.untyped)
+module ActiveSupport::Cache::MemoryStore::DupCoder
 end
 
-class ActiveSupport::Cache::FileStore
+module ActiveSupport::Cache::MemoryStore::DupCoder
+  def self.dump(entry); end
+
+  def self.load(entry); end
 end
 
-class ActiveSupport::Cache::MemoryStore
-  def prune(target_size, max_time=T.unsafe(nil)); end
-
-  def pruning?(); end
-
-  def synchronize(&block); end
-  PER_ENTRY_OVERHEAD = ::T.let(nil, ::T.untyped)
+module ActiveSupport::Cache::NullCoder
 end
 
-class ActiveSupport::Cache::MemoryStore
-end
+module ActiveSupport::Cache::NullCoder
+  def self.dump(entry); end
 
-class ActiveSupport::Cache::NullStore
-  include ::ActiveSupport::Cache::Strategy::LocalCache
-end
-
-class ActiveSupport::Cache::NullStore
+  def self.load(payload); end
 end
 
 class ActiveSupport::Cache::Store
-  def cleanup(options=T.unsafe(nil)); end
+  def delete_multi(names, options=T.unsafe(nil)); end
+end
 
-  def clear(options=T.unsafe(nil)); end
+ActiveSupport::Cache::Store::DEFAULT_CODER = Marshal
 
-  def decrement(name, amount=T.unsafe(nil), options=T.unsafe(nil)); end
-
-  def delete(name, options=T.unsafe(nil)); end
-
+module ActiveSupport::Cache::Strategy::LocalCache
   def delete_matched(matcher, options=T.unsafe(nil)); end
-
-  def exist?(name, options=T.unsafe(nil)); end
-
-  def fetch(name, options=T.unsafe(nil)); end
-
-  def fetch_multi(*names); end
-
-  def increment(name, amount=T.unsafe(nil), options=T.unsafe(nil)); end
-
-  def initialize(options=T.unsafe(nil)); end
-
-  def logger(); end
-
-  def logger=(obj); end
-
-  def mute(); end
-
-  def options(); end
-
-  def read(name, options=T.unsafe(nil)); end
-
-  def read_multi(*names); end
-
-  def silence(); end
-
-  def silence!(); end
-
-  def silence?(); end
-
-  def write(name, value, options=T.unsafe(nil)); end
-
-  def write_multi(hash, options=T.unsafe(nil)); end
-end
-
-class ActiveSupport::Cache::Store
-  def self.logger(); end
-
-  def self.logger=(obj); end
-end
-
-module ActiveSupport::Cache::Strategy
-end
-
-module ActiveSupport::Cache::Strategy::LocalCache
-  def cleanup(options=T.unsafe(nil)); end
-
-  def clear(options=T.unsafe(nil)); end
-
-  def decrement(name, amount=T.unsafe(nil), options=T.unsafe(nil)); end
-
-  def increment(name, amount=T.unsafe(nil), options=T.unsafe(nil)); end
-
-  def middleware(); end
-
-  def with_local_cache(); end
-end
-
-module ActiveSupport::Cache::Strategy::LocalCache
-  extend ::T::Sig
-end
-
-module ActiveSupport::Cache::Strategy
-  extend ::T::Sig
 end
 
 module ActiveSupport::Cache
-  extend ::T::Sig
   def self.expand_cache_key(key, namespace=T.unsafe(nil)); end
 
-  def self.lookup_store(*store_option); end
+  def self.lookup_store(store=T.unsafe(nil), *parameters); end
 end
 
 module ActiveSupport::Callbacks
-  def run_callbacks(kind); end
   CALLBACK_FILTER_TYPES = ::T.let(nil, ::T.untyped)
 end
 
@@ -1849,28 +1310,6 @@ end
 class ActiveSupport::Callbacks::CallbackSequence
 end
 
-module ActiveSupport::Callbacks::ClassMethods
-  def __update_callbacks(name); end
-
-  def define_callbacks(*names); end
-
-  def get_callbacks(name); end
-
-  def normalize_callback_params(filters, block); end
-
-  def reset_callbacks(name); end
-
-  def set_callback(name, *filter_list, &block); end
-
-  def set_callbacks(name, callbacks); end
-
-  def skip_callback(name, *filter_list, &block); end
-end
-
-module ActiveSupport::Callbacks::ClassMethods
-  extend ::T::Sig
-end
-
 module ActiveSupport::Callbacks::Conditionals
 end
 
@@ -1884,7 +1323,6 @@ class ActiveSupport::Callbacks::Conditionals::Value
 end
 
 module ActiveSupport::Callbacks::Conditionals
-  extend ::T::Sig
 end
 
 module ActiveSupport::Callbacks::Filters
@@ -1901,7 +1339,7 @@ class ActiveSupport::Callbacks::Filters::Before
 end
 
 class ActiveSupport::Callbacks::Filters::Before
-  def self.build(callback_sequence, user_callback, user_conditions, chain_config, filter); end
+  def self.build(callback_sequence, user_callback, user_conditions, chain_config, filter, name); end
 end
 
 class ActiveSupport::Callbacks::Filters::Environment
@@ -1925,43 +1363,35 @@ class ActiveSupport::Callbacks::Filters::Environment
 end
 
 module ActiveSupport::Callbacks::Filters
-  extend ::T::Sig
-end
-
-module ActiveSupport::Callbacks
-  extend ::ActiveSupport::Concern
-  extend ::T::Sig
 end
 
 module ActiveSupport::Concern
-  extend ::T::Sig
+  def prepend_features(base); end
+
+  def prepended(base=T.unsafe(nil), &block); end
 end
 
-module ActiveSupport::Configurable
-  def config(); end
+class ActiveSupport::Concern::MultiplePrependBlocks
+  def initialize(); end
 end
 
-module ActiveSupport::Configurable::ClassMethods
-  def config(); end
-
-  def configure(); end
+class ActiveSupport::Concern::MultiplePrependBlocks
 end
 
-module ActiveSupport::Configurable::ClassMethods
-  extend ::T::Sig
+class ActiveSupport::ConfigurationFile
+  def initialize(content_path); end
+
+  def parse(context: T.unsafe(nil), **options); end
 end
 
-class ActiveSupport::Configurable::Configuration
-  def compile_methods!(); end
+class ActiveSupport::ConfigurationFile::FormatError
 end
 
-class ActiveSupport::Configurable::Configuration
-  def self.compile_methods!(keys); end
+class ActiveSupport::ConfigurationFile::FormatError
 end
 
-module ActiveSupport::Configurable
-  extend ::ActiveSupport::Concern
-  extend ::T::Sig
+class ActiveSupport::ConfigurationFile
+  def self.parse(content_path, **options); end
 end
 
 class ActiveSupport::CurrentAttributes
@@ -1988,7 +1418,7 @@ class ActiveSupport::CurrentAttributes
   extend ::ActiveSupport::DescendantsTracker
   def self.__callbacks(); end
 
-  def self.__callbacks=(val); end
+  def self.__callbacks=(value); end
 
   def self.__callbacks?(); end
 
@@ -1996,115 +1426,26 @@ class ActiveSupport::CurrentAttributes
 
   def self._reset_callbacks=(value); end
 
+  def self.after_reset(&block); end
+
   def self.attribute(*names); end
+
+  def self.before_reset(&block); end
 
   def self.clear_all(); end
 
   def self.instance(); end
 
-  def self.reset(*args, &block); end
+  def self.reset(*_, &_1); end
 
   def self.reset_all(); end
 
   def self.resets(&block); end
 
-  def self.set(*args, &block); end
+  def self.set(*_, &_1); end
 end
 
 module ActiveSupport::Dependencies
-  def autoload_module!(into, const_name, qualified_name, path_suffix); end
-
-  def autoload_once_paths(); end
-
-  def autoload_once_paths=(obj); end
-
-  def autoload_paths(); end
-
-  def autoload_paths=(obj); end
-
-  def autoloadable_module?(path_suffix); end
-
-  def autoloaded?(desc); end
-
-  def autoloaded_constants(); end
-
-  def autoloaded_constants=(obj); end
-
-  def clear(); end
-
-  def constant_watch_stack(); end
-
-  def constant_watch_stack=(obj); end
-
-  def constantize(name); end
-
-  def depend_on(file_name, message=T.unsafe(nil)); end
-
-  def explicitly_unloadable_constants(); end
-
-  def explicitly_unloadable_constants=(obj); end
-
-  def history(); end
-
-  def history=(obj); end
-
-  def hook!(); end
-
-  def interlock(); end
-
-  def interlock=(obj); end
-
-  def load?(); end
-
-  def load_file(path, const_paths=T.unsafe(nil)); end
-
-  def load_missing_constant(from_mod, const_name); end
-
-  def load_once_path?(path); end
-
-  def loadable_constants_for_path(path, bases=T.unsafe(nil)); end
-
-  def loaded(); end
-
-  def loaded=(obj); end
-
-  def loading(); end
-
-  def loading=(obj); end
-
-  def mark_for_unload(const_desc); end
-
-  def mechanism(); end
-
-  def mechanism=(obj); end
-
-  def new_constants_in(*descs); end
-
-  def qualified_const_defined?(path); end
-
-  def qualified_name_for(mod, name); end
-
-  def reference(klass); end
-
-  def remove_constant(const); end
-
-  def remove_unloadable_constants!(); end
-
-  def require_or_load(file_name, const_path=T.unsafe(nil)); end
-
-  def safe_constantize(name); end
-
-  def search_for_file(path_suffix); end
-
-  def to_constant_name(desc); end
-
-  def unhook!(); end
-
-  def warnings_on_first_load(); end
-
-  def warnings_on_first_load=(obj); end
-
-  def will_unload?(const_desc); end
   Reference = ::T.let(nil, ::T.untyped)
 end
 
@@ -2119,7 +1460,6 @@ module ActiveSupport::Dependencies::Blamable
 end
 
 module ActiveSupport::Dependencies::Blamable
-  extend ::T::Sig
 end
 
 class ActiveSupport::Dependencies::ClassCache
@@ -2164,21 +1504,6 @@ end
 class ActiveSupport::Dependencies::Interlock
 end
 
-module ActiveSupport::Dependencies::Loadable
-  def load_dependency(file); end
-
-  def require_dependency(file_name, message=T.unsafe(nil)); end
-
-  def require_or_load(file_name); end
-
-  def unloadable(const_desc); end
-end
-
-module ActiveSupport::Dependencies::Loadable
-  extend ::T::Sig
-  def self.exclude_from(base); end
-end
-
 module ActiveSupport::Dependencies::ModuleConstMissing
   def const_missing(const_name); end
 
@@ -2188,10 +1513,11 @@ module ActiveSupport::Dependencies::ModuleConstMissing
 end
 
 module ActiveSupport::Dependencies::ModuleConstMissing
-  extend ::T::Sig
   def self.append_features(base); end
 
   def self.exclude_from(base); end
+
+  def self.include_into(base); end
 end
 
 class ActiveSupport::Dependencies::WatchStack
@@ -2210,78 +1536,73 @@ end
 class ActiveSupport::Dependencies::WatchStack
 end
 
-module ActiveSupport::Dependencies
-  extend ::ActiveSupport::Dependencies
-  extend ::T::Sig
-  def self.load_interlock(); end
-
-  def self.run_interlock(); end
-
-  def self.unload_interlock(); end
-end
-
 class ActiveSupport::Deprecation
-  def deprecation_horizon(); end
-
-  def deprecation_horizon=(deprecation_horizon); end
-
-  def initialize(deprecation_horizon=T.unsafe(nil), gem_name=T.unsafe(nil)); end
-  DEFAULT_BEHAVIORS = ::T.let(nil, ::T.untyped)
+  include ::ActiveSupport::Deprecation::Disallowed
 end
 
 module ActiveSupport::Deprecation::Behavior
-  extend ::T::Sig
+  def disallowed_behavior(); end
+
+  def disallowed_behavior=(behavior); end
 end
 
-module ActiveSupport::Deprecation::DeprecatedConstantAccessor
-  extend ::T::Sig
+class ActiveSupport::Deprecation::DeprecatedConstantProxy
+  def respond_to?(*_, &_1); end
 end
 
-module ActiveSupport::Deprecation::InstanceDelegator::ClassMethods
-  extend ::T::Sig
+module ActiveSupport::Deprecation::Disallowed
+  def disallowed_warnings(); end
+
+  def disallowed_warnings=(disallowed_warnings); end
 end
 
-module ActiveSupport::Deprecation::InstanceDelegator::OverrideDelegators
-  extend ::T::Sig
-end
-
-module ActiveSupport::Deprecation::InstanceDelegator
-  extend ::T::Sig
-end
-
-module ActiveSupport::Deprecation::MethodWrapper
-  extend ::T::Sig
+module ActiveSupport::Deprecation::Disallowed
 end
 
 module ActiveSupport::Deprecation::Reporting
-  RAILS_GEM_ROOT = ::T.let(nil, ::T.untyped)
-end
-
-module ActiveSupport::Deprecation::Reporting
-  extend ::T::Sig
+  def allow(allowed_warnings=T.unsafe(nil), if: T.unsafe(nil), &block); end
 end
 
 class ActiveSupport::Deprecation
-  extend ::ActiveSupport::Deprecation::InstanceDelegator::OverrideDelegators
+  def self.allow(*_, &_1); end
+
+  def self.deprecation_warning(*_, &_1); end
+
+  def self.disallowed_behavior(*_, &_1); end
+
+  def self.disallowed_behavior=(arg); end
+
+  def self.disallowed_warnings(*_, &_1); end
+
+  def self.disallowed_warnings=(arg); end
+
+  def self.initialize(*_, &_1); end
+
+  def self.warn(*_, &_1); end
 end
 
 module ActiveSupport::DescendantsTracker
-  def descendants(); end
+  def subclasses(); end
+end
 
-  def direct_descendants(); end
+class ActiveSupport::DescendantsTracker::DescendantsArray
+  include ::Enumerable
+  def <<(klass); end
 
-  def inherited(base); end
+  def cleanup!(); end
+
+  def each(&blk); end
+
+  def refs_size(); end
+
+  def reject!(); end
+end
+
+class ActiveSupport::DescendantsTracker::DescendantsArray
 end
 
 module ActiveSupport::DescendantsTracker
-  extend ::T::Sig
-  def self.clear(); end
-
-  def self.descendants(klass); end
-
-  def self.direct_descendants(klass); end
-
-  def self.store_inherited(klass, descendant); end
+  def self.subclasses(klass); end
 end
 
 class ActiveSupport::Digest
@@ -2296,23 +1617,11 @@ class ActiveSupport::Digest
 end
 
 class ActiveSupport::Duration
-  def %(other); end
-
-  def *(other); end
-
-  def +(other); end
-
-  def -(other); end
+  def +@(); end
 
   def -@(); end
 
-  def /(other); end
-
-  def ==(other); end
-
   def after(time=T.unsafe(nil)); end
-
-  def ago(time=T.unsafe(nil)); end
 
   def before(time=T.unsafe(nil)); end
 
@@ -2320,9 +1629,19 @@ class ActiveSupport::Duration
 
   def encode_with(coder); end
 
-  def eql?(other); end
+  def in_days(); end
 
-  def from_now(time=T.unsafe(nil)); end
+  def in_hours(); end
+
+  def in_minutes(); end
+
+  def in_months(); end
+
+  def in_seconds(); end
+
+  def in_weeks(); end
+
+  def in_years(); end
 
   def init_with(coder); end
 
@@ -2332,8 +1651,6 @@ class ActiveSupport::Duration
 
   def is_a?(klass); end
 
-  def iso8601(precision: T.unsafe(nil)); end
-
   def kind_of?(klass); end
 
   def parts(); end
@@ -2342,11 +1659,7 @@ class ActiveSupport::Duration
 
   def since(time=T.unsafe(nil)); end
 
-  def to_i(); end
-
   def until(time=T.unsafe(nil)); end
-
-  def value(); end
 
   def value=(value); end
   PARTS = ::T.let(nil, ::T.untyped)
@@ -2402,6 +1715,7 @@ class ActiveSupport::Duration::ISO8601Serializer
   def initialize(duration, precision: T.unsafe(nil)); end
 
   def serialize(); end
+  DATE_COMPONENTS = ::T.let(nil, ::T.untyped)
 end
 
 class ActiveSupport::Duration::ISO8601Serializer
@@ -2422,11 +1736,11 @@ class ActiveSupport::Duration::Scalar
 
   def initialize(value); end
 
-  def to_f(*args, &block); end
+  def to_f(*_, &_1); end
 
-  def to_i(*args, &block); end
+  def to_i(*_, &_1); end
 
-  def to_s(*args, &block); end
+  def to_s(*_, &_1); end
 
   def value(); end
 end
@@ -2437,8 +1751,6 @@ end
 class ActiveSupport::Duration
   def self.===(other); end
 
-  def self.build(value); end
-
   def self.days(value); end
 
   def self.hours(value); end
@@ -2447,8 +1759,6 @@ class ActiveSupport::Duration
 
   def self.months(value); end
 
-  def self.parse(iso8601duration); end
-
   def self.seconds(value); end
 
   def self.weeks(value); end
@@ -2456,51 +1766,21 @@ class ActiveSupport::Duration
   def self.years(value); end
 end
 
-class ActiveSupport::EventedFileUpdateChecker
-  def execute(); end
+class ActiveSupport::EnvironmentInquirer
+  def development?(); end
 
-  def execute_if_updated(); end
+  def initialize(env); end
 
-  def initialize(files, dirs=T.unsafe(nil), &block); end
+  def production?(); end
 
-  def updated?(); end
+  def test?(); end
+  DEFAULT_ENVIRONMENTS = ::T.let(nil, ::T.untyped)
 end
 
-class ActiveSupport::EventedFileUpdateChecker::PathHelper
-  def existing_parent(dir); end
-
-  def filter_out_descendants(dirs); end
-
-  def longest_common_subpath(paths); end
-
-  def normalize_extension(ext); end
-
-  def xpath(path); end
-end
-
-class ActiveSupport::EventedFileUpdateChecker::PathHelper
-end
-
-class ActiveSupport::EventedFileUpdateChecker
+class ActiveSupport::EnvironmentInquirer
 end
 
 class ActiveSupport::ExecutionWrapper
-  include ::ActiveSupport::Callbacks
-  def __callbacks(); end
-
-  def __callbacks?(); end
-
-  def _complete_callbacks(); end
-
-  def _run_callbacks(); end
-
-  def _run_complete_callbacks(&block); end
-
-  def _run_run_callbacks(&block); end
-
-  def complete!(); end
-
-  def run!(); end
   Null = ::T.let(nil, ::T.untyped)
 end
 
@@ -2534,42 +1814,6 @@ class ActiveSupport::ExecutionWrapper::RunHook
   def self.members(); end
 end
 
-class ActiveSupport::ExecutionWrapper
-  extend ::ActiveSupport::Callbacks::ClassMethods
-  extend ::ActiveSupport::DescendantsTracker
-  def self.__callbacks(); end
-
-  def self.__callbacks=(val); end
-
-  def self.__callbacks?(); end
-
-  def self._complete_callbacks(); end
-
-  def self._complete_callbacks=(value); end
-
-  def self._run_callbacks(); end
-
-  def self._run_callbacks=(value); end
-
-  def self.active(); end
-
-  def self.active=(active); end
-
-  def self.active?(); end
-
-  def self.inherited(other); end
-
-  def self.register_hook(hook, outer: T.unsafe(nil)); end
-
-  def self.run!(); end
-
-  def self.to_complete(*args, &block); end
-
-  def self.to_run(*args, &block); end
-
-  def self.wrap(); end
-end
-
 class ActiveSupport::Executor
 end
 
@@ -2589,6 +1833,33 @@ end
 class ActiveSupport::FileUpdateChecker
 end
 
+module ActiveSupport::ForkTracker
+end
+
+module ActiveSupport::ForkTracker::CoreExt
+  def fork(*_); end
+end
+
+module ActiveSupport::ForkTracker::CoreExt
+end
+
+module ActiveSupport::ForkTracker::CoreExtPrivate
+  include ::ActiveSupport::ForkTracker::CoreExt
+end
+
+module ActiveSupport::ForkTracker::CoreExtPrivate
+end
+
+module ActiveSupport::ForkTracker
+  def self.after_fork(&block); end
+
+  def self.check!(); end
+
+  def self.hook!(); end
+
+  def self.unregister(callback); end
+end
+
 module ActiveSupport::Gzip
 end
 
@@ -2599,70 +1870,62 @@ class ActiveSupport::Gzip::Stream
 end
 
 module ActiveSupport::Gzip
-  extend ::T::Sig
   def self.compress(source, level=T.unsafe(nil), strategy=T.unsafe(nil)); end
 
   def self.decompress(source); end
 end
 
 module ActiveSupport::Inflector
-  extend ::T::Sig
+  ALLOWED_ENCODINGS_FOR_TRANSLITERATE = ::T.let(nil, ::T.untyped)
 end
 
-class ActiveSupport::InheritableOptions
-  def inheritable_copy(); end
+class ActiveSupport::Inflector::Inflections
+  def acronym(word); end
 
-  def initialize(parent=T.unsafe(nil)); end
+  def acronyms(); end
+
+  def acronyms_camelize_regex(); end
+
+  def acronyms_underscore_regex(); end
+
+  def clear(scope=T.unsafe(nil)); end
+
+  def human(rule, replacement); end
+
+  def humans(); end
+
+  def irregular(singular, plural); end
+
+  def plural(rule, replacement); end
+
+  def plurals(); end
+
+  def singular(rule, replacement); end
+
+  def singulars(); end
+
+  def uncountable(*words); end
+
+  def uncountables(); end
 end
 
-class ActiveSupport::InheritableOptions
+class ActiveSupport::Inflector::Inflections::Uncountables
+  def <<(*word); end
+
+  def add(words); end
+
+  def delete(entry); end
+
+  def initialize(); end
+
+  def uncountable?(str); end
 end
 
-module ActiveSupport::JSON
-  DATETIME_REGEX = ::T.let(nil, ::T.untyped)
-  DATE_REGEX = ::T.let(nil, ::T.untyped)
+class ActiveSupport::Inflector::Inflections::Uncountables
 end
 
-module ActiveSupport::JSON::Encoding
-end
-
-class ActiveSupport::JSON::Encoding::JSONGemEncoder
-  def encode(value); end
-
-  def initialize(options=T.unsafe(nil)); end
-
-  def options(); end
-end
-
-class ActiveSupport::JSON::Encoding::JSONGemEncoder
-end
-
-module ActiveSupport::JSON::Encoding
-  extend ::T::Sig
-  def self.escape_html_entities_in_json(); end
-
-  def self.escape_html_entities_in_json=(escape_html_entities_in_json); end
-
-  def self.json_encoder(); end
-
-  def self.json_encoder=(json_encoder); end
-
-  def self.time_precision(); end
-
-  def self.time_precision=(time_precision); end
-
-  def self.use_standard_json_time_format(); end
-
-  def self.use_standard_json_time_format=(use_standard_json_time_format); end
-end
-
-module ActiveSupport::JSON
-  extend ::T::Sig
-  def self.decode(json); end
-
-  def self.encode(value, options=T.unsafe(nil)); end
-
-  def self.parse_error(); end
+class ActiveSupport::Inflector::Inflections
+  def self.instance(locale=T.unsafe(nil)); end
 end
 
 class ActiveSupport::KeyGenerator
@@ -2675,244 +1938,171 @@ class ActiveSupport::KeyGenerator
 end
 
 module ActiveSupport::LazyLoadHooks
-  extend ::T::Sig
+  def on_load(name, options=T.unsafe(nil), &block); end
+
+  def run_load_hooks(name, base=T.unsafe(nil)); end
 end
 
-class ActiveSupport::LogSubscriber
-  def colorize_logging(); end
-
-  def colorize_logging=(obj); end
-
-  def debug(progname=T.unsafe(nil), &block); end
-
-  def error(progname=T.unsafe(nil), &block); end
-
-  def fatal(progname=T.unsafe(nil), &block); end
-
-  def info(progname=T.unsafe(nil), &block); end
-
-  def logger(); end
-
-  def unknown(progname=T.unsafe(nil), &block); end
-
-  def warn(progname=T.unsafe(nil), &block); end
-  BLACK = ::T.let(nil, ::T.untyped)
-  BLUE = ::T.let(nil, ::T.untyped)
-  BOLD = ::T.let(nil, ::T.untyped)
-  CLEAR = ::T.let(nil, ::T.untyped)
-  CYAN = ::T.let(nil, ::T.untyped)
-  GREEN = ::T.let(nil, ::T.untyped)
-  MAGENTA = ::T.let(nil, ::T.untyped)
-  RED = ::T.let(nil, ::T.untyped)
-  WHITE = ::T.let(nil, ::T.untyped)
-  YELLOW = ::T.let(nil, ::T.untyped)
-end
-
-class ActiveSupport::LogSubscriber
-  def self.colorize_logging(); end
-
-  def self.colorize_logging=(obj); end
-
-  def self.flush_all!(); end
-
-  def self.log_subscribers(); end
-
-  def self.logger(); end
-
-  def self.logger=(logger); end
+module ActiveSupport::LazyLoadHooks
+  def self.extended(base); end
 end
 
 module ActiveSupport::LoggerThreadSafeLevel
-  extend ::T::Sig
-end
-
-class ActiveSupport::MessageEncryptor
-  include ::ActiveSupport::Messages::Rotator::Encryptor
-  include ::ActiveSupport::Messages::Rotator
-  def encrypt_and_sign(value, expires_at: T.unsafe(nil), expires_in: T.unsafe(nil), purpose: T.unsafe(nil)); end
-end
-
-class ActiveSupport::MessageEncryptor::InvalidMessage
-end
-
-class ActiveSupport::MessageEncryptor::InvalidMessage
-end
-
-module ActiveSupport::MessageEncryptor::NullSerializer
-end
-
-module ActiveSupport::MessageEncryptor::NullSerializer
-  extend ::T::Sig
-  def self.dump(value); end
-
-  def self.load(value); end
-end
-
-module ActiveSupport::MessageEncryptor::NullVerifier
-end
-
-module ActiveSupport::MessageEncryptor::NullVerifier
-  extend ::T::Sig
-  def self.generate(value); end
-
-  def self.verify(value); end
-end
-
-class ActiveSupport::MessageEncryptor::OpenSSLCipherError
-end
-
-class ActiveSupport::MessageEncryptor::OpenSSLCipherError
-end
-
-class ActiveSupport::MessageEncryptor
-  def self.default_cipher(); end
-
-  def self.key_len(cipher=T.unsafe(nil)); end
-
-  def self.use_authenticated_message_encryption(); end
-
-  def self.use_authenticated_message_encryption=(obj); end
-end
-
-class ActiveSupport::MessageVerifier
-  include ::ActiveSupport::Messages::Rotator::Verifier
-  include ::ActiveSupport::Messages::Rotator
-  def generate(value, expires_at: T.unsafe(nil), expires_in: T.unsafe(nil), purpose: T.unsafe(nil)); end
-
-  def valid_message?(signed_message); end
-
-  def verify(*args); end
-end
-
-class ActiveSupport::MessageVerifier::InvalidSignature
-end
-
-class ActiveSupport::MessageVerifier::InvalidSignature
-end
-
-class ActiveSupport::MessageVerifier
-end
-
-module ActiveSupport::Messages::Rotator
-  def initialize(*_, **options); end
-
-  def rotate(*secrets, **options); end
-end
-
-module ActiveSupport::Messages::Rotator::Encryptor
-  include ::ActiveSupport::Messages::Rotator
-  def decrypt_and_verify(*args, on_rotation: T.unsafe(nil), **options); end
-end
-
-module ActiveSupport::Messages::Rotator::Encryptor
-  extend ::T::Sig
-end
-
-module ActiveSupport::Messages::Rotator::Verifier
-  include ::ActiveSupport::Messages::Rotator
-  def verified(*args, on_rotation: T.unsafe(nil), **options); end
-end
-
-module ActiveSupport::Messages::Rotator::Verifier
-  extend ::T::Sig
-end
-
-module ActiveSupport::Messages::Rotator
-  extend ::T::Sig
+  def log_at(level); end
 end
 
 class ActiveSupport::Multibyte::Chars
-  include ::Comparable
-  def =~(*args, &block); end
-
-  def acts_like_string?(*args, &block); end
-
-  def capitalize(); end
-
-  def capitalize!(*args); end
-
-  def compose(); end
-
-  def decompose(); end
-
-  def downcase(); end
-
-  def downcase!(*args); end
-
-  def grapheme_length(); end
-
-  def initialize(string); end
-
-  def limit(limit); end
-
-  def method_missing(method, *args, &block); end
-
-  def normalize(form=T.unsafe(nil)); end
-
-  def reverse(); end
-
-  def reverse!(*args); end
-
-  def slice!(*args); end
-
-  def split(*args); end
-
-  def swapcase(); end
-
-  def tidy_bytes(force=T.unsafe(nil)); end
-
-  def tidy_bytes!(*args); end
-
-  def titlecase(); end
-
-  def titleize(); end
-
-  def to_str(); end
-
-  def upcase(); end
-
-  def upcase!(*args); end
-
-  def wrapped_string(); end
+  def match?(*_, &_1); end
 end
 
-class ActiveSupport::Multibyte::Chars
-  def self.consumes?(string); end
+class ActiveSupport::Notifications::Event
+  def payload=(payload); end
 end
 
-module ActiveSupport::Multibyte::Unicode
-  HANGUL_LBASE = ::T.let(nil, ::T.untyped)
-  HANGUL_LCOUNT = ::T.let(nil, ::T.untyped)
-  HANGUL_NCOUNT = ::T.let(nil, ::T.untyped)
-  HANGUL_SBASE = ::T.let(nil, ::T.untyped)
-  HANGUL_SCOUNT = ::T.let(nil, ::T.untyped)
-  HANGUL_SLAST = ::T.let(nil, ::T.untyped)
-  HANGUL_TBASE = ::T.let(nil, ::T.untyped)
-  HANGUL_TCOUNT = ::T.let(nil, ::T.untyped)
-  HANGUL_VBASE = ::T.let(nil, ::T.untyped)
-  HANGUL_VCOUNT = ::T.let(nil, ::T.untyped)
-  NORMALIZATION_FORMS = ::T.let(nil, ::T.untyped)
-  UNICODE_VERSION = ::T.let(nil, ::T.untyped)
-end
+class ActiveSupport::Notifications::Fanout
+  include ::Mutex_m
+  def finish(name, id, payload, listeners=T.unsafe(nil)); end
 
-class ActiveSupport::Multibyte::Unicode::UnicodeDatabase
-  ATTRIBUTES = ::T.let(nil, ::T.untyped)
-end
+  def initialize(); end
 
-module ActiveSupport::Multibyte::Unicode
-  extend ::T::Sig
-end
+  def listeners_for(name); end
 
-module ActiveSupport::Multibyte
-  extend ::T::Sig
+  def listening?(name); end
+
+  def lock(); end
+
+  def locked?(); end
+
+  def publish(name, *args); end
+
+  def start(name, id, payload); end
+
+  def subscribe(pattern=T.unsafe(nil), callable=T.unsafe(nil), monotonic: T.unsafe(nil), &block); end
+
+  def synchronize(&block); end
+
+  def try_lock(); end
+
+  def unlock(); end
+
+  def unsubscribe(subscriber_or_name); end
+
+  def wait(); end
 end
 
 module ActiveSupport::Notifications::Fanout::Subscribers
-  extend ::T::Sig
+end
+
+class ActiveSupport::Notifications::Fanout::Subscribers::AllMessages
+  def finish(name, id, payload); end
+
+  def initialize(delegate); end
+
+  def matches?(_); end
+
+  def publish(name, *args); end
+
+  def start(name, id, payload); end
+
+  def subscribed_to?(name); end
+
+  def unsubscribe!(*_); end
+end
+
+class ActiveSupport::Notifications::Fanout::Subscribers::AllMessages
+end
+
+class ActiveSupport::Notifications::Fanout::Subscribers::EventObject
+end
+
+class ActiveSupport::Notifications::Fanout::Subscribers::EventObject
+end
+
+class ActiveSupport::Notifications::Fanout::Subscribers::Evented
+  def finish(name, id, payload); end
+
+  def initialize(pattern, delegate); end
+
+  def matches?(name); end
+
+  def pattern(); end
+
+  def publish(name, *args); end
+
+  def start(name, id, payload); end
+
+  def subscribed_to?(name); end
+
+  def unsubscribe!(name); end
+end
+
+class ActiveSupport::Notifications::Fanout::Subscribers::Evented
+end
+
+class ActiveSupport::Notifications::Fanout::Subscribers::Matcher
+  def ===(name); end
+
+  def exclusions(); end
+
+  def initialize(pattern); end
+
+  def pattern(); end
+
+  def unsubscribe!(name); end
+end
+
+class ActiveSupport::Notifications::Fanout::Subscribers::Matcher
+  def self.wrap(pattern); end
+end
+
+class ActiveSupport::Notifications::Fanout::Subscribers::MonotonicTimed
+end
+
+class ActiveSupport::Notifications::Fanout::Subscribers::MonotonicTimed
+end
+
+class ActiveSupport::Notifications::Fanout::Subscribers::Timed
+end
+
+class ActiveSupport::Notifications::Fanout::Subscribers::Timed
+end
+
+module ActiveSupport::Notifications::Fanout::Subscribers
+  def self.new(pattern, listener, monotonic); end
+
+  def self.wrap_all(pattern, subscriber); end
+end
+
+class ActiveSupport::Notifications::Fanout
+end
+
+class ActiveSupport::Notifications::InstrumentationRegistry
+  def instrumenter_for(notifier); end
+end
+
+class ActiveSupport::Notifications::InstrumentationRegistry
+  extend ::ActiveSupport::PerThreadRegistry
+end
+
+class ActiveSupport::Notifications::Instrumenter
+  def finish(name, payload); end
+
+  def finish_with_state(listeners_state, name, payload); end
+
+  def id(); end
+
+  def initialize(notifier); end
+
+  def instrument(name, payload=T.unsafe(nil)); end
+
+  def start(name, payload); end
+end
+
+class ActiveSupport::Notifications::Instrumenter
 end
 
 module ActiveSupport::Notifications
-  extend ::T::Sig
+  def self.monotonic_subscribe(pattern=T.unsafe(nil), callback=T.unsafe(nil), &block); end
 end
 
 class ActiveSupport::NumberHelper::NumberConverter
@@ -2922,7 +2112,7 @@ class ActiveSupport::NumberHelper::NumberConverter
 
   def namespace(); end
 
-  def namespace=(val); end
+  def namespace=(namespace); end
 
   def namespace?(); end
 
@@ -2932,7 +2122,7 @@ class ActiveSupport::NumberHelper::NumberConverter
 
   def validate_float(); end
 
-  def validate_float=(val); end
+  def validate_float=(validate_float); end
 
   def validate_float?(); end
   DEFAULTS = ::T.let(nil, ::T.untyped)
@@ -2943,13 +2133,13 @@ class ActiveSupport::NumberHelper::NumberConverter
 
   def self.namespace(); end
 
-  def self.namespace=(val); end
+  def self.namespace=(value); end
 
   def self.namespace?(); end
 
   def self.validate_float(); end
 
-  def self.validate_float=(val); end
+  def self.validate_float=(value); end
 
   def self.validate_float?(); end
 end
@@ -3021,7 +2211,14 @@ class ActiveSupport::NumberHelper::RoundingHelper
 end
 
 module ActiveSupport::NumberHelper
-  extend ::T::Sig
+  extend ::ActiveSupport::Autoload
+end
+
+class ActiveSupport::OptionMerger
+  def initialize(context, options); end
+end
+
+class ActiveSupport::OptionMerger
 end
 
 class ActiveSupport::OrderedHash
@@ -3036,9 +2233,6 @@ class ActiveSupport::OrderedHash
   def to_yaml_type(); end
 end
 
-class ActiveSupport::OrderedHash
-end
-
 class ActiveSupport::OrderedOptions
   def [](key); end
 
@@ -3049,11 +2243,12 @@ class ActiveSupport::OrderedOptions
   def method_missing(name, *args); end
 end
 
-class ActiveSupport::OrderedOptions
+module ActiveSupport::PerThreadRegistry
+  def instance(); end
 end
 
 module ActiveSupport::PerThreadRegistry
-  extend ::T::Sig
+  def self.extended(object); end
 end
 
 class ActiveSupport::ProxyObject
@@ -3063,123 +2258,139 @@ end
 class ActiveSupport::ProxyObject
 end
 
-class ActiveSupport::Reloader
-  def _class_unload_callbacks(); end
-
-  def _prepare_callbacks(); end
-
-  def _run_class_unload_callbacks(&block); end
-
-  def _run_prepare_callbacks(&block); end
-
-  def check(); end
-
-  def check=(val); end
-
-  def check?(); end
-
-  def class_unload!(&block); end
-
-  def executor(); end
-
-  def executor=(val); end
-
-  def executor?(); end
-
-  def release_unload_lock!(); end
-
-  def require_unload_lock!(); end
-end
-
-class ActiveSupport::Reloader
-  def self._class_unload_callbacks(); end
-
-  def self._class_unload_callbacks=(value); end
-
-  def self._prepare_callbacks(); end
-
-  def self._prepare_callbacks=(value); end
-
-  def self.after_class_unload(*args, &block); end
-
-  def self.before_class_unload(*args, &block); end
-
-  def self.check(); end
-
-  def self.check!(); end
-
-  def self.check=(val); end
-
-  def self.check?(); end
-
-  def self.executor(); end
-
-  def self.executor=(val); end
-
-  def self.executor?(); end
-
-  def self.prepare!(); end
-
-  def self.reload!(); end
-
-  def self.reloaded!(); end
-
-  def self.to_prepare(*args, &block); end
-end
-
-module ActiveSupport::Rescuable
-  def handler_for_rescue(exception); end
-
-  def rescue_with_handler(exception); end
-end
-
-module ActiveSupport::Rescuable::ClassMethods
-  def handler_for_rescue(exception, object: T.unsafe(nil)); end
-
-  def rescue_from(*klasses, with: T.unsafe(nil), &block); end
-
-  def rescue_with_handler(exception, object: T.unsafe(nil), visited_exceptions: T.unsafe(nil)); end
-end
-
-module ActiveSupport::Rescuable::ClassMethods
-  extend ::T::Sig
-end
-
-module ActiveSupport::Rescuable
-  extend ::ActiveSupport::Concern
-  extend ::T::Sig
-end
-
 class ActiveSupport::SafeBuffer
-  UNSAFE_STRING_METHODS = ::T.let(nil, ::T.untyped)
+  def %(args); end
+
+  def *(*_); end
+
+  def +(other); end
+
+  def <<(value); end
+
+  def [](*args); end
+
+  def []=(*args); end
+
+  def capitalize(*args, &block); end
+
+  def capitalize!(*args); end
+
+  def chomp(*args, &block); end
+
+  def chomp!(*args); end
+
+  def chop(*args, &block); end
+
+  def chop!(*args); end
+
+  def clone_empty(); end
+
+  def concat(value); end
+
+  def delete(*args, &block); end
+
+  def delete!(*args); end
+
+  def delete_prefix(*args, &block); end
+
+  def delete_prefix!(*args); end
+
+  def delete_suffix(*args, &block); end
+
+  def delete_suffix!(*args); end
+
+  def downcase(*args, &block); end
+
+  def downcase!(*args); end
+
+  def encode_with(coder); end
+
+  def gsub(*args, &block); end
+
+  def gsub!(*args, &block); end
+
+  def insert(index, value); end
+
+  def lstrip(*args, &block); end
+
+  def lstrip!(*args); end
+
+  def next(*args, &block); end
+
+  def next!(*args); end
+
+  def prepend(value); end
+
+  def replace(value); end
+
+  def reverse(*args, &block); end
+
+  def reverse!(*args); end
+
+  def rstrip(*args, &block); end
+
+  def rstrip!(*args); end
+
+  def safe_concat(value); end
+
+  def scrub(*args, &block); end
+
+  def scrub!(*args); end
+
+  def slice(*args, &block); end
+
+  def slice!(*args); end
+
+  def squeeze(*args, &block); end
+
+  def squeeze!(*args); end
+
+  def strip(*args, &block); end
+
+  def strip!(*args); end
+
+  def sub(*args, &block); end
+
+  def sub!(*args, &block); end
+
+  def succ(*args, &block); end
+
+  def succ!(*args); end
+
+  def swapcase(*args, &block); end
+
+  def swapcase!(*args); end
+
+  def tr(*args, &block); end
+
+  def tr!(*args); end
+
+  def tr_s(*args, &block); end
+
+  def tr_s!(*args); end
+
+  def unicode_normalize(*args, &block); end
+
+  def unicode_normalize!(*args); end
+
+  def upcase(*args, &block); end
+
+  def upcase!(*args); end
 end
 
-class ActiveSupport::StringInquirer
+class ActiveSupport::SecureCompareRotator
+  include ::ActiveSupport::SecurityUtils
+  include ::ActiveSupport::Messages::Rotator
+  def secure_compare!(other_value, on_rotation: T.unsafe(nil)); end
 end
 
-class ActiveSupport::StringInquirer
+class ActiveSupport::SecureCompareRotator::InvalidMatch
 end
 
-class ActiveSupport::Subscriber
-  def finish(name, id, payload); end
-
-  def patterns(); end
-
-  def start(name, id, payload); end
+class ActiveSupport::SecureCompareRotator::InvalidMatch
 end
 
-class ActiveSupport::Subscriber
-  def self.attach_to(namespace, subscriber=T.unsafe(nil), notifier=T.unsafe(nil)); end
-
-  def self.method_added(event); end
-
-  def self.namespace(); end
-
-  def self.notifier(); end
-
-  def self.subscriber(); end
-
-  def self.subscribers(); end
+class ActiveSupport::SecureCompareRotator
 end
 
 class ActiveSupport::SubscriberQueueRegistry
@@ -3190,41 +2401,14 @@ class ActiveSupport::SubscriberQueueRegistry
   extend ::ActiveSupport::PerThreadRegistry
 end
 
-module ActiveSupport::TaggedLogging
-  def clear_tags!(*args, &block); end
-
-  def flush(); end
-
-  def pop_tags(*args, &block); end
-
-  def push_tags(*args, &block); end
-
-  def tagged(*tags); end
-end
-
-module ActiveSupport::TaggedLogging::Formatter
-  def call(severity, timestamp, progname, msg); end
-
-  def clear_tags!(); end
-
+module ActiveSupport::TaggedLogging::LocalTagStorage
   def current_tags(); end
 
-  def pop_tags(size=T.unsafe(nil)); end
-
-  def push_tags(*tags); end
-
-  def tagged(*tags); end
-
-  def tags_text(); end
+  def current_tags=(current_tags); end
 end
 
-module ActiveSupport::TaggedLogging::Formatter
-  extend ::T::Sig
-end
-
-module ActiveSupport::TaggedLogging
-  extend ::T::Sig
-  def self.new(logger); end
+module ActiveSupport::TaggedLogging::LocalTagStorage
+  def self.extended(base); end
 end
 
 class ActiveSupport::TestCase
@@ -3300,7 +2484,7 @@ class ActiveSupport::TestCase
   extend ::ActiveSupport::DescendantsTracker
   def self.__callbacks(); end
 
-  def self.__callbacks=(val); end
+  def self.__callbacks=(value); end
 
   def self.__callbacks?(); end
 
@@ -3314,9 +2498,15 @@ class ActiveSupport::TestCase
 
   def self.file_fixture_path(); end
 
-  def self.file_fixture_path=(val); end
+  def self.file_fixture_path=(value); end
 
   def self.file_fixture_path?(); end
+
+  def self.parallelize(workers: T.unsafe(nil), with: T.unsafe(nil)); end
+
+  def self.parallelize_setup(&block); end
+
+  def self.parallelize_teardown(&block); end
 
   def self.test_order=(new_order); end
 end
@@ -3337,7 +2527,6 @@ module ActiveSupport::Testing::Assertions
 end
 
 module ActiveSupport::Testing::Assertions
-  extend ::T::Sig
 end
 
 module ActiveSupport::Testing::Deprecation
@@ -3349,7 +2538,6 @@ module ActiveSupport::Testing::Deprecation
 end
 
 module ActiveSupport::Testing::Deprecation
-  extend ::T::Sig
 end
 
 module ActiveSupport::Testing::FileFixtures
@@ -3358,7 +2546,6 @@ end
 
 module ActiveSupport::Testing::FileFixtures
   extend ::ActiveSupport::Concern
-  extend ::T::Sig
 end
 
 module ActiveSupport::Testing::SetupAndTeardown
@@ -3368,7 +2555,6 @@ module ActiveSupport::Testing::SetupAndTeardown
 end
 
 module ActiveSupport::Testing::SetupAndTeardown
-  extend ::T::Sig
   def self.prepended(klass); end
 end
 
@@ -3379,7 +2565,6 @@ module ActiveSupport::Testing::TaggedLogging
 end
 
 module ActiveSupport::Testing::TaggedLogging
-  extend ::T::Sig
 end
 
 module ActiveSupport::Testing::TimeHelpers
@@ -3392,42 +2577,25 @@ module ActiveSupport::Testing::TimeHelpers
   def travel_back(); end
 
   def travel_to(date_or_time); end
+
+  def unfreeze_time(); end
 end
 
 module ActiveSupport::Testing::TimeHelpers
-  extend ::T::Sig
 end
 
 class ActiveSupport::TimeWithZone
   include ::DateAndTime::Compatibility
   include ::Comparable
-  def +(other); end
-
-  def -(other); end
-
   def acts_like_time?(); end
 
-  def advance(options); end
+  def after?(_); end
 
-  def ago(other); end
-
-  def between?(min, max); end
-
-  def change(options); end
+  def before?(_); end
 
   def comparable_time(); end
 
-  def day(); end
-
-  def dst?(); end
-
   def encode_with(coder); end
-
-  def eql?(other); end
-
-  def formatted_offset(colon=T.unsafe(nil), alternate_utc_string=T.unsafe(nil)); end
-
-  def future?(); end
 
   def getgm(); end
 
@@ -3443,13 +2611,7 @@ class ActiveSupport::TimeWithZone
 
   def gmtoff(); end
 
-  def hour(); end
-
-  def httpdate(); end
-
   def in(other); end
-
-  def in_time_zone(new_zone=T.unsafe(nil)); end
 
   def init_with(coder); end
 
@@ -3463,96 +2625,42 @@ class ActiveSupport::TimeWithZone
 
   def kind_of?(klass); end
 
-  def localtime(utc_offset=T.unsafe(nil)); end
-
   def marshal_dump(); end
 
   def marshal_load(variables); end
 
-  def mday(); end
-
   def method_missing(sym, *args, &block); end
 
-  def min(); end
+  def next_day?(); end
 
-  def mon(); end
-
-  def month(); end
-
-  def nsec(); end
-
-  def past?(); end
-
-  def period(); end
+  def prev_day?(); end
 
   def respond_to?(sym, include_priv=T.unsafe(nil)); end
-
-  def rfc2822(); end
 
   def rfc3339(fraction_digits=T.unsafe(nil)); end
 
   def rfc822(); end
 
-  def sec(); end
-
   def since(other); end
-
-  def strftime(format); end
-
-  def time(); end
 
   def time_zone(); end
 
-  def to_a(); end
-
-  def to_date(); end
-
-  def to_datetime(); end
-
-  def to_f(); end
-
   def to_formatted_s(format=T.unsafe(nil)); end
 
-  def to_i(); end
-
-  def to_r(); end
-
-  def to_s(format=T.unsafe(nil)); end
-
-  def to_time(); end
-
-  def today?(); end
+  def tomorrow?(); end
 
   def tv_sec(); end
 
-  def usec(); end
-
-  def utc(); end
-
-  def utc?(); end
-
-  def utc_offset(); end
-
-  def wday(); end
-
-  def xmlschema(fraction_digits=T.unsafe(nil)); end
-
-  def yday(); end
-
-  def year(); end
-
-  def zone(); end
+  def yesterday?(); end
   PRECISIONS = ::T.let(nil, ::T.untyped)
-end
-
-class ActiveSupport::TimeWithZone
+  SECONDS_PER_DAY = ::T.let(nil, ::T.untyped)
 end
 
 class ActiveSupport::TimeZone
   include ::Comparable
   def =~(re); end
 
-  def at(secs); end
+  def at(*args); end
 
   def encode_with(coder); end
 
@@ -3564,13 +2672,11 @@ class ActiveSupport::TimeZone
 
   def iso8601(str); end
 
-  def local(*args); end
-
   def local_to_utc(time, dst=T.unsafe(nil)); end
 
-  def name(); end
+  def match?(re); end
 
-  def now(); end
+  def name(); end
 
   def parse(str, now=T.unsafe(nil)); end
 
@@ -3584,30 +2690,16 @@ class ActiveSupport::TimeZone
 
   def strptime(str, format, now=T.unsafe(nil)); end
 
-  def today(); end
-
-  def tomorrow(); end
-
   def tzinfo(); end
 
   def utc_offset(); end
 
   def utc_to_local(time); end
-
-  def yesterday(); end
   MAPPING = ::T.let(nil, ::T.untyped)
-  UTC_OFFSET_WITHOUT_COLON = ::T.let(nil, ::T.untyped)
-  UTC_OFFSET_WITH_COLON = ::T.let(nil, ::T.untyped)
 end
 
 class ActiveSupport::TimeZone
-  def self.[](arg); end
-
-  def self.all(); end
-
   def self.clear(); end
-
-  def self.country_zones(country_code); end
 
   def self.create(*_); end
 
@@ -3616,8 +2708,6 @@ class ActiveSupport::TimeZone
   def self.new(name); end
 
   def self.seconds_to_utc_offset(seconds, colon=T.unsafe(nil)); end
-
-  def self.us_zones(); end
 end
 
 module ActiveSupport::ToJsonWithActiveSupportEncoder
@@ -3625,11 +2715,15 @@ module ActiveSupport::ToJsonWithActiveSupportEncoder
 end
 
 module ActiveSupport::ToJsonWithActiveSupportEncoder
-  extend ::T::Sig
 end
 
 module ActiveSupport::Tryable
-  extend ::T::Sig
+  def try(method_name=T.unsafe(nil), *args, &b); end
+
+  def try!(method_name=T.unsafe(nil), *args, &b); end
+end
+
+module ActiveSupport::Tryable
 end
 
 module ActiveSupport::VERSION
@@ -3641,7 +2735,6 @@ module ActiveSupport::VERSION
 end
 
 module ActiveSupport::VERSION
-  extend ::T::Sig
 end
 
 module ActiveSupport::XmlMini
@@ -3653,7 +2746,7 @@ module ActiveSupport::XmlMini
 
   def depth=(depth); end
 
-  def parse(*args, &block); end
+  def parse(*_, &_1); end
 
   def rename_key(key, options=T.unsafe(nil)); end
 
@@ -3677,12 +2770,10 @@ module ActiveSupport::XmlMini::FileLike
 end
 
 module ActiveSupport::XmlMini::FileLike
-  extend ::T::Sig
 end
 
 module ActiveSupport::XmlMini
   extend ::ActiveSupport::XmlMini
-  extend ::T::Sig
 end
 
 module ActiveSupport::XmlMini_REXML
@@ -3692,229 +2783,102 @@ end
 
 module ActiveSupport::XmlMini_REXML
   extend ::ActiveSupport::XmlMini_REXML
-  extend ::T::Sig
 end
 
 module ActiveSupport
-  extend ::T::Sig
-  def self.escape_html_entities_in_json(*args, &block); end
+  extend ::ActiveSupport::LazyLoadHooks
+  extend ::ActiveSupport::Autoload
+  def self.escape_html_entities_in_json(*_, &_1); end
 
   def self.escape_html_entities_in_json=(arg); end
 
-  def self.json_encoder(*args, &block); end
+  def self.gem_version(); end
+
+  def self.json_encoder(*_, &_1); end
 
   def self.json_encoder=(arg); end
 
   def self.parse_json_times(); end
 
-  def self.parse_json_times=(obj); end
+  def self.parse_json_times=(val); end
 
-  def self.time_precision(*args, &block); end
+  def self.test_order(); end
+
+  def self.test_order=(val); end
+
+  def self.time_precision(*_, &_1); end
 
   def self.time_precision=(arg); end
 
-  def self.use_standard_json_time_format(*args, &block); end
+  def self.to_time_preserves_timezone(); end
+
+  def self.to_time_preserves_timezone=(value); end
+
+  def self.use_standard_json_time_format(*_, &_1); end
 
   def self.use_standard_json_time_format=(arg); end
-end
 
-class ArgumentError
-  extend ::T::Sig
+  def self.utc_to_local_returns_utc_offset_times(); end
+
+  def self.utc_to_local_returns_utc_offset_times=(value); end
+
+  def self.version(); end
 end
 
 class Array
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   include ::JSON::Ext::Generator::GeneratorMethods::Array
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def append(*_); end
+  def compact_blank!(); end
 
-  def bsearch(); end
-
-  def bsearch_index(); end
-
-  def collect!(); end
-
-  def dig(*_); end
-
-  def flatten!(*_); end
-
-  def pack(*_); end
-
-  def prepend(*_); end
-
-  def replace(_); end
+  def deconstruct(); end
 
   def shelljoin(); end
 
-  def to_default_s(); end
-
-  def to_formatted_s(format=T.unsafe(nil)); end
-
   def to_h(); end
-
-  def to_sentence(options=T.unsafe(nil)); end
-
-  def to_xml(options=T.unsafe(nil)); end
 end
 
 class Array
-  extend ::T::Sig
-  def self.wrap(object); end
+  def self.try_convert(_); end
 end
 
 BasicObject::BasicObject = BasicObject
 
-class BasicObject
-  extend ::T::Sig
-end
-
-class BasicSocket
-  extend ::T::Sig
-end
-
 class Benchmark::Job
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   def initialize(width); end
-
-  def item(label=T.unsafe(nil), &blk); end
-
-  def list(); end
-
-  def report(label=T.unsafe(nil), &blk); end
-
-  def width(); end
-end
-
-class Benchmark::Job
-  extend ::T::Sig
 end
 
 class Benchmark::Report
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   def initialize(width=T.unsafe(nil), format=T.unsafe(nil)); end
-
-  def item(label=T.unsafe(nil), *format, &blk); end
-
-  def list(); end
-
-  def report(label=T.unsafe(nil), *format, &blk); end
-end
-
-class Benchmark::Report
-  extend ::T::Sig
 end
 
 class Benchmark::Tms
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def *(x); end
-
-  def +(other); end
-
-  def -(other); end
-
-  def /(x); end
-
-  def add(&blk); end
-
-  def add!(&blk); end
-
-  def cstime(); end
-
-  def cutime(); end
-
-  def format(format=T.unsafe(nil), *args); end
-
-  def initialize(utime=T.unsafe(nil), stime=T.unsafe(nil), cutime=T.unsafe(nil), cstime=T.unsafe(nil), real=T.unsafe(nil), label=T.unsafe(nil)); end
-
-  def label(); end
-
-  def memberwise(op, x); end
-
-  def real(); end
-
-  def stime(); end
-
   def to_a(); end
-
-  def total(); end
-
-  def utime(); end
-end
-
-class Benchmark::Tms
-  extend ::T::Sig
-end
-
-module Benchmark
-  extend ::T::Sig
 end
 
 class BigDecimal
   include ::ActiveSupport::BigDecimalWithDefaultFormat
   def clone(); end
 
-  def to_d(); end
-
   def to_digits(); end
   EXCEPTION_NaN = ::T.let(nil, ::T.untyped)
-  SIGN_NaN = ::T.let(nil, ::T.untyped)
   VERSION = ::T.let(nil, ::T.untyped)
 end
 
 class BigDecimal
-  extend ::T::Sig
-  def self.ver(); end
-end
-
-module BigMath
-  extend ::T::Sig
+  def self.interpret_loosely(_); end
 end
 
 class Binding
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   def clone(); end
 
   def irb(); end
-
-  def local_variable_defined?(_); end
-
-  def local_variable_get(_); end
-
-  def local_variable_set(_, _1); end
-
-  def receiver(); end
 end
 
-class Binding
-  extend ::T::Sig
-end
+class Bundler::Dependency
+  def branch(); end
 
-module Bundler::BuildMetadata
-  extend ::T::Sig
-end
+  def expanded_platforms(); end
 
-class Bundler::CurrentRuby
-  def jruby_27?(); end
-
-  def maglev_27?(); end
-
-  def mingw_27?(); end
-
-  def mri_27?(); end
-
-  def mswin64_27?(); end
-
-  def mswin_27?(); end
-
-  def on_27?(); end
-
-  def rbx_27?(); end
-
-  def ruby_27?(); end
-
-  def truffleruby_27?(); end
-
-  def x64_mingw_27?(); end
+  def git(); end
 end
 
 Bundler::Deprecate = Gem::Deprecate
@@ -3928,12 +2892,6 @@ class Bundler::Env
   def self.report(options=T.unsafe(nil)); end
 
   def self.write(io); end
-end
-
-class Bundler::FeatureFlag
-  def github_https?(); end
-
-  def lockfile_upgrade_warning?(); end
 end
 
 class Bundler::Fetcher
@@ -3964,14 +2922,8 @@ class Bundler::Fetcher::AuthenticationRequiredError
   def initialize(remote_uri); end
 end
 
-class Bundler::Fetcher::AuthenticationRequiredError
-end
-
 class Bundler::Fetcher::BadAuthenticationError
   def initialize(remote_uri); end
-end
-
-class Bundler::Fetcher::BadAuthenticationError
 end
 
 class Bundler::Fetcher::Base
@@ -3997,9 +2949,6 @@ end
 
 class Bundler::Fetcher::CertificateFailureError
   def initialize(remote_uri); end
-end
-
-class Bundler::Fetcher::CertificateFailureError
 end
 
 class Bundler::Fetcher::CompactIndex
@@ -4064,12 +3013,6 @@ end
 class Bundler::Fetcher::Downloader
 end
 
-class Bundler::Fetcher::FallbackError
-end
-
-class Bundler::Fetcher::FallbackError
-end
-
 class Bundler::Fetcher::Index
   def fetch_spec(spec); end
 
@@ -4079,17 +3022,14 @@ end
 class Bundler::Fetcher::Index
 end
 
-class Bundler::Fetcher::NetworkDownError
-end
-
-class Bundler::Fetcher::NetworkDownError
-end
-
 class Bundler::Fetcher::SSLError
   def initialize(msg=T.unsafe(nil)); end
 end
 
-class Bundler::Fetcher::SSLError
+class Bundler::Fetcher::TooManyRequestsError
+end
+
+class Bundler::Fetcher::TooManyRequestsError
 end
 
 class Bundler::Fetcher
@@ -4114,32 +3054,11 @@ module Bundler::FileUtils
   VERSION = ::T.let(nil, ::T.untyped)
 end
 
-module Bundler::FileUtils::DryRun
-  extend ::T::Sig
-end
-
 class Bundler::FileUtils::Entry_
   def link(dest); end
 end
 
-module Bundler::FileUtils::LowMethods
-  extend ::T::Sig
-end
-
-module Bundler::FileUtils::NoWrite
-  extend ::T::Sig
-end
-
-module Bundler::FileUtils::StreamUtils_
-  extend ::T::Sig
-end
-
-module Bundler::FileUtils::Verbose
-  extend ::T::Sig
-end
-
 module Bundler::FileUtils
-  extend ::T::Sig
   def self.cp_lr(src, dest, noop: T.unsafe(nil), verbose: T.unsafe(nil), dereference_root: T.unsafe(nil), remove_destination: T.unsafe(nil)); end
 
   def self.link_entry(src, dest, dereference_root=T.unsafe(nil), remove_destination=T.unsafe(nil)); end
@@ -4159,6 +3078,8 @@ class Bundler::GemHelper
   def clean?(); end
 
   def committed?(); end
+
+  def gem_command(); end
 
   def gem_key(); end
 
@@ -4207,16 +3128,6 @@ class Bundler::GemHelper
   def self.instance(); end
 
   def self.instance=(instance); end
-end
-
-module Bundler::GemHelpers
-  extend ::T::Sig
-end
-
-class Bundler::GemRemoteFetcher
-end
-
-class Bundler::GemRemoteFetcher
 end
 
 class Bundler::GemVersionPromoter
@@ -4321,26 +3232,6 @@ class Bundler::Installer
   def self.install(root, definition, options=T.unsafe(nil)); end
 end
 
-module Bundler::MatchPlatform
-  extend ::T::Sig
-end
-
-module Bundler::Molinillo::Compatibility
-  extend ::T::Sig
-end
-
-module Bundler::Molinillo::Delegates::ResolutionState
-  extend ::T::Sig
-end
-
-module Bundler::Molinillo::Delegates::SpecificationProvider
-  extend ::T::Sig
-end
-
-module Bundler::Molinillo::Delegates
-  extend ::T::Sig
-end
-
 class Bundler::Molinillo::DependencyGraph
   include ::Enumerable
 end
@@ -4349,16 +3240,10 @@ class Bundler::Molinillo::DependencyGraph::Log
   extend ::Enumerable
 end
 
-module Bundler::Molinillo::SpecificationProvider
-  extend ::T::Sig
-end
+class Bundler::Molinillo::DependencyGraph::Vertex
+  def _recursive_predecessors(vertices=T.unsafe(nil)); end
 
-module Bundler::Molinillo::UI
-  extend ::T::Sig
-end
-
-module Bundler::Molinillo
-  extend ::T::Sig
+  def _recursive_successors(vertices=T.unsafe(nil)); end
 end
 
 module Bundler::Plugin::API::Source
@@ -4428,24 +3313,6 @@ module Bundler::Plugin::API::Source
 end
 
 module Bundler::Plugin::API::Source
-  extend ::T::Sig
-end
-
-class Bundler::Plugin::DSL
-  def _gem(name, *args); end
-
-  def inferred_plugins(); end
-
-  def plugin(name, *args); end
-end
-
-class Bundler::Plugin::DSL::PluginGemfileError
-end
-
-class Bundler::Plugin::DSL::PluginGemfileError
-end
-
-class Bundler::Plugin::DSL
 end
 
 module Bundler::Plugin::Events
@@ -4455,35 +3322,10 @@ module Bundler::Plugin::Events
   GEM_BEFORE_INSTALL_ALL = ::T.let(nil, ::T.untyped)
 end
 
-module Bundler::Plugin::Events
-  extend ::T::Sig
-  def self.defined_event?(event); end
-end
-
 class Bundler::Plugin::Index
-  def command_plugin(command); end
+  def installed_plugins(); end
 
-  def commands(); end
-
-  def global_index_file(); end
-
-  def hook_plugins(event); end
-
-  def index_file(); end
-
-  def installed?(name); end
-
-  def load_paths(name); end
-
-  def local_index_file(); end
-
-  def plugin_path(name); end
-
-  def register_plugin(name, path, load_paths, commands, sources, hooks); end
-
-  def source?(source); end
-
-  def source_plugin(name); end
+  def plugin_commands(plugin); end
 end
 
 class Bundler::Plugin::Index::CommandConflict
@@ -4498,9 +3340,6 @@ class Bundler::Plugin::Index::SourceConflict
 end
 
 class Bundler::Plugin::Index::SourceConflict
-end
-
-class Bundler::Plugin::Index
 end
 
 class Bundler::Plugin::Installer
@@ -4532,7 +3371,7 @@ class Bundler::Plugin::SourceList
 end
 
 module Bundler::Plugin
-  extend ::T::Sig
+  def self.list(); end
 end
 
 class Bundler::ProcessLock
@@ -4570,18 +3409,34 @@ class Bundler::Retry
   def self.default_retries(); end
 end
 
-module Bundler::RubyDsl
-  extend ::T::Sig
-end
-
 class Bundler::RubyGemsGemInstaller
 end
 
 class Bundler::RubyGemsGemInstaller
 end
 
-class Bundler::RubygemsIntegration::MoreFuture
+class Bundler::RubygemsIntegration
+  def add_to_load_path(paths); end
+
+  def all_specs(); end
+
+  def backport_ext_builder_monitor(); end
+
+  def correct_for_windows_path(path); end
+
   def default_stubs(); end
+
+  def find_name(name); end
+
+  def gem_remote_fetcher(); end
+
+  def plain_specs(); end
+
+  def plain_specs=(specs); end
+
+  def stub_rubygems(specs); end
+
+  def use_gemdeps(gemfile); end
 end
 
 class Bundler::Settings::Mirror
@@ -4643,15 +3498,1111 @@ class Bundler::Settings::Validator
   def self.validate!(key, value, settings); end
 end
 
-module Bundler::SharedHelpers
-  extend ::T::Sig
+class Bundler::Source::Git
+  def glob(); end
 end
 
 class Bundler::SpecSet
   include ::Enumerable
 end
 
-class Bundler::UI::RGProxy
+class Bundler::Thor
+  include ::Bundler::Thor::Base
+  include ::Bundler::Thor::Invocation
+  include ::Bundler::Thor::Shell
+  def help(command=T.unsafe(nil), subcommand=T.unsafe(nil)); end
+  HELP_MAPPINGS = ::T.let(nil, ::T.untyped)
+  TEMPLATE_EXTNAME = ::T.let(nil, ::T.untyped)
+  THOR_RESERVED_WORDS = ::T.let(nil, ::T.untyped)
+end
+
+module Bundler::Thor::Actions
+  def _cleanup_options_and_set(options, key); end
+
+  def _shared_configuration(); end
+
+  def action(instance); end
+
+  def add_file(destination, *args, &block); end
+
+  def add_link(destination, *args); end
+
+  def append_file(path, *args, &block); end
+
+  def append_to_file(path, *args, &block); end
+
+  def apply(path, config=T.unsafe(nil)); end
+
+  def behavior(); end
+
+  def behavior=(behavior); end
+
+  def chmod(path, mode, config=T.unsafe(nil)); end
+
+  def comment_lines(path, flag, *args); end
+
+  def copy_file(source, *args, &block); end
+
+  def create_file(destination, *args, &block); end
+
+  def create_link(destination, *args); end
+
+  def destination_root(); end
+
+  def destination_root=(root); end
+
+  def directory(source, *args, &block); end
+
+  def empty_directory(destination, config=T.unsafe(nil)); end
+
+  def find_in_source_paths(file); end
+
+  def get(source, *args, &block); end
+
+  def gsub_file(path, flag, *args, &block); end
+
+  def in_root(); end
+
+  def initialize(args=T.unsafe(nil), options=T.unsafe(nil), config=T.unsafe(nil)); end
+
+  def inject_into_class(path, klass, *args, &block); end
+
+  def inject_into_file(destination, *args, &block); end
+
+  def inject_into_module(path, module_name, *args, &block); end
+
+  def insert_into_file(destination, *args, &block); end
+
+  def inside(dir=T.unsafe(nil), config=T.unsafe(nil), &block); end
+
+  def link_file(source, *args); end
+
+  def prepend_file(path, *args, &block); end
+
+  def prepend_to_file(path, *args, &block); end
+
+  def relative_to_original_destination_root(path, remove_dot=T.unsafe(nil)); end
+
+  def remove_dir(path, config=T.unsafe(nil)); end
+
+  def remove_file(path, config=T.unsafe(nil)); end
+
+  def run(command, config=T.unsafe(nil)); end
+
+  def run_ruby_script(command, config=T.unsafe(nil)); end
+
+  def source_paths(); end
+
+  def template(source, *args, &block); end
+
+  def thor(command, *args); end
+
+  def uncomment_lines(path, flag, *args); end
+  WARNINGS = ::T.let(nil, ::T.untyped)
+end
+
+class Bundler::Thor::Actions::CapturableERB
+end
+
+class Bundler::Thor::Actions::CapturableERB
+end
+
+module Bundler::Thor::Actions::ClassMethods
+  def add_runtime_options!(); end
+
+  def source_paths(); end
+
+  def source_paths_for_search(); end
+
+  def source_root(path=T.unsafe(nil)); end
+end
+
+module Bundler::Thor::Actions::ClassMethods
+end
+
+class Bundler::Thor::Actions::CreateFile
+  def data(); end
+
+  def force_on_collision?(); end
+
+  def force_or_skip_or_conflict(force, skip, &block); end
+
+  def identical?(); end
+
+  def initialize(base, destination, data, config=T.unsafe(nil)); end
+
+  def on_conflict_behavior(&block); end
+
+  def render(); end
+end
+
+class Bundler::Thor::Actions::CreateFile
+end
+
+class Bundler::Thor::Actions::CreateLink
+end
+
+class Bundler::Thor::Actions::CreateLink
+end
+
+class Bundler::Thor::Actions::Directory
+  def execute!(); end
+
+  def file_level_lookup(previous_lookup); end
+
+  def files(lookup); end
+
+  def initialize(base, source, destination=T.unsafe(nil), config=T.unsafe(nil), &block); end
+
+  def source(); end
+end
+
+class Bundler::Thor::Actions::Directory
+end
+
+class Bundler::Thor::Actions::EmptyDirectory
+  def base(); end
+
+  def config(); end
+
+  def convert_encoded_instructions(filename); end
+
+  def destination(); end
+
+  def destination=(destination); end
+
+  def exists?(); end
+
+  def given_destination(); end
+
+  def initialize(base, destination, config=T.unsafe(nil)); end
+
+  def invoke!(); end
+
+  def invoke_with_conflict_check(&block); end
+
+  def on_conflict_behavior(); end
+
+  def on_file_clash_behavior(); end
+
+  def pretend?(); end
+
+  def relative_destination(); end
+
+  def revoke!(); end
+
+  def say_status(status, color); end
+end
+
+class Bundler::Thor::Actions::EmptyDirectory
+end
+
+class Bundler::Thor::Actions::InjectIntoFile
+  def behavior(); end
+
+  def flag(); end
+
+  def initialize(base, destination, data, config); end
+
+  def replace!(regexp, string, force); end
+
+  def replacement(); end
+
+  def say_status(behavior, warning: T.unsafe(nil), color: T.unsafe(nil)); end
+end
+
+class Bundler::Thor::Actions::InjectIntoFile
+end
+
+module Bundler::Thor::Actions
+  def self.included(base); end
+end
+
+class Bundler::Thor::AmbiguousCommandError
+end
+
+class Bundler::Thor::AmbiguousCommandError
+end
+
+Bundler::Thor::AmbiguousTaskError = Bundler::Thor::AmbiguousCommandError
+
+class Bundler::Thor::Argument
+  def banner(); end
+
+  def default(); end
+
+  def default_banner(); end
+
+  def description(); end
+
+  def enum(); end
+
+  def human_name(); end
+
+  def initialize(name, options=T.unsafe(nil)); end
+
+  def name(); end
+
+  def required(); end
+
+  def required?(); end
+
+  def show_default?(); end
+
+  def type(); end
+
+  def usage(); end
+
+  def valid_type?(type); end
+
+  def validate!(); end
+  VALID_TYPES = ::T.let(nil, ::T.untyped)
+end
+
+class Bundler::Thor::Argument
+end
+
+class Bundler::Thor::Arguments
+  def initialize(arguments=T.unsafe(nil)); end
+
+  def parse(args); end
+
+  def remaining(); end
+  NUMERIC = ::T.let(nil, ::T.untyped)
+end
+
+class Bundler::Thor::Arguments
+  def self.parse(*args); end
+
+  def self.split(args); end
+end
+
+module Bundler::Thor::Base
+  def args(); end
+
+  def args=(args); end
+
+  def initialize(args=T.unsafe(nil), local_options=T.unsafe(nil), config=T.unsafe(nil)); end
+
+  def options(); end
+
+  def options=(options); end
+
+  def parent_options(); end
+
+  def parent_options=(parent_options); end
+end
+
+module Bundler::Thor::Base::ClassMethods
+  def all_commands(); end
+
+  def all_tasks(); end
+
+  def allow_incompatible_default_type!(); end
+
+  def argument(name, options=T.unsafe(nil)); end
+
+  def arguments(); end
+
+  def attr_accessor(*_); end
+
+  def attr_reader(*_); end
+
+  def attr_writer(*_); end
+
+  def baseclass(); end
+
+  def basename(); end
+
+  def build_option(name, options, scope); end
+
+  def build_options(options, scope); end
+
+  def check_default_type(); end
+
+  def check_default_type!(); end
+
+  def check_unknown_options(); end
+
+  def check_unknown_options!(); end
+
+  def check_unknown_options?(config); end
+
+  def class_option(name, options=T.unsafe(nil)); end
+
+  def class_options(options=T.unsafe(nil)); end
+
+  def class_options_help(shell, groups=T.unsafe(nil)); end
+
+  def commands(); end
+
+  def create_command(meth); end
+
+  def create_task(meth); end
+
+  def disable_required_check?(command_name); end
+
+  def dispatch(command, given_args, given_opts, config); end
+
+  def exit_on_failure?(); end
+
+  def find_and_refresh_command(name); end
+
+  def find_and_refresh_task(name); end
+
+  def from_superclass(method, default=T.unsafe(nil)); end
+
+  def group(name=T.unsafe(nil)); end
+
+  def handle_argument_error(command, error, args, arity); end
+
+  def handle_no_command_error(command, has_namespace=T.unsafe(nil)); end
+
+  def handle_no_task_error(command, has_namespace=T.unsafe(nil)); end
+
+  def inherited(klass); end
+
+  def initialize_added(); end
+
+  def is_thor_reserved_word?(word, type); end
+
+  def method_added(meth); end
+
+  def namespace(name=T.unsafe(nil)); end
+
+  def no_commands(&block); end
+
+  def no_commands?(); end
+
+  def no_commands_context(); end
+
+  def no_tasks(&block); end
+
+  def print_options(shell, options, group_name=T.unsafe(nil)); end
+
+  def public_command(*names); end
+
+  def public_task(*names); end
+
+  def remove_argument(*names); end
+
+  def remove_class_option(*names); end
+
+  def remove_command(*names); end
+
+  def remove_task(*names); end
+
+  def start(given_args=T.unsafe(nil), config=T.unsafe(nil)); end
+
+  def stop_on_unknown_option?(command_name); end
+
+  def strict_args_position(); end
+
+  def strict_args_position!(); end
+
+  def strict_args_position?(config); end
+
+  def tasks(); end
+end
+
+module Bundler::Thor::Base::ClassMethods
+end
+
+module Bundler::Thor::Base
+  def self.included(base); end
+
+  def self.register_klass_file(klass); end
+
+  def self.shell(); end
+
+  def self.shell=(shell); end
+
+  def self.subclass_files(); end
+
+  def self.subclasses(); end
+end
+
+class Bundler::Thor::Command
+  def formatted_usage(klass, namespace=T.unsafe(nil), subcommand=T.unsafe(nil)); end
+
+  def handle_argument_error?(instance, error, caller); end
+
+  def handle_no_method_error?(instance, error, caller); end
+
+  def hidden?(); end
+
+  def initialize(name, description, long_description, usage, options=T.unsafe(nil)); end
+
+  def local_method?(instance, name); end
+
+  def not_debugging?(instance); end
+
+  def private_method?(instance); end
+
+  def public_method?(instance); end
+
+  def required_arguments_for(klass, usage); end
+
+  def required_options(); end
+
+  def run(instance, args=T.unsafe(nil)); end
+
+  def sans_backtrace(backtrace, caller); end
+  FILE_REGEXP = ::T.let(nil, ::T.untyped)
+end
+
+class Bundler::Thor::Command
+end
+
+module Bundler::Thor::CoreExt
+end
+
+class Bundler::Thor::CoreExt::HashWithIndifferentAccess
+  def [](key); end
+
+  def []=(key, value); end
+
+  def convert_key(key); end
+
+  def delete(key); end
+
+  def fetch(key, *args); end
+
+  def initialize(hash=T.unsafe(nil)); end
+
+  def key?(key); end
+
+  def merge(other); end
+
+  def merge!(other); end
+
+  def method_missing(method, *args); end
+
+  def replace(other_hash); end
+
+  def reverse_merge(other); end
+
+  def reverse_merge!(other_hash); end
+
+  def values_at(*indices); end
+end
+
+class Bundler::Thor::CoreExt::HashWithIndifferentAccess
+end
+
+module Bundler::Thor::CoreExt
+end
+
+Bundler::Thor::Correctable = DidYouMean::Correctable
+
+class Bundler::Thor::DynamicCommand
+  def initialize(name, options=T.unsafe(nil)); end
+end
+
+class Bundler::Thor::DynamicCommand
+end
+
+Bundler::Thor::DynamicTask = Bundler::Thor::DynamicCommand
+
+class Bundler::Thor::Error
+end
+
+class Bundler::Thor::Error
+end
+
+class Bundler::Thor::Group
+  include ::Bundler::Thor::Base
+  include ::Bundler::Thor::Invocation
+  include ::Bundler::Thor::Shell
+  def _invoke_for_class_method(klass, command=T.unsafe(nil), *args, &block); end
+end
+
+class Bundler::Thor::Group
+  extend ::Bundler::Thor::Base::ClassMethods
+  extend ::Bundler::Thor::Invocation::ClassMethods
+  def self.banner(); end
+
+  def self.desc(description=T.unsafe(nil)); end
+
+  def self.get_options_from_invocations(group_options, base_options); end
+
+  def self.handle_argument_error(command, error, _args, arity); end
+
+  def self.help(shell); end
+
+  def self.invocation_blocks(); end
+
+  def self.invocations(); end
+
+  def self.invoke(*names, &block); end
+
+  def self.invoke_from_option(*names, &block); end
+
+  def self.printable_commands(*_); end
+
+  def self.printable_tasks(*_); end
+
+  def self.remove_invocation(*names); end
+
+  def self.self_command(); end
+
+  def self.self_task(); end
+end
+
+class Bundler::Thor::HiddenCommand
+end
+
+class Bundler::Thor::HiddenCommand
+end
+
+Bundler::Thor::HiddenTask = Bundler::Thor::HiddenCommand
+
+module Bundler::Thor::Invocation
+  def _parse_initialization_options(args, opts, config); end
+
+  def _retrieve_class_and_command(name, sent_command=T.unsafe(nil)); end
+
+  def _retrieve_class_and_task(name, sent_command=T.unsafe(nil)); end
+
+  def _shared_configuration(); end
+
+  def current_command_chain(); end
+
+  def initialize(args=T.unsafe(nil), options=T.unsafe(nil), config=T.unsafe(nil), &block); end
+
+  def invoke(name=T.unsafe(nil), *args); end
+
+  def invoke_all(); end
+
+  def invoke_command(command, *args); end
+
+  def invoke_task(command, *args); end
+
+  def invoke_with_padding(*args); end
+end
+
+module Bundler::Thor::Invocation::ClassMethods
+  def prepare_for_invocation(key, name); end
+end
+
+module Bundler::Thor::Invocation::ClassMethods
+end
+
+module Bundler::Thor::Invocation
+  def self.included(base); end
+end
+
+class Bundler::Thor::InvocationError
+end
+
+class Bundler::Thor::InvocationError
+end
+
+module Bundler::Thor::LineEditor
+end
+
+class Bundler::Thor::LineEditor::Basic
+  def initialize(prompt, options); end
+
+  def options(); end
+
+  def prompt(); end
+
+  def readline(); end
+end
+
+class Bundler::Thor::LineEditor::Basic
+  def self.available?(); end
+end
+
+class Bundler::Thor::LineEditor::Readline
+end
+
+class Bundler::Thor::LineEditor::Readline::PathCompletion
+  def initialize(text); end
+
+  def matches(); end
+end
+
+class Bundler::Thor::LineEditor::Readline::PathCompletion
+end
+
+class Bundler::Thor::LineEditor::Readline
+end
+
+module Bundler::Thor::LineEditor
+  def self.best_available(); end
+
+  def self.readline(prompt, options=T.unsafe(nil)); end
+end
+
+class Bundler::Thor::MalformattedArgumentError
+end
+
+class Bundler::Thor::MalformattedArgumentError
+end
+
+class Bundler::Thor::NestedContext
+  def enter(); end
+
+  def entered?(); end
+end
+
+class Bundler::Thor::NestedContext
+end
+
+class Bundler::Thor::NoKwargSpellChecker
+  def initialize(dictionary); end
+end
+
+class Bundler::Thor::NoKwargSpellChecker
+end
+
+class Bundler::Thor::Option
+  def aliases(); end
+
+  def array?(); end
+
+  def boolean?(); end
+
+  def dasherize(str); end
+
+  def dasherized?(); end
+
+  def group(); end
+
+  def hash?(); end
+
+  def hide(); end
+
+  def lazy_default(); end
+
+  def numeric?(); end
+
+  def repeatable(); end
+
+  def string?(); end
+
+  def switch_name(); end
+
+  def undasherize(str); end
+
+  def usage(padding=T.unsafe(nil)); end
+
+  def validate_default_type!(); end
+  VALID_TYPES = ::T.let(nil, ::T.untyped)
+end
+
+class Bundler::Thor::Option
+  def self.parse(key, value); end
+end
+
+class Bundler::Thor::Options
+  def assign_result!(option, result); end
+
+  def check_unknown!(); end
+
+  def current_is_switch?(); end
+
+  def current_is_switch_formatted?(); end
+
+  def initialize(hash_options=T.unsafe(nil), defaults=T.unsafe(nil), stop_on_unknown=T.unsafe(nil), disable_required_check=T.unsafe(nil)); end
+
+  def normalize_switch(arg); end
+
+  def parse_boolean(switch); end
+
+  def parse_peek(switch, option); end
+
+  def parsing_options?(); end
+
+  def switch?(arg); end
+
+  def switch_option(arg); end
+  EQ_RE = ::T.let(nil, ::T.untyped)
+  LONG_RE = ::T.let(nil, ::T.untyped)
+  OPTS_END = ::T.let(nil, ::T.untyped)
+  SHORT_NUM = ::T.let(nil, ::T.untyped)
+  SHORT_RE = ::T.let(nil, ::T.untyped)
+  SHORT_SQ_RE = ::T.let(nil, ::T.untyped)
+end
+
+class Bundler::Thor::Options
+  def self.to_switches(options); end
+end
+
+class Bundler::Thor::RequiredArgumentMissingError
+end
+
+class Bundler::Thor::RequiredArgumentMissingError
+end
+
+module Bundler::Thor::Sandbox
+end
+
+module Bundler::Thor::Sandbox
+end
+
+module Bundler::Thor::Shell
+  def _shared_configuration(); end
+
+  def ask(*args, &block); end
+
+  def error(*args, &block); end
+
+  def file_collision(*args, &block); end
+
+  def initialize(args=T.unsafe(nil), options=T.unsafe(nil), config=T.unsafe(nil)); end
+
+  def no?(*args, &block); end
+
+  def print_in_columns(*args, &block); end
+
+  def print_table(*args, &block); end
+
+  def print_wrapped(*args, &block); end
+
+  def say(*args, &block); end
+
+  def say_status(*args, &block); end
+
+  def set_color(*args, &block); end
+
+  def shell(); end
+
+  def shell=(shell); end
+
+  def terminal_width(*args, &block); end
+
+  def with_padding(); end
+
+  def yes?(*args, &block); end
+  SHELL_DELEGATED_METHODS = ::T.let(nil, ::T.untyped)
+end
+
+class Bundler::Thor::Shell::Basic
+  def answer_match(possibilities, answer, case_insensitive); end
+
+  def as_unicode(); end
+
+  def ask(statement, *args); end
+
+  def ask_filtered(statement, color, options); end
+
+  def ask_simply(statement, color, options); end
+
+  def base(); end
+
+  def base=(base); end
+
+  def can_display_colors?(); end
+
+  def dynamic_width(); end
+
+  def dynamic_width_stty(); end
+
+  def dynamic_width_tput(); end
+
+  def error(statement); end
+
+  def file_collision(destination); end
+
+  def file_collision_help(); end
+
+  def git_merge_tool(); end
+
+  def indent(count=T.unsafe(nil)); end
+
+  def is?(value); end
+
+  def lookup_color(color); end
+
+  def merge(destination, content); end
+
+  def merge_tool(); end
+
+  def mute(); end
+
+  def mute?(); end
+
+  def no?(statement, color=T.unsafe(nil)); end
+
+  def padding(); end
+
+  def padding=(value); end
+
+  def prepare_message(message, *color); end
+
+  def print_in_columns(array); end
+
+  def print_table(array, options=T.unsafe(nil)); end
+
+  def print_wrapped(message, options=T.unsafe(nil)); end
+
+  def quiet?(); end
+
+  def say(message=T.unsafe(nil), color=T.unsafe(nil), force_new_line=T.unsafe(nil)); end
+
+  def say_status(status, message, log_status=T.unsafe(nil)); end
+
+  def set_color(string, *_); end
+
+  def show_diff(destination, content); end
+
+  def stderr(); end
+
+  def stdout(); end
+
+  def terminal_width(); end
+
+  def truncate(string, width); end
+
+  def unix?(); end
+
+  def yes?(statement, color=T.unsafe(nil)); end
+  DEFAULT_TERMINAL_WIDTH = ::T.let(nil, ::T.untyped)
+end
+
+class Bundler::Thor::Shell::Basic
+end
+
+class Bundler::Thor::Shell::Color
+  def are_colors_disabled?(); end
+
+  def diff_lcs_loaded?(); end
+
+  def output_diff_line(diff); end
+
+  def set_color(string, *colors); end
+  BLACK = ::T.let(nil, ::T.untyped)
+  BLUE = ::T.let(nil, ::T.untyped)
+  BOLD = ::T.let(nil, ::T.untyped)
+  CLEAR = ::T.let(nil, ::T.untyped)
+  CYAN = ::T.let(nil, ::T.untyped)
+  GREEN = ::T.let(nil, ::T.untyped)
+  MAGENTA = ::T.let(nil, ::T.untyped)
+  ON_BLACK = ::T.let(nil, ::T.untyped)
+  ON_BLUE = ::T.let(nil, ::T.untyped)
+  ON_CYAN = ::T.let(nil, ::T.untyped)
+  ON_GREEN = ::T.let(nil, ::T.untyped)
+  ON_MAGENTA = ::T.let(nil, ::T.untyped)
+  ON_RED = ::T.let(nil, ::T.untyped)
+  ON_WHITE = ::T.let(nil, ::T.untyped)
+  ON_YELLOW = ::T.let(nil, ::T.untyped)
+  RED = ::T.let(nil, ::T.untyped)
+  WHITE = ::T.let(nil, ::T.untyped)
+  YELLOW = ::T.let(nil, ::T.untyped)
+end
+
+class Bundler::Thor::Shell::Color
+end
+
+class Bundler::Thor::Shell::HTML
+  def ask(statement, color=T.unsafe(nil)); end
+
+  def diff_lcs_loaded?(); end
+
+  def output_diff_line(diff); end
+
+  def set_color(string, *colors); end
+  BLACK = ::T.let(nil, ::T.untyped)
+  BLUE = ::T.let(nil, ::T.untyped)
+  BOLD = ::T.let(nil, ::T.untyped)
+  CYAN = ::T.let(nil, ::T.untyped)
+  GREEN = ::T.let(nil, ::T.untyped)
+  MAGENTA = ::T.let(nil, ::T.untyped)
+  ON_BLACK = ::T.let(nil, ::T.untyped)
+  ON_BLUE = ::T.let(nil, ::T.untyped)
+  ON_CYAN = ::T.let(nil, ::T.untyped)
+  ON_GREEN = ::T.let(nil, ::T.untyped)
+  ON_MAGENTA = ::T.let(nil, ::T.untyped)
+  ON_RED = ::T.let(nil, ::T.untyped)
+  ON_WHITE = ::T.let(nil, ::T.untyped)
+  ON_YELLOW = ::T.let(nil, ::T.untyped)
+  RED = ::T.let(nil, ::T.untyped)
+  WHITE = ::T.let(nil, ::T.untyped)
+  YELLOW = ::T.let(nil, ::T.untyped)
+end
+
+class Bundler::Thor::Shell::HTML
+end
+
+module Bundler::Thor::Shell
+end
+
+Bundler::Thor::Task = Bundler::Thor::Command
+
+class Bundler::Thor::UndefinedCommandError
+  include ::DidYouMean::Correctable
+  def all_commands(); end
+
+  def command(); end
+
+  def initialize(command, all_commands, namespace); end
+end
+
+class Bundler::Thor::UndefinedCommandError::SpellChecker
+  def corrections(); end
+
+  def error(); end
+
+  def initialize(error); end
+
+  def spell_checker(); end
+end
+
+class Bundler::Thor::UndefinedCommandError::SpellChecker
+end
+
+class Bundler::Thor::UndefinedCommandError
+end
+
+Bundler::Thor::UndefinedTaskError = Bundler::Thor::UndefinedCommandError
+
+class Bundler::Thor::UnknownArgumentError
+  include ::DidYouMean::Correctable
+  def initialize(switches, unknown); end
+
+  def switches(); end
+
+  def unknown(); end
+end
+
+class Bundler::Thor::UnknownArgumentError::SpellChecker
+  def corrections(); end
+
+  def error(); end
+
+  def initialize(error); end
+
+  def spell_checker(); end
+end
+
+class Bundler::Thor::UnknownArgumentError::SpellChecker
+end
+
+class Bundler::Thor::UnknownArgumentError
+end
+
+module Bundler::Thor::Util
+end
+
+module Bundler::Thor::Util
+  def self.camel_case(str); end
+
+  def self.escape_globs(path); end
+
+  def self.escape_html(string); end
+
+  def self.find_by_namespace(namespace); end
+
+  def self.find_class_and_command_by_namespace(namespace, fallback=T.unsafe(nil)); end
+
+  def self.find_class_and_task_by_namespace(namespace, fallback=T.unsafe(nil)); end
+
+  def self.globs_for(path); end
+
+  def self.load_thorfile(path, content=T.unsafe(nil), debug=T.unsafe(nil)); end
+
+  def self.namespace_from_thor_class(constant); end
+
+  def self.namespaces_in_content(contents, file=T.unsafe(nil)); end
+
+  def self.ruby_command(); end
+
+  def self.snake_case(str); end
+
+  def self.thor_classes_in(klass); end
+
+  def self.thor_root(); end
+
+  def self.thor_root_glob(); end
+
+  def self.user_home(); end
+end
+
+class Bundler::Thor
+  extend ::Bundler::Thor::Base::ClassMethods
+  extend ::Bundler::Thor::Invocation::ClassMethods
+  def self.banner(command, namespace=T.unsafe(nil), subcommand=T.unsafe(nil)); end
+
+  def self.check_unknown_options!(options=T.unsafe(nil)); end
+
+  def self.command_help(shell, command_name); end
+
+  def self.default_command(meth=T.unsafe(nil)); end
+
+  def self.default_task(meth=T.unsafe(nil)); end
+
+  def self.deprecation_warning(message); end
+
+  def self.desc(usage, description, options=T.unsafe(nil)); end
+
+  def self.disable_required_check(); end
+
+  def self.disable_required_check!(*command_names); end
+
+  def self.disable_required_check?(command); end
+
+  def self.dispatch(meth, given_args, given_opts, config); end
+
+  def self.dynamic_command_class(); end
+
+  def self.find_command_possibilities(meth); end
+
+  def self.find_task_possibilities(meth); end
+
+  def self.help(shell, subcommand=T.unsafe(nil)); end
+
+  def self.long_desc(long_description, options=T.unsafe(nil)); end
+
+  def self.map(mappings=T.unsafe(nil), **kw); end
+
+  def self.method_option(name, options=T.unsafe(nil)); end
+
+  def self.method_options(options=T.unsafe(nil)); end
+
+  def self.normalize_command_name(meth); end
+
+  def self.normalize_task_name(meth); end
+
+  def self.option(name, options=T.unsafe(nil)); end
+
+  def self.options(options=T.unsafe(nil)); end
+
+  def self.package_name(name, _=T.unsafe(nil)); end
+
+  def self.printable_commands(all=T.unsafe(nil), subcommand=T.unsafe(nil)); end
+
+  def self.printable_tasks(all=T.unsafe(nil), subcommand=T.unsafe(nil)); end
+
+  def self.register(klass, subcommand_name, usage, description, options=T.unsafe(nil)); end
+
+  def self.retrieve_command_name(args); end
+
+  def self.retrieve_task_name(args); end
+
+  def self.stop_on_unknown_option(); end
+
+  def self.stop_on_unknown_option!(*command_names); end
+
+  def self.stop_on_unknown_option?(command); end
+
+  def self.subcommand(subcommand, subcommand_class); end
+
+  def self.subcommand_classes(); end
+
+  def self.subcommand_help(cmd); end
+
+  def self.subcommands(); end
+
+  def self.subtask(subcommand, subcommand_class); end
+
+  def self.subtask_help(cmd); end
+
+  def self.subtasks(); end
+
+  def self.task_help(shell, command_name); end
 end
 
 class Bundler::UI::Shell
@@ -4696,12 +4647,447 @@ end
 class Bundler::UI::Shell
 end
 
-module Bundler::UI
-  extend ::T::Sig
+module Bundler::URI
+  include ::Bundler::URI::RFC2396_REGEXP
+  ABS_PATH = ::T.let(nil, ::T.untyped)
+  ABS_URI = ::T.let(nil, ::T.untyped)
+  ABS_URI_REF = ::T.let(nil, ::T.untyped)
+  DEFAULT_PARSER = ::T.let(nil, ::T.untyped)
+  ESCAPED = ::T.let(nil, ::T.untyped)
+  FRAGMENT = ::T.let(nil, ::T.untyped)
+  HOST = ::T.let(nil, ::T.untyped)
+  OPAQUE = ::T.let(nil, ::T.untyped)
+  PORT = ::T.let(nil, ::T.untyped)
+  QUERY = ::T.let(nil, ::T.untyped)
+  REGISTRY = ::T.let(nil, ::T.untyped)
+  REL_PATH = ::T.let(nil, ::T.untyped)
+  REL_URI = ::T.let(nil, ::T.untyped)
+  REL_URI_REF = ::T.let(nil, ::T.untyped)
+  RFC3986_PARSER = ::T.let(nil, ::T.untyped)
+  SCHEME = ::T.let(nil, ::T.untyped)
+  TBLDECWWWCOMP_ = ::T.let(nil, ::T.untyped)
+  TBLENCWWWCOMP_ = ::T.let(nil, ::T.untyped)
+  UNSAFE = ::T.let(nil, ::T.untyped)
+  URI_REF = ::T.let(nil, ::T.untyped)
+  USERINFO = ::T.let(nil, ::T.untyped)
+  VERSION = ::T.let(nil, ::T.untyped)
+  VERSION_CODE = ::T.let(nil, ::T.untyped)
+  WEB_ENCODINGS_ = ::T.let(nil, ::T.untyped)
 end
 
-module Bundler::URICredentialsFilter
-  extend ::T::Sig
+class Bundler::URI::BadURIError
+end
+
+class Bundler::URI::BadURIError
+end
+
+class Bundler::URI::Error
+end
+
+class Bundler::URI::Error
+end
+
+module Bundler::URI::Escape
+  def decode(*arg); end
+
+  def encode(*arg); end
+
+  def escape(*arg); end
+
+  def unescape(*arg); end
+end
+
+module Bundler::URI::Escape
+end
+
+class Bundler::URI::FTP
+  def set_typecode(v); end
+
+  def typecode(); end
+
+  def typecode=(typecode); end
+  COMPONENT = ::T.let(nil, ::T.untyped)
+  DEFAULT_PORT = ::T.let(nil, ::T.untyped)
+  TYPECODE = ::T.let(nil, ::T.untyped)
+  TYPECODE_PREFIX = ::T.let(nil, ::T.untyped)
+end
+
+class Bundler::URI::FTP
+  def self.new2(user, password, host, port, path, typecode=T.unsafe(nil), arg_check=T.unsafe(nil)); end
+end
+
+class Bundler::URI::File
+  def check_password(user); end
+
+  def check_user(user); end
+
+  def check_userinfo(user); end
+
+  def set_userinfo(v); end
+  COMPONENT = ::T.let(nil, ::T.untyped)
+  DEFAULT_PORT = ::T.let(nil, ::T.untyped)
+end
+
+class Bundler::URI::File
+end
+
+class Bundler::URI::Generic
+  include ::Bundler::URI
+  include ::Bundler::URI::RFC2396_REGEXP
+  def +(oth); end
+
+  def -(oth); end
+
+  def ==(oth); end
+
+  def absolute(); end
+
+  def absolute?(); end
+
+  def coerce(oth); end
+
+  def component(); end
+
+  def component_ary(); end
+
+  def default_port(); end
+
+  def eql?(oth); end
+
+  def find_proxy(env=T.unsafe(nil)); end
+
+  def fragment(); end
+
+  def fragment=(v); end
+
+  def hierarchical?(); end
+
+  def host(); end
+
+  def host=(v); end
+
+  def hostname(); end
+
+  def hostname=(v); end
+
+  def initialize(scheme, userinfo, host, port, registry, path, opaque, query, fragment, parser=T.unsafe(nil), arg_check=T.unsafe(nil)); end
+
+  def merge(oth); end
+
+  def merge!(oth); end
+
+  def normalize(); end
+
+  def normalize!(); end
+
+  def opaque(); end
+
+  def opaque=(v); end
+
+  def parser(); end
+
+  def password(); end
+
+  def password=(password); end
+
+  def path(); end
+
+  def path=(v); end
+
+  def port(); end
+
+  def port=(v); end
+
+  def query(); end
+
+  def query=(v); end
+
+  def registry(); end
+
+  def registry=(v); end
+
+  def relative?(); end
+
+  def route_from(oth); end
+
+  def route_to(oth); end
+
+  def scheme(); end
+
+  def scheme=(v); end
+
+  def select(*components); end
+
+  def set_host(v); end
+
+  def set_opaque(v); end
+
+  def set_password(v); end
+
+  def set_path(v); end
+
+  def set_port(v); end
+
+  def set_registry(v); end
+
+  def set_scheme(v); end
+
+  def set_user(v); end
+
+  def set_userinfo(user, password=T.unsafe(nil)); end
+
+  def user(); end
+
+  def user=(user); end
+
+  def userinfo(); end
+
+  def userinfo=(userinfo); end
+  COMPONENT = ::T.let(nil, ::T.untyped)
+  DEFAULT_PORT = ::T.let(nil, ::T.untyped)
+  USE_REGISTRY = ::T.let(nil, ::T.untyped)
+end
+
+class Bundler::URI::Generic
+  def self.build(args); end
+
+  def self.build2(args); end
+
+  def self.component(); end
+
+  def self.default_port(); end
+
+  def self.use_proxy?(hostname, addr, port, no_proxy); end
+
+  def self.use_registry(); end
+end
+
+class Bundler::URI::HTTP
+  def request_uri(); end
+  COMPONENT = ::T.let(nil, ::T.untyped)
+  DEFAULT_PORT = ::T.let(nil, ::T.untyped)
+end
+
+class Bundler::URI::HTTP
+end
+
+class Bundler::URI::HTTPS
+  DEFAULT_PORT = ::T.let(nil, ::T.untyped)
+end
+
+class Bundler::URI::HTTPS
+end
+
+class Bundler::URI::InvalidComponentError
+end
+
+class Bundler::URI::InvalidComponentError
+end
+
+class Bundler::URI::InvalidURIError
+end
+
+class Bundler::URI::InvalidURIError
+end
+
+class Bundler::URI::LDAP
+  def attributes(); end
+
+  def attributes=(val); end
+
+  def dn(); end
+
+  def dn=(val); end
+
+  def extensions(); end
+
+  def extensions=(val); end
+
+  def filter(); end
+
+  def filter=(val); end
+
+  def initialize(*arg); end
+
+  def scope(); end
+
+  def scope=(val); end
+
+  def set_attributes(val); end
+
+  def set_dn(val); end
+
+  def set_extensions(val); end
+
+  def set_filter(val); end
+
+  def set_scope(val); end
+  COMPONENT = ::T.let(nil, ::T.untyped)
+  DEFAULT_PORT = ::T.let(nil, ::T.untyped)
+  SCOPE = ::T.let(nil, ::T.untyped)
+  SCOPE_BASE = ::T.let(nil, ::T.untyped)
+  SCOPE_ONE = ::T.let(nil, ::T.untyped)
+  SCOPE_SUB = ::T.let(nil, ::T.untyped)
+end
+
+class Bundler::URI::LDAP
+end
+
+class Bundler::URI::LDAPS
+  DEFAULT_PORT = ::T.let(nil, ::T.untyped)
+end
+
+class Bundler::URI::LDAPS
+end
+
+class Bundler::URI::MailTo
+  def headers(); end
+
+  def headers=(v); end
+
+  def initialize(*arg); end
+
+  def set_headers(v); end
+
+  def set_to(v); end
+
+  def to(); end
+
+  def to=(v); end
+
+  def to_mailtext(); end
+
+  def to_rfc822text(); end
+  COMPONENT = ::T.let(nil, ::T.untyped)
+  DEFAULT_PORT = ::T.let(nil, ::T.untyped)
+  EMAIL_REGEXP = ::T.let(nil, ::T.untyped)
+  HEADER_REGEXP = ::T.let(nil, ::T.untyped)
+end
+
+class Bundler::URI::MailTo
+end
+
+Bundler::URI::Parser = Bundler::URI::RFC2396_Parser
+
+Bundler::URI::REGEXP = Bundler::URI::RFC2396_REGEXP
+
+class Bundler::URI::RFC2396_Parser
+  include ::Bundler::URI::RFC2396_REGEXP
+  def escape(str, unsafe=T.unsafe(nil)); end
+
+  def extract(str, schemes=T.unsafe(nil)); end
+
+  def initialize(opts=T.unsafe(nil)); end
+
+  def join(*uris); end
+
+  def make_regexp(schemes=T.unsafe(nil)); end
+
+  def parse(uri); end
+
+  def pattern(); end
+
+  def regexp(); end
+
+  def split(uri); end
+
+  def unescape(str, escaped=T.unsafe(nil)); end
+end
+
+class Bundler::URI::RFC2396_Parser
+end
+
+module Bundler::URI::RFC2396_REGEXP
+end
+
+module Bundler::URI::RFC2396_REGEXP::PATTERN
+  ABS_PATH = ::T.let(nil, ::T.untyped)
+  ABS_URI = ::T.let(nil, ::T.untyped)
+  ALNUM = ::T.let(nil, ::T.untyped)
+  ALPHA = ::T.let(nil, ::T.untyped)
+  DOMLABEL = ::T.let(nil, ::T.untyped)
+  ESCAPED = ::T.let(nil, ::T.untyped)
+  FRAGMENT = ::T.let(nil, ::T.untyped)
+  HEX = ::T.let(nil, ::T.untyped)
+  HIER_PART = ::T.let(nil, ::T.untyped)
+  HOST = ::T.let(nil, ::T.untyped)
+  HOSTNAME = ::T.let(nil, ::T.untyped)
+  HOSTPORT = ::T.let(nil, ::T.untyped)
+  IPV4ADDR = ::T.let(nil, ::T.untyped)
+  IPV6ADDR = ::T.let(nil, ::T.untyped)
+  IPV6REF = ::T.let(nil, ::T.untyped)
+  NET_PATH = ::T.let(nil, ::T.untyped)
+  OPAQUE_PART = ::T.let(nil, ::T.untyped)
+  PATH_SEGMENTS = ::T.let(nil, ::T.untyped)
+  PORT = ::T.let(nil, ::T.untyped)
+  QUERY = ::T.let(nil, ::T.untyped)
+  REG_NAME = ::T.let(nil, ::T.untyped)
+  REL_PATH = ::T.let(nil, ::T.untyped)
+  REL_SEGMENT = ::T.let(nil, ::T.untyped)
+  REL_URI = ::T.let(nil, ::T.untyped)
+  RESERVED = ::T.let(nil, ::T.untyped)
+  SCHEME = ::T.let(nil, ::T.untyped)
+  TOPLABEL = ::T.let(nil, ::T.untyped)
+  UNRESERVED = ::T.let(nil, ::T.untyped)
+  URIC = ::T.let(nil, ::T.untyped)
+  URIC_NO_SLASH = ::T.let(nil, ::T.untyped)
+  URI_REF = ::T.let(nil, ::T.untyped)
+  USERINFO = ::T.let(nil, ::T.untyped)
+  X_ABS_URI = ::T.let(nil, ::T.untyped)
+  X_REL_URI = ::T.let(nil, ::T.untyped)
+end
+
+module Bundler::URI::RFC2396_REGEXP::PATTERN
+end
+
+module Bundler::URI::RFC2396_REGEXP
+end
+
+class Bundler::URI::RFC3986_Parser
+  def join(*uris); end
+
+  def parse(uri); end
+
+  def regexp(); end
+
+  def split(uri); end
+  RFC3986_URI = ::T.let(nil, ::T.untyped)
+  RFC3986_relative_ref = ::T.let(nil, ::T.untyped)
+end
+
+class Bundler::URI::RFC3986_Parser
+end
+
+module Bundler::URI::Util
+end
+
+module Bundler::URI::Util
+  def self.make_components_hash(klass, array_hash); end
+end
+
+module Bundler::URI
+  extend ::Bundler::URI::Escape
+  def self.decode_www_form(str, enc=T.unsafe(nil), separator: T.unsafe(nil), use__charset_: T.unsafe(nil), isindex: T.unsafe(nil)); end
+
+  def self.decode_www_form_component(str, enc=T.unsafe(nil)); end
+
+  def self.encode_www_form(enum, enc=T.unsafe(nil)); end
+
+  def self.encode_www_form_component(str, enc=T.unsafe(nil)); end
+
+  def self.extract(str, schemes=T.unsafe(nil), &block); end
+
+  def self.get_encoding(label); end
+
+  def self.join(*str); end
+
+  def self.parse(uri); end
+
+  def self.regexp(schemes=T.unsafe(nil)); end
+
+  def self.scheme_list(); end
+
+  def self.split(uri); end
 end
 
 module Bundler::VersionRanges
@@ -4761,7 +5147,6 @@ class Bundler::VersionRanges::ReqR
 end
 
 module Bundler::VersionRanges
-  extend ::T::Sig
   def self.empty?(ranges, neqs); end
 
   def self.for(requirement); end
@@ -4769,28 +5154,18 @@ module Bundler::VersionRanges
   def self.for_many(requirements); end
 end
 
-module Bundler::YAMLSerializer
-  extend ::T::Sig
-end
-
 module Bundler
-  extend ::T::Sig
-end
+  def self.original_exec(*args); end
 
-class CGI
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
+  def self.original_system(*args); end
 
-class CGI::Cookie
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
+  def self.unbundled_env(); end
 
-class CGI::Cookie
-  extend ::T::Sig
-end
+  def self.unbundled_exec(*args); end
 
-module CGI::Escape
-  extend ::T::Sig
+  def self.unbundled_system(*args); end
+
+  def self.with_unbundled_env(); end
 end
 
 module CGI::HtmlExtension
@@ -4840,55 +5215,26 @@ module CGI::HtmlExtension
 end
 
 module CGI::HtmlExtension
-  extend ::T::Sig
-end
-
-class CGI::InvalidEncoding
-  extend ::T::Sig
-end
-
-module CGI::QueryExtension
-  extend ::T::Sig
-end
-
-module CGI::Util
-  extend ::T::Sig
-end
-
-class CGI
-  extend ::T::Sig
-end
-
-class Catalyst::Builder
-  def self.build!(*args, &block); end
-
-  def self.instance(); end
 end
 
 class Catalyst::Config
   def self.context_path(*args, &block); end
-
-  def self.instance(); end
-end
-
-module Catalyst::Helpers
-  extend ::T::Sig
 end
 
 class Catalyst::Manifest
   def self.[](*args, &block); end
 
   def self.has?(*args, &block); end
-
-  def self.instance(); end
 end
 
 module Catalyst
   extend ::Dry::Configurable::ClassMethods
-  extend ::T::Sig
+  extend ::Dry::Configurable::Methods
 end
 
 class Class
+  def class_attribute(*attrs, instance_accessor: T.unsafe(nil), instance_reader: T.unsafe(nil), instance_writer: T.unsafe(nil), instance_predicate: T.unsafe(nil), default: T.unsafe(nil)); end
+
   def descendants(); end
 
   def json_creatable?(); end
@@ -4896,29 +5242,7 @@ class Class
   def subclasses(); end
 end
 
-class Class
-  extend ::T::Sig
-end
-
-class ClosedQueueError
-  extend ::T::Sig
-end
-
-module Comparable
-  extend ::T::Sig
-end
-
-class Complex
-  extend ::T::Sig
-  def self.polar(*_); end
-
-  def self.rect(*_); end
-
-  def self.rectangular(*_); end
-end
-
 module Concurrent
-  AtExit = ::T.let(nil, ::T.untyped)
   NULL = ::T.let(nil, ::T.untyped)
   NULL_LOGGER = ::T.let(nil, ::T.untyped)
   VERSION = ::T.let(nil, ::T.untyped)
@@ -4928,54 +5252,10 @@ class Concurrent::AbstractExecutorService
   FALLBACK_POLICIES = ::T.let(nil, ::T.untyped)
 end
 
-module Concurrent::Async
-  extend ::T::Sig
-end
-
-module Concurrent::AtomicDirectUpdate
-  extend ::T::Sig
-end
-
-module Concurrent::AtomicNumericCompareAndSetWrapper
-  extend ::T::Sig
-end
-
 Concurrent::Collection::MapImplementation = Concurrent::Collection::MriMapBackend
-
-module Concurrent::Collection
-  extend ::T::Sig
-end
-
-module Concurrent::Concern::Dereferenceable
-  extend ::T::Sig
-end
-
-module Concurrent::Concern::Logging
-  extend ::T::Sig
-end
-
-module Concurrent::Concern::Obligation
-  extend ::T::Sig
-end
-
-module Concurrent::Concern::Observable
-  extend ::T::Sig
-end
-
-module Concurrent::Concern
-  extend ::T::Sig
-end
 
 class Concurrent::ConcurrentUpdateError
   CONC_UP_ERR_BACKTRACE = ::T.let(nil, ::T.untyped)
-end
-
-module Concurrent::ExecutorService
-  extend ::T::Sig
-end
-
-module Concurrent::ImmutableStruct
-  extend ::T::Sig
 end
 
 class Concurrent::LockFreeStack
@@ -4991,42 +5271,10 @@ class Concurrent::Maybe
   NONE = ::T.let(nil, ::T.untyped)
 end
 
-module Concurrent::MutableStruct
-  extend ::T::Sig
-end
-
-module Concurrent::Options
-  extend ::T::Sig
-end
-
-module Concurrent::Promises::FactoryMethods::Configuration
-  extend ::T::Sig
-end
-
-module Concurrent::Promises::FactoryMethods
-  extend ::T::Sig
-end
-
 module Concurrent::Promises::InternalStates
   PENDING = ::T.let(nil, ::T.untyped)
   RESERVED = ::T.let(nil, ::T.untyped)
   RESOLVED = ::T.let(nil, ::T.untyped)
-end
-
-module Concurrent::Promises::InternalStates
-  extend ::T::Sig
-end
-
-module Concurrent::Promises::Resolvable
-  extend ::T::Sig
-end
-
-module Concurrent::Promises
-  extend ::T::Sig
-end
-
-module Concurrent::ReInclude
-  extend ::T::Sig
 end
 
 class Concurrent::ReadWriteLock
@@ -5052,54 +5300,15 @@ class Concurrent::RubyThreadPoolExecutor
   DEFAULT_MAX_POOL_SIZE = ::T.let(nil, ::T.untyped)
   DEFAULT_MAX_QUEUE_SIZE = ::T.let(nil, ::T.untyped)
   DEFAULT_MIN_POOL_SIZE = ::T.let(nil, ::T.untyped)
+  DEFAULT_SYNCHRONOUS = ::T.let(nil, ::T.untyped)
   DEFAULT_THREAD_IDLETIMEOUT = ::T.let(nil, ::T.untyped)
-end
-
-module Concurrent::SerialExecutorService
-  extend ::T::Sig
 end
 
 class Concurrent::SerializedExecutionDelegator
   RUBYGEMS_ACTIVATION_MONITOR = ::T.let(nil, ::T.untyped)
 end
 
-module Concurrent::SettableStruct
-  extend ::T::Sig
-end
-
-module Concurrent::Synchronization::AbstractStruct
-  extend ::T::Sig
-end
-
-module Concurrent::Synchronization::ConditionSignalling
-  extend ::T::Sig
-end
-
-module Concurrent::Synchronization::MriAttrVolatile
-  extend ::T::Sig
-end
-
-module Concurrent::Synchronization::RbxAttrVolatile::ClassMethods
-  extend ::T::Sig
-end
-
-module Concurrent::Synchronization::RbxAttrVolatile
-  extend ::T::Sig
-end
-
-module Concurrent::Synchronization::TruffleRubyAttrVolatile::ClassMethods
-  extend ::T::Sig
-end
-
-module Concurrent::Synchronization::TruffleRubyAttrVolatile
-  extend ::T::Sig
-end
-
 Concurrent::Synchronization::Volatile = Concurrent::Synchronization::MriAttrVolatile
-
-module Concurrent::Synchronization
-  extend ::T::Sig
-end
 
 class Concurrent::SynchronizedDelegator
   RUBYGEMS_ACTIVATION_MONITOR = ::T.let(nil, ::T.untyped)
@@ -5111,14 +5320,6 @@ module Concurrent::ThreadSafe::Util
   MAX_INT = ::T.let(nil, ::T.untyped)
 end
 
-module Concurrent::ThreadSafe::Util
-  extend ::T::Sig
-end
-
-module Concurrent::ThreadSafe
-  extend ::T::Sig
-end
-
 class Concurrent::TimerTask
   EXECUTION_INTERVAL = ::T.let(nil, ::T.untyped)
   TIMEOUT_INTERVAL = ::T.let(nil, ::T.untyped)
@@ -5128,32 +5329,10 @@ class Concurrent::Transaction
   ABORTED = ::T.let(nil, ::T.untyped)
 end
 
-module Concurrent::Utility::EngineDetector
-  extend ::T::Sig
-end
-
-module Concurrent::Utility::NativeExtensionLoader
-  extend ::T::Sig
-end
-
 module Concurrent::Utility::NativeInteger
   MAX_VALUE = ::T.let(nil, ::T.untyped)
   MIN_VALUE = ::T.let(nil, ::T.untyped)
 end
-
-module Concurrent::Utility::NativeInteger
-  extend ::T::Sig
-end
-
-module Concurrent::Utility
-  extend ::T::Sig
-end
-
-module Concurrent
-  extend ::T::Sig
-end
-
-ConditionVariable = Thread::ConditionVariable
 
 class Crass::Parser
   BLOCK_END_TOKENS = ::T.let(nil, ::T.untyped)
@@ -5178,40 +5357,11 @@ class Crass::Tokenizer
   RE_WHITESPACE_ANCHORED = ::T.let(nil, ::T.untyped)
 end
 
-module Crass
-  extend ::T::Sig
-end
-
-class Data
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
-
-class Data
-  extend ::T::Sig
-end
-
 class Date
-  include ::DateAndTime::Calculations
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
+  include ::DateAndTime::Zones
   def acts_like_date?(); end
 
-  def advance(options); end
-
   def ago(seconds); end
-
-  def at_beginning_of_day(); end
-
-  def at_end_of_day(); end
-
-  def at_midday(); end
-
-  def at_middle_of_day(); end
-
-  def at_midnight(); end
-
-  def at_noon(); end
-
-  def beginning_of_day(); end
 
   def change(options); end
 
@@ -5219,41 +5369,32 @@ class Date
 
   def compare_without_coercion(_); end
 
-  def end_of_day(); end
+  def default_inspect(); end
 
   def in(seconds); end
 
-  def midday(); end
-
-  def middle_of_day(); end
-
-  def midnight(); end
+  def infinite?(); end
 
   def minus_with_duration(other); end
 
   def minus_without_duration(_); end
 
-  def noon(); end
-
   def plus_with_duration(other); end
 
   def plus_without_duration(_); end
 
+  def readable_inspect(); end
+
   def since(seconds); end
 
-  DATE_FORMATS = ::T.let(nil, ::T.untyped)
+  def to_default_s(); end
 end
 
 class Date::Infinity
   def initialize(d=T.unsafe(nil)); end
 end
 
-class Date::Infinity
-  extend ::T::Sig
-end
-
 class Date
-  extend ::T::Sig
   def self.beginning_of_week(); end
 
   def self.beginning_of_week=(week_start); end
@@ -5262,149 +5403,40 @@ class Date
 
   def self.beginning_of_week_default=(beginning_of_week_default); end
 
-  def self.current(); end
-
   def self.find_beginning_of_week!(week_start); end
-
-  def self.tomorrow(); end
-
-  def self.yesterday(); end
 end
 
 module DateAndTime::Calculations
-  def all_day(); end
+  def next_day?(); end
 
-  def all_month(); end
+  def prev_day?(); end
 
-  def all_quarter(); end
+  def tomorrow?(); end
 
-  def all_week(start_day=T.unsafe(nil)); end
-
-  def all_year(); end
-
-  def at_beginning_of_month(); end
-
-  def at_beginning_of_quarter(); end
-
-  def at_beginning_of_week(start_day=T.unsafe(nil)); end
-
-  def at_beginning_of_year(); end
-
-  def at_end_of_month(); end
-
-  def at_end_of_quarter(); end
-
-  def at_end_of_week(start_day=T.unsafe(nil)); end
-
-  def at_end_of_year(); end
-
-  def beginning_of_month(); end
-
-  def beginning_of_quarter(); end
-
-  def beginning_of_week(start_day=T.unsafe(nil)); end
-
-  def beginning_of_year(); end
-
-  def days_ago(days); end
-
-  def days_since(days); end
-
-  def days_to_week_start(start_day=T.unsafe(nil)); end
-
-  def end_of_month(); end
-
-  def end_of_quarter(); end
-
-  def end_of_week(start_day=T.unsafe(nil)); end
-
-  def end_of_year(); end
-
-  def future?(); end
-
-  def last_month(); end
-
-  def last_quarter(); end
-
-  def last_week(start_day=T.unsafe(nil), same_time: T.unsafe(nil)); end
-
-  def last_weekday(); end
-
-  def last_year(); end
-
-  def monday(); end
-
-  def months_ago(months); end
-
-  def months_since(months); end
-
-  def next_day(days=T.unsafe(nil)); end
-
-  def next_month(months=T.unsafe(nil)); end
-
-  def next_occurring(day_of_week); end
-
-  def next_quarter(); end
-
-  def next_week(given_day_in_next_week=T.unsafe(nil), same_time: T.unsafe(nil)); end
-
-  def next_weekday(); end
-
-  def next_year(years=T.unsafe(nil)); end
-
-  def on_weekday?(); end
-
-  def on_weekend?(); end
-
-  def past?(); end
-
-  def prev_day(days=T.unsafe(nil)); end
-
-  def prev_month(months=T.unsafe(nil)); end
-
-  def prev_occurring(day_of_week); end
-
-  def prev_quarter(); end
-
-  def prev_week(start_day=T.unsafe(nil), same_time: T.unsafe(nil)); end
-
-  def prev_weekday(); end
-
-  def prev_year(years=T.unsafe(nil)); end
-
-  def sunday(); end
-
-  def today?(); end
-
-  def tomorrow(); end
-
-  def weeks_ago(weeks); end
-
-  def weeks_since(weeks); end
-
-  def years_ago(years); end
-
-  def years_since(years); end
-
-  def yesterday(); end
-  DAYS_INTO_WEEK = ::T.let(nil, ::T.untyped)
-  WEEKEND_DAYS = ::T.let(nil, ::T.untyped)
-end
-
-module DateAndTime::Calculations
-  extend ::T::Sig
+  def yesterday?(); end
 end
 
 module DateAndTime::Compatibility
-  extend ::T::Sig
+  def preserve_timezone(); end
+
+  def utc_to_local_returns_utc_offset_times(); end
+end
+
+module DateAndTime::Compatibility
+  def self.preserve_timezone(); end
+
+  def self.preserve_timezone=(val); end
+
+  def self.utc_to_local_returns_utc_offset_times(); end
+
+  def self.utc_to_local_returns_utc_offset_times=(val); end
 end
 
 module DateAndTime::Zones
-  extend ::T::Sig
+  def in_time_zone(zone=T.unsafe(nil)); end
 end
 
-module DateAndTime
-  extend ::T::Sig
+module DateAndTime::Zones
 end
 
 class DateTime
@@ -5458,48 +5490,15 @@ class DateTime
 end
 
 class DateTime
-  extend ::T::Sig
   def self.civil_from_format(utc_or_local, year, month=T.unsafe(nil), day=T.unsafe(nil), hour=T.unsafe(nil), min=T.unsafe(nil), sec=T.unsafe(nil)); end
 end
 
 class Delegator
-  def !=(obj); end
-
-  def ==(obj); end
-
-  def __getobj__(); end
-
-  def __setobj__(obj); end
-
-  def eql?(obj); end
-
-  def initialize(obj); end
-
-  def marshal_dump(); end
-
-  def marshal_load(data); end
-
-  def method_missing(m, *args, &block); end
-
-  def methods(all=T.unsafe(nil)); end
-
-  def protected_methods(all=T.unsafe(nil)); end
-
-  def public_methods(all=T.unsafe(nil)); end
+  include ::ActiveSupport::Tryable
   RUBYGEMS_ACTIVATION_MONITOR = ::T.let(nil, ::T.untyped)
 end
 
-class Delegator
-  extend ::T::Sig
-  def self.const_missing(n); end
-
-  def self.delegating_block(mid); end
-
-  def self.public_api(); end
-end
-
 class DidYouMean::ClassNameChecker
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   def class_name(); end
 
   def class_names(); end
@@ -5511,8 +5510,11 @@ class DidYouMean::ClassNameChecker
   def scopes(); end
 end
 
-class DidYouMean::ClassNameChecker
-  extend ::T::Sig
+class DidYouMean::CorrectElement
+  def call(names, element); end
+end
+
+class DidYouMean::CorrectElement
 end
 
 module DidYouMean::Correctable
@@ -5525,26 +5527,11 @@ module DidYouMean::Correctable
   def to_s(); end
 end
 
-module DidYouMean::Correctable
-  extend ::T::Sig
-end
-
-class DidYouMean::DeprecatedIgnoredCallers
-  def +(*_); end
-
-  def <<(*_); end
-end
-
-class DidYouMean::DeprecatedIgnoredCallers
-end
-
 module DidYouMean::Jaro
-  extend ::T::Sig
   def self.distance(str1, str2); end
 end
 
 module DidYouMean::JaroWinkler
-  extend ::T::Sig
   def self.distance(str1, str2); end
 end
 
@@ -5558,14 +5545,12 @@ class DidYouMean::KeyErrorChecker
 end
 
 module DidYouMean::Levenshtein
-  extend ::T::Sig
   def self.distance(str1, str2); end
 
   def self.min3(a, b, c); end
 end
 
 class DidYouMean::MethodNameChecker
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   def corrections(); end
 
   def initialize(exception); end
@@ -5574,22 +5559,25 @@ class DidYouMean::MethodNameChecker
 
   def method_names(); end
 
-  def receiver(); end
-end
+  def names_to_exclude(); end
 
-class DidYouMean::MethodNameChecker
-  extend ::T::Sig
+  def receiver(); end
+  RB_RESERVED_WORDS = ::T.let(nil, ::T.untyped)
 end
 
 class DidYouMean::NullChecker
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   def corrections(); end
 
   def initialize(*_); end
 end
 
-class DidYouMean::NullChecker
-  extend ::T::Sig
+class DidYouMean::ParseDimensions
+  def call(); end
+
+  def initialize(dictionary, separator); end
+end
+
+class DidYouMean::ParseDimensions
 end
 
 class DidYouMean::PlainFormatter
@@ -5599,19 +5587,24 @@ end
 class DidYouMean::PlainFormatter
 end
 
-class DidYouMean::SpellChecker
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
+class DidYouMean::TreeSpellChecker
+  def augment(); end
+
   def correct(input); end
 
-  def initialize(dictionary:); end
+  def dictionary(); end
+
+  def dimensions(); end
+
+  def initialize(dictionary:, separator: T.unsafe(nil), augment: T.unsafe(nil)); end
+
+  def separator(); end
 end
 
-class DidYouMean::SpellChecker
-  extend ::T::Sig
+class DidYouMean::TreeSpellChecker
 end
 
 class DidYouMean::VariableNameChecker
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   def corrections(); end
 
   def cvar_names(); end
@@ -5625,75 +5618,29 @@ class DidYouMean::VariableNameChecker
   def method_names(); end
 
   def name(); end
-  RB_PREDEFINED_OBJECTS = ::T.let(nil, ::T.untyped)
-end
-
-class DidYouMean::VariableNameChecker
-  extend ::T::Sig
+  RB_RESERVED_WORDS = ::T.let(nil, ::T.untyped)
 end
 
 module DidYouMean
-  extend ::T::Sig
+  def self.correct_error(error_class, spell_checker); end
+
   def self.formatter(); end
 
   def self.formatter=(formatter); end
 end
 
-class Digest::Base
-  extend ::T::Sig
-end
-
-class Digest::Class
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
-
-class Digest::Class
-  extend ::T::Sig
-end
-
-module Digest::Instance
-  extend ::T::Sig
-end
-
-class Digest::SHA2
-  extend ::T::Sig
-end
-
-class Digest::SHA256
-  extend ::T::Sig
-end
-
-class Digest::SHA384
-  extend ::T::Sig
-end
-
-class Digest::SHA512
-  extend ::T::Sig
-end
-
-module Digest
-  extend ::T::Sig
-end
-
 class Dir
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
+  def children(); end
+
+  def each_child(); end
 end
 
 module Dir::Tmpname
-  extend ::T::Sig
+  UNUSABLE_CHARS = ::T.let(nil, ::T.untyped)
 end
 
 class Dir
-  extend ::T::Sig
-  def self.children(*_); end
-
-  def self.each_child(*_); end
-
-  def self.empty?(_); end
-
   def self.exists?(_); end
-
-  def self.tmpdir(); end
 end
 
 module Dry::Configurable
@@ -5702,24 +5649,23 @@ module Dry::Configurable
   EMPTY_OPTS = ::T.let(nil, ::T.untyped)
   EMPTY_SET = ::T.let(nil, ::T.untyped)
   EMPTY_STRING = ::T.let(nil, ::T.untyped)
+  IDENTITY = ::T.let(nil, ::T.untyped)
+  Self = ::T.let(nil, ::T.untyped)
   Undefined = ::T.let(nil, ::T.untyped)
-  VERSION = ::T.let(nil, ::T.untyped)
 end
 
-module Dry::Configurable::ClassMethods
-  extend ::T::Sig
+class Dry::Configurable::DSL
+  VALID_NAME = ::T.let(nil, ::T.untyped)
 end
 
-class Dry::Configurable::Settings
-  Parser = ::T.let(nil, ::T.untyped)
+class Dry::Configurable::Setting
+  CLONABLE_VALUE_TYPES = ::T.let(nil, ::T.untyped)
+  DEFAULT_CONSTRUCTOR = ::T.let(nil, ::T.untyped)
+  OPTIONS = ::T.let(nil, ::T.untyped)
 end
 
-class Dry::Configurable::Settings::ArgumentParser
-  DEFAULT_PROCESSOR = ::T.let(nil, ::T.untyped)
-end
-
-module Dry::Configurable
-  extend ::T::Sig
+class Dry::Configurable::Setting::Nested
+  CONSTRUCTOR = ::T.let(nil, ::T.untyped)
 end
 
 module Dry::Core::Constants
@@ -5728,82 +5674,20 @@ module Dry::Core::Constants
   EMPTY_OPTS = ::T.let(nil, ::T.untyped)
   EMPTY_SET = ::T.let(nil, ::T.untyped)
   EMPTY_STRING = ::T.let(nil, ::T.untyped)
+  IDENTITY = ::T.let(nil, ::T.untyped)
+  Self = ::T.let(nil, ::T.untyped)
   Undefined = ::T.let(nil, ::T.untyped)
-end
-
-module Dry::Core::Constants
-  extend ::T::Sig
-end
-
-module Dry::Core
-  extend ::T::Sig
-end
-
-module Dry
-  extend ::T::Sig
-end
-
-class EOFError
-  extend ::T::Sig
 end
 
 class ERB
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   def def_method(mod, methodname, fname=T.unsafe(nil)); end
 
   def def_module(methodname=T.unsafe(nil)); end
-
-  def result_with_hash(hash); end
-end
-
-class ERB::Compiler
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
-
-class ERB::Compiler::Buffer
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
-
-class ERB::Compiler::Buffer
-  extend ::T::Sig
-end
-
-class ERB::Compiler::ExplicitScanner
-  extend ::T::Sig
-end
-
-class ERB::Compiler::PercentLine
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
-
-class ERB::Compiler::PercentLine
-  extend ::T::Sig
 end
 
 class ERB::Compiler::Scanner
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   DEFAULT_ETAGS = ::T.let(nil, ::T.untyped)
   DEFAULT_STAGS = ::T.let(nil, ::T.untyped)
-end
-
-class ERB::Compiler::Scanner
-  extend ::T::Sig
-end
-
-class ERB::Compiler::SimpleScanner
-  extend ::T::Sig
-end
-
-class ERB::Compiler::TrimScanner
-  extend ::T::Sig
-end
-
-class ERB::Compiler
-  extend ::T::Sig
-end
-
-module ERB::DefMethod
-  extend ::T::Sig
 end
 
 module ERB::Util
@@ -5814,210 +5698,97 @@ module ERB::Util
 end
 
 module ERB::Util
-  extend ::T::Sig
-end
+  def self.html_escape_once(s); end
 
-class ERB
-  extend ::T::Sig
+  def self.json_escape(s); end
+
+  def self.unwrapped_html_escape(s); end
 end
 
 class Encoding
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   def _dump(*_); end
-end
-
-class Encoding::CompatibilityError
-  extend ::T::Sig
+  CESU_8 = ::T.let(nil, ::T.untyped)
 end
 
 class Encoding::Converter
-  def convert(_); end
-
-  def convpath(); end
-
-  def destination_encoding(); end
-
-  def finish(); end
-
   def initialize(*_); end
-
-  def insert_output(_); end
-
-  def last_error(); end
-
-  def primitive_convert(*_); end
-
-  def primitive_errinfo(); end
-
-  def putback(*_); end
-
-  def replacement(); end
-
-  def replacement=(replacement); end
-
-  def source_encoding(); end
-end
-
-class Encoding::Converter
-  extend ::T::Sig
-  def self.asciicompat_encoding(_); end
-
-  def self.search_convpath(*_); end
-end
-
-class Encoding::ConverterNotFoundError
-  extend ::T::Sig
-end
-
-class Encoding::InvalidByteSequenceError
-  def destination_encoding(); end
-
-  def destination_encoding_name(); end
-
-  def error_bytes(); end
-
-  def incomplete_input?(); end
-
-  def readagain_bytes(); end
-
-  def source_encoding(); end
-
-  def source_encoding_name(); end
-end
-
-class Encoding::InvalidByteSequenceError
-  extend ::T::Sig
-end
-
-class Encoding::UndefinedConversionError
-  def destination_encoding(); end
-
-  def destination_encoding_name(); end
-
-  def error_char(); end
-
-  def source_encoding(); end
-
-  def source_encoding_name(); end
-end
-
-class Encoding::UndefinedConversionError
-  extend ::T::Sig
 end
 
 class Encoding
-  extend ::T::Sig
   def self._load(_); end
-
-  def self.locale_charmap(); end
-end
-
-class EncodingError
-  extend ::T::Sig
 end
 
 module Enumerable
   include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   def as_json(options=T.unsafe(nil)); end
 
-  def chunk(); end
+  def chain(*_); end
 
-  def chunk_while(); end
+  def compact_blank(); end
 
-  def each_entry(*_); end
+  def excluding(*elements); end
 
-  def grep_v(_); end
+  def including(*elements); end
 
-  def lazy(); end
-
-  def slice_after(*_); end
-
-  def slice_before(*_); end
-
-  def slice_when(); end
+  def pick(*keys); end
 
   def sum(identity=T.unsafe(nil), &block); end
 
-  def to_set(klass=T.unsafe(nil), *args, &block); end
-
-  def uniq(); end
-
-  def zip(*_); end
-end
-
-module Enumerable
-  extend ::T::Sig
+  def without(*elements); end
 end
 
 class Enumerator
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def each_with_index(); end
+  def +(_); end
 
+  def each_with_index(); end
+end
+
+class Enumerator::ArithmeticSequence
+  def begin(); end
+
+  def each(&blk); end
+
+  def end(); end
+
+  def exclude_end?(); end
+
+  def last(*_); end
+
+  def step(); end
+end
+
+class Enumerator::ArithmeticSequence
+end
+
+class Enumerator::Chain
+end
+
+class Enumerator::Chain
 end
 
 class Enumerator::Generator
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   def each(*_, &blk); end
 
   def initialize(*_); end
 end
 
-class Enumerator::Generator
-  extend ::T::Sig
+class Enumerator::Lazy
+  def eager(); end
 end
 
-class Enumerator::Lazy
-  def chunk(*_); end
-
-  def chunk_while(*_); end
-
-  def force(*_); end
-
-  def slice_when(*_); end
+class Enumerator::Producer
+  def each(&blk); end
 end
 
-class Enumerator::Lazy
-  extend ::T::Sig
+class Enumerator::Producer
 end
 
 class Enumerator::Yielder
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
-
-class Enumerator::Yielder
-  extend ::T::Sig
+  def to_proc(); end
 end
 
 class Enumerator
-  extend ::T::Sig
-end
-
-class Errno::E2BIG
-  extend ::T::Sig
-end
-
-class Errno::EACCES
-  extend ::T::Sig
-end
-
-class Errno::EADDRINUSE
-  extend ::T::Sig
-end
-
-class Errno::EADDRNOTAVAIL
-  extend ::T::Sig
-end
-
-class Errno::EAFNOSUPPORT
-  extend ::T::Sig
-end
-
-class Errno::EAGAIN
-  extend ::T::Sig
-end
-
-class Errno::EALREADY
-  extend ::T::Sig
+  def self.produce(*_); end
 end
 
 class Errno::EAUTH
@@ -6027,12 +5798,25 @@ end
 class Errno::EAUTH
 end
 
-class Errno::EBADF
-  extend ::T::Sig
+class Errno::EBADARCH
+  Errno = ::T.let(nil, ::T.untyped)
 end
 
-class Errno::EBADMSG
-  extend ::T::Sig
+class Errno::EBADARCH
+end
+
+class Errno::EBADEXEC
+  Errno = ::T.let(nil, ::T.untyped)
+end
+
+class Errno::EBADEXEC
+end
+
+class Errno::EBADMACHO
+  Errno = ::T.let(nil, ::T.untyped)
+end
+
+class Errno::EBADMACHO
 end
 
 class Errno::EBADRPC
@@ -6040,137 +5824,35 @@ class Errno::EBADRPC
 end
 
 class Errno::EBADRPC
-end
-
-class Errno::EBUSY
-  extend ::T::Sig
-end
-
-class Errno::ECANCELED
-  extend ::T::Sig
 end
 
 Errno::ECAPMODE = Errno::NOERROR
 
-class Errno::ECHILD
-  extend ::T::Sig
-end
-
-class Errno::ECONNABORTED
-  extend ::T::Sig
-end
-
-class Errno::ECONNREFUSED
-  extend ::T::Sig
-end
-
-class Errno::ECONNRESET
-  extend ::T::Sig
-end
-
-class Errno::EDEADLK
-  extend ::T::Sig
-end
-
 Errno::EDEADLOCK = Errno::NOERROR
 
-class Errno::EDESTADDRREQ
-  extend ::T::Sig
+class Errno::EDEVERR
+  Errno = ::T.let(nil, ::T.untyped)
 end
 
-class Errno::EDOM
-  extend ::T::Sig
+class Errno::EDEVERR
 end
 
 Errno::EDOOFUS = Errno::NOERROR
 
-class Errno::EDQUOT
-  extend ::T::Sig
-end
-
-class Errno::EEXIST
-  extend ::T::Sig
-end
-
-class Errno::EFAULT
-  extend ::T::Sig
-end
-
-class Errno::EFBIG
-  extend ::T::Sig
-end
-
 class Errno::EFTYPE
   Errno = ::T.let(nil, ::T.untyped)
 end
 
 class Errno::EFTYPE
-end
-
-class Errno::EHOSTDOWN
-  extend ::T::Sig
-end
-
-class Errno::EHOSTUNREACH
-  extend ::T::Sig
-end
-
-class Errno::EIDRM
-  extend ::T::Sig
-end
-
-class Errno::EILSEQ
-  extend ::T::Sig
-end
-
-class Errno::EINPROGRESS
-  extend ::T::Sig
-end
-
-class Errno::EINTR
-  extend ::T::Sig
-end
-
-class Errno::EINVAL
-  extend ::T::Sig
-end
-
-class Errno::EIO
-  extend ::T::Sig
 end
 
 Errno::EIPSEC = Errno::NOERROR
 
-class Errno::EISCONN
-  extend ::T::Sig
+class Errno::ELAST
+  Errno = ::T.let(nil, ::T.untyped)
 end
 
-class Errno::EISDIR
-  extend ::T::Sig
-end
-
-class Errno::ELOOP
-  extend ::T::Sig
-end
-
-class Errno::EMFILE
-  extend ::T::Sig
-end
-
-class Errno::EMLINK
-  extend ::T::Sig
-end
-
-class Errno::EMSGSIZE
-  extend ::T::Sig
-end
-
-class Errno::EMULTIHOP
-  extend ::T::Sig
-end
-
-class Errno::ENAMETOOLONG
-  extend ::T::Sig
+class Errno::ELAST
 end
 
 class Errno::ENEEDAUTH
@@ -6180,22 +5862,6 @@ end
 class Errno::ENEEDAUTH
 end
 
-class Errno::ENETDOWN
-  extend ::T::Sig
-end
-
-class Errno::ENETRESET
-  extend ::T::Sig
-end
-
-class Errno::ENETUNREACH
-  extend ::T::Sig
-end
-
-class Errno::ENFILE
-  extend ::T::Sig
-end
-
 class Errno::ENOATTR
   Errno = ::T.let(nil, ::T.untyped)
 end
@@ -6203,125 +5869,20 @@ end
 class Errno::ENOATTR
 end
 
-class Errno::ENOBUFS
-  extend ::T::Sig
+class Errno::ENOPOLICY
+  Errno = ::T.let(nil, ::T.untyped)
 end
 
-class Errno::ENODATA
-  extend ::T::Sig
-end
-
-class Errno::ENODEV
-  extend ::T::Sig
-end
-
-class Errno::ENOENT
-  extend ::T::Sig
-end
-
-class Errno::ENOEXEC
-  extend ::T::Sig
-end
-
-class Errno::ENOLCK
-  extend ::T::Sig
-end
-
-class Errno::ENOLINK
-  extend ::T::Sig
-end
-
-class Errno::ENOMEM
-  extend ::T::Sig
-end
-
-class Errno::ENOMSG
-  extend ::T::Sig
-end
-
-class Errno::ENOPROTOOPT
-  extend ::T::Sig
-end
-
-class Errno::ENOSPC
-  extend ::T::Sig
-end
-
-class Errno::ENOSR
-  extend ::T::Sig
-end
-
-class Errno::ENOSTR
-  extend ::T::Sig
-end
-
-class Errno::ENOSYS
-  extend ::T::Sig
-end
-
-class Errno::ENOTBLK
-  extend ::T::Sig
+class Errno::ENOPOLICY
 end
 
 Errno::ENOTCAPABLE = Errno::NOERROR
 
-class Errno::ENOTCONN
-  extend ::T::Sig
-end
-
-class Errno::ENOTDIR
-  extend ::T::Sig
-end
-
-class Errno::ENOTEMPTY
-  extend ::T::Sig
-end
-
-class Errno::ENOTRECOVERABLE
-  extend ::T::Sig
-end
-
-class Errno::ENOTSOCK
-  extend ::T::Sig
-end
-
 class Errno::ENOTSUP
   Errno = ::T.let(nil, ::T.untyped)
 end
 
 class Errno::ENOTSUP
-end
-
-class Errno::ENOTTY
-  extend ::T::Sig
-end
-
-class Errno::ENXIO
-  extend ::T::Sig
-end
-
-class Errno::EOPNOTSUPP
-  extend ::T::Sig
-end
-
-class Errno::EOVERFLOW
-  extend ::T::Sig
-end
-
-class Errno::EOWNERDEAD
-  extend ::T::Sig
-end
-
-class Errno::EPERM
-  extend ::T::Sig
-end
-
-class Errno::EPFNOSUPPORT
-  extend ::T::Sig
-end
-
-class Errno::EPIPE
-  extend ::T::Sig
 end
 
 class Errno::EPROCLIM
@@ -6352,29 +5913,14 @@ end
 class Errno::EPROGUNAVAIL
 end
 
-class Errno::EPROTO
-  extend ::T::Sig
+class Errno::EPWROFF
+  Errno = ::T.let(nil, ::T.untyped)
 end
 
-class Errno::EPROTONOSUPPORT
-  extend ::T::Sig
+class Errno::EPWROFF
 end
 
-class Errno::EPROTOTYPE
-  extend ::T::Sig
-end
-
-class Errno::ERANGE
-  extend ::T::Sig
-end
-
-class Errno::EREMOTE
-  extend ::T::Sig
-end
-
-class Errno::EROFS
-  extend ::T::Sig
-end
+Errno::EQFULL = Errno::ELAST
 
 class Errno::ERPCMISMATCH
   Errno = ::T.let(nil, ::T.untyped)
@@ -6383,56 +5929,11 @@ end
 class Errno::ERPCMISMATCH
 end
 
-class Errno::ESHUTDOWN
-  extend ::T::Sig
+class Errno::ESHLIBVERS
+  Errno = ::T.let(nil, ::T.untyped)
 end
 
-class Errno::ESOCKTNOSUPPORT
-  extend ::T::Sig
-end
-
-class Errno::ESPIPE
-  extend ::T::Sig
-end
-
-class Errno::ESRCH
-  extend ::T::Sig
-end
-
-class Errno::ESTALE
-  extend ::T::Sig
-end
-
-class Errno::ETIME
-  extend ::T::Sig
-end
-
-class Errno::ETIMEDOUT
-  extend ::T::Sig
-end
-
-class Errno::ETOOMANYREFS
-  extend ::T::Sig
-end
-
-class Errno::ETXTBSY
-  extend ::T::Sig
-end
-
-class Errno::EUSERS
-  extend ::T::Sig
-end
-
-class Errno::EXDEV
-  extend ::T::Sig
-end
-
-class Errno::NOERROR
-  extend ::T::Sig
-end
-
-module Errno
-  extend ::T::Sig
+class Errno::ESHLIBVERS
 end
 
 class Erubi::Engine
@@ -6446,6 +5947,10 @@ class Erubi::Engine
 end
 
 class Erubi::Engine
+end
+
+module Etc
+  VERSION = ::T.let(nil, ::T.untyped)
 end
 
 class Etc::Group
@@ -6467,7 +5972,6 @@ class Etc::Group
 end
 
 class Etc::Group
-  extend ::T::Sig
   extend ::Enumerable
   def self.[](*_); end
 
@@ -6481,8 +5985,6 @@ class Etc::Passwd
 
   def change=(_); end
 
-  def dir(); end
-
   def dir=(_); end
 
   def expire(); end
@@ -6493,19 +5995,11 @@ class Etc::Passwd
 
   def gecos=(_); end
 
-  def gid(); end
-
   def gid=(_); end
-
-  def name(); end
 
   def name=(_); end
 
-  def passwd(); end
-
   def passwd=(_); end
-
-  def shell(); end
 
   def shell=(_); end
 
@@ -6513,13 +6007,10 @@ class Etc::Passwd
 
   def uclass=(_); end
 
-  def uid(); end
-
   def uid=(_); end
 end
 
 class Etc::Passwd
-  extend ::T::Sig
   extend ::Enumerable
   def self.[](*_); end
 
@@ -6528,59 +6019,8 @@ class Etc::Passwd
   def self.members(); end
 end
 
-module Etc
-  extend ::T::Sig
-  def self.confstr(_); end
-
-  def self.endgrent(); end
-
-  def self.endpwent(); end
-
-  def self.getgrent(); end
-
-  def self.getgrgid(*_); end
-
-  def self.getgrnam(_); end
-
-  def self.getlogin(); end
-
-  def self.getpwent(); end
-
-  def self.getpwnam(_); end
-
-  def self.getpwuid(*_); end
-
-  def self.group(); end
-
-  def self.nprocessors(); end
-
-  def self.passwd(); end
-
-  def self.setgrent(); end
-
-  def self.setpwent(); end
-
-  def self.sysconf(_); end
-
-  def self.sysconfdir(); end
-
-  def self.systmpdir(); end
-
-  def self.uname(); end
-end
-
 class Exception
   include ::ActiveSupport::Dependencies::Blamable
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def full_message(*_); end
-
-end
-
-class Exception
-  extend ::T::Sig
-  def self.exception(*_); end
-
-  def self.to_tty?(); end
 end
 
 class ExitCalledError
@@ -6590,233 +6030,57 @@ class ExitCalledError
 end
 
 class FalseClass
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   include ::JSON::Ext::Generator::GeneratorMethods::FalseClass
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
-
-class FalseClass
-  extend ::T::Sig
 end
 
 class Fiber
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def resume(*_); end
+  def initialize(*_); end
 
   def transfer(*_); end
 end
 
 class Fiber
-  extend ::T::Sig
   def self.current(); end
-
-  def self.yield(*_); end
-end
-
-class FiberError
-  extend ::T::Sig
 end
 
 class File
-  Separator = ::T.let(nil, ::T.untyped)
-end
+  def self.absolute_path?(_); end
 
-module File::Constants
-  extend ::T::Sig
-end
-
-class File::Stat
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def size?(); end
-end
-
-class File::Stat
-  extend ::T::Sig
-end
-
-class File
-  extend ::T::Sig
   def self.atomic_write(file_name, temp_dir=T.unsafe(nil)); end
 
-  def self.empty?(_); end
-
   def self.exists?(_); end
-
-  def self.lutime(*_); end
-
-  def self.mkfifo(*_); end
 
   def self.probe_stat_in(dir); end
-
-end
-
-module FileTest
-  extend ::T::Sig
-  def self.blockdev?(_); end
-
-  def self.chardev?(_); end
-
-  def self.directory?(_); end
-
-  def self.empty?(_); end
-
-  def self.executable?(_); end
-
-  def self.executable_real?(_); end
-
-  def self.exist?(_); end
-
-  def self.exists?(_); end
-
-  def self.file?(_); end
-
-  def self.grpowned?(_); end
-
-  def self.identical?(_, _1); end
-
-  def self.owned?(_); end
-
-  def self.pipe?(_); end
-
-  def self.readable?(_); end
-
-  def self.readable_real?(_); end
-
-  def self.setgid?(_); end
-
-  def self.setuid?(_); end
-
-  def self.size(_); end
-
-  def self.size?(_); end
-
-  def self.socket?(_); end
-
-  def self.sticky?(_); end
-
-  def self.symlink?(_); end
-
-  def self.world_readable?(_); end
-
-  def self.world_writable?(_); end
-
-  def self.writable?(_); end
-
-  def self.writable_real?(_); end
-
-  def self.zero?(_); end
 end
 
 module FileUtils
   include ::FileUtils::StreamUtils_
-  VERSION = ::T.let(nil, ::T.untyped)
 end
 
 module FileUtils::DryRun
-  include ::FileUtils::LowMethods
   include ::FileUtils
   include ::FileUtils::StreamUtils_
+  include ::FileUtils::LowMethods
 end
 
 module FileUtils::DryRun
-  extend ::T::Sig
   extend ::FileUtils::DryRun
-  extend ::FileUtils::LowMethods
   extend ::FileUtils
   extend ::FileUtils::StreamUtils_
-end
-
-class FileUtils::Entry_
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def blockdev?(); end
-
-  def chardev?(); end
-
-  def chmod(mode); end
-
-  def chown(uid, gid); end
-
-  def copy(dest); end
-
-  def copy_file(dest); end
-
-  def copy_metadata(path); end
-
-  def dereference?(); end
-
-  def directory?(); end
-
-  def door?(); end
-
-  def entries(); end
-
-  def exist?(); end
-
-  def file?(); end
-
-  def initialize(a, b=T.unsafe(nil), deref=T.unsafe(nil)); end
-
-  def lstat(); end
-
-  def lstat!(); end
-
-  def path(); end
-
-  def pipe?(); end
-
-  def platform_support(); end
-
-  def postorder_traverse(); end
-
-  def prefix(); end
-
-  def preorder_traverse(); end
-
-  def rel(); end
-
-  def remove(); end
-
-  def remove_dir1(); end
-
-  def remove_file(); end
-
-  def socket?(); end
-
-  def stat(); end
-
-  def stat!(); end
-
-  def symlink?(); end
-
-  def traverse(); end
-
-  def wrap_traverse(pre, post); end
-end
-
-class FileUtils::Entry_
-  extend ::T::Sig
-end
-
-module FileUtils::LowMethods
-  extend ::T::Sig
+  extend ::FileUtils::LowMethods
 end
 
 module FileUtils::NoWrite
+  include ::FileUtils
+  include ::FileUtils::StreamUtils_
   include ::FileUtils::LowMethods
-  include ::FileUtils
-  include ::FileUtils::StreamUtils_
 end
 
 module FileUtils::NoWrite
-  extend ::T::Sig
   extend ::FileUtils::NoWrite
-  extend ::FileUtils::LowMethods
   extend ::FileUtils
   extend ::FileUtils::StreamUtils_
-end
-
-module FileUtils::StreamUtils_
-  extend ::T::Sig
+  extend ::FileUtils::LowMethods
 end
 
 module FileUtils::Verbose
@@ -6825,138 +6089,24 @@ module FileUtils::Verbose
 end
 
 module FileUtils::Verbose
-  extend ::T::Sig
   extend ::FileUtils::Verbose
   extend ::FileUtils
   extend ::FileUtils::StreamUtils_
 end
 
 module FileUtils
-  extend ::T::Sig
   extend ::FileUtils::StreamUtils_
-  def self.cd(dir, verbose: T.unsafe(nil), &block); end
-
-  def self.chdir(dir, verbose: T.unsafe(nil), &block); end
-
-  def self.chmod(mode, list, noop: T.unsafe(nil), verbose: T.unsafe(nil)); end
-
-  def self.chmod_R(mode, list, noop: T.unsafe(nil), verbose: T.unsafe(nil), force: T.unsafe(nil)); end
-
-  def self.chown(user, group, list, noop: T.unsafe(nil), verbose: T.unsafe(nil)); end
-
-  def self.chown_R(user, group, list, noop: T.unsafe(nil), verbose: T.unsafe(nil), force: T.unsafe(nil)); end
-
-  def self.cmp(a, b); end
-
-  def self.collect_method(opt); end
-
-  def self.commands(); end
-
-  def self.compare_file(a, b); end
-
-  def self.compare_stream(a, b); end
-
-  def self.copy(src, dest, preserve: T.unsafe(nil), noop: T.unsafe(nil), verbose: T.unsafe(nil)); end
-
-  def self.copy_entry(src, dest, preserve=T.unsafe(nil), dereference_root=T.unsafe(nil), remove_destination=T.unsafe(nil)); end
-
-  def self.copy_file(src, dest, preserve=T.unsafe(nil), dereference=T.unsafe(nil)); end
-
-  def self.copy_stream(src, dest); end
-
-  def self.cp(src, dest, preserve: T.unsafe(nil), noop: T.unsafe(nil), verbose: T.unsafe(nil)); end
-
-  def self.getwd(); end
-
-  def self.have_option?(mid, opt); end
-
-  def self.identical?(a, b); end
-
-  def self.install(src, dest, mode: T.unsafe(nil), owner: T.unsafe(nil), group: T.unsafe(nil), preserve: T.unsafe(nil), noop: T.unsafe(nil), verbose: T.unsafe(nil)); end
-
-  def self.link(src, dest, force: T.unsafe(nil), noop: T.unsafe(nil), verbose: T.unsafe(nil)); end
-
-  def self.ln(src, dest, force: T.unsafe(nil), noop: T.unsafe(nil), verbose: T.unsafe(nil)); end
-
-  def self.ln_s(src, dest, force: T.unsafe(nil), noop: T.unsafe(nil), verbose: T.unsafe(nil)); end
-
-  def self.ln_sf(src, dest, noop: T.unsafe(nil), verbose: T.unsafe(nil)); end
-
-  def self.makedirs(list, mode: T.unsafe(nil), noop: T.unsafe(nil), verbose: T.unsafe(nil)); end
-
-  def self.mkdir(list, mode: T.unsafe(nil), noop: T.unsafe(nil), verbose: T.unsafe(nil)); end
-
-  def self.mkpath(list, mode: T.unsafe(nil), noop: T.unsafe(nil), verbose: T.unsafe(nil)); end
-
-  def self.move(src, dest, force: T.unsafe(nil), noop: T.unsafe(nil), verbose: T.unsafe(nil), secure: T.unsafe(nil)); end
-
-  def self.mv(src, dest, force: T.unsafe(nil), noop: T.unsafe(nil), verbose: T.unsafe(nil), secure: T.unsafe(nil)); end
-
-  def self.options(); end
-
-  def self.options_of(mid); end
-
-  def self.private_module_function(name); end
-
-  def self.pwd(); end
-
-  def self.remove(list, force: T.unsafe(nil), noop: T.unsafe(nil), verbose: T.unsafe(nil)); end
-
-  def self.remove_dir(path, force=T.unsafe(nil)); end
-
-  def self.remove_entry(path, force=T.unsafe(nil)); end
-
-  def self.remove_entry_secure(path, force=T.unsafe(nil)); end
-
-  def self.remove_file(path, force=T.unsafe(nil)); end
-
-  def self.rm(list, force: T.unsafe(nil), noop: T.unsafe(nil), verbose: T.unsafe(nil)); end
-
-  def self.rm_f(list, noop: T.unsafe(nil), verbose: T.unsafe(nil)); end
-
-  def self.rm_rf(list, noop: T.unsafe(nil), verbose: T.unsafe(nil), secure: T.unsafe(nil)); end
-
-  def self.rmdir(list, parents: T.unsafe(nil), noop: T.unsafe(nil), verbose: T.unsafe(nil)); end
-
-  def self.rmtree(list, noop: T.unsafe(nil), verbose: T.unsafe(nil), secure: T.unsafe(nil)); end
-
-  def self.safe_unlink(list, noop: T.unsafe(nil), verbose: T.unsafe(nil)); end
-
-  def self.symlink(src, dest, force: T.unsafe(nil), noop: T.unsafe(nil), verbose: T.unsafe(nil)); end
-
-  def self.uptodate?(new, old_list); end
 end
 
 class Float
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   include ::JSON::Ext::Generator::GeneratorMethods::Float
-  def to_d(precision=T.unsafe(nil)); end
-end
-
-class Float
-  extend ::T::Sig
-end
-
-class FloatDomainError
-  extend ::T::Sig
 end
 
 module Forwardable
-  def def_delegator(accessor, method, ali=T.unsafe(nil)); end
-
-  def def_delegators(accessor, *methods); end
-
-  def def_instance_delegator(accessor, method, ali=T.unsafe(nil)); end
-
-  def def_instance_delegators(accessor, *methods); end
-
-  def delegate(hash); end
-
-  def instance_delegate(hash); end
+  VERSION = ::T.let(nil, ::T.untyped)
 end
 
 module Forwardable
-  extend ::T::Sig
   def self._compile_method(src, file, line); end
 
   def self._delegator_method(obj, accessor, method, ali); end
@@ -6969,698 +6119,36 @@ module Forwardable
 end
 
 class FrozenError
-end
-
-class FrozenError
-end
-
-module GC
-  def garbage_collect(*_); end
-end
-
-module GC::Profiler
-  extend ::T::Sig
+  def receiver(); end
 end
 
 module GC
-  extend ::T::Sig
-  def self.latest_gc_info(*_); end
+  def garbage_collect(full_mark: T.unsafe(nil), immediate_mark: T.unsafe(nil), immediate_sweep: T.unsafe(nil)); end
+end
 
-  def self.stress=(stress); end
-
-  def self.verify_internal_consistency(); end
+module GC
+  def self.verify_transient_heap_internal_consistency(); end
 end
 
 module Gem
   ConfigMap = ::T.let(nil, ::T.untyped)
   RbConfigPriorities = ::T.let(nil, ::T.untyped)
-  RubyGemsPackageVersion = ::T.let(nil, ::T.untyped)
   RubyGemsVersion = ::T.let(nil, ::T.untyped)
-  USE_BUNDLER_FOR_GEMDEPS = ::T.let(nil, ::T.untyped)
-end
-
-class Gem::AvailableSet
-  include ::Enumerable
-  def <<(o); end
-
-  def add(spec, source); end
-
-  def all_specs(); end
-
-  def each(&blk); end
-
-  def each_spec(); end
-
-  def empty?(); end
-
-  def find_all(req); end
-
-  def inject_into_list(dep_list); end
-
-  def match_platform!(); end
-
-  def pick_best!(); end
-
-  def prefetch(reqs); end
-
-  def remote(); end
-
-  def remote=(remote); end
-
-  def remove_installed!(dep); end
-
-  def set(); end
-
-  def size(); end
-
-  def sorted(); end
-
-  def source_for(spec); end
-
-  def to_request_set(development=T.unsafe(nil)); end
-end
-
-class Gem::AvailableSet::Tuple
-  def source(); end
-
-  def source=(_); end
-
-  def spec(); end
-
-  def spec=(_); end
-end
-
-class Gem::AvailableSet::Tuple
-  def self.[](*_); end
-
-  def self.members(); end
-end
-
-class Gem::AvailableSet
-end
-
-class Gem::BasicSpecification
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def activated?(); end
-
-  def base_dir(); end
-
-  def base_dir=(base_dir); end
-
-  def contains_requirable_file?(file); end
-
-  def datadir(); end
-
-  def default_gem?(); end
-
-  def extension_dir(); end
-
-  def extension_dir=(extension_dir); end
-
-  def extensions_dir(); end
-
-  def full_gem_path(); end
-
-  def full_gem_path=(full_gem_path); end
-
-  def full_name(); end
-
-  def full_require_paths(); end
-
-  def gem_build_complete_path(); end
-
-  def gem_dir(); end
-
-  def gems_dir(); end
-
-  def ignored=(ignored); end
-
-  def internal_init(); end
-
-  def lib_dirs_glob(); end
-
-  def loaded_from(); end
-
-  def loaded_from=(loaded_from); end
-
-  def matches_for_glob(glob); end
-
-  def name(); end
-
-  def platform(); end
-
-  def raw_require_paths(); end
-
-  def require_paths(); end
-
-  def source_paths(); end
-
-  def stubbed?(); end
-
-  def this(); end
-
-  def to_fullpath(path); end
-
-  def to_spec(); end
-
-  def version(); end
-end
-
-class Gem::BasicSpecification
-  extend ::T::Sig
-  def self.default_specifications_dir(); end
-end
-
-module Gem::BundlerVersionFinder
-end
-
-module Gem::BundlerVersionFinder
-  extend ::T::Sig
-  def self.bundler_version(); end
-
-  def self.bundler_version_with_reason(); end
-
-  def self.compatible?(spec); end
-
-  def self.filter!(specs); end
-
-  def self.missing_version_message(); end
-end
-
-class Gem::Command
-  include ::Gem::UserInteraction
-  include ::Gem::DefaultUserInteraction
-  include ::Gem::Text
-  def add_extra_args(args); end
-
-  def add_option(*opts, &handler); end
-
-  def arguments(); end
-
-  def begins?(long, short); end
-
-  def command(); end
-
-  def defaults(); end
-
-  def defaults=(defaults); end
-
-  def defaults_str(); end
-
-  def description(); end
-
-  def execute(); end
-
-  def get_all_gem_names(); end
-
-  def get_all_gem_names_and_versions(); end
-
-  def get_one_gem_name(); end
-
-  def get_one_optional_argument(); end
-
-  def handle_options(args); end
-
-  def handles?(args); end
-
-  def initialize(command, summary=T.unsafe(nil), defaults=T.unsafe(nil)); end
-
-  def invoke(*args); end
-
-  def invoke_with_build_args(args, build_args); end
-
-  def merge_options(new_options); end
-
-  def options(); end
-
-  def program_name(); end
-
-  def program_name=(program_name); end
-
-  def remove_option(name); end
-
-  def show_help(); end
-
-  def show_lookup_failure(gem_name, version, errors, domain); end
-
-  def summary(); end
-
-  def summary=(summary); end
-
-  def usage(); end
-
-  def when_invoked(&block); end
-  HELP = ::T.let(nil, ::T.untyped)
-end
-
-class Gem::Command
-  def self.add_common_option(*args, &handler); end
-
-  def self.add_specific_extra_args(cmd, args); end
-
-  def self.build_args(); end
-
-  def self.build_args=(value); end
-
-  def self.common_options(); end
-
-  def self.extra_args(); end
-
-  def self.extra_args=(value); end
-
-  def self.specific_extra_args(cmd); end
-
-  def self.specific_extra_args_hash(); end
-end
-
-class Gem::CommandLineError
-  extend ::T::Sig
-end
-
-module Gem::Commands
-end
-
-module Gem::Commands
-  extend ::T::Sig
-end
-
-class Gem::ConfigFile
-  include ::Gem::UserInteraction
-  include ::Gem::DefaultUserInteraction
-  include ::Gem::Text
-  def ==(other); end
-
-  def [](key); end
-
-  def []=(key, value); end
-
-  def api_keys(); end
-
-  def args(); end
-
-  def backtrace(); end
-
-  def backtrace=(backtrace); end
-
-  def bulk_threshold(); end
-
-  def bulk_threshold=(bulk_threshold); end
-
-  def check_credentials_permissions(); end
-
-  def config_file_name(); end
-
-  def credentials_path(); end
-
-  def disable_default_gem_server(); end
-
-  def disable_default_gem_server=(disable_default_gem_server); end
-
-  def each(&block); end
-
-  def handle_arguments(arg_list); end
-
-  def home(); end
-
-  def home=(home); end
-
-  def initialize(args); end
-
-  def load_api_keys(); end
-
-  def load_file(filename); end
-
-  def path(); end
-
-  def path=(path); end
-
-  def really_verbose(); end
-
-  def rubygems_api_key(); end
-
-  def rubygems_api_key=(api_key); end
-
-  def set_api_key(host, api_key); end
-
-  def sources(); end
-
-  def sources=(sources); end
-
-  def ssl_ca_cert(); end
-
-  def ssl_ca_cert=(ssl_ca_cert); end
-
-  def ssl_client_cert(); end
-
-  def ssl_verify_mode(); end
-
-  def to_yaml(); end
-
-  def unset_api_key!(); end
-
-  def update_sources(); end
-
-  def update_sources=(update_sources); end
-
-  def verbose(); end
-
-  def verbose=(verbose); end
-
-  def write(); end
-  DEFAULT_BACKTRACE = ::T.let(nil, ::T.untyped)
-  DEFAULT_BULK_THRESHOLD = ::T.let(nil, ::T.untyped)
-  DEFAULT_UPDATE_SOURCES = ::T.let(nil, ::T.untyped)
-  DEFAULT_VERBOSITY = ::T.let(nil, ::T.untyped)
-  OPERATING_SYSTEM_DEFAULTS = ::T.let(nil, ::T.untyped)
-  PLATFORM_DEFAULTS = ::T.let(nil, ::T.untyped)
-  SYSTEM_CONFIG_PATH = ::T.let(nil, ::T.untyped)
-  SYSTEM_WIDE_CONFIG_FILE = ::T.let(nil, ::T.untyped)
-end
-
-class Gem::ConfigFile
-end
-
-class Gem::ConflictError
-  def conflicts(); end
-
-  def initialize(target, conflicts); end
-
-  def target(); end
-end
-
-class Gem::ConflictError
-  extend ::T::Sig
-end
-
-class Gem::ConsoleUI
-  def initialize(); end
-end
-
-class Gem::ConsoleUI
-end
-
-module Gem::DefaultUserInteraction
-  include ::Gem::Text
-  def ui(); end
-
-  def ui=(new_ui); end
-
-  def use_ui(new_ui, &block); end
-end
-
-module Gem::DefaultUserInteraction
-  extend ::T::Sig
-  def self.ui(); end
-
-  def self.ui=(new_ui); end
-
-  def self.use_ui(new_ui); end
+  UNTAINT = ::T.let(nil, ::T.untyped)
 end
 
 class Gem::Dependency
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def ==(other); end
-
-  def ===(other); end
-
-  def =~(other); end
-
-  def all_sources(); end
-
-  def all_sources=(all_sources); end
-
-  def encode_with(coder); end
-
-  def eql?(other); end
-
-  def groups(); end
-
-  def groups=(groups); end
-
-  def initialize(name, *requirements); end
-
-  def latest_version?(); end
-
-  def match?(obj, version=T.unsafe(nil), allow_prerelease=T.unsafe(nil)); end
-
-  def matches_spec?(spec); end
-
-  def matching_specs(platform_only=T.unsafe(nil)); end
-
-  def merge(other); end
-
-  def name(); end
-
-  def name=(name); end
-
-  def prerelease=(prerelease); end
-
-  def prerelease?(); end
-
   def pretty_print(q); end
-
-  def requirement(); end
-
-  def requirements_list(); end
-
-  def runtime?(); end
-
-  def source(); end
-
-  def source=(source); end
-
-  def specific?(); end
-
-  def to_lock(); end
-
-  def to_spec(); end
-
-  def to_specs(); end
-
-  def to_yaml_properties(); end
-
-  def type(); end
 end
 
-class Gem::Dependency
-  extend ::T::Sig
-end
-
-class Gem::DependencyError
-  extend ::T::Sig
-end
-
-class Gem::DependencyInstaller
-  include ::Gem::UserInteraction
-  include ::Gem::DefaultUserInteraction
-  include ::Gem::Text
-  def _deprecated_gems_to_install(); end
-
-  def add_found_dependencies(to_do, dependency_list); end
-
-  def available_set_for(dep_or_name, version); end
-
-  def consider_local?(); end
-
-  def consider_remote?(); end
-
-  def document(); end
-
-  def errors(); end
-
-  def find_gems_with_sources(dep, best_only=T.unsafe(nil)); end
-
-  def find_spec_by_name_and_version(gem_name, version=T.unsafe(nil), prerelease=T.unsafe(nil)); end
-
-  def gather_dependencies(); end
-
-  def gems_to_install(*args, &block); end
-
-  def in_background(what); end
-
-  def initialize(options=T.unsafe(nil)); end
-
-  def install(dep_or_name, version=T.unsafe(nil)); end
-
-  def install_development_deps(); end
-
-  def installed_gems(); end
-
-  def resolve_dependencies(dep_or_name, version); end
-  DEFAULT_OPTIONS = ::T.let(nil, ::T.untyped)
-end
-
-class Gem::DependencyInstaller
+class Gem::Exception
   extend ::Gem::Deprecate
 end
 
-class Gem::DependencyList
-  include ::Enumerable
-  include ::TSort
-  def add(*gemspecs); end
-
-  def clear(); end
-
-  def dependency_order(); end
-
-  def development(); end
-
-  def development=(development); end
-
-  def each(&block); end
-
-  def find_name(full_name); end
-
-  def initialize(development=T.unsafe(nil)); end
-
-  def ok?(); end
-
-  def ok_to_remove?(full_name, check_dev=T.unsafe(nil)); end
-
-  def remove_by_name(full_name); end
-
-  def remove_specs_unsatisfied_by(dependencies); end
-
-  def spec_predecessors(); end
-
-  def specs(); end
-
-  def tsort_each_node(&block); end
-
-  def why_not_ok?(quick=T.unsafe(nil)); end
-end
-
-class Gem::DependencyList
-  def self.from_specs(); end
-end
-
-class Gem::DependencyRemovalException
-  extend ::T::Sig
-end
-
-class Gem::DependencyResolutionError
-  def conflict(); end
-
-  def conflicting_dependencies(); end
-
-  def initialize(conflict); end
-end
-
-class Gem::DependencyResolutionError
-  extend ::T::Sig
-end
-
-class Gem::Resolver
-end
-
-Gem::DependencyResolver::Conflict = Gem::Resolver::Conflict
-
-Gem::DependencyResolver::DependencyConflict = Gem::Resolver::Conflict
-
-module Gem::Resolver::Molinillo
-end
-
-Gem::DependencyResolver::Molinillo::SpecificationProvider = Gem::Resolver::Molinillo::SpecificationProvider
-
-Gem::DependencyResolver::Molinillo::UI = Gem::Resolver::Molinillo::UI
-
-module Gem::Resolver::Molinillo
-end
-
-class Gem::Resolver
-end
-
-module Gem::Deprecate
-  extend ::T::Sig
-  def self.deprecate(name, repl, year, month); end
-
-  def self.skip(); end
-
-  def self.skip=(v); end
-
-  def self.skip_during(); end
-end
-
-class Gem::DocumentError
-  extend ::T::Sig
-end
-
-class Gem::EndOfYAMLException
-  extend ::T::Sig
-end
-
-class Gem::ErrorReason
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
-
-class Gem::ErrorReason
-  extend ::T::Sig
-end
-
-class Gem::Exception
-  def source_exception(); end
-
-  def source_exception=(source_exception); end
-end
-
-class Gem::Exception
-  extend ::T::Sig
-end
-
-module Gem::Ext
-end
-
 class Gem::Ext::BuildError
 end
 
 class Gem::Ext::BuildError
-end
-
-class Gem::Ext::Builder
-  include ::Gem::UserInteraction
-  include ::Gem::DefaultUserInteraction
-  include ::Gem::Text
-  def build_args(); end
-
-  def build_args=(build_args); end
-
-  def build_error(build_dir, output, backtrace=T.unsafe(nil)); end
-
-  def build_extension(extension, dest_path); end
-
-  def build_extensions(); end
-
-  def builder_for(extension); end
-
-  def initialize(spec, build_args=T.unsafe(nil)); end
-
-  def write_gem_make_out(output); end
-  CHDIR_MONITOR = ::T.let(nil, ::T.untyped)
-  CHDIR_MUTEX = ::T.let(nil, ::T.untyped)
-end
-
-class Gem::Ext::Builder
-  def self.class_name(); end
-
-  def self.make(dest_path, results); end
-
-  def self.redirector(); end
-
-  def self.run(command, results, command_name=T.unsafe(nil)); end
-end
-
-class Gem::Ext::CmakeBuilder
-end
-
-class Gem::Ext::CmakeBuilder
-  def self.build(extension, directory, dest_path, results, args=T.unsafe(nil), lib_dir=T.unsafe(nil)); end
-end
-
-class Gem::Ext::ConfigureBuilder
-end
-
-class Gem::Ext::ConfigureBuilder
-  def self.build(extension, directory, dest_path, results, args=T.unsafe(nil), lib_dir=T.unsafe(nil)); end
 end
 
 class Gem::Ext::ExtConfBuilder
@@ -7669,367 +6157,17 @@ end
 Gem::Ext::ExtConfBuilder::FileEntry = FileUtils::Entry_
 
 class Gem::Ext::ExtConfBuilder
-  def self.build(extension, directory, dest_path, results, args=T.unsafe(nil), lib_dir=T.unsafe(nil)); end
+  def self.build(extension, dest_path, results, args=T.unsafe(nil), lib_dir=T.unsafe(nil)); end
 
   def self.get_relative_path(path); end
 end
 
-class Gem::Ext::RakeBuilder
-end
-
-class Gem::Ext::RakeBuilder
-  def self.build(extension, directory, dest_path, results, args=T.unsafe(nil), lib_dir=T.unsafe(nil)); end
-end
-
-module Gem::Ext
-  extend ::T::Sig
-end
-
-class Gem::FilePermissionError
-  def directory(); end
-
-  def initialize(directory); end
-end
-
-class Gem::FilePermissionError
-  extend ::T::Sig
-end
-
-class Gem::FormatException
-  def file_path(); end
-
-  def file_path=(file_path); end
-end
-
-class Gem::FormatException
-  extend ::T::Sig
-end
-
-class Gem::GemNotFoundException
-  extend ::T::Sig
-end
-
-class Gem::GemNotInHomeException
-  def spec(); end
-
-  def spec=(spec); end
-end
-
-class Gem::GemNotInHomeException
-  extend ::T::Sig
-end
-
-class Gem::ImpossibleDependenciesError
-  def build_message(); end
-
-  def conflicts(); end
-
-  def dependency(); end
-
-  def initialize(request, conflicts); end
-
-  def request(); end
-end
-
-class Gem::ImpossibleDependenciesError
-  extend ::T::Sig
-end
-
-class Gem::InstallError
-  extend ::T::Sig
-end
-
-class Gem::Installer
-  include ::Gem::UserInteraction
-  include ::Gem::DefaultUserInteraction
-  include ::Gem::Text
-  def app_script_text(bin_file_name); end
-
-  def bin_dir(); end
-
-  def build_extensions(); end
-
-  def build_root(); end
-
-  def check_executable_overwrite(filename); end
-
-  def check_that_user_bin_dir_is_in_path(); end
-
-  def default_spec_file(); end
-
-  def dir(); end
-
-  def ensure_dependencies_met(); end
-
-  def ensure_dependency(spec, dependency); end
-
-  def ensure_loadable_spec(); end
-
-  def ensure_required_ruby_version_met(); end
-
-  def ensure_required_rubygems_version_met(); end
-
-  def extension_build_error(build_dir, output, backtrace=T.unsafe(nil)); end
-
-  def extract_bin(); end
-
-  def extract_files(); end
-
-  def formatted_program_filename(filename); end
-
-  def gem(); end
-
-  def gem_dir(); end
-
-  def gem_home(); end
-
-  def generate_bin(); end
-
-  def generate_bin_script(filename, bindir); end
-
-  def generate_bin_symlink(filename, bindir); end
-
-  def generate_windows_script(filename, bindir); end
-
-  def initialize(package, options=T.unsafe(nil)); end
-
-  def install(); end
-
-  def installation_satisfies_dependency?(dependency); end
-
-  def installed_specs(); end
-
-  def options(); end
-
-  def pre_install_checks(); end
-
-  def process_options(); end
-
-  def run_post_build_hooks(); end
-
-  def run_post_install_hooks(); end
-
-  def run_pre_install_hooks(); end
-
-  def shebang(bin_file_name); end
-
-  def spec(); end
-
-  def spec_file(); end
-
-  def unpack(directory); end
-
-  def verify_gem_home(unpack=T.unsafe(nil)); end
-
-  def verify_spec(); end
-
-  def windows_stub_script(bindir, bin_file_name); end
-
-  def write_build_info_file(); end
-
-  def write_cache_file(); end
-
-  def write_default_spec(); end
-
-  def write_spec(); end
-  ENV_PATHS = ::T.let(nil, ::T.untyped)
-end
-
-class Gem::Installer
-  def self.at(path, options=T.unsafe(nil)); end
-
-  def self.exec_format(); end
-
-  def self.exec_format=(exec_format); end
-
-  def self.for_spec(spec, options=T.unsafe(nil)); end
-
-  def self.install_lock(); end
-
-  def self.path_warning(); end
-
-  def self.path_warning=(path_warning); end
-end
-
-class Gem::InvalidSpecificationException
-  extend ::T::Sig
-end
-
-class Gem::Licenses
-  IDENTIFIERS = ::T.let(nil, ::T.untyped)
-  NONSTANDARD = ::T.let(nil, ::T.untyped)
-  REGEXP = ::T.let(nil, ::T.untyped)
-end
-
-class Gem::Licenses
-  extend ::Gem::Text
-  def self.match?(license); end
-
-  def self.suggestions(license); end
-end
-
 class Gem::List
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def each(&blk); end
-
-  def initialize(value=T.unsafe(nil), tail=T.unsafe(nil)); end
-
-  def prepend(value); end
-
   def pretty_print(q); end
-
-  def tail(); end
-
-  def tail=(tail); end
-
-  def to_a(); end
-
-  def value(); end
-
-  def value=(value); end
-end
-
-class Gem::List
-  extend ::T::Sig
-  def self.prepend(list, value); end
-end
-
-class Gem::LoadError
-  def name(); end
-
-  def name=(name); end
-
-  def requirement(); end
-
-  def requirement=(requirement); end
-end
-
-class Gem::LoadError
-  extend ::T::Sig
-end
-
-class Gem::MissingSpecError
-  def initialize(name, requirement); end
-end
-
-class Gem::MissingSpecError
-  extend ::T::Sig
-end
-
-class Gem::MissingSpecVersionError
-  def initialize(name, requirement, specs); end
-
-  def specs(); end
-end
-
-class Gem::MissingSpecVersionError
-  extend ::T::Sig
-end
-
-class Gem::NameTuple
-  include ::Comparable
-  def ==(other); end
-
-  def eql?(other); end
-
-  def full_name(); end
-
-  def initialize(name, version, platform=T.unsafe(nil)); end
-
-  def match_platform?(); end
-
-  def name(); end
-
-  def platform(); end
-
-  def prerelease?(); end
-
-  def spec_name(); end
-
-  def to_a(); end
-
-  def version(); end
-end
-
-class Gem::NameTuple
-  def self.from_list(list); end
-
-  def self.null(); end
-
-  def self.to_basic(list); end
-end
-
-class Gem::OperationNotSupportedError
-  extend ::T::Sig
 end
 
 class Gem::Package
-  include ::Gem::UserInteraction
-  include ::Gem::DefaultUserInteraction
-  include ::Gem::Text
-  def add_checksums(tar); end
-
-  def add_contents(tar); end
-
-  def add_files(tar); end
-
-  def add_metadata(tar); end
-
-  def build(skip_validation=T.unsafe(nil)); end
-
-  def build_time(); end
-
-  def build_time=(build_time); end
-
-  def checksums(); end
-
-  def contents(); end
-
-  def copy_to(path); end
-
-  def digest(entry); end
-
-  def extract_files(destination_dir, pattern=T.unsafe(nil)); end
-
-  def extract_tar_gz(io, destination_dir, pattern=T.unsafe(nil)); end
-
-  def files(); end
-
-  def gzip_to(io); end
-
-  def initialize(gem, security_policy); end
-
-  def install_location(filename, destination_dir); end
-
-  def load_spec(entry); end
-
-  def mkdir_p_safe(mkdir, mkdir_options, destination_dir, file_name); end
-
-  def open_tar_gz(io); end
-
-  def read_checksums(gem); end
-
-  def realpath(file); end
-
-  def security_policy(); end
-
-  def security_policy=(security_policy); end
-
-  def setup_signer(); end
-
-  def spec(); end
-
-  def spec=(spec); end
-
-  def verify(); end
-
-  def verify_checksums(digests, checksums); end
-
-  def verify_entry(entry); end
-
-  def verify_files(gem); end
-
-  def verify_gz(entry); end
+  def gem(); end
 end
 
 class Gem::Package::DigestIO
@@ -8042,12 +6180,6 @@ end
 
 class Gem::Package::DigestIO
   def self.wrap(io, digests); end
-end
-
-class Gem::Package::Error
-end
-
-class Gem::Package::Error
 end
 
 class Gem::Package::FileSource
@@ -8063,15 +6195,6 @@ class Gem::Package::FileSource
 end
 
 class Gem::Package::FileSource
-end
-
-class Gem::Package::FormatError
-  def initialize(message, source=T.unsafe(nil)); end
-
-  def path(); end
-end
-
-class Gem::Package::FormatError
 end
 
 class Gem::Package::IOSource
@@ -8091,12 +6214,6 @@ end
 class Gem::Package::IOSource
 end
 
-class Gem::Package::NonSeekableIO
-end
-
-class Gem::Package::NonSeekableIO
-end
-
 class Gem::Package::Old
   def extract_files(destination_dir); end
 
@@ -8108,13 +6225,6 @@ class Gem::Package::Old
 end
 
 class Gem::Package::Old
-end
-
-class Gem::Package::PathError
-  def initialize(destination, destination_dir); end
-end
-
-class Gem::Package::PathError
 end
 
 class Gem::Package::Source
@@ -8163,6 +6273,7 @@ class Gem::Package::TarHeader
   def update_checksum(); end
 
   def version(); end
+  EMPTY_HEADER = ::T.let(nil, ::T.untyped)
   FIELDS = ::T.let(nil, ::T.untyped)
   PACK_FORMAT = ::T.let(nil, ::T.untyped)
   UNPACK_FORMAT = ::T.let(nil, ::T.untyped)
@@ -8171,28 +6282,9 @@ end
 class Gem::Package::TarHeader
   def self.from(stream); end
 
+  def self.oct_or_256based(str); end
+
   def self.strict_oct(str); end
-end
-
-class Gem::Package::TarInvalidError
-end
-
-class Gem::Package::TarInvalidError
-end
-
-class Gem::Package::TarReader
-  include ::Enumerable
-  def close(); end
-
-  def each(&blk); end
-
-  def each_entry(); end
-
-  def initialize(io); end
-
-  def rewind(); end
-
-  def seek(name); end
 end
 
 class Gem::Package::TarReader::Entry
@@ -8218,13 +6310,17 @@ class Gem::Package::TarReader::Entry
 
   def initialize(header, io); end
 
+  def length(); end
+
   def pos(); end
 
   def read(len=T.unsafe(nil)); end
 
-  def readpartial(len=T.unsafe(nil)); end
+  def readpartial(maxlen=T.unsafe(nil), outbuf=T.unsafe(nil)); end
 
   def rewind(); end
+
+  def size(); end
 
   def symlink?(); end
 end
@@ -8232,88 +6328,21 @@ end
 class Gem::Package::TarReader::Entry
 end
 
-class Gem::Package::TarReader::UnexpectedEOF
-end
-
-class Gem::Package::TarReader::UnexpectedEOF
-end
-
 class Gem::Package::TarReader
   def self.new(io); end
 end
 
 class Gem::Package::TarWriter
-  def add_file(name, mode); end
-
-  def add_file_digest(name, mode, digest_algorithms); end
-
-  def add_file_signed(name, mode, signer); end
-
-  def add_file_simple(name, mode, size); end
-
-  def add_symlink(name, target, mode); end
-
-  def check_closed(); end
-
-  def close(); end
-
-  def closed?(); end
-
-  def flush(); end
-
-  def initialize(io); end
-
-  def mkdir(name, mode); end
-
-  def split_name(name); end
-end
-
-class Gem::Package::TarWriter::BoundedStream
-  def initialize(io, limit); end
-
-  def limit(); end
-
-  def write(data); end
-
-  def written(); end
-end
-
-class Gem::Package::TarWriter::BoundedStream
-end
-
-class Gem::Package::TarWriter::FileOverflow
-end
-
-class Gem::Package::TarWriter::FileOverflow
-end
-
-class Gem::Package::TarWriter::RestrictedStream
-  def initialize(io); end
-
-  def write(data); end
-end
-
-class Gem::Package::TarWriter::RestrictedStream
-end
-
-class Gem::Package::TarWriter
   def self.new(io); end
 end
 
-class Gem::Package::TooLongFileName
-end
-
-class Gem::Package::TooLongFileName
-end
-
 class Gem::Package
-  def self.build(spec, skip_validation=T.unsafe(nil)); end
-
   def self.new(gem, security_policy=T.unsafe(nil)); end
+
+  def self.raw_spec(path, security_policy=T.unsafe(nil)); end
 end
 
 class Gem::PathSupport
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   def home(); end
 
   def initialize(env); end
@@ -8323,678 +6352,56 @@ class Gem::PathSupport
   def spec_cache_dir(); end
 end
 
-class Gem::PathSupport
-  extend ::T::Sig
+class Gem::RemoteFetcher::FetchError
+  include ::Gem::UriParsing
+  def initialize(message, uri); end
+
+  def uri(); end
+
+  def uri=(uri); end
 end
 
-class Gem::Platform
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def ==(other); end
-
-  def ===(other); end
-
-  def =~(other); end
-
-  def cpu(); end
-
-  def cpu=(cpu); end
-
-  def eql?(other); end
-
-  def initialize(arch); end
-
-  def os(); end
-
-  def os=(os); end
-
-  def to_a(); end
-
-  def version(); end
-
-  def version=(version); end
-  JAVA = ::T.let(nil, ::T.untyped)
-  MINGW = ::T.let(nil, ::T.untyped)
-  MSWIN = ::T.let(nil, ::T.untyped)
-  MSWIN64 = ::T.let(nil, ::T.untyped)
-  X64_MINGW = ::T.let(nil, ::T.untyped)
+class Gem::RemoteFetcher::FetchError
 end
 
-class Gem::Platform
-  extend ::T::Sig
-  def self.installable?(spec); end
-
-  def self.local(); end
-
-  def self.match(platform); end
-
-  def self.new(arch); end
+class Gem::RemoteFetcher::UnknownHostError
 end
 
-class Gem::PlatformMismatch
-  def add_platform(platform); end
-
-  def initialize(name, version); end
-
-  def name(); end
-
-  def platforms(); end
-
-  def version(); end
-
-  def wordy(); end
-end
-
-class Gem::PlatformMismatch
-  extend ::T::Sig
-end
-
-class Gem::RemoteError
-  extend ::T::Sig
-end
-
-class Gem::RemoteFetcher
-  include ::Gem::UserInteraction
-  include ::Gem::DefaultUserInteraction
-  include ::Gem::Text
-  def api_endpoint(uri); end
-
-  def cache_update_path(uri, path=T.unsafe(nil), update=T.unsafe(nil)); end
-
-  def close_all(); end
-
-  def correct_for_windows_path(path); end
-
-  def download(spec, source_uri, install_dir=T.unsafe(nil)); end
-
-  def download_to_cache(dependency); end
-
-  def fetch_file(uri, *_); end
-
-  def fetch_http(uri, last_modified=T.unsafe(nil), head=T.unsafe(nil), depth=T.unsafe(nil)); end
-
-  def fetch_https(uri, last_modified=T.unsafe(nil), head=T.unsafe(nil), depth=T.unsafe(nil)); end
-
-  def fetch_path(uri, mtime=T.unsafe(nil), head=T.unsafe(nil)); end
-
-  def fetch_s3(uri, mtime=T.unsafe(nil), head=T.unsafe(nil)); end
-
-  def fetch_size(uri); end
-
-  def headers(); end
-
-  def headers=(headers); end
-
-  def https?(uri); end
-
-  def initialize(proxy=T.unsafe(nil), dns=T.unsafe(nil), headers=T.unsafe(nil)); end
-
-  def request(uri, request_class, last_modified=T.unsafe(nil)); end
-
-  def s3_expiration(); end
-
-  def sign_s3_url(uri, expiration=T.unsafe(nil)); end
-  BASE64_URI_TRANSLATE = ::T.let(nil, ::T.untyped)
-end
-
-class Gem::RemoteFetcher
-  def self.fetcher(); end
-end
-
-class Gem::RemoteInstallationCancelled
-  extend ::T::Sig
-end
-
-class Gem::RemoteInstallationSkipped
-  extend ::T::Sig
-end
-
-class Gem::RemoteSourceException
-  extend ::T::Sig
-end
-
-class Gem::Request
-  include ::Gem::UserInteraction
-  include ::Gem::DefaultUserInteraction
-  include ::Gem::Text
-  def cert_files(); end
-
-  def connection_for(uri); end
-
-  def fetch(); end
-
-  def initialize(uri, request_class, last_modified, pool); end
-
-  def perform_request(request); end
-
-  def proxy_uri(); end
-
-  def reset(connection); end
-
-  def user_agent(); end
-end
-
-class Gem::Request::ConnectionPools
-  def close_all(); end
-
-  def initialize(proxy_uri, cert_files); end
-
-  def pool_for(uri); end
-end
-
-class Gem::Request::ConnectionPools
-  def self.client(); end
-
-  def self.client=(client); end
-end
-
-class Gem::Request::HTTPPool
-  def cert_files(); end
-
-  def checkin(connection); end
-
-  def checkout(); end
-
-  def close_all(); end
-
-  def initialize(http_args, cert_files, proxy_uri); end
-
-  def proxy_uri(); end
-end
-
-class Gem::Request::HTTPPool
-end
-
-class Gem::Request::HTTPSPool
-end
-
-class Gem::Request::HTTPSPool
+class Gem::RemoteFetcher::UnknownHostError
 end
 
 class Gem::Request
   extend ::Gem::UserInteraction
   extend ::Gem::DefaultUserInteraction
   extend ::Gem::Text
-  def self.configure_connection_for_https(connection, cert_files); end
-
-  def self.create_with_proxy(uri, request_class, last_modified, proxy); end
-
-  def self.get_cert_files(); end
-
-  def self.get_proxy_from_env(scheme=T.unsafe(nil)); end
-
-  def self.proxy_uri(proxy); end
-
-  def self.verify_certificate(store_context); end
-
-  def self.verify_certificate_message(error_number, cert); end
 end
 
 class Gem::RequestSet
-  include ::TSort
-  def always_install(); end
-
-  def always_install=(always_install); end
-
-  def dependencies(); end
-
-  def development(); end
-
-  def development=(development); end
-
-  def development_shallow(); end
-
-  def development_shallow=(development_shallow); end
-
-  def errors(); end
-
-  def gem(name, *reqs); end
-
-  def git_set(); end
-
-  def ignore_dependencies(); end
-
-  def ignore_dependencies=(ignore_dependencies); end
-
-  def import(deps); end
-
-  def initialize(*deps); end
-
-  def install(options, &block); end
-
-  def install_dir(); end
-
-  def install_from_gemdeps(options, &block); end
-
-  def install_into(dir, force=T.unsafe(nil), options=T.unsafe(nil)); end
-
-  def load_gemdeps(path, without_groups=T.unsafe(nil), installing=T.unsafe(nil)); end
-
-  def prerelease(); end
-
-  def prerelease=(prerelease); end
-
   def pretty_print(q); end
-
-  def remote(); end
-
-  def remote=(remote); end
-
-  def resolve(set=T.unsafe(nil)); end
-
-  def resolve_current(); end
-
-  def resolver(); end
-
-  def sets(); end
-
-  def soft_missing(); end
-
-  def soft_missing=(soft_missing); end
-
-  def sorted_requests(); end
-
-  def source_set(); end
-
-  def specs(); end
-
-  def specs_in(dir); end
-
-  def tsort_each_node(&block); end
-
-  def vendor_set(); end
-end
-
-Gem::RequestSet::GemDepedencyAPI = Gem::RequestSet::GemDependencyAPI
-
-class Gem::RequestSet::GemDependencyAPI
-  def dependencies(); end
-
-  def find_gemspec(name, path); end
-
-  def gem(name, *requirements); end
-
-  def gem_deps_file(); end
-
-  def gem_git_reference(options); end
-
-  def gemspec(options=T.unsafe(nil)); end
-
-  def git(repository); end
-
-  def git_set(); end
-
-  def git_source(name, &callback); end
-
-  def group(*groups); end
-
-  def initialize(set, path); end
-
-  def installing=(installing); end
-
-  def load(); end
-
-  def platform(*platforms); end
-
-  def platforms(*platforms); end
-
-  def requires(); end
-
-  def ruby(version, options=T.unsafe(nil)); end
-
-  def source(url); end
-
-  def vendor_set(); end
-
-  def without_groups(); end
-
-  def without_groups=(without_groups); end
-  ENGINE_MAP = ::T.let(nil, ::T.untyped)
-  PLATFORM_MAP = ::T.let(nil, ::T.untyped)
-  VERSION_MAP = ::T.let(nil, ::T.untyped)
-  WINDOWS = ::T.let(nil, ::T.untyped)
-end
-
-class Gem::RequestSet::GemDependencyAPI
-end
-
-class Gem::RequestSet::Lockfile
-  def add_DEPENDENCIES(out); end
-
-  def add_GEM(out, spec_groups); end
-
-  def add_GIT(out, git_requests); end
-
-  def add_PATH(out, path_requests); end
-
-  def add_PLATFORMS(out); end
-
-  def initialize(request_set, gem_deps_file, dependencies); end
-
-  def platforms(); end
-
-  def relative_path_from(dest, base); end
-
-  def spec_groups(); end
-
-  def write(); end
-end
-
-class Gem::RequestSet::Lockfile::ParseError
-  def column(); end
-
-  def initialize(message, column, line, path); end
-
-  def line(); end
-
-  def path(); end
-end
-
-class Gem::RequestSet::Lockfile::ParseError
-end
-
-class Gem::RequestSet::Lockfile::Parser
-  def get(expected_types=T.unsafe(nil), expected_value=T.unsafe(nil)); end
-
-  def initialize(tokenizer, set, platforms, filename=T.unsafe(nil)); end
-
-  def parse(); end
-
-  def parse_DEPENDENCIES(); end
-
-  def parse_GEM(); end
-
-  def parse_GIT(); end
-
-  def parse_PATH(); end
-
-  def parse_PLATFORMS(); end
-
-  def parse_dependency(name, op); end
-end
-
-class Gem::RequestSet::Lockfile::Parser
-end
-
-class Gem::RequestSet::Lockfile::Tokenizer
-  def empty?(); end
-
-  def initialize(input, filename=T.unsafe(nil), line=T.unsafe(nil), pos=T.unsafe(nil)); end
-
-  def make_parser(set, platforms); end
-
-  def next_token(); end
-
-  def peek(); end
-
-  def shift(); end
-
-  def skip(type); end
-
-  def to_a(); end
-
-  def token_pos(byte_offset); end
-
-  def unshift(token); end
-  EOF = ::T.let(nil, ::T.untyped)
-end
-
-class Gem::RequestSet::Lockfile::Tokenizer::Token
-  def column(); end
-
-  def column=(_); end
-
-  def line(); end
-
-  def line=(_); end
-
-  def type(); end
-
-  def type=(_); end
-
-  def value(); end
-
-  def value=(_); end
-end
-
-class Gem::RequestSet::Lockfile::Tokenizer::Token
-  def self.[](*_); end
-
-  def self.members(); end
-end
-
-class Gem::RequestSet::Lockfile::Tokenizer
-  def self.from_file(file); end
-end
-
-class Gem::RequestSet::Lockfile
-  def self.build(request_set, gem_deps_file, dependencies=T.unsafe(nil)); end
-
-  def self.requests_to_deps(requests); end
-end
-
-class Gem::RequestSet
 end
 
 class Gem::Requirement
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def ==(other); end
-
-  def ===(version); end
-
-  def =~(version); end
-
-  def as_list(); end
-
-  def concat(new); end
-
-  def encode_with(coder); end
-
-  def exact?(); end
-
-  def for_lockfile(); end
-
-  def init_with(coder); end
-
-  def initialize(*requirements); end
-
-  def marshal_dump(); end
-
-  def marshal_load(array); end
-
-  def none?(); end
-
-  def prerelease?(); end
-
   def pretty_print(q); end
-
-  def requirements(); end
-
-  def satisfied_by?(version); end
-
-  def specific?(); end
-
-  def to_yaml_properties(); end
-
-  def yaml_initialize(tag, vals); end
-  DefaultRequirement = ::T.let(nil, ::T.untyped)
-end
-
-class Gem::Requirement::BadRequirementError
-  extend ::T::Sig
-end
-
-class Gem::Requirement
-  extend ::T::Sig
-  def self.create(*inputs); end
-
-  def self.default(); end
-
-  def self.parse(obj); end
-
-  def self.source_set(); end
-end
-
-class Gem::Resolver
-  include ::Gem::Resolver::Molinillo::UI
-  include ::Gem::Resolver::Molinillo::SpecificationProvider
-  def activation_request(dep, possible); end
-
-  def development(); end
-
-  def development=(development); end
-
-  def development_shallow(); end
-
-  def development_shallow=(development_shallow); end
-
-  def explain(stage, *data); end
-
-  def explain_list(stage); end
-
-  def find_possible(dependency); end
-
-  def ignore_dependencies(); end
-
-  def ignore_dependencies=(ignore_dependencies); end
-
-  def initialize(needed, set=T.unsafe(nil)); end
-
-  def missing(); end
-
-  def requests(s, act, reqs=T.unsafe(nil)); end
-
-  def resolve(); end
-
-  def select_local_platforms(specs); end
-
-  def skip_gems(); end
-
-  def skip_gems=(skip_gems); end
-
-  def soft_missing(); end
-
-  def soft_missing=(soft_missing); end
-
-  def stats(); end
-  DEBUG_RESOLVER = ::T.let(nil, ::T.untyped)
 end
 
 class Gem::Resolver::APISet
-  def dep_uri(); end
-
-  def initialize(dep_uri=T.unsafe(nil)); end
-
-  def prefetch_now(); end
-
-  def pretty_print(q); end
-
-  def source(); end
-
-  def uri(); end
-
-  def versions(name); end
-end
-
-class Gem::Resolver::APISet
-end
-
-class Gem::Resolver::APISpecification
-  def ==(other); end
-
-  def initialize(set, api_data); end
-
   def pretty_print(q); end
 end
 
 class Gem::Resolver::APISpecification
+  def pretty_print(q); end
 end
 
 class Gem::Resolver::ActivationRequest
-  def ==(other); end
-
-  def development?(); end
-
-  def download(path); end
-
-  def full_name(); end
-
-  def full_spec(); end
-
-  def initialize(spec, request, others_possible=T.unsafe(nil)); end
-
-  def installed?(); end
-
-  def name(); end
-
-  def others_possible?(); end
-
-  def parent(); end
-
   def pretty_print(q); end
-
-  def request(); end
-
-  def spec(); end
-
-  def version(); end
-end
-
-class Gem::Resolver::ActivationRequest
 end
 
 class Gem::Resolver::BestSet
-  def initialize(sources=T.unsafe(nil)); end
-
-  def pick_sets(); end
-
   def pretty_print(q); end
-
-  def replace_failed_api_set(error); end
-end
-
-class Gem::Resolver::BestSet
-end
-
-class Gem::Resolver::ComposedSet
-  def initialize(*sets); end
-
-  def prerelease=(allow_prerelease); end
-
-  def remote=(remote); end
-
-  def sets(); end
-end
-
-class Gem::Resolver::ComposedSet
 end
 
 class Gem::Resolver::Conflict
-  def ==(other); end
-
-  def activated(); end
-
-  def conflicting_dependencies(); end
-
-  def dependency(); end
-
-  def explain(); end
-
-  def explanation(); end
-
-  def failed_dep(); end
-
-  def for_spec?(spec); end
-
-  def initialize(dependency, activated, failed_dep=T.unsafe(nil)); end
-
   def pretty_print(q); end
-
-  def request_path(current); end
-
-  def requester(); end
-end
-
-class Gem::Resolver::Conflict
 end
 
 class Gem::Resolver::CurrentSet
@@ -9004,132 +6411,31 @@ class Gem::Resolver::CurrentSet
 end
 
 class Gem::Resolver::DependencyRequest
-  def ==(other); end
-
-  def dependency(); end
-
-  def development?(); end
-
-  def explicit?(); end
-
-  def implicit?(); end
-
-  def initialize(dependency, requester); end
-
-  def match?(spec, allow_prerelease=T.unsafe(nil)); end
-
-  def matches_spec?(spec); end
-
-  def name(); end
-
   def pretty_print(q); end
-
-  def request_context(); end
-
-  def requester(); end
-
-  def requirement(); end
-
-  def type(); end
-end
-
-class Gem::Resolver::DependencyRequest
 end
 
 class Gem::Resolver::GitSet
-  def add_git_gem(name, repository, reference, submodules); end
-
-  def add_git_spec(name, version, repository, reference, submodules); end
-
-  def need_submodules(); end
-
-  def pretty_print(q); end
-
-  def repositories(); end
-
-  def root_dir(); end
-
-  def root_dir=(root_dir); end
-
-  def specs(); end
-end
-
-class Gem::Resolver::GitSet
-end
-
-class Gem::Resolver::GitSpecification
-  def ==(other); end
-
-  def add_dependency(dependency); end
-
   def pretty_print(q); end
 end
 
 class Gem::Resolver::GitSpecification
-end
-
-class Gem::Resolver::IndexSet
-  def initialize(source=T.unsafe(nil)); end
-
   def pretty_print(q); end
 end
 
 class Gem::Resolver::IndexSet
-end
-
-class Gem::Resolver::IndexSpecification
-  def initialize(set, name, version, source, platform); end
-
   def pretty_print(q); end
 end
 
 class Gem::Resolver::IndexSpecification
-end
-
-class Gem::Resolver::InstalledSpecification
-  def ==(other); end
-
   def pretty_print(q); end
 end
 
 class Gem::Resolver::InstalledSpecification
-end
-
-class Gem::Resolver::InstallerSet
-  def add_always_install(dependency); end
-
-  def add_local(dep_name, spec, source); end
-
-  def always_install(); end
-
-  def consider_local?(); end
-
-  def consider_remote?(); end
-
-  def ignore_dependencies(); end
-
-  def ignore_dependencies=(ignore_dependencies); end
-
-  def ignore_installed(); end
-
-  def ignore_installed=(ignore_installed); end
-
-  def initialize(domain); end
-
-  def load_spec(name, ver, platform, source); end
-
-  def local?(dep_name); end
-
-  def prerelease=(allow_prerelease); end
-
   def pretty_print(q); end
-
-  def remote=(remote); end
-
-  def remote_set(); end
 end
 
 class Gem::Resolver::InstallerSet
+  def pretty_print(q); end
 end
 
 class Gem::Resolver::LocalSpecification
@@ -9140,219 +6446,11 @@ class Gem::Resolver::LocalSpecification
 end
 
 class Gem::Resolver::LockSet
-  def add(name, version, platform); end
-
-  def initialize(sources); end
-
-  def load_spec(name, version, platform, source); end
-
   def pretty_print(q); end
-
-  def specs(); end
-end
-
-class Gem::Resolver::LockSet
 end
 
 class Gem::Resolver::LockSpecification
-  def add_dependency(dependency); end
-
-  def initialize(set, name, version, sources, platform); end
-
   def pretty_print(q); end
-
-  def sources(); end
-end
-
-class Gem::Resolver::LockSpecification
-end
-
-module Gem::Resolver::Molinillo
-  VERSION = ::T.let(nil, ::T.untyped)
-end
-
-class Gem::Resolver::Molinillo::CircularDependencyError
-  def dependencies(); end
-
-  def initialize(nodes); end
-end
-
-class Gem::Resolver::Molinillo::CircularDependencyError
-end
-
-module Gem::Resolver::Molinillo::Delegates
-end
-
-module Gem::Resolver::Molinillo::Delegates::ResolutionState
-  def activated(); end
-
-  def conflicts(); end
-
-  def depth(); end
-
-  def name(); end
-
-  def possibilities(); end
-
-  def requirement(); end
-
-  def requirements(); end
-end
-
-module Gem::Resolver::Molinillo::Delegates::ResolutionState
-  extend ::T::Sig
-end
-
-module Gem::Resolver::Molinillo::Delegates::SpecificationProvider
-  def allow_missing?(dependency); end
-
-  def dependencies_for(specification); end
-
-  def name_for(dependency); end
-
-  def name_for_explicit_dependency_source(); end
-
-  def name_for_locking_dependency_source(); end
-
-  def requirement_satisfied_by?(requirement, activated, spec); end
-
-  def search_for(dependency); end
-
-  def sort_dependencies(dependencies, activated, conflicts); end
-end
-
-module Gem::Resolver::Molinillo::Delegates::SpecificationProvider
-  extend ::T::Sig
-end
-
-module Gem::Resolver::Molinillo::Delegates
-  extend ::T::Sig
-end
-
-class Gem::Resolver::Molinillo::DependencyGraph
-  include ::Enumerable
-  include ::TSort
-  def ==(other); end
-
-  def add_child_vertex(name, payload, parent_names, requirement); end
-
-  def add_edge(origin, destination, requirement); end
-
-  def add_vertex(name, payload, root=T.unsafe(nil)); end
-
-  def delete_edge(edge); end
-
-  def detach_vertex_named(name); end
-
-  def each(&blk); end
-
-  def log(); end
-
-  def rewind_to(tag); end
-
-  def root_vertex_named(name); end
-
-  def set_payload(name, payload); end
-
-  def tag(tag); end
-
-  def to_dot(options=T.unsafe(nil)); end
-
-  def tsort_each_child(vertex, &block); end
-
-  def vertex_named(name); end
-
-  def vertices(); end
-end
-
-class Gem::Resolver::Molinillo::DependencyGraph::Action
-  def down(graph); end
-
-  def next(); end
-
-  def next=(_); end
-
-  def previous(); end
-
-  def previous=(previous); end
-
-  def up(graph); end
-end
-
-class Gem::Resolver::Molinillo::DependencyGraph::Action
-  def self.action_name(); end
-end
-
-class Gem::Resolver::Molinillo::DependencyGraph::AddEdgeNoCircular
-  def destination(); end
-
-  def initialize(origin, destination, requirement); end
-
-  def make_edge(graph); end
-
-  def origin(); end
-
-  def requirement(); end
-end
-
-class Gem::Resolver::Molinillo::DependencyGraph::AddEdgeNoCircular
-end
-
-class Gem::Resolver::Molinillo::DependencyGraph::AddVertex
-  def initialize(name, payload, root); end
-
-  def name(); end
-
-  def payload(); end
-
-  def root(); end
-end
-
-class Gem::Resolver::Molinillo::DependencyGraph::AddVertex
-end
-
-class Gem::Resolver::Molinillo::DependencyGraph::DeleteEdge
-  def destination_name(); end
-
-  def initialize(origin_name, destination_name, requirement); end
-
-  def make_edge(graph); end
-
-  def origin_name(); end
-
-  def requirement(); end
-end
-
-class Gem::Resolver::Molinillo::DependencyGraph::DeleteEdge
-end
-
-class Gem::Resolver::Molinillo::DependencyGraph::DetachVertexNamed
-  def initialize(name); end
-
-  def name(); end
-end
-
-class Gem::Resolver::Molinillo::DependencyGraph::DetachVertexNamed
-end
-
-class Gem::Resolver::Molinillo::DependencyGraph::Edge
-  def destination(); end
-
-  def destination=(_); end
-
-  def origin(); end
-
-  def origin=(_); end
-
-  def requirement(); end
-
-  def requirement=(_); end
-end
-
-class Gem::Resolver::Molinillo::DependencyGraph::Edge
-  def self.[](*_); end
-
-  def self.members(); end
 end
 
 class Gem::Resolver::Molinillo::DependencyGraph::Log
@@ -9381,420 +6479,8 @@ class Gem::Resolver::Molinillo::DependencyGraph::Log
   extend ::Enumerable
 end
 
-class Gem::Resolver::Molinillo::DependencyGraph::SetPayload
-  def initialize(name, payload); end
-
-  def name(); end
-
-  def payload(); end
-end
-
-class Gem::Resolver::Molinillo::DependencyGraph::SetPayload
-end
-
-class Gem::Resolver::Molinillo::DependencyGraph::Tag
-  def down(_graph); end
-
-  def initialize(tag); end
-
-  def tag(); end
-
-  def up(_graph); end
-end
-
-class Gem::Resolver::Molinillo::DependencyGraph::Tag
-end
-
-class Gem::Resolver::Molinillo::DependencyGraph::Vertex
-  def ==(other); end
-
-  def ancestor?(other); end
-
-  def descendent?(other); end
-
-  def eql?(other); end
-
-  def explicit_requirements(); end
-
-  def incoming_edges(); end
-
-  def incoming_edges=(incoming_edges); end
-
-  def initialize(name, payload); end
-
-  def is_reachable_from?(other); end
-
-  def name(); end
-
-  def name=(name); end
-
-  def outgoing_edges(); end
-
-  def outgoing_edges=(outgoing_edges); end
-
-  def path_to?(other); end
-
-  def payload(); end
-
-  def payload=(payload); end
-
-  def predecessors(); end
-
-  def recursive_predecessors(); end
-
-  def recursive_successors(); end
-
-  def requirements(); end
-
-  def root(); end
-
-  def root=(root); end
-
-  def root?(); end
-
-  def shallow_eql?(other); end
-
-  def successors(); end
-end
-
-class Gem::Resolver::Molinillo::DependencyGraph::Vertex
-end
-
-class Gem::Resolver::Molinillo::DependencyGraph
-  def self.tsort(vertices); end
-end
-
-class Gem::Resolver::Molinillo::DependencyState
-  def pop_possibility_state(); end
-end
-
-class Gem::Resolver::Molinillo::DependencyState
-end
-
-class Gem::Resolver::Molinillo::NoSuchDependencyError
-  def dependency(); end
-
-  def dependency=(dependency); end
-
-  def initialize(dependency, required_by=T.unsafe(nil)); end
-
-  def required_by(); end
-
-  def required_by=(required_by); end
-end
-
-class Gem::Resolver::Molinillo::NoSuchDependencyError
-end
-
-class Gem::Resolver::Molinillo::PossibilityState
-end
-
-class Gem::Resolver::Molinillo::PossibilityState
-end
-
-class Gem::Resolver::Molinillo::ResolutionState
-  def activated(); end
-
-  def activated=(_); end
-
-  def conflicts(); end
-
-  def conflicts=(_); end
-
-  def depth(); end
-
-  def depth=(_); end
-
-  def name(); end
-
-  def name=(_); end
-
-  def possibilities(); end
-
-  def possibilities=(_); end
-
-  def requirement(); end
-
-  def requirement=(_); end
-
-  def requirements(); end
-
-  def requirements=(_); end
-end
-
-class Gem::Resolver::Molinillo::ResolutionState
-  def self.[](*_); end
-
-  def self.empty(); end
-
-  def self.members(); end
-end
-
-class Gem::Resolver::Molinillo::Resolver
-  def initialize(specification_provider, resolver_ui); end
-
-  def resolve(requested, base=T.unsafe(nil)); end
-
-  def resolver_ui(); end
-
-  def specification_provider(); end
-end
-
-class Gem::Resolver::Molinillo::Resolver::Resolution
-  include ::Gem::Resolver::Molinillo::Delegates::ResolutionState
-  include ::Gem::Resolver::Molinillo::Delegates::SpecificationProvider
-  def base(); end
-
-  def initialize(specification_provider, resolver_ui, requested, base); end
-
-  def iteration_rate=(iteration_rate); end
-
-  def original_requested(); end
-
-  def resolve(); end
-
-  def resolver_ui(); end
-
-  def specification_provider(); end
-
-  def started_at=(started_at); end
-
-  def states=(states); end
-end
-
-class Gem::Resolver::Molinillo::Resolver::Resolution::Conflict
-  def activated_by_name(); end
-
-  def activated_by_name=(_); end
-
-  def existing(); end
-
-  def existing=(_); end
-
-  def locked_requirement(); end
-
-  def locked_requirement=(_); end
-
-  def possibility(); end
-
-  def possibility=(_); end
-
-  def requirement(); end
-
-  def requirement=(_); end
-
-  def requirement_trees(); end
-
-  def requirement_trees=(_); end
-
-  def requirements(); end
-
-  def requirements=(_); end
-end
-
-class Gem::Resolver::Molinillo::Resolver::Resolution::Conflict
-  def self.[](*_); end
-
-  def self.members(); end
-end
-
-class Gem::Resolver::Molinillo::Resolver::Resolution
-end
-
-class Gem::Resolver::Molinillo::Resolver
-end
-
-class Gem::Resolver::Molinillo::ResolverError
-end
-
-class Gem::Resolver::Molinillo::ResolverError
-end
-
-module Gem::Resolver::Molinillo::SpecificationProvider
-  def allow_missing?(dependency); end
-
-  def dependencies_for(specification); end
-
-  def name_for(dependency); end
-
-  def name_for_explicit_dependency_source(); end
-
-  def name_for_locking_dependency_source(); end
-
-  def requirement_satisfied_by?(requirement, activated, spec); end
-
-  def search_for(dependency); end
-
-  def sort_dependencies(dependencies, activated, conflicts); end
-end
-
-module Gem::Resolver::Molinillo::SpecificationProvider
-  extend ::T::Sig
-end
-
-module Gem::Resolver::Molinillo::UI
-  def after_resolution(); end
-
-  def before_resolution(); end
-
-  def debug(depth=T.unsafe(nil)); end
-
-  def debug?(); end
-
-  def indicate_progress(); end
-
-  def output(); end
-
-  def progress_rate(); end
-end
-
-module Gem::Resolver::Molinillo::UI
-  extend ::T::Sig
-end
-
-class Gem::Resolver::Molinillo::VersionConflict
-  def conflicts(); end
-
-  def initialize(conflicts); end
-end
-
-class Gem::Resolver::Molinillo::VersionConflict
-end
-
-module Gem::Resolver::Molinillo
-  extend ::T::Sig
-end
-
-class Gem::Resolver::RequirementList
-  include ::Enumerable
-  def add(req); end
-
-  def each(&blk); end
-
-  def empty?(); end
-
-  def next5(); end
-
-  def remove(); end
-
-  def size(); end
-end
-
-class Gem::Resolver::RequirementList
-end
-
-class Gem::Resolver::Set
-  def errors(); end
-
-  def errors=(errors); end
-
-  def find_all(req); end
-
-  def prefetch(reqs); end
-
-  def prerelease(); end
-
-  def prerelease=(prerelease); end
-
-  def remote(); end
-
-  def remote=(remote); end
-
-  def remote?(); end
-end
-
-class Gem::Resolver::Set
-end
-
-class Gem::Resolver::SourceSet
-  def add_source_gem(name, source); end
-end
-
-class Gem::Resolver::SourceSet
-end
-
-class Gem::Resolver::SpecSpecification
-  def initialize(set, spec, source=T.unsafe(nil)); end
-end
-
-class Gem::Resolver::SpecSpecification
-end
-
-class Gem::Resolver::Specification
-  def dependencies(); end
-
-  def fetch_development_dependencies(); end
-
-  def full_name(); end
-
-  def install(options=T.unsafe(nil)); end
-
-  def installable_platform?(); end
-
-  def local?(); end
-
-  def name(); end
-
-  def platform(); end
-
-  def set(); end
-
-  def source(); end
-
-  def spec(); end
-
-  def version(); end
-end
-
-class Gem::Resolver::Specification
-end
-
-class Gem::Resolver::Stats
-  def backtracking!(); end
-
-  def display(); end
-
-  def iteration!(); end
-
-  def record_depth(stack); end
-
-  def record_requirements(reqs); end
-
-  def requirement!(); end
-  PATTERN = ::T.let(nil, ::T.untyped)
-end
-
-class Gem::Resolver::Stats
-end
-
 class Gem::Resolver::VendorSet
-  def add_vendor_gem(name, directory); end
-
-  def load_spec(name, version, platform, source); end
-
   def pretty_print(q); end
-
-  def specs(); end
-end
-
-class Gem::Resolver::VendorSet
-end
-
-class Gem::Resolver::VendorSpecification
-  def ==(other); end
-end
-
-class Gem::Resolver::VendorSpecification
-end
-
-class Gem::Resolver
-  def self.compose_sets(*sets); end
-
-  def self.for_current_gems(needed); end
-end
-
-class Gem::RubyVersionMismatch
-  extend ::T::Sig
 end
 
 class Gem::RuntimeRequirementNotMetError
@@ -9806,32 +6492,6 @@ end
 class Gem::RuntimeRequirementNotMetError
 end
 
-module Gem::Security
-  AlmostNoSecurity = ::T.let(nil, ::T.untyped)
-  DIGEST_NAME = ::T.let(nil, ::T.untyped)
-  EXTENSIONS = ::T.let(nil, ::T.untyped)
-  HighSecurity = ::T.let(nil, ::T.untyped)
-  KEY_CIPHER = ::T.let(nil, ::T.untyped)
-  KEY_LENGTH = ::T.let(nil, ::T.untyped)
-  LowSecurity = ::T.let(nil, ::T.untyped)
-  MediumSecurity = ::T.let(nil, ::T.untyped)
-  NoSecurity = ::T.let(nil, ::T.untyped)
-  ONE_DAY = ::T.let(nil, ::T.untyped)
-  ONE_YEAR = ::T.let(nil, ::T.untyped)
-  Policies = ::T.let(nil, ::T.untyped)
-  SigningPolicy = ::T.let(nil, ::T.untyped)
-end
-
-class Gem::Security::DIGEST_ALGORITHM
-  def initialize(data=T.unsafe(nil)); end
-end
-
-class Gem::Security::DIGEST_ALGORITHM
-  def self.digest(data); end
-
-  def self.hexdigest(data); end
-end
-
 class Gem::Security::Exception
 end
 
@@ -9841,19 +6501,11 @@ end
 class Gem::Security::KEY_ALGORITHM
   def d(); end
 
-  def d=(d); end
-
   def dmp1(); end
-
-  def dmp1=(dmp1); end
 
   def dmq1(); end
 
-  def dmq1=(dmq1); end
-
   def e(); end
-
-  def e=(e); end
 
   def export(*_); end
 
@@ -9861,15 +6513,9 @@ class Gem::Security::KEY_ALGORITHM
 
   def iqmp(); end
 
-  def iqmp=(iqmp); end
-
   def n(); end
 
-  def n=(n); end
-
   def p(); end
-
-  def p=(p); end
 
   def params(); end
 
@@ -9888,8 +6534,6 @@ class Gem::Security::KEY_ALGORITHM
   def public_key(); end
 
   def q(); end
-
-  def q=(q); end
 
   def set_crt_params(_, _1, _2); end
 
@@ -9973,6 +6617,9 @@ class Gem::Security::Policy
 end
 
 class Gem::Security::Signer
+  include ::Gem::UserInteraction
+  include ::Gem::DefaultUserInteraction
+  include ::Gem::Text
   def cert_chain(); end
 
   def cert_chain=(cert_chain); end
@@ -9983,7 +6630,7 @@ class Gem::Security::Signer
 
   def extract_name(cert); end
 
-  def initialize(key, cert_chain, passphrase=T.unsafe(nil)); end
+  def initialize(key, cert_chain, passphrase=T.unsafe(nil), options=T.unsafe(nil)); end
 
   def key(); end
 
@@ -9991,12 +6638,15 @@ class Gem::Security::Signer
 
   def load_cert_chain(); end
 
-  def re_sign_key(); end
+  def options(); end
+
+  def re_sign_key(expiration_length: T.unsafe(nil)); end
 
   def sign(data); end
 end
 
 class Gem::Security::Signer
+  def self.re_sign_cert(expired_cert, expired_cert_path, private_key); end
 end
 
 class Gem::Security::TrustDir
@@ -10017,14 +6667,9 @@ class Gem::Security::TrustDir
   def trust_cert(certificate); end
 
   def verify(); end
-  DEFAULT_PERMISSIONS = ::T.let(nil, ::T.untyped)
-end
-
-class Gem::Security::TrustDir
 end
 
 module Gem::Security
-  extend ::T::Sig
   def self.alt_name_or_x509_entry(certificate, x509_entry); end
 
   def self.create_cert(subject, key, age=T.unsafe(nil), extensions=T.unsafe(nil), serial=T.unsafe(nil)); end
@@ -10050,187 +6695,8 @@ module Gem::Security
   def self.write(pemmable, path, permissions=T.unsafe(nil), passphrase=T.unsafe(nil), cipher=T.unsafe(nil)); end
 end
 
-class Gem::SilentUI
-  def initialize(); end
-end
-
-class Gem::SilentUI
-end
-
 class Gem::Source
-  include ::Comparable
-  def ==(other); end
-
-  def api_uri(); end
-
-  def cache_dir(uri); end
-
-  def dependency_resolver_set(); end
-
-  def download(spec, dir=T.unsafe(nil)); end
-
-  def eql?(other); end
-
-  def fetch_spec(name_tuple); end
-
-  def initialize(uri); end
-
-  def load_specs(type); end
-
   def pretty_print(q); end
-
-  def update_cache?(); end
-
-  def uri(); end
-  FILES = ::T.let(nil, ::T.untyped)
-end
-
-class Gem::Source::Git
-  def base_dir(); end
-
-  def cache(); end
-
-  def checkout(); end
-
-  def dir_shortref(); end
-
-  def download(full_spec, path); end
-
-  def initialize(name, repository, reference, submodules=T.unsafe(nil)); end
-
-  def install_dir(); end
-
-  def name(); end
-
-  def need_submodules(); end
-
-  def reference(); end
-
-  def remote(); end
-
-  def remote=(remote); end
-
-  def repo_cache_dir(); end
-
-  def repository(); end
-
-  def rev_parse(); end
-
-  def root_dir(); end
-
-  def root_dir=(root_dir); end
-
-  def specs(); end
-
-  def uri_hash(); end
-end
-
-class Gem::Source::Git
-end
-
-class Gem::Source::Installed
-  def download(spec, path); end
-
-  def initialize(); end
-end
-
-class Gem::Source::Installed
-end
-
-class Gem::Source::Local
-  def download(spec, cache_dir=T.unsafe(nil)); end
-
-  def fetch_spec(name); end
-
-  def find_gem(gem_name, version=T.unsafe(nil), prerelease=T.unsafe(nil)); end
-
-  def initialize(); end
-end
-
-class Gem::Source::Local
-end
-
-class Gem::Source::Lock
-  def initialize(source); end
-
-  def wrapped(); end
-end
-
-class Gem::Source::Lock
-end
-
-class Gem::Source::SpecificFile
-  def fetch_spec(name); end
-
-  def initialize(file); end
-
-  def load_specs(*a); end
-
-  def path(); end
-
-  def spec(); end
-end
-
-class Gem::Source::SpecificFile
-end
-
-class Gem::Source::Vendor
-  def initialize(path); end
-end
-
-class Gem::Source::Vendor
-end
-
-class Gem::Source
-end
-
-class Gem::SourceFetchProblem
-  def error(); end
-
-  def exception(); end
-
-  def initialize(source, error); end
-
-  def source(); end
-
-  def wordy(); end
-end
-
-class Gem::SourceFetchProblem
-  extend ::T::Sig
-end
-
-class Gem::SourceList
-  include ::Enumerable
-  def <<(obj); end
-
-  def ==(other); end
-
-  def clear(); end
-
-  def delete(source); end
-
-  def each(&blk); end
-
-  def each_source(&b); end
-
-  def empty?(); end
-
-  def first(); end
-
-  def include?(other); end
-
-  def replace(other); end
-
-  def sources(); end
-
-  def to_a(); end
-
-  def to_ary(); end
-end
-
-class Gem::SourceList
-  def self.from(ary); end
 end
 
 class Gem::SpecFetcher
@@ -10266,469 +6732,53 @@ class Gem::SpecFetcher
   def self.fetcher=(fetcher); end
 end
 
-class Gem::SpecificGemNotFoundException
-  def errors(); end
-
-  def initialize(name, version, errors=T.unsafe(nil)); end
-
-  def name(); end
-
-  def version(); end
-end
-
-class Gem::SpecificGemNotFoundException
-  extend ::T::Sig
-end
-
 class Gem::Specification
   include ::Bundler::MatchPlatform
   include ::Bundler::GemHelpers
-  def ==(other); end
-
-  def _dump(limit); end
-
-  def abbreviate(); end
-
-  def activate(); end
-
-  def activate_dependencies(); end
-
-  def activated(); end
-
-  def activated=(activated); end
-
-  def add_bindir(executables); end
-
-  def add_dependency(gem, *requirements); end
-
-  def add_development_dependency(gem, *requirements); end
-
-  def add_runtime_dependency(gem, *requirements); end
-
-  def add_self_to_load_path(); end
-
-  def author(); end
-
-  def author=(o); end
-
-  def authors(); end
-
-  def authors=(value); end
-
-  def autorequire(); end
-
-  def autorequire=(autorequire); end
-
-  def bin_dir(); end
-
-  def bin_file(name); end
-
-  def bindir(); end
-
-  def bindir=(bindir); end
-
-  def build_args(); end
-
-  def build_extensions(); end
-
-  def build_info_dir(); end
-
-  def build_info_file(); end
-
-  def bundled_gem_in_old_ruby?(); end
-
-  def cache_dir(); end
-
-  def cache_file(); end
-
-  def cert_chain(); end
-
-  def cert_chain=(cert_chain); end
-
-  def conficts_when_loaded_with?(list_of_specs); end
-
-  def conflicts(); end
-
-  def date(); end
-
-  def date=(date); end
-
-  def default_executable(); end
-
-  def default_executable=(default_executable); end
-
-  def default_value(name); end
-
-  def dependencies(); end
-
-  def dependent_gems(); end
-
-  def dependent_specs(); end
-
-  def description(); end
-
-  def description=(str); end
-
-  def development_dependencies(); end
-
-  def doc_dir(type=T.unsafe(nil)); end
-
-  def email(); end
-
-  def email=(email); end
-
-  def encode_with(coder); end
-
-  def eql?(other); end
-
-  def executable(); end
-
-  def executable=(o); end
-
-  def executables(); end
-
-  def executables=(value); end
-
-  def extensions(); end
-
-  def extensions=(extensions); end
-
-  def extra_rdoc_files(); end
-
-  def extra_rdoc_files=(files); end
-
-  def file_name(); end
-
-  def files(); end
-
-  def files=(files); end
-
-  def for_cache(); end
-
-  def git_version(); end
-
-  def groups(); end
-
-  def has_conflicts?(); end
-
-  def has_rdoc(); end
-
-  def has_rdoc=(ignored); end
-
-  def has_rdoc?(); end
-
-  def has_test_suite?(); end
-
-  def has_unit_tests?(); end
-
-  def homepage(); end
-
-  def homepage=(homepage); end
-
-  def init_with(coder); end
-
-  def initialize(name=T.unsafe(nil), version=T.unsafe(nil)); end
-
-  def installed_by_version(); end
-
-  def installed_by_version=(version); end
-
-  def lib_files(); end
-
-  def license(); end
-
-  def license=(o); end
-
-  def licenses(); end
-
-  def licenses=(licenses); end
-
-  def load_paths(); end
-
-  def location(); end
-
-  def location=(location); end
-
-  def mark_version(); end
-
-  def metadata(); end
-
-  def metadata=(metadata); end
-
-  def method_missing(sym, *a, &b); end
-
-  def missing_extensions?(); end
-
-  def name=(name); end
-
-  def name_tuple(); end
-
-  def nondevelopment_dependencies(); end
-
-  def normalize(); end
-
-  def original_name(); end
-
-  def original_platform(); end
-
-  def original_platform=(original_platform); end
-
-  def platform=(platform); end
-
-  def post_install_message(); end
-
-  def post_install_message=(post_install_message); end
-
   def pretty_print(q); end
 
-  def raise_if_conflicts(); end
-
-  def rdoc_options(); end
-
-  def rdoc_options=(options); end
-
-  def relative_loaded_from(); end
-
-  def relative_loaded_from=(relative_loaded_from); end
-
-  def remote(); end
-
-  def remote=(remote); end
-
-  def require_path(); end
-
-  def require_path=(path); end
-
-  def require_paths=(val); end
-
-  def required_ruby_version(); end
-
-  def required_ruby_version=(req); end
-
-  def required_rubygems_version(); end
-
-  def required_rubygems_version=(req); end
-
-  def requirements(); end
-
-  def requirements=(req); end
-
-  def reset_nil_attributes_to_default(); end
-
-  def rg_extension_dir(); end
-
-  def rg_full_gem_path(); end
-
-  def rg_loaded_from(); end
-
-  def ri_dir(); end
-
-  def rubyforge_project(); end
-
-  def rubyforge_project=(rubyforge_project); end
-
-  def rubygems_version(); end
-
-  def rubygems_version=(rubygems_version); end
-
-  def runtime_dependencies(); end
-
-  def sanitize(); end
-
-  def sanitize_string(string); end
-
-  def satisfies_requirement?(dependency); end
-
-  def signing_key(); end
-
-  def signing_key=(signing_key); end
-
-  def sort_obj(); end
-
-  def source(); end
-
-  def source=(source); end
-
-  def spec_dir(); end
-
-  def spec_file(); end
-
-  def spec_name(); end
-
-  def specification_version(); end
-
-  def specification_version=(specification_version); end
-
-  def summary(); end
-
-  def summary=(str); end
-
-  def test_file(); end
-
-  def test_file=(file); end
-
-  def test_files(); end
-
-  def test_files=(files); end
-
-  def to_gemfile(path=T.unsafe(nil)); end
+  def removed_method_calls(); end
 
   def to_ruby(); end
+  REMOVED_METHODS = ::T.let(nil, ::T.untyped)
+end
 
-  def to_ruby_for_cache(); end
+class Gem::Specification
+  extend ::Gem::Deprecate
+  extend ::Enumerable
+end
 
-  def to_yaml(opts=T.unsafe(nil)); end
+class Gem::SpecificationPolicy
+  include ::Gem::UserInteraction
+  include ::Gem::DefaultUserInteraction
+  include ::Gem::Text
+  def initialize(specification); end
 
-  def traverse(trail=T.unsafe(nil), visited=T.unsafe(nil), &block); end
+  def packaging(); end
 
-  def validate(packaging=T.unsafe(nil)); end
+  def packaging=(packaging); end
+
+  def validate(strict=T.unsafe(nil)); end
 
   def validate_dependencies(); end
 
   def validate_metadata(); end
 
   def validate_permissions(); end
-
-  def version=(version); end
-
-  def warning(statement); end
-
-  def yaml_initialize(tag, vals); end
-  DateLike = ::T.let(nil, ::T.untyped)
-  DateTimeFormat = ::T.let(nil, ::T.untyped)
-  INITIALIZE_CODE_FOR_DEFAULTS = ::T.let(nil, ::T.untyped)
+  HOMEPAGE_URI_PATTERN = ::T.let(nil, ::T.untyped)
+  LAZY = ::T.let(nil, ::T.untyped)
+  LAZY_PATTERN = ::T.let(nil, ::T.untyped)
+  METADATA_LINK_KEYS = ::T.let(nil, ::T.untyped)
+  SPECIAL_CHARACTERS = ::T.let(nil, ::T.untyped)
+  VALID_NAME_PATTERN = ::T.let(nil, ::T.untyped)
+  VALID_URI_PATTERN = ::T.let(nil, ::T.untyped)
 end
 
-class Gem::Specification
-  extend ::T::Sig
-  extend ::Gem::Deprecate
-  extend ::Enumerable
-  def self._all(); end
-
-  def self._clear_load_cache(); end
-
-  def self._latest_specs(specs, prerelease=T.unsafe(nil)); end
-
-  def self._load(str); end
-
-  def self._resort!(specs); end
-
-  def self.add_spec(spec); end
-
-  def self.add_specs(*specs); end
-
-  def self.all(); end
-
-  def self.all=(specs); end
-
-  def self.all_names(); end
-
-  def self.array_attributes(); end
-
-  def self.attribute_names(); end
-
-  def self.dirs(); end
-
-  def self.dirs=(dirs); end
-
-  def self.each(&blk); end
-
-  def self.each_gemspec(dirs); end
-
-  def self.each_spec(dirs); end
-
-  def self.find_active_stub_by_path(path); end
-
-  def self.find_all_by_full_name(full_name); end
-
-  def self.find_all_by_name(name, *requirements); end
-
-  def self.find_by_name(name, *requirements); end
-
-  def self.find_by_path(path); end
-
-  def self.find_in_unresolved(path); end
-
-  def self.find_in_unresolved_tree(path); end
-
-  def self.find_inactive_by_path(path); end
-
-  def self.from_yaml(input); end
-
-  def self.latest_specs(prerelease=T.unsafe(nil)); end
-
-  def self.load(file); end
-
-  def self.load_defaults(); end
-
-  def self.non_nil_attributes(); end
-
-  def self.normalize_yaml_input(input); end
-
-  def self.outdated(); end
-
-  def self.outdated_and_latest_version(); end
-
-  def self.remove_spec(spec); end
-
-  def self.required_attribute?(name); end
-
-  def self.required_attributes(); end
-
-  def self.reset(); end
-
-  def self.stubs(); end
-
-  def self.stubs_for(name); end
-
-  def self.unresolved_deps(); end
+class Gem::SpecificationPolicy
 end
 
 class Gem::StreamUI
-  def _gets_noecho(); end
-
-  def alert(statement, question=T.unsafe(nil)); end
-
-  def alert_error(statement, question=T.unsafe(nil)); end
-
-  def alert_warning(statement, question=T.unsafe(nil)); end
-
-  def ask(question); end
-
-  def ask_for_password(question); end
-
-  def ask_yes_no(question, default=T.unsafe(nil)); end
-
-  def backtrace(exception); end
-
-  def choose_from_list(question, list); end
-
-  def close(); end
-
-  def debug(statement); end
-
-  def download_reporter(*args); end
-
-  def errs(); end
-
-  def initialize(in_stream, out_stream, err_stream=T.unsafe(nil), usetty=T.unsafe(nil)); end
-
-  def ins(); end
-
-  def outs(); end
-
-  def progress_reporter(*args); end
-
-  def require_io_console(); end
-
-  def say(statement=T.unsafe(nil)); end
-
-  def terminate_interaction(status=T.unsafe(nil)); end
-
-  def tty?(); end
-end
-
-class Gem::StreamUI
+  def _deprecated_debug(statement); end
 end
 
 class Gem::StubSpecification
@@ -10744,7 +6794,6 @@ class Gem::StubSpecification
 end
 
 class Gem::StubSpecification::StubLine
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   def extensions(); end
 
   def full_name(); end
@@ -10760,411 +6809,57 @@ class Gem::StubSpecification::StubLine
   def version(); end
 end
 
-class Gem::StubSpecification::StubLine
-  extend ::T::Sig
-end
-
 class Gem::StubSpecification
-  extend ::T::Sig
   def self.default_gemspec_stub(filename, base_dir, gems_dir); end
 
   def self.gemspec_stub(filename, base_dir, gems_dir); end
 end
 
-class Gem::SystemExitException
-  def exit_code(); end
+class Gem::UninstallError
+  def spec(); end
 
-  def exit_code=(exit_code); end
-
-  def initialize(exit_code); end
+  def spec=(spec); end
 end
 
-class Gem::SystemExitException
-  extend ::T::Sig
-end
-
-module Gem::Text
-  def clean_text(text); end
-
-  def format_text(text, wrap, indent=T.unsafe(nil)); end
-
-  def levenshtein_distance(str1, str2); end
-
-  def min3(a, b, c); end
-
-  def truncate_text(text, description, max_length=T.unsafe(nil)); end
-end
-
-module Gem::Text
-  extend ::T::Sig
+class Gem::UninstallError
 end
 
 Gem::UnsatisfiableDepedencyError = Gem::UnsatisfiableDependencyError
 
-class Gem::UnsatisfiableDependencyError
-  def dependency(); end
-
-  def errors(); end
-
-  def errors=(errors); end
-
-  def initialize(dep, platform_mismatch=T.unsafe(nil)); end
-
-  def name(); end
-
-  def version(); end
-end
-
-class Gem::UnsatisfiableDependencyError
-  extend ::T::Sig
-end
-
-class Gem::UriFormatter
-  def escape(); end
-
-  def initialize(uri); end
-
-  def normalize(); end
-
-  def unescape(); end
-
-  def uri(); end
-end
-
-class Gem::UriFormatter
-end
-
-module Gem::UserInteraction
-  include ::Gem::DefaultUserInteraction
-  include ::Gem::Text
-  def alert(statement, question=T.unsafe(nil)); end
-
-  def alert_error(statement, question=T.unsafe(nil)); end
-
-  def alert_warning(statement, question=T.unsafe(nil)); end
-
-  def ask(question); end
-
-  def ask_for_password(prompt); end
-
-  def ask_yes_no(question, default=T.unsafe(nil)); end
-
-  def choose_from_list(question, list); end
-
-  def say(statement=T.unsafe(nil)); end
-
-  def terminate_interaction(exit_code=T.unsafe(nil)); end
-
-  def verbose(msg=T.unsafe(nil)); end
-end
-
-module Gem::UserInteraction
-  extend ::T::Sig
-end
-
-module Gem::Util
-  NULL_DEVICE = ::T.let(nil, ::T.untyped)
-end
-
-module Gem::Util
-  extend ::T::Sig
-  def self.gunzip(data); end
-
-  def self.gzip(data); end
-
-  def self.inflate(data); end
-
-  def self.popen(*command); end
-
-  def self.silent_system(*command); end
-
-  def self.traverse_parents(directory, &block); end
-end
-
-class Gem::VerificationError
-  extend ::T::Sig
-end
-
 class Gem::Version
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def _segments(); end
-
-  def _split_segments(); end
-
-  def _version(); end
-
-  def approximate_recommendation(); end
-
-  def bump(); end
-
-  def canonical_segments(); end
-
-  def encode_with(coder); end
-
-  def eql?(other); end
-
-  def init_with(coder); end
-
-  def marshal_dump(); end
-
-  def marshal_load(array); end
-
-  def prerelease?(); end
-
   def pretty_print(q); end
-
-  def release(); end
-
-  def segments(); end
-
-  def to_yaml_properties(); end
-
-  def version(); end
-
-  def yaml_initialize(tag, map); end
 end
 
 Gem::Version::Requirement = Gem::Requirement
 
-class Gem::Version
-  extend ::T::Sig
-  def self.correct?(version); end
-
-  def self.create(input); end
-
-  def self.new(version); end
-end
-
-module Gem
-  extend ::T::Sig
-  def self._deprecated_datadir(gem_name); end
-
-  def self.activate_bin_path(name, *args); end
-
-  def self.default_ext_dir_for(base_dir); end
-
-  def self.default_gems_use_full_paths?(); end
-
-  def self.default_spec_cache_dir(); end
-
-  def self.deflate(data); end
-
-  def self.detect_gemdeps(path=T.unsafe(nil)); end
-
-  def self.dir(); end
-
-  def self.done_installing(&hook); end
-
-  def self.done_installing_hooks(); end
-
-  def self.ensure_default_gem_subdirectories(dir=T.unsafe(nil), mode=T.unsafe(nil)); end
-
-  def self.ensure_gem_subdirectories(dir=T.unsafe(nil), mode=T.unsafe(nil)); end
-
-  def self.ensure_subdirectories(dir, mode, subdirs); end
-
-  def self.env_requirement(gem_name); end
-
-  def self.extension_api_version(); end
-
-  def self.find_files(glob, check_load_path=T.unsafe(nil)); end
-
-  def self.find_files_from_load_path(glob); end
-
-  def self.find_latest_files(glob, check_load_path=T.unsafe(nil)); end
-
-  def self.find_unresolved_default_spec(path); end
-
-  def self.finish_resolve(*_); end
-
-  def self.gemdeps(); end
-
-  def self.gunzip(data); end
-
-  def self.gzip(data); end
-
-  def self.host(); end
-
-  def self.host=(host); end
-
-  def self.inflate(data); end
-
-  def self.install(name, version=T.unsafe(nil), *options); end
-
-  def self.install_extension_in_lib(); end
-
-  def self.latest_rubygems_version(); end
-
-  def self.latest_spec_for(name); end
-
-  def self.latest_version_for(name); end
-
-  def self.load_env_plugins(); end
-
-  def self.load_path_insert_index(); end
-
-  def self.load_plugin_files(plugins); end
-
-  def self.load_plugins(); end
-
-  def self.load_yaml(); end
-
-  def self.loaded_specs(); end
-
-  def self.location_of_caller(depth=T.unsafe(nil)); end
-
-  def self.marshal_version(); end
-
-  def self.needs(); end
-
-  def self.path(); end
-
-  def self.path_separator(); end
-
-  def self.paths(); end
-
-  def self.paths=(env); end
-
-  def self.platform_defaults(); end
-
-  def self.platforms(); end
-
-  def self.platforms=(platforms); end
-
-  def self.post_build(&hook); end
-
-  def self.post_build_hooks(); end
-
-  def self.post_install(&hook); end
-
-  def self.post_install_hooks(); end
-
-  def self.post_reset(&hook); end
-
-  def self.post_reset_hooks(); end
-
-  def self.post_uninstall(&hook); end
-
-  def self.post_uninstall_hooks(); end
-
-  def self.pre_install(&hook); end
-
-  def self.pre_install_hooks(); end
-
-  def self.pre_reset(&hook); end
-
-  def self.pre_reset_hooks(); end
-
-  def self.pre_uninstall(&hook); end
-
-  def self.pre_uninstall_hooks(); end
-
-  def self.prefix(); end
-
-  def self.read_binary(path); end
-
-  def self.refresh(); end
-
-  def self.register_default_spec(spec); end
-
-  def self.remove_unresolved_default_spec(spec); end
-
-  def self.ruby(); end
-
-  def self.ruby_api_version(); end
-
-  def self.ruby_engine(); end
-
-  def self.ruby_version(); end
-
-  def self.rubygems_version(); end
-
-  def self.sources(); end
-
-  def self.sources=(new_sources); end
-
-  def self.spec_cache_dir(); end
-
-  def self.suffix_pattern(); end
-
-  def self.suffixes(); end
-
-  def self.time(msg, width=T.unsafe(nil), display=T.unsafe(nil)); end
-
-  def self.try_activate(path); end
-
-  def self.ui(); end
-
-  def self.use_gemdeps(path=T.unsafe(nil)); end
-
-  def self.use_paths(home, *paths); end
-
-  def self.user_dir(); end
-
-  def self.user_home(); end
-
-  def self.vendor_dir(); end
-
-  def self.win_platform?(); end
-
-  def self.write_binary(path, data); end
-end
-
 class Hash
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   include ::JSON::Ext::Generator::GeneratorMethods::Hash
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def <(_); end
+  def assert_valid_keys(*valid_keys); end
 
-  def <=(_); end
+  def compact_blank!(); end
 
-  def >(_); end
+  def deconstruct_keys(_); end
 
-  def >=(_); end
+  def deep_merge!(other_hash, &block); end
 
-  def compact(); end
+  def except!(*keys); end
 
-  def compact!(); end
+  def extract!(*keys); end
 
-  def default_proc(); end
+  def extractable_options?(); end
 
-  def default_proc=(default_proc); end
+  def slice!(*keys); end
 
-  def dig(*_); end
-
-  def fetch_values(*_); end
-
-  def flatten(*_); end
-
-  def index(_); end
-
-  def merge!(_); end
-
-  def replace(_); end
-
-  def slice(*_); end
-
-  def to_h(); end
+  def to_options!(); end
 
   def to_param(namespace=T.unsafe(nil)); end
-
-  def to_proc(); end
-
-  def to_query(namespace=T.unsafe(nil)); end
-
-  def transform_keys(); end
-
-  def transform_keys!(); end
-
-  def transform_values(); end
-
-  def transform_values!(); end
-
-  def update(_); end
 end
 
 class Hash
-  extend ::T::Sig
+  def self.ruby2_keywords_hash(_); end
+
+  def self.ruby2_keywords_hash?(_); end
+
   def self.try_convert(_); end
 end
 
@@ -11192,7 +6887,7 @@ module I18n::Backend::Base
 
   def eager_loaded?(); end
 
-  def exists?(locale, key); end
+  def exists?(locale, key, options=T.unsafe(nil)); end
 
   def interpolate(locale, subject, values=T.unsafe(nil)); end
 
@@ -11230,7 +6925,6 @@ module I18n::Backend::Base
 end
 
 module I18n::Backend::Base
-  extend ::T::Sig
 end
 
 module I18n::Backend::Cache
@@ -11244,7 +6938,6 @@ module I18n::Backend::Cache
 end
 
 module I18n::Backend::Cache
-  extend ::T::Sig
 end
 
 module I18n::Backend::CacheFile
@@ -11258,7 +6951,6 @@ module I18n::Backend::CacheFile
 end
 
 module I18n::Backend::CacheFile
-  extend ::T::Sig
 end
 
 module I18n::Backend::Cascade
@@ -11266,56 +6958,10 @@ module I18n::Backend::Cascade
 end
 
 module I18n::Backend::Cascade
-  extend ::T::Sig
-end
-
-class I18n::Backend::Chain
-  include ::I18n::Backend::Chain::Implementation
-  include ::I18n::Backend::Base
-  include ::I18n::Backend::Transliterator
-end
-
-module I18n::Backend::Chain::Implementation
-  include ::I18n::Backend::Base
-  include ::I18n::Backend::Transliterator
-  def available_locales(); end
-
-  def backends(); end
-
-  def backends=(backends); end
-
-  def eager_load!(); end
-
-  def exists?(locale, key); end
-
-  def init_translations(); end
-
-  def initialize(*backends); end
-
-  def initialized?(); end
-
-  def localize(locale, object, format=T.unsafe(nil), options=T.unsafe(nil)); end
-
-  def namespace_lookup?(result, options); end
-
-  def reload!(); end
-
-  def store_translations(locale, data, options=T.unsafe(nil)); end
-
-  def translate(locale, key, default_options=T.unsafe(nil)); end
-
-  def translations(); end
-end
-
-module I18n::Backend::Chain::Implementation
-  extend ::T::Sig
-end
-
-class I18n::Backend::Chain
 end
 
 module I18n::Backend::Fallbacks
-  def exists?(locale, key); end
+  def exists?(locale, key, options=T.unsafe(nil)); end
 
   def extract_non_symbol_default!(options); end
 
@@ -11323,7 +6969,6 @@ module I18n::Backend::Fallbacks
 end
 
 module I18n::Backend::Fallbacks
-  extend ::T::Sig
 end
 
 module I18n::Backend::Flatten
@@ -11347,31 +6992,9 @@ module I18n::Backend::Flatten
 end
 
 module I18n::Backend::Flatten
-  extend ::T::Sig
   def self.escape_default_separator(key); end
 
   def self.normalize_flat_keys(locale, key, scope, separator); end
-end
-
-module I18n::Backend::Gettext
-  def load_po(filename); end
-
-  def normalize(locale, data); end
-
-  def normalize_pluralization(locale, key, value); end
-
-  def parse(filename); end
-end
-
-class I18n::Backend::Gettext::PoData
-  def set_comment(msgid_or_sym, comment); end
-end
-
-class I18n::Backend::Gettext::PoData
-end
-
-module I18n::Backend::Gettext
-  extend ::T::Sig
 end
 
 module I18n::Backend::InterpolationCompiler
@@ -11416,11 +7039,9 @@ end
 
 module I18n::Backend::InterpolationCompiler::Compiler
   extend ::I18n::Backend::InterpolationCompiler::Compiler
-  extend ::T::Sig
 end
 
 module I18n::Backend::InterpolationCompiler
-  extend ::T::Sig
 end
 
 class I18n::Backend::KeyValue
@@ -11458,7 +7079,6 @@ module I18n::Backend::KeyValue::Implementation
 end
 
 module I18n::Backend::KeyValue::Implementation
-  extend ::T::Sig
 end
 
 class I18n::Backend::KeyValue::SubtreeProxy
@@ -11498,7 +7118,6 @@ module I18n::Backend::Memoize
 end
 
 module I18n::Backend::Memoize
-  extend ::T::Sig
 end
 
 module I18n::Backend::Metadata
@@ -11512,7 +7131,6 @@ module I18n::Backend::Metadata
 end
 
 module I18n::Backend::Metadata
-  extend ::T::Sig
   def self.included(base); end
 end
 
@@ -11525,7 +7143,6 @@ module I18n::Backend::Pluralization
 end
 
 module I18n::Backend::Pluralization
-  extend ::T::Sig
 end
 
 class I18n::Backend::Simple
@@ -11555,7 +7172,6 @@ module I18n::Backend::Simple::Implementation
 end
 
 module I18n::Backend::Simple::Implementation
-  extend ::T::Sig
 end
 
 class I18n::Backend::Simple
@@ -11586,16 +7202,10 @@ class I18n::Backend::Transliterator::ProcTransliterator
 end
 
 module I18n::Backend::Transliterator
-  extend ::T::Sig
   def self.get(rule=T.unsafe(nil)); end
 end
 
 module I18n::Backend
-  extend ::T::Sig
-end
-
-module I18n::Base
-  extend ::T::Sig
 end
 
 module I18n::Gettext
@@ -11632,11 +7242,9 @@ module I18n::Gettext::Helpers
 end
 
 module I18n::Gettext::Helpers
-  extend ::T::Sig
 end
 
 module I18n::Gettext
-  extend ::T::Sig
   def self.extract_scope(msgid, separator); end
 
   def self.plural_keys(*args); end
@@ -11676,7 +7284,6 @@ module I18n::Locale::Tag::Parents
 end
 
 module I18n::Locale::Tag::Parents
-  extend ::T::Sig
 end
 
 class I18n::Locale::Tag::Rfc4646
@@ -11689,7 +7296,6 @@ module I18n::Locale::Tag::Rfc4646::Parser
 end
 
 module I18n::Locale::Tag::Rfc4646::Parser
-  extend ::T::Sig
   def self.match(tag); end
 end
 
@@ -11719,7 +7325,6 @@ class I18n::Locale::Tag::Simple
 end
 
 module I18n::Locale::Tag
-  extend ::T::Sig
   def self.implementation(); end
 
   def self.implementation=(implementation); end
@@ -11728,7 +7333,6 @@ module I18n::Locale::Tag
 end
 
 module I18n::Locale
-  extend ::T::Sig
 end
 
 class I18n::Middleware
@@ -11740,10 +7344,6 @@ end
 class I18n::Middleware
 end
 
-module I18n::MissingTranslation::Base
-  extend ::T::Sig
-end
-
 module I18n::Tests
 end
 
@@ -11751,16 +7351,13 @@ module I18n::Tests::Localization
 end
 
 module I18n::Tests::Localization
-  extend ::T::Sig
   def self.included(base); end
 end
 
 module I18n::Tests
-  extend ::T::Sig
 end
 
 module I18n
-  extend ::T::Sig
   def self.cache_key_digest(); end
 
   def self.cache_key_digest=(key_digest); end
@@ -11781,9 +7378,6 @@ module I18n
 end
 
 class IO
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def external_encoding(); end
-
   def nonblock(*_); end
 
   def nonblock=(nonblock); end
@@ -11794,427 +7388,63 @@ class IO
 
   def pathconf(_); end
 
-  def pread(*_); end
-
-  def pwrite(_, _1); end
-
   def ready?(); end
+
+  def set_encoding_by_bom(); end
 
   def wait(*_); end
 
   def wait_readable(*_); end
 
   def wait_writable(*_); end
-
-  def write_nonblock(buf, exception: T.unsafe(nil)); end
-end
-
-class IO::EAGAINWaitReadable
-  extend ::T::Sig
-end
-
-class IO::EAGAINWaitWritable
-  extend ::T::Sig
-end
-
-class IO::EINPROGRESSWaitReadable
-  extend ::T::Sig
-end
-
-class IO::EINPROGRESSWaitWritable
-  extend ::T::Sig
 end
 
 IO::EWOULDBLOCKWaitReadable = IO::EAGAINWaitReadable
 
 IO::EWOULDBLOCKWaitWritable = IO::EAGAINWaitWritable
 
-module IO::WaitReadable
-  extend ::T::Sig
-end
-
-module IO::WaitWritable
-  extend ::T::Sig
-end
-
-class IO
-  extend ::T::Sig
-  def self.foreach(*_); end
-
-  def self.pipe(*_); end
-
-end
-
-class IOError
-  extend ::T::Sig
-end
-
 class IPAddr
-  include ::Comparable
-  def &(other); end
-
-  def <<(num); end
-
   def ==(other); end
 
-  def ===(other); end
-
-  def >>(num); end
-
-  def eql?(other); end
-
-  def family(); end
-
-  def hton(); end
-
-  def include?(other); end
-
   def initialize(addr=T.unsafe(nil), family=T.unsafe(nil)); end
-
-  def ip6_arpa(); end
-
-  def ip6_int(); end
-
-  def ipv4?(); end
-
-  def ipv4_compat(); end
-
-  def ipv4_compat?(); end
-
-  def ipv4_mapped(); end
-
-  def ipv4_mapped?(); end
-
-  def ipv6?(); end
-
-  def link_local?(); end
-
-  def loopback?(); end
-
-  def mask(prefixlen); end
-
-  def mask!(mask); end
-
-  def native(); end
-
-  def prefix(); end
-
-  def prefix=(prefix); end
-
-  def private?(); end
-
-  def reverse(); end
-
-  def set(addr, *family); end
-
-  def succ(); end
-
-  def to_i(); end
-
-  def to_range(); end
-
-  def to_string(); end
-
-  def |(other); end
-
-  def ~(); end
-  IN4MASK = ::T.let(nil, ::T.untyped)
-  IN6FORMAT = ::T.let(nil, ::T.untyped)
-  IN6MASK = ::T.let(nil, ::T.untyped)
-  RE_IPV4ADDRLIKE = ::T.let(nil, ::T.untyped)
-  RE_IPV6ADDRLIKE_COMPRESSED = ::T.let(nil, ::T.untyped)
-  RE_IPV6ADDRLIKE_FULL = ::T.let(nil, ::T.untyped)
-end
-
-class IPAddr::AddressFamilyError
-end
-
-class IPAddr::AddressFamilyError
-end
-
-class IPAddr::Error
-end
-
-class IPAddr::Error
-end
-
-class IPAddr::InvalidAddressError
-end
-
-class IPAddr::InvalidAddressError
-end
-
-class IPAddr::InvalidPrefixError
-end
-
-class IPAddr::InvalidPrefixError
-end
-
-class IPAddr
-  def self.new_ntoh(addr); end
-
-  def self.ntop(addr); end
-end
-
-class IPSocket
-  extend ::T::Sig
-end
-
-class IndexError
-  extend ::T::Sig
 end
 
 class Integer
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   include ::JSON::Ext::Generator::GeneratorMethods::Integer
-  def allbits?(_); end
-
-  def anybits?(_); end
-
-  def digits(*_); end
-
-  def nobits?(_); end
-
-  def pow(*_); end
-
   def to_bn(); end
-
-  def to_d(); end
-
-end
-
-class Integer
-  extend ::T::Sig
-  def self.sqrt(_); end
-end
-
-class Interrupt
-  extend ::T::Sig
-end
-
-class JSON::CircularDatastructure
-  extend ::T::Sig
-end
-
-module JSON::Ext
-end
-
-module JSON::Ext::Generator
-end
-
-module JSON::Ext::Generator::GeneratorMethods
-end
-
-module JSON::Ext::Generator::GeneratorMethods::Array
-  def to_json(*_); end
-end
-
-module JSON::Ext::Generator::GeneratorMethods::Array
-  extend ::T::Sig
-end
-
-module JSON::Ext::Generator::GeneratorMethods::FalseClass
-  def to_json(*_); end
-end
-
-module JSON::Ext::Generator::GeneratorMethods::FalseClass
-  extend ::T::Sig
-end
-
-module JSON::Ext::Generator::GeneratorMethods::Float
-  def to_json(*_); end
-end
-
-module JSON::Ext::Generator::GeneratorMethods::Float
-  extend ::T::Sig
-end
-
-module JSON::Ext::Generator::GeneratorMethods::Hash
-  def to_json(*_); end
-end
-
-module JSON::Ext::Generator::GeneratorMethods::Hash
-  extend ::T::Sig
-end
-
-module JSON::Ext::Generator::GeneratorMethods::Integer
-  def to_json(*_); end
-end
-
-module JSON::Ext::Generator::GeneratorMethods::Integer
-  extend ::T::Sig
-end
-
-module JSON::Ext::Generator::GeneratorMethods::NilClass
-  def to_json(*_); end
-end
-
-module JSON::Ext::Generator::GeneratorMethods::NilClass
-  extend ::T::Sig
-end
-
-module JSON::Ext::Generator::GeneratorMethods::Object
-  def to_json(*_); end
-end
-
-module JSON::Ext::Generator::GeneratorMethods::Object
-  extend ::T::Sig
-end
-
-module JSON::Ext::Generator::GeneratorMethods::String
-  def to_json(*_); end
-
-  def to_json_raw(*_); end
-
-  def to_json_raw_object(); end
-end
-
-module JSON::Ext::Generator::GeneratorMethods::String
-  extend ::T::Sig
-end
-
-module JSON::Ext::Generator::GeneratorMethods::TrueClass
-  def to_json(*_); end
-end
-
-module JSON::Ext::Generator::GeneratorMethods::TrueClass
-  extend ::T::Sig
-end
-
-module JSON::Ext::Generator::GeneratorMethods
-  extend ::T::Sig
-end
-
-class JSON::Ext::Generator::State
-  def [](_); end
-
-  def []=(_, _1); end
-
-  def allow_nan?(); end
-
-  def array_nl(); end
-
-  def array_nl=(array_nl); end
-
-  def ascii_only?(); end
-
-  def buffer_initial_length(); end
-
-  def buffer_initial_length=(buffer_initial_length); end
-
-  def check_circular?(); end
-
-  def configure(_); end
-
-  def depth(); end
-
-  def depth=(depth); end
-
-  def generate(_); end
-
-  def indent(); end
-
-  def indent=(indent); end
-
-  def initialize(*_); end
-
-  def max_nesting(); end
-
-  def max_nesting=(max_nesting); end
-
-  def merge(_); end
-
-  def object_nl(); end
-
-  def object_nl=(object_nl); end
-
-  def space(); end
-
-  def space=(space); end
-
-  def space_before(); end
-
-  def space_before=(space_before); end
-
-  def to_h(); end
-
-  def to_hash(); end
+  GMP_VERSION = ::T.let(nil, ::T.untyped)
 end
 
 class JSON::Ext::Generator::State
   def self.from_state(_); end
 end
 
-module JSON::Ext::Generator
-  extend ::T::Sig
-end
-
 class JSON::Ext::Parser
   def initialize(*_); end
-
-  def parse(); end
-
-  def source(); end
-end
-
-class JSON::Ext::Parser
-end
-
-module JSON::Ext
-  extend ::T::Sig
-end
-
-class JSON::GeneratorError
-  extend ::T::Sig
-end
-
-class JSON::GenericObject
-  extend ::T::Sig
-end
-
-class JSON::JSONError
-  extend ::T::Sig
-end
-
-class JSON::MissingUnicodeSupport
-  extend ::T::Sig
-end
-
-class JSON::NestingError
-  extend ::T::Sig
 end
 
 JSON::Parser = JSON::Ext::Parser
-
-class JSON::ParserError
-  extend ::T::Sig
-end
 
 JSON::State = JSON::Ext::Generator::State
 
 JSON::UnparserError = JSON::GeneratorError
 
-module JSON
-  extend ::T::Sig
-end
-
 module Kernel
-  def gem(dep, *reqs); end
-
+  include ::ActiveSupport::ForkTracker::CoreExtPrivate
+  include ::ActiveSupport::ForkTracker::CoreExt
   def itself(); end
 
   def object_id(); end
 
-  def pp(*objs); end
-
-  def respond_to?(*_); end
+  def then(); end
 
   def yield_self(); end
 end
 
 module Kernel
-  extend ::T::Sig
   def self.at_exit(); end
+
+  def self.fork(); end
 
   def self.load(*_); end
 
@@ -12223,92 +7453,39 @@ end
 
 class KeyError
   include ::DidYouMean::Correctable
-  def key(); end
-
-  def receiver(); end
-end
-
-class KeyError
-  extend ::T::Sig
 end
 
 class LoadError
   def is_missing?(location); end
-
-  def path(); end
-end
-
-class LoadError
-  extend ::T::Sig
-end
-
-class LocalJumpError
-  def exit_value(); end
-
-  def reason(); end
-end
-
-class LocalJumpError
-  extend ::T::Sig
 end
 
 class Logger
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
+  def debug!(); end
+
+  def error!(); end
+
+  def fatal!(); end
+
+  def info!(); end
+
+  def warn!(); end
   SEV_LABEL = ::T.let(nil, ::T.untyped)
 end
 
-class Logger::Error
-  extend ::T::Sig
-end
-
 class Logger::Formatter
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   Format = ::T.let(nil, ::T.untyped)
-end
-
-class Logger::Formatter
-  extend ::T::Sig
 end
 
 class Logger::LogDevice
   include ::MonitorMixin
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
-
-class Logger::LogDevice
-  extend ::T::Sig
 end
 
 module Logger::Period
   SiD = ::T.let(nil, ::T.untyped)
 end
 
-module Logger::Period
-  extend ::T::Sig
-end
-
-module Logger::Severity
-  extend ::T::Sig
-end
-
-class Logger::ShiftingError
-  extend ::T::Sig
-end
-
-class Logger
-  extend ::T::Sig
-end
-
-module LoggerSilence
-  extend ::T::Sig
-end
-
 module Loofah
   VERSION = ::T.let(nil, ::T.untyped)
-end
-
-module Loofah::DocumentDecorator
-  extend ::T::Sig
 end
 
 module Loofah::Elements
@@ -12319,25 +7496,7 @@ module Loofah::Elements
   STRICT_BLOCK_LEVEL_HTML5 = ::T.let(nil, ::T.untyped)
 end
 
-module Loofah::Elements
-  extend ::T::Sig
-end
-
-module Loofah::HTML
-  extend ::T::Sig
-end
-
-module Loofah::HTML5::Scrub
-  CONTROL_CHARACTERS = ::T.let(nil, ::T.untyped)
-  CRASS_SEMICOLON = ::T.let(nil, ::T.untyped)
-  CSS_KEYWORDISH = ::T.let(nil, ::T.untyped)
-end
-
-module Loofah::HTML5::Scrub
-  extend ::T::Sig
-end
-
-module Loofah::HTML5::WhiteList
+module Loofah::HTML5::SafeList
   ACCEPTABLE_ATTRIBUTES = ::T.let(nil, ::T.untyped)
   ACCEPTABLE_CSS_FUNCTIONS = ::T.let(nil, ::T.untyped)
   ACCEPTABLE_CSS_KEYWORDS = ::T.let(nil, ::T.untyped)
@@ -12368,37 +7527,18 @@ module Loofah::HTML5::WhiteList
   VOID_ELEMENTS = ::T.let(nil, ::T.untyped)
 end
 
-module Loofah::HTML5::WhiteList
-  extend ::T::Sig
+module Loofah::HTML5::Scrub
+  CONTROL_CHARACTERS = ::T.let(nil, ::T.untyped)
+  CRASS_SEMICOLON = ::T.let(nil, ::T.untyped)
+  CSS_IMPORTANT = ::T.let(nil, ::T.untyped)
+  CSS_KEYWORDISH = ::T.let(nil, ::T.untyped)
 end
 
-module Loofah::HTML5
-  extend ::T::Sig
-end
+Loofah::HTML5::WhiteList = Loofah::HTML5::SafeList
 
 module Loofah::LibxmlWorkarounds
   BROKEN_ESCAPING_ATTRIBUTES = ::T.let(nil, ::T.untyped)
   BROKEN_ESCAPING_ATTRIBUTES_QUALIFYING_TAG = ::T.let(nil, ::T.untyped)
-end
-
-module Loofah::LibxmlWorkarounds
-  extend ::T::Sig
-end
-
-module Loofah::MetaHelpers
-  extend ::T::Sig
-end
-
-module Loofah::ScrubBehavior::Node
-  extend ::T::Sig
-end
-
-module Loofah::ScrubBehavior::NodeSet
-  extend ::T::Sig
-end
-
-module Loofah::ScrubBehavior
-  extend ::T::Sig
 end
 
 class Loofah::Scrubber
@@ -12410,91 +7550,12 @@ module Loofah::Scrubbers
   MAP = ::T.let(nil, ::T.untyped)
 end
 
-module Loofah::Scrubbers
-  extend ::T::Sig
-end
-
-module Loofah::TextBehavior
-  extend ::T::Sig
-end
-
-module Loofah::XML
-  extend ::T::Sig
-end
-
-module Loofah
-  extend ::T::Sig
-end
-
-module Marshal
-  extend ::T::Sig
-  def self.restore(*_); end
-end
-
-class MatchData
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def named_captures(); end
-end
-
-class MatchData
-  extend ::T::Sig
-end
-
-class Math::DomainError
-  extend ::T::Sig
-end
-
-module Math
-  extend ::T::Sig
-end
-
-class Method
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def ===(*_); end
-
-  def [](*_); end
-
-  def arity(); end
-
-  def clone(); end
-
-  def curry(*_); end
-
-  def name(); end
-
-  def original_name(); end
-
-  def owner(); end
-
-  def parameters(); end
-
-  def receiver(); end
-
-  def source_location(); end
-
-  def super_method(); end
-
-  def unbind(); end
-end
-
-class Method
-  extend ::T::Sig
-end
-
 module Minitest::Assertions
   def _synchronize(); end
-
-  def assert(test, msg=T.unsafe(nil)); end
-
-  def assert_empty(obj, msg=T.unsafe(nil)); end
-
-  def assert_equal(exp, act, msg=T.unsafe(nil)); end
 
   def assert_in_delta(exp, act, delta=T.unsafe(nil), msg=T.unsafe(nil)); end
 
   def assert_in_epsilon(exp, act, epsilon=T.unsafe(nil), msg=T.unsafe(nil)); end
-
-  def assert_includes(collection, obj, msg=T.unsafe(nil)); end
 
   def assert_instance_of(cls, obj, msg=T.unsafe(nil)); end
 
@@ -12502,15 +7563,13 @@ module Minitest::Assertions
 
   def assert_match(matcher, obj, msg=T.unsafe(nil)); end
 
-  def assert_nil(obj, msg=T.unsafe(nil)); end
-
   def assert_operator(o1, op, o2=T.unsafe(nil), msg=T.unsafe(nil)); end
 
   def assert_output(stdout=T.unsafe(nil), stderr=T.unsafe(nil)); end
 
-  def assert_predicate(o1, op, msg=T.unsafe(nil)); end
+  def assert_path_exists(path, msg=T.unsafe(nil)); end
 
-  def assert_raises(*exp); end
+  def assert_predicate(o1, op, msg=T.unsafe(nil)); end
 
   def assert_respond_to(obj, meth, msg=T.unsafe(nil)); end
 
@@ -12530,6 +7589,8 @@ module Minitest::Assertions
 
   def exception_details(e, msg); end
 
+  def fail_after(y, m, d, msg); end
+
   def flunk(msg=T.unsafe(nil)); end
 
   def message(msg=T.unsafe(nil), ending=T.unsafe(nil), &default); end
@@ -12540,17 +7601,9 @@ module Minitest::Assertions
 
   def pass(_msg=T.unsafe(nil)); end
 
-  def refute(test, msg=T.unsafe(nil)); end
-
-  def refute_empty(obj, msg=T.unsafe(nil)); end
-
-  def refute_equal(exp, act, msg=T.unsafe(nil)); end
-
   def refute_in_delta(exp, act, delta=T.unsafe(nil), msg=T.unsafe(nil)); end
 
   def refute_in_epsilon(a, b, epsilon=T.unsafe(nil), msg=T.unsafe(nil)); end
-
-  def refute_includes(collection, obj, msg=T.unsafe(nil)); end
 
   def refute_instance_of(cls, obj, msg=T.unsafe(nil)); end
 
@@ -12558,9 +7611,9 @@ module Minitest::Assertions
 
   def refute_match(matcher, obj, msg=T.unsafe(nil)); end
 
-  def refute_nil(obj, msg=T.unsafe(nil)); end
-
   def refute_operator(o1, op, o2=T.unsafe(nil), msg=T.unsafe(nil)); end
+
+  def refute_path_exists(path, msg=T.unsafe(nil)); end
 
   def refute_predicate(o1, op, msg=T.unsafe(nil)); end
 
@@ -12570,13 +7623,16 @@ module Minitest::Assertions
 
   def skip(msg=T.unsafe(nil), bt=T.unsafe(nil)); end
 
+  def skip_until(y, m, d, msg); end
+
   def skipped?(); end
+
+  def things_to_diff(exp, act); end
   E = ::T.let(nil, ::T.untyped)
   UNDEFINED = ::T.let(nil, ::T.untyped)
 end
 
 module Minitest::Assertions
-  extend ::T::Sig
   def self.diff(); end
 
   def self.diff=(o); end
@@ -12589,13 +7645,14 @@ module Minitest::Guard
 
   def mri?(platform=T.unsafe(nil)); end
 
+  def osx?(platform=T.unsafe(nil)); end
+
   def rubinius?(platform=T.unsafe(nil)); end
 
   def windows?(platform=T.unsafe(nil)); end
 end
 
 module Minitest::Guard
-  extend ::T::Sig
 end
 
 module Minitest::Reportable
@@ -12613,7 +7670,6 @@ module Minitest::Reportable
 end
 
 module Minitest::Reportable
-  extend ::T::Sig
 end
 
 class Minitest::Runnable
@@ -12674,7 +7730,6 @@ class Minitest::Runnable
 end
 
 class Minitest::Test
-  include ::Minitest::Assertions
   include ::Minitest::Reportable
   include ::Minitest::Test::LifecycleHooks
   include ::Minitest::Guard
@@ -12700,7 +7755,6 @@ module Minitest::Test::LifecycleHooks
 end
 
 module Minitest::Test::LifecycleHooks
-  extend ::T::Sig
 end
 
 class Minitest::Test
@@ -12719,40 +7773,99 @@ class Minitest::Test
 end
 
 class Module
+  include ::Module::Concerning
   include ::ActiveSupport::Dependencies::ModuleConstMissing
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def deprecate_constant(*_); end
+  def alias_attribute(new_name, old_name); end
 
-  def undef_method(*_); end
+  def anonymous?(); end
+
+  def attr_internal(*attrs); end
+
+  def attr_internal_accessor(*attrs); end
+
+  def attr_internal_reader(*attrs); end
+
+  def attr_internal_writer(*attrs); end
+
+  def cattr_accessor(*syms, instance_reader: T.unsafe(nil), instance_writer: T.unsafe(nil), instance_accessor: T.unsafe(nil), default: T.unsafe(nil), &blk); end
+
+  def cattr_reader(*syms, instance_reader: T.unsafe(nil), instance_accessor: T.unsafe(nil), default: T.unsafe(nil), location: T.unsafe(nil)); end
+
+  def cattr_writer(*syms, instance_writer: T.unsafe(nil), instance_accessor: T.unsafe(nil), default: T.unsafe(nil), location: T.unsafe(nil)); end
+
+  def delegate(*methods, to: T.unsafe(nil), prefix: T.unsafe(nil), allow_nil: T.unsafe(nil), private: T.unsafe(nil)); end
+
+  def delegate_missing_to(target, allow_nil: T.unsafe(nil)); end
+
+  def deprecate(*method_names); end
+
+  def mattr_accessor(*syms, instance_reader: T.unsafe(nil), instance_writer: T.unsafe(nil), instance_accessor: T.unsafe(nil), default: T.unsafe(nil), &blk); end
+
+  def mattr_reader(*syms, instance_reader: T.unsafe(nil), instance_accessor: T.unsafe(nil), default: T.unsafe(nil), location: T.unsafe(nil)); end
+
+  def mattr_writer(*syms, instance_writer: T.unsafe(nil), instance_accessor: T.unsafe(nil), default: T.unsafe(nil), location: T.unsafe(nil)); end
+
+  def method_visibility(method); end
+
+  def module_parent(); end
+
+  def module_parent_name(); end
+
+  def module_parents(); end
+
+  def redefine_method(method, &block); end
+
+  def redefine_singleton_method(method, &block); end
+
+  def remove_possible_method(method); end
+
+  def remove_possible_singleton_method(method); end
+
+  def silence_redefinition_of_method(method); end
+
+  def thread_cattr_accessor(*syms, instance_reader: T.unsafe(nil), instance_writer: T.unsafe(nil), instance_accessor: T.unsafe(nil), default: T.unsafe(nil)); end
+
+  def thread_cattr_reader(*syms, instance_reader: T.unsafe(nil), instance_accessor: T.unsafe(nil), default: T.unsafe(nil)); end
+
+  def thread_cattr_writer(*syms, instance_writer: T.unsafe(nil), instance_accessor: T.unsafe(nil), default: T.unsafe(nil)); end
+
+  def thread_mattr_accessor(*syms, instance_reader: T.unsafe(nil), instance_writer: T.unsafe(nil), instance_accessor: T.unsafe(nil), default: T.unsafe(nil)); end
+
+  def thread_mattr_reader(*syms, instance_reader: T.unsafe(nil), instance_accessor: T.unsafe(nil), default: T.unsafe(nil)); end
+
+  def thread_mattr_writer(*syms, instance_writer: T.unsafe(nil), instance_accessor: T.unsafe(nil), default: T.unsafe(nil)); end
   DELEGATION_RESERVED_KEYWORDS = ::T.let(nil, ::T.untyped)
   DELEGATION_RESERVED_METHOD_NAMES = ::T.let(nil, ::T.untyped)
   RUBY_RESERVED_KEYWORDS = ::T.let(nil, ::T.untyped)
 end
 
 module Module::Concerning
-  extend ::T::Sig
+  def concern(topic, &module_definition); end
+
+  def concerning(topic, prepend: T.unsafe(nil), &block); end
+end
+
+module Module::Concerning
+end
+
+class Module::DelegationError
+end
+
+class Module::DelegationError
 end
 
 class Module
-  extend ::T::Sig
-  def self.used_modules(); end
+  def self.attr_internal_naming_format(); end
+
+  def self.attr_internal_naming_format=(attr_internal_naming_format); end
 end
 
 class Monitor
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   def enter(); end
 
   def exit(); end
 
-  def try_enter(); end
-end
-
-class Monitor
-  extend ::T::Sig
-end
-
-module MonitorMixin
-  def initialize(*args); end
+  def mon_check_owner(); end
 
   def mon_enter(); end
 
@@ -12770,41 +7883,23 @@ module MonitorMixin
 
   def synchronize(); end
 
+  def try_enter(); end
+
   def try_mon_enter(); end
-end
 
-class MonitorMixin::ConditionVariable
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def broadcast(); end
-
-  def initialize(monitor); end
-
-  def signal(); end
-
-  def wait(timeout=T.unsafe(nil)); end
-
-  def wait_until(); end
-
-  def wait_while(); end
-end
-
-class MonitorMixin::ConditionVariable::Timeout
-  extend ::T::Sig
-end
-
-class MonitorMixin::ConditionVariable
-  extend ::T::Sig
+  def wait_for_cond(_, _1); end
 end
 
 module MonitorMixin
-  extend ::T::Sig
-  def self.extend_object(obj); end
+  def initialize(*args); end
 end
 
-Mutex = Thread::Mutex
+class MonitorMixin::ConditionVariable
+  def initialize(monitor); end
+end
 
 module Mutex_m
-  extend ::T::Sig
+  VERSION = ::T.let(nil, ::T.untyped)
 end
 
 class NameError
@@ -12812,40 +7907,17 @@ class NameError
   def missing_name(); end
 
   def missing_name?(name); end
-
-  def name(); end
-
-  def receiver(); end
-end
-
-class NameError
-  extend ::T::Sig
 end
 
 class NilClass
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   include ::JSON::Ext::Generator::GeneratorMethods::NilClass
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def to_i(); end
+  def to_d(); end
 end
 
-class NilClass
-  extend ::T::Sig
+class NoMatchingPatternError
 end
 
-class NoMemoryError
-  extend ::T::Sig
-end
-
-class NoMethodError
-  include ::DidYouMean::Correctable
-  def args(); end
-
-  def private_call?(); end
-end
-
-class NoMethodError
-  extend ::T::Sig
+class NoMatchingPatternError
 end
 
 module Nokogiri
@@ -12871,20 +7943,8 @@ class Nokogiri::CSS::Parser
   Racc_token_to_s_table = ::T.let(nil, ::T.untyped)
 end
 
-module Nokogiri::CSS
-  extend ::T::Sig
-end
-
 module Nokogiri::Decorators::Slop
   XPATH_PREFIX = ::T.let(nil, ::T.untyped)
-end
-
-module Nokogiri::Decorators::Slop
-  extend ::T::Sig
-end
-
-module Nokogiri::Decorators
-  extend ::T::Sig
 end
 
 module Nokogiri::HTML
@@ -13004,14 +8064,6 @@ end
 
 Nokogiri::HTML::ElementDescription::Desc = Struct::HTMLElementDescription
 
-module Nokogiri::HTML::SAX
-  extend ::T::Sig
-end
-
-module Nokogiri::HTML
-  extend ::T::Sig
-end
-
 module Nokogiri::XML
   XML_C14N_1_0 = ::T.let(nil, ::T.untyped)
   XML_C14N_1_1 = ::T.let(nil, ::T.untyped)
@@ -13080,18 +8132,6 @@ class Nokogiri::XML::NodeSet
   IMPLIED_XPATH_CONTEXTS = ::T.let(nil, ::T.untyped)
 end
 
-module Nokogiri::XML::PP::CharacterData
-  extend ::T::Sig
-end
-
-module Nokogiri::XML::PP::Node
-  extend ::T::Sig
-end
-
-module Nokogiri::XML::PP
-  extend ::T::Sig
-end
-
 class Nokogiri::XML::ParseOptions
   COMPACT = ::T.let(nil, ::T.untyped)
   DEFAULT_HTML = ::T.let(nil, ::T.untyped)
@@ -13143,114 +8183,20 @@ class Nokogiri::XML::SAX::Parser
   ENCODINGS = ::T.let(nil, ::T.untyped)
 end
 
-module Nokogiri::XML::SAX
-  extend ::T::Sig
-end
-
 module Nokogiri::XML::Searchable
   LOOKS_LIKE_XPATH = ::T.let(nil, ::T.untyped)
 end
 
-module Nokogiri::XML::Searchable
-  extend ::T::Sig
-end
-
-module Nokogiri::XML
-  extend ::T::Sig
-end
-
-module Nokogiri::XSLT
-  extend ::T::Sig
-end
-
-module Nokogiri
-  extend ::T::Sig
-end
-
-class NotImplementedError
-  extend ::T::Sig
-end
-
-class Numeric
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def byte(); end
-
-  def bytes(); end
-
-  def day(); end
-
-  def days(); end
-
-  def exabyte(); end
-
-  def exabytes(); end
-
-  def finite?(); end
-
-  def fortnight(); end
-
-  def fortnights(); end
-
-  def gigabyte(); end
-
-  def gigabytes(); end
-
-  def hour(); end
-
-  def hours(); end
-
-  def in_milliseconds(); end
-
-  def infinite?(); end
-
-  def kilobyte(); end
-
-  def kilobytes(); end
-
-  def megabyte(); end
-
-  def megabytes(); end
-
-  def minute(); end
-
-  def minutes(); end
-
-  def negative?(); end
-
-  def petabyte(); end
-
-  def petabytes(); end
-
-  def positive?(); end
-
-  def second(); end
-
-  def seconds(); end
-
-  def terabyte(); end
-
-  def terabytes(); end
-
-  def week(); end
-
-  def weeks(); end
-  EXABYTE = ::T.let(nil, ::T.untyped)
-  GIGABYTE = ::T.let(nil, ::T.untyped)
-  KILOBYTE = ::T.let(nil, ::T.untyped)
-  MEGABYTE = ::T.let(nil, ::T.untyped)
-  PETABYTE = ::T.let(nil, ::T.untyped)
-  TERABYTE = ::T.let(nil, ::T.untyped)
-end
-
-class Numeric
-  extend ::T::Sig
-end
-
 class Object
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  include ::ActiveSupport::Dependencies::Loadable
   include ::JSON::Ext::Generator::GeneratorMethods::Object
-  def as_json(options=T.unsafe(nil)); end
+  include ::ActiveSupport::Tryable
+  include ::ActiveSupport::Dependencies::Loadable
+  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
+  include ::ActiveSupport::ForkTracker::CoreExtPrivate
+  include ::ActiveSupport::ForkTracker::CoreExt
+  def html_safe?(); end
+
+  def presence_in(another_object); end
 
   def to_yaml(options=T.unsafe(nil)); end
   ARGF = ::T.let(nil, ::T.untyped)
@@ -13273,196 +8219,49 @@ class Object
 end
 
 class Object
-  extend ::T::Sig
   def self.yaml_tag(url); end
 end
 
-class ObjectSpace::WeakMap
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def [](_); end
-
-  def []=(_, _1); end
-
-  def each(&blk); end
-
-  def each_key(); end
-
-  def each_pair(); end
-
-  def each_value(); end
-
-  def key?(_); end
-
-  def keys(); end
-
-  def length(); end
-
-  def size(); end
-
-  def values(); end
-end
-
-class ObjectSpace::WeakMap
-  extend ::T::Sig
-end
-
-module ObjectSpace
-  extend ::T::Sig
-  def self.count_objects(*_); end
-
-  def self.define_finalizer(*_); end
-
-  def self.garbage_collect(*_); end
-
-  def self.undefine_finalizer(_); end
-end
-
-module Open3
-  extend ::T::Sig
-end
-
-class OpenSSL::Digest
-  extend ::T::Sig
-end
-
-class OpenSSL::OpenSSLError
-  extend ::T::Sig
-end
-
-class OpenSSL::PKey::PKey
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
-
-class OpenSSL::PKey::PKey
-  extend ::T::Sig
-end
-
 class OpenStruct
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
-
-class OpenStruct
-  extend ::T::Sig
+  VERSION = ::T.let(nil, ::T.untyped)
 end
 
 ParseError = Racc::ParseError
 
 class Pathname
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def empty?(); end
-
   def fnmatch?(*_); end
 
   def glob(*_); end
 
   def make_symlink(_); end
-
-end
-
-class Pathname
-  extend ::T::Sig
 end
 
 class Proc
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def ===(*_); end
+  def <<(_); end
 
-  def [](*_); end
+  def >>(_); end
 
   def clone(); end
-
-  def lambda?(); end
-
-  def yield(*_); end
-end
-
-class Proc
-  extend ::T::Sig
 end
 
 module Process
-  CLOCK_MONOTONIC_RAW_APPROX = ::T.let(nil, ::T.untyped)
-  CLOCK_UPTIME_RAW = ::T.let(nil, ::T.untyped)
-  CLOCK_UPTIME_RAW_APPROX = ::T.let(nil, ::T.untyped)
+  def self.fork(); end
 end
-
-module Process::GID
-  extend ::T::Sig
-end
-
-class Process::Status
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
-
-class Process::Status
-  extend ::T::Sig
-end
-
-module Process::Sys
-  extend ::T::Sig
-  def self.getegid(); end
-
-end
-
-class Process::Tms
-  def cstime(); end
-
-  def cstime=(_); end
-
-  def cutime(); end
-
-  def cutime=(_); end
-
-  def stime(); end
-
-  def stime=(_); end
-
-  def utime(); end
-
-  def utime=(_); end
-end
-
-class Process::Tms
-  extend ::T::Sig
-  def self.[](*_); end
-
-  def self.members(); end
-end
-
-module Process::UID
-  extend ::T::Sig
-end
-
-class Process::Waiter
-  extend ::T::Sig
-end
-
-module Process
-  extend ::T::Sig
-  def self.last_status(); end
-
-  def self.setpgrp(); end
-
-end
-
-Queue = Thread::Queue
 
 module Racc
-  Racc_No_Extensions = ::T.let(nil, ::T.untyped)
+  Copyright = ::T.let(nil, ::T.untyped)
+  Racc_No_Extentions = ::T.let(nil, ::T.untyped)
+  VERSION = ::T.let(nil, ::T.untyped)
+  Version = ::T.let(nil, ::T.untyped)
 end
 
 class Racc::CparseParams
 end
 
 class Racc::CparseParams
-end
-
-class Racc::ParseError
-  extend ::T::Sig
 end
 
 class Racc::Parser
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   Racc_Main_Parsing_Routine = ::T.let(nil, ::T.untyped)
   Racc_Runtime_Core_Id_C = ::T.let(nil, ::T.untyped)
   Racc_Runtime_Core_Revision = ::T.let(nil, ::T.untyped)
@@ -13477,14 +8276,6 @@ class Racc::Parser
   Racc_YY_Parse_Method = ::T.let(nil, ::T.untyped)
 end
 
-class Racc::Parser
-  extend ::T::Sig
-end
-
-module Racc
-  extend ::T::Sig
-end
-
 module Rails::Html
   XPATHS_TO_REMOVE = ::T.let(nil, ::T.untyped)
 end
@@ -13493,156 +8284,44 @@ class Rails::Html::Sanitizer
   VERSION = ::T.let(nil, ::T.untyped)
 end
 
-module Rails::Html
-  extend ::T::Sig
-end
-
-module Rails
-  extend ::T::Sig
-end
+Rails::Html::WhiteListSanitizer = Rails::Html::SafeListSanitizer
 
 class Random
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
-
-module Random::Formatter
-  def alphanumeric(n=T.unsafe(nil)); end
-
-  ALPHANUMERIC = ::T.let(nil, ::T.untyped)
-end
-
-module Random::Formatter
-  extend ::T::Sig
-end
-
-class Random
-  extend ::T::Sig
-  def self.urandom(_); end
+  def self.bytes(_); end
 end
 
 class Range
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
+  def %(_); end
 
-class Range
-  extend ::T::Sig
-end
+  def entries(); end
 
-class RangeError
-  extend ::T::Sig
-end
+  def sum(identity=T.unsafe(nil)); end
 
-class Rational
-  def to_d(precision); end
-end
-
-class Rational
-  extend ::T::Sig
+  def to_a(); end
 end
 
 module RbConfig
-  extend ::T::Sig
   def self.expand(val, config=T.unsafe(nil)); end
+
+  def self.fire_update!(key, val, mkconf=T.unsafe(nil), conf=T.unsafe(nil)); end
 
   def self.ruby(); end
 end
 
-class Regexp
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def match?(*_); end
+module RubyVM::MJIT
 end
 
-class Regexp
-  extend ::T::Sig
-  def self.union(*_); end
-end
+module RubyVM::MJIT
+  def self.enabled?(); end
 
-class RegexpError
-  extend ::T::Sig
-end
+  def self.pause(*_); end
 
-class RubyVM
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
-
-class RubyVM::InstructionSequence
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def absolute_path(); end
-
-  def base_label(); end
-
-  def disasm(); end
-
-  def disassemble(); end
-
-  def each_child(); end
-
-  def eval(); end
-
-  def first_lineno(); end
-
-  def label(); end
-
-  def path(); end
-
-  def to_a(); end
-
-  def to_binary(*_); end
-
-  def trace_points(); end
-end
-
-class RubyVM::InstructionSequence
-  extend ::T::Sig
-  def self.compile(*_); end
-
-  def self.compile_file(*_); end
-
-  def self.compile_option(); end
-
-  def self.compile_option=(compile_option); end
-
-  def self.disasm(_); end
-
-  def self.disassemble(_); end
-
-  def self.load_from_binary(_); end
-
-  def self.load_from_binary_extra_data(_); end
-
-  def self.of(_); end
-end
-
-class RubyVM
-  extend ::T::Sig
-  def self.stat(*_); end
-end
-
-class RuntimeError
-  extend ::T::Sig
+  def self.resume(); end
 end
 
 ScanError = StringScanner::Error
 
-class ScriptError
-  extend ::T::Sig
-end
-
-module SecureRandom
-end
-
-module SecureRandom
-  extend ::Random::Formatter
-  extend ::T::Sig
-  def self.bytes(n); end
-end
-
-class SecurityError
-  extend ::T::Sig
-end
-
 class Set
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   def ==(other); end
 
   def ===(o); end
@@ -13665,48 +8344,8 @@ class Set
   InspectKey = ::T.let(nil, ::T.untyped)
 end
 
-class Set
-  extend ::T::Sig
-end
-
-module Signal
-  extend ::T::Sig
-end
-
-class SignalException
-  def signm(); end
-
-  def signo(); end
-end
-
-class SignalException
-  extend ::T::Sig
-end
-
 class SimpleDelegator
   RUBYGEMS_ACTIVATION_MONITOR = ::T.let(nil, ::T.untyped)
-end
-
-class SimpleDelegator
-  extend ::T::Sig
-end
-
-module SingleForwardable
-  def def_delegator(accessor, method, ali=T.unsafe(nil)); end
-
-  def def_delegators(accessor, *methods); end
-
-  def def_single_delegator(accessor, method, ali=T.unsafe(nil)); end
-
-  def def_single_delegators(accessor, *methods); end
-
-  def delegate(hash); end
-
-  def single_delegate(hash); end
-end
-
-module SingleForwardable
-  extend ::T::Sig
 end
 
 module Singleton
@@ -13723,431 +8362,8 @@ module Singleton::SingletonClassMethods
   def clone(); end
 end
 
-module Singleton::SingletonClassMethods
-  extend ::T::Sig
-end
-
 module Singleton
-  extend ::T::Sig
   def self.__init__(klass); end
-end
-
-SizedQueue = Thread::SizedQueue
-
-class Sorbet
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
-
-class Sorbet::Private::ConstantLookupCache
-  def all_module_aliases(); end
-
-  def all_module_names(); end
-
-  def all_named_modules(); end
-
-  def class_by_name(name); end
-
-  def name_by_class(klass); end
-  DEPRECATED_CONSTANTS = ::T.let(nil, ::T.untyped)
-end
-
-class Sorbet::Private::ConstantLookupCache::ConstantEntry
-  def aliases(); end
-
-  def aliases=(_); end
-
-  def const(); end
-
-  def const=(_); end
-
-  def const_name(); end
-
-  def const_name=(_); end
-
-  def found_name(); end
-
-  def found_name=(_); end
-
-  def owner(); end
-
-  def owner=(_); end
-
-  def primary_name(); end
-
-  def primary_name=(_); end
-end
-
-class Sorbet::Private::ConstantLookupCache::ConstantEntry
-  def self.[](*_); end
-
-  def self.members(); end
-end
-
-class Sorbet::Private::ConstantLookupCache
-end
-
-class Sorbet::Private::CreateConfig
-  include ::Sorbet::Private::StepInterface
-  SORBET_CONFIG_FILE = ::T.let(nil, ::T.untyped)
-  SORBET_DIR = ::T.let(nil, ::T.untyped)
-end
-
-class Sorbet::Private::CreateConfig
-  def self.main(); end
-
-  def self.output_file(); end
-end
-
-class Sorbet::Private::FetchRBIs
-  include ::Sorbet::Private::StepInterface
-  HEADER = ::T.let(nil, ::T.untyped)
-  RBI_CACHE_DIR = ::T.let(nil, ::T.untyped)
-  SORBET_CONFIG_FILE = ::T.let(nil, ::T.untyped)
-  SORBET_DIR = ::T.let(nil, ::T.untyped)
-  SORBET_RBI_LIST = ::T.let(nil, ::T.untyped)
-  SORBET_RBI_SORBET_TYPED = ::T.let(nil, ::T.untyped)
-  SORBET_TYPED_REPO = ::T.let(nil, ::T.untyped)
-  SORBET_TYPED_REVISION = ::T.let(nil, ::T.untyped)
-  XDG_CACHE_HOME = ::T.let(nil, ::T.untyped)
-end
-
-class Sorbet::Private::FetchRBIs
-  def self.fetch_sorbet_typed(); end
-
-  def self.main(); end
-
-  def self.matching_version_directories(root, version); end
-
-  def self.output_file(); end
-
-  def self.paths_for_gem_version(gemspec); end
-
-  def self.paths_for_ruby_version(ruby_version); end
-
-  def self.vendor_rbis_within_paths(vendor_paths); end
-end
-
-class Sorbet::Private::FindGemRBIs
-  include ::Sorbet::Private::StepInterface
-  GEM_DIR = ::T.let(nil, ::T.untyped)
-  HEADER = ::T.let(nil, ::T.untyped)
-  RBI_CACHE_DIR = ::T.let(nil, ::T.untyped)
-  XDG_CACHE_HOME = ::T.let(nil, ::T.untyped)
-end
-
-class Sorbet::Private::FindGemRBIs
-  def self.main(); end
-
-  def self.output_file(); end
-
-  def self.paths_within_gem_sources(gemspec); end
-end
-
-module Sorbet::Private::GemGeneratorTracepoint
-  include ::Sorbet::Private::StepInterface
-  OUTPUT = ::T.let(nil, ::T.untyped)
-end
-
-class Sorbet::Private::GemGeneratorTracepoint::ClassDefinition
-  def defs(); end
-
-  def defs=(_); end
-
-  def id(); end
-
-  def id=(_); end
-
-  def klass(); end
-
-  def klass=(_); end
-end
-
-class Sorbet::Private::GemGeneratorTracepoint::ClassDefinition
-  def self.[](*_); end
-
-  def self.members(); end
-end
-
-class Sorbet::Private::GemGeneratorTracepoint::TracepointSerializer
-  def initialize(files:, delegate_classes:); end
-
-  def serialize(output_dir); end
-  BAD_METHODS = ::T.let(nil, ::T.untyped)
-  HEADER = ::T.let(nil, ::T.untyped)
-  SPECIAL_METHOD_NAMES = ::T.let(nil, ::T.untyped)
-end
-
-class Sorbet::Private::GemGeneratorTracepoint::TracepointSerializer
-end
-
-class Sorbet::Private::GemGeneratorTracepoint::Tracer
-end
-
-class Sorbet::Private::GemGeneratorTracepoint::Tracer
-  def self.add_to_context(item); end
-
-  def self.disable_tracepoints(); end
-
-  def self.finish(); end
-
-  def self.install_tracepoints(); end
-
-  def self.method_added(mod, method, singleton); end
-
-  def self.module_created(mod); end
-
-  def self.module_extended(extended, extender); end
-
-  def self.module_included(included, includer); end
-
-  def self.pre_cache_module_methods(); end
-
-  def self.register_delegate_class(klass, delegate); end
-
-  def self.start(); end
-
-  def self.trace(); end
-
-  def self.trace_results(); end
-end
-
-module Sorbet::Private::GemGeneratorTracepoint
-  extend ::T::Sig
-  def self.main(output_dir=T.unsafe(nil)); end
-
-  def self.output_file(); end
-end
-
-class Sorbet::Private::GemLoader
-  GEM_LOADER = ::T.let(nil, ::T.untyped)
-  NO_GEM = ::T.let(nil, ::T.untyped)
-end
-
-class Sorbet::Private::GemLoader
-  def self.my_require(gem); end
-
-  def self.require_all_gems(); end
-
-  def self.require_gem(gem); end
-end
-
-class Sorbet::Private::HiddenMethodFinder
-  include ::Sorbet::Private::StepInterface
-  def all_modules_and_aliases(); end
-
-  def capture_stderr(); end
-
-  def constant_cache(); end
-
-  def gen_source_rbi(classes, aliases); end
-
-  def looks_like_stub_name(name); end
-
-  def main(); end
-
-  def mk_dir(); end
-
-  def read_constants(); end
-
-  def real_name(mod); end
-
-  def require_everything(); end
-
-  def rm_dir(); end
-
-  def serialize_alias(source_entry, rbi_entry, my_klass, source_symbols, rbi_symbols); end
-
-  def serialize_class(source_entry, rbi_entry, klass, source_symbols, rbi_symbols, source_by_name); end
-
-  def serialize_constants(source, rbi, klass, is_singleton, source_symbols, rbi_symbols); end
-
-  def symbols_id_to_name(entry, prefix); end
-
-  def write_constants(); end
-
-  def write_diff(source, rbi); end
-  BLACKLIST = ::T.let(nil, ::T.untyped)
-  DIFF_RBI = ::T.let(nil, ::T.untyped)
-  ERRORS_RBI = ::T.let(nil, ::T.untyped)
-  HEADER = ::T.let(nil, ::T.untyped)
-  HIDDEN_RBI = ::T.let(nil, ::T.untyped)
-  PATH = ::T.let(nil, ::T.untyped)
-  RBI_CONSTANTS = ::T.let(nil, ::T.untyped)
-  RBI_CONSTANTS_ERR = ::T.let(nil, ::T.untyped)
-  SOURCE_CONSTANTS = ::T.let(nil, ::T.untyped)
-  SOURCE_CONSTANTS_ERR = ::T.let(nil, ::T.untyped)
-  TMP_PATH = ::T.let(nil, ::T.untyped)
-  TMP_RBI = ::T.let(nil, ::T.untyped)
-end
-
-class Sorbet::Private::HiddenMethodFinder
-  def self.main(); end
-
-  def self.output_file(); end
-end
-
-module Sorbet::Private::Main
-end
-
-module Sorbet::Private::Main
-  extend ::T::Sig
-  def self.cyan(msg); end
-
-  def self.emojify(emoji, msg); end
-
-  def self.init(); end
-
-  def self.main(argv); end
-
-  def self.make_step(step); end
-
-  def self.usage(); end
-
-  def self.yellow(msg); end
-end
-
-module Sorbet::Private::RealStdlib
-end
-
-module Sorbet::Private::RealStdlib
-  extend ::T::Sig
-  def self.real_ancestors(mod); end
-
-  def self.real_autoload?(o, klass); end
-
-  def self.real_const_get(obj, const, arg); end
-
-  def self.real_constants(mod); end
-
-  def self.real_eqeq(obj, other); end
-
-  def self.real_hash(o); end
-
-  def self.real_instance_methods(mod, arg); end
-
-  def self.real_is_a?(o, klass); end
-
-  def self.real_name(o); end
-
-  def self.real_object_id(o); end
-
-  def self.real_private_instance_methods(mod, arg); end
-
-  def self.real_singleton_class(obj); end
-
-  def self.real_singleton_methods(mod, arg); end
-
-  def self.real_spaceship(obj, arg); end
-
-  def self.real_superclass(o); end
-end
-
-class Sorbet::Private::RequireEverything
-end
-
-class Sorbet::Private::RequireEverything
-  def self.excluded_rails_files(); end
-
-  def self.load_bundler(); end
-
-  def self.load_rails(); end
-
-  def self.my_require(abs_path, numerator, denominator); end
-
-  def self.patch_kernel(); end
-
-  def self.rails?(); end
-
-  def self.require_all_files(); end
-
-  def self.require_everything(); end
-end
-
-class Sorbet::Private::Serialize
-  def alias(base, other_name); end
-
-  def ancestor_has_method(method, klass); end
-
-  def blacklisted_method(method); end
-
-  def class_or_module(class_name); end
-
-  def comparable?(value); end
-
-  def constant(const, value); end
-
-  def from_method(method); end
-
-  def initialize(constant_cache); end
-
-  def serialize_method(method, static=T.unsafe(nil), with_sig: T.unsafe(nil)); end
-
-  def serialize_sig(parameters); end
-
-  def to_sig(kind, name); end
-
-  def valid_class_name(name); end
-
-  def valid_method_name(name); end
-  BLACKLIST_CONSTANTS = ::T.let(nil, ::T.untyped)
-  KEYWORDS = ::T.let(nil, ::T.untyped)
-  SPECIAL_METHOD_NAMES = ::T.let(nil, ::T.untyped)
-end
-
-class Sorbet::Private::Serialize
-  def self.header(typed=T.unsafe(nil), subcommand=T.unsafe(nil)); end
-end
-
-module Sorbet::Private::Status
-end
-
-module Sorbet::Private::Status
-  extend ::T::Sig
-  def self.done(); end
-
-  def self.say(message, print_without_tty: T.unsafe(nil)); end
-end
-
-module Sorbet::Private::StepInterface
-end
-
-module Sorbet::Private::StepInterface
-  extend ::T::Sig
-  def self.main(); end
-
-  def self.output_file(); end
-end
-
-class Sorbet::Private::SuggestTyped
-  include ::Sorbet::Private::StepInterface
-end
-
-class Sorbet::Private::SuggestTyped
-  def self.main(); end
-
-  def self.output_file(); end
-
-  def self.suggest_typed(); end
-end
-
-class Sorbet::Private::TodoRBI
-  include ::Sorbet::Private::StepInterface
-  HEADER = ::T.let(nil, ::T.untyped)
-  OUTPUT = ::T.let(nil, ::T.untyped)
-end
-
-class Sorbet::Private::TodoRBI
-  def self.main(); end
-
-  def self.output_file(); end
-end
-
-module Sorbet::Private
-  extend ::T::Sig
-end
-
-class Sorbet
-  extend ::T::Sig
 end
 
 class SortedSet
@@ -14155,230 +8371,41 @@ class SortedSet
 end
 
 class SortedSet
-  extend ::T::Sig
   def self.setup(); end
 end
 
-class StandardError
-  extend ::T::Sig
-end
-
-class StopIteration
-  def result(); end
-end
-
-class StopIteration
-  extend ::T::Sig
-end
-
 class String
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   include ::JSON::Ext::Generator::GeneratorMethods::String
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def +@(); end
-
-  def -@(); end
-
-  def []=(*_); end
-
-  def acts_like_string?(); end
-
-  def casecmp?(_); end
-
-  def delete_prefix(_); end
-
-  def delete_prefix!(_); end
-
-  def delete_suffix(_); end
-
-  def delete_suffix!(_); end
-
-  def each_grapheme_cluster(); end
-
-  def encode(*_); end
-
-  def encode!(*_); end
-
-  def ends_with?(*_); end
-
-  def grapheme_clusters(); end
-
-  def match?(*_); end
-
-  def reverse!(); end
-
   def shellescape(); end
 
   def shellsplit(); end
 
-  def starts_with?(*_); end
-
-  def strip_heredoc(); end
-
-  def succ!(); end
-
-  def to_d(); end
-
-  def to_date(); end
-
-  def to_datetime(); end
-
-  def to_time(form=T.unsafe(nil)); end
-
-  def undump(); end
-
-  def unicode_normalize(*_); end
-
-  def unicode_normalize!(*_); end
-
-  def unicode_normalized?(*_); end
-
-  def unpack1(_); end
-
+  def truncate_bytes(truncate_at, omission: T.unsafe(nil)); end
   BLANK_RE = ::T.let(nil, ::T.untyped)
   ENCODED_BLANKS = ::T.let(nil, ::T.untyped)
 end
 
-class String
-  extend ::T::Sig
-end
-
 class StringIO
-  def length(); end
-
-  def truncate(_); end
-
-end
-
-class StringIO
-  extend ::T::Sig
+  def set_encoding_by_bom(); end
+  VERSION = ::T.let(nil, ::T.untyped)
 end
 
 class StringScanner
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def <<(_); end
-
-  def [](_); end
-
-  def beginning_of_line?(); end
-
   def bol?(); end
 
-  def captures(); end
-
-  def charpos(); end
-
-  def check(_); end
-
-  def check_until(_); end
-
-  def clear(); end
-
-  def concat(_); end
-
-  def empty?(); end
-
-  def exist?(_); end
-
-  def get_byte(); end
-
-  def getbyte(); end
+  def fixed_anchor?(); end
 
   def initialize(*_); end
-
-  def match?(_); end
-
-  def matched(); end
-
-  def matched?(); end
-
-  def matched_size(); end
-
-  def peek(_); end
-
-  def peep(_); end
-
-  def pointer(); end
-
-  def pointer=(pointer); end
-
-  def pos(); end
-
-  def pos=(pos); end
-
-  def post_match(); end
-
-  def pre_match(); end
-
-  def reset(); end
-
-  def rest(); end
-
-  def rest?(); end
-
-  def rest_size(); end
-
-  def restsize(); end
-
-  def scan_full(_, _1, _2); end
-
-  def scan_until(_); end
-
-  def search_full(_, _1, _2); end
-
-  def size(); end
-
-  def skip(_); end
-
-  def skip_until(_); end
-
-  def string(); end
-
-  def string=(string); end
-
-  def terminate(); end
-
-  def unscan(); end
-
-  def values_at(*_); end
   Id = ::T.let(nil, ::T.untyped)
   Version = ::T.let(nil, ::T.untyped)
 end
 
-class StringScanner::Error
-  extend ::T::Sig
-end
-
-class StringScanner
-  extend ::T::Sig
-  def self.must_C_version(); end
-end
-
 class Struct
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def [](_); end
+  def deconstruct(); end
 
-  def []=(_, _1); end
+  def deconstruct_keys(_); end
 
-  def dig(*_); end
-
-  def each_pair(); end
-
-  def length(); end
-
-  def members(); end
-
-  def select(*_); end
-
-  def size(); end
-
-  def to_a(); end
-
-  def to_h(); end
-
-  def values(); end
-
-  def values_at(*_); end
+  def filter(*_); end
 end
 
 Struct::Group = Etc::Group
@@ -14387,306 +8414,25 @@ Struct::Passwd = Etc::Passwd
 
 Struct::Tms = Process::Tms
 
-class Struct
-  extend ::T::Sig
-end
-
 class Symbol
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def casecmp?(_); end
+  def ends_with?(*_); end
 
-  def match?(*_); end
-
-  def next(); end
-
-end
-
-class Symbol
-  extend ::T::Sig
-end
-
-class SyntaxError
-  extend ::T::Sig
-end
-
-class SystemCallError
-  def errno(); end
-end
-
-class SystemCallError
-  extend ::T::Sig
-end
-
-class SystemExit
-  def status(); end
-
-  def success?(); end
-end
-
-class SystemExit
-  extend ::T::Sig
-end
-
-class SystemStackError
-  extend ::T::Sig
-end
-
-class TSort::Cyclic
-  extend ::T::Sig
-end
-
-module TSort
-  extend ::T::Sig
-end
-
-class Thread
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def abort_on_exception(); end
-
-  def abort_on_exception=(abort_on_exception); end
-
-  def add_trace_func(_); end
-
-  def backtrace(*_); end
-
-  def backtrace_locations(*_); end
-
-  def exit(); end
-
-  def fetch(*_); end
-
-  def group(); end
-
-  def initialize(*_); end
-
-  def join(*_); end
-
-  def key?(_); end
-
-  def keys(); end
-
-  def name(); end
-
-  def name=(name); end
-
-  def pending_interrupt?(*_); end
-
-  def priority(); end
-
-  def priority=(priority); end
-
-  def report_on_exception(); end
-
-  def report_on_exception=(report_on_exception); end
-
-  def run(); end
-
-  def safe_level(); end
-
-  def status(); end
-
-  def stop?(); end
-
-  def terminate(); end
-
-  def thread_variable?(_); end
-
-  def thread_variable_get(_); end
-
-  def thread_variable_set(_, _1); end
-
-  def thread_variables(); end
-
-  def value(); end
-
-  def wakeup(); end
-end
-
-class Thread::Backtrace
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
-
-class Thread::Backtrace::Location
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
-
-class Thread::Backtrace::Location
-  extend ::T::Sig
-end
-
-class Thread::Backtrace
-  extend ::T::Sig
-end
-
-class Thread::ConditionVariable
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def broadcast(); end
-
-  def marshal_dump(); end
-
-  def signal(); end
-
-  def wait(*_); end
-end
-
-class Thread::ConditionVariable
-  extend ::T::Sig
-end
-
-class Thread::Mutex
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def lock(); end
-
-  def locked?(); end
-
-  def owned?(); end
-
-  def synchronize(); end
-
-  def try_lock(); end
-
-  def unlock(); end
-end
-
-class Thread::Mutex
-  extend ::T::Sig
-end
-
-class Thread::Queue
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def <<(_); end
-
-  def clear(); end
-
-  def close(); end
-
-  def closed?(); end
-
-  def deq(*_); end
-
-  def empty?(); end
-
-  def enq(_); end
-
-  def length(); end
-
-  def marshal_dump(); end
-
-  def num_waiting(); end
-
-  def pop(*_); end
-
-  def push(_); end
-
-  def shift(*_); end
-
-  def size(); end
-end
-
-class Thread::Queue
-  extend ::T::Sig
-end
-
-class Thread::SizedQueue
-  def <<(*_); end
-
-  def enq(*_); end
-
-  def initialize(_); end
-
-  def max(); end
-
-  def max=(max); end
-
-  def push(*_); end
-end
-
-class Thread::SizedQueue
-  extend ::T::Sig
-end
-
-class Thread
-  extend ::T::Sig
-  def self.abort_on_exception(); end
-
-  def self.abort_on_exception=(abort_on_exception); end
-
-  def self.exclusive(&block); end
-
-  def self.exit(); end
-
-  def self.fork(*_); end
-
-  def self.handle_interrupt(_); end
-
-  def self.kill(_); end
-
-  def self.list(); end
-
-  def self.pass(); end
-
-  def self.pending_interrupt?(*_); end
-
-  def self.report_on_exception(); end
-
-  def self.report_on_exception=(report_on_exception); end
-
-  def self.start(*_); end
-
-  def self.stop(); end
-end
-
-class ThreadError
-  extend ::T::Sig
-end
-
-class ThreadGroup
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def add(_); end
-
-  def enclose(); end
-
-  def enclosed?(); end
-
-  def list(); end
-  Default = ::T.let(nil, ::T.untyped)
-end
-
-class ThreadGroup
-  extend ::T::Sig
+  def starts_with?(*_); end
 end
 
 class Time
-  include ::DateAndTime::Calculations
   include ::DateAndTime::Zones
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   def acts_like_time?(); end
 
-  def advance(options); end
-
   def ago(seconds); end
-
-  def at_beginning_of_day(); end
 
   def at_beginning_of_hour(); end
 
   def at_beginning_of_minute(); end
 
-  def at_end_of_day(); end
-
   def at_end_of_hour(); end
 
   def at_end_of_minute(); end
-
-  def at_midday(); end
-
-  def at_middle_of_day(); end
-
-  def at_midnight(); end
-
-  def at_noon(); end
-
-  def beginning_of_day(); end
 
   def beginning_of_hour(); end
 
@@ -14697,8 +8443,6 @@ class Time
   def compare_with_coercion(other); end
 
   def compare_without_coercion(_); end
-
-  def end_of_day(); end
 
   def end_of_hour(); end
 
@@ -14712,12 +8456,6 @@ class Time
 
   def in(seconds); end
 
-  def midday(); end
-
-  def middle_of_day(); end
-
-  def midnight(); end
-
   def minus_with_coercion(other); end
 
   def minus_with_duration(other); end
@@ -14726,11 +8464,21 @@ class Time
 
   def minus_without_duration(_); end
 
-  def noon(); end
+  def next_day(days=T.unsafe(nil)); end
+
+  def next_month(months=T.unsafe(nil)); end
+
+  def next_year(years=T.unsafe(nil)); end
 
   def plus_with_duration(other); end
 
   def plus_without_duration(_); end
+
+  def prev_day(days=T.unsafe(nil)); end
+
+  def prev_month(months=T.unsafe(nil)); end
+
+  def prev_year(years=T.unsafe(nil)); end
 
   def rfc3339(fraction_digits=T.unsafe(nil)); end
 
@@ -14743,22 +8491,16 @@ class Time
   def since(seconds); end
 
   def to_default_s(); end
-
-  def to_formatted_s(format=T.unsafe(nil)); end
-
   COMMON_YEAR_DAYS_IN_MONTH = ::T.let(nil, ::T.untyped)
   DATE_FORMATS = ::T.let(nil, ::T.untyped)
 end
 
 class Time
-  extend ::T::Sig
   def self.===(other); end
 
   def self.at_with_coercion(*args); end
 
   def self.at_without_coercion(*_); end
-
-  def self.current(); end
 
   def self.days_in_month(month, year=T.unsafe(nil)); end
 
@@ -14772,232 +8514,48 @@ class Time
 
   def self.use_zone(time_zone); end
 
-  def self.zone(); end
-
-  def self.zone=(time_zone); end
-
   def self.zone_default(); end
 
   def self.zone_default=(zone_default); end
-
-end
-
-class Timeout::Error
-  extend ::T::Sig
-end
-
-module Timeout
-  extend ::T::Sig
 end
 
 class TracePoint
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def event(); end
+  def eval_script(); end
+
+  def instruction_sequence(); end
+
+  def parameters(); end
 end
 
 class TracePoint
-  extend ::T::Sig
+  def self.new(*events); end
 end
 
 class TrueClass
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   include ::JSON::Ext::Generator::GeneratorMethods::TrueClass
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
-
-class TrueClass
-  extend ::T::Sig
-end
-
-class TypeError
-  extend ::T::Sig
 end
 
 module URI
   include ::URI::RFC2396_REGEXP
 end
 
-class URI::BadURIError
-  extend ::T::Sig
-end
-
-class URI::Error
-  extend ::T::Sig
-end
-
-module URI::Escape
-  def decode(*arg); end
-
-  def encode(*arg); end
-
-  def escape(*arg); end
-
-  def unescape(*arg); end
-end
-
-module URI::Escape
-  extend ::T::Sig
-end
-
 class URI::FTP
-  def set_typecode(v); end
-
-  def typecode(); end
-
-  def typecode=(typecode); end
-end
-
-class URI::FTP
-  extend ::T::Sig
   def self.new2(user, password, host, port, path, typecode=T.unsafe(nil), arg_check=T.unsafe(nil)); end
 end
 
-class URI::Generic
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def +(oth); end
+class URI::File
+  def check_password(user); end
 
-  def -(oth); end
+  def check_user(user); end
 
-  def ==(oth); end
+  def check_userinfo(user); end
 
-  def absolute(); end
-
-  def absolute?(); end
-
-  def coerce(oth); end
-
-  def component(); end
-
-  def component_ary(); end
-
-  def default_port(); end
-
-  def eql?(oth); end
-
-  def find_proxy(env=T.unsafe(nil)); end
-
-  def fragment(); end
-
-  def fragment=(v); end
-
-  def hierarchical?(); end
-
-  def host(); end
-
-  def host=(v); end
-
-  def hostname(); end
-
-  def hostname=(v); end
-
-  def initialize(scheme, userinfo, host, port, registry, path, opaque, query, fragment, parser=T.unsafe(nil), arg_check=T.unsafe(nil)); end
-
-  def merge(oth); end
-
-  def merge!(oth); end
-
-  def normalize(); end
-
-  def normalize!(); end
-
-  def opaque(); end
-
-  def opaque=(v); end
-
-  def parser(); end
-
-  def password(); end
-
-  def password=(password); end
-
-  def path(); end
-
-  def path=(v); end
-
-  def port(); end
-
-  def port=(v); end
-
-  def query(); end
-
-  def query=(v); end
-
-  def registry(); end
-
-  def registry=(v); end
-
-  def relative?(); end
-
-  def route_from(oth); end
-
-  def route_to(oth); end
-
-  def scheme(); end
-
-  def scheme=(v); end
-
-  def select(*components); end
-
-  def set_host(v); end
-
-  def set_opaque(v); end
-
-  def set_password(v); end
-
-  def set_path(v); end
-
-  def set_port(v); end
-
-  def set_registry(v); end
-
-  def set_scheme(v); end
-
-  def set_user(v); end
-
-  def set_userinfo(user, password=T.unsafe(nil)); end
-
-  def user(); end
-
-  def user=(user); end
-
-  def userinfo(); end
-
-  def userinfo=(userinfo); end
+  def set_userinfo(v); end
+  COMPONENT = ::T.let(nil, ::T.untyped)
+  DEFAULT_PORT = ::T.let(nil, ::T.untyped)
 end
 
-class URI::Generic
-  extend ::T::Sig
-  def self.build(args); end
-
-  def self.build2(args); end
-
-  def self.component(); end
-
-  def self.default_port(); end
-
-  def self.use_proxy?(hostname, addr, port, no_proxy); end
-
-  def self.use_registry(); end
-end
-
-class URI::HTTP
-  def request_uri(); end
-end
-
-class URI::HTTP
-  extend ::T::Sig
-end
-
-class URI::HTTPS
-  extend ::T::Sig
-end
-
-class URI::InvalidComponentError
-  extend ::T::Sig
-end
-
-class URI::InvalidURIError
-  extend ::T::Sig
+class URI::File
 end
 
 class URI::LDAP
@@ -15034,36 +8592,8 @@ class URI::LDAP
   def set_scope(val); end
 end
 
-class URI::LDAP
-  extend ::T::Sig
-end
-
-class URI::LDAPS
-  extend ::T::Sig
-end
-
 class URI::MailTo
-  def headers(); end
-
-  def headers=(v); end
-
   def initialize(*arg); end
-
-  def set_headers(v); end
-
-  def set_to(v); end
-
-  def to(); end
-
-  def to=(v); end
-
-  def to_mailtext(); end
-
-  def to_rfc822text(); end
-end
-
-class URI::MailTo
-  extend ::T::Sig
 end
 
 URI::Parser = URI::RFC2396_Parser
@@ -15071,42 +8601,10 @@ URI::Parser = URI::RFC2396_Parser
 URI::REGEXP = URI::RFC2396_REGEXP
 
 class URI::RFC2396_Parser
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def escape(str, unsafe=T.unsafe(nil)); end
-
-  def extract(str, schemes=T.unsafe(nil)); end
-
   def initialize(opts=T.unsafe(nil)); end
-
-  def join(*uris); end
-
-  def make_regexp(schemes=T.unsafe(nil)); end
-
-  def parse(uri); end
-
-  def pattern(); end
-
-  def regexp(); end
-
-  def split(uri); end
-
-  def unescape(str, escaped=T.unsafe(nil)); end
-end
-
-class URI::RFC2396_Parser
-  extend ::T::Sig
-end
-
-module URI::RFC2396_REGEXP::PATTERN
-  extend ::T::Sig
-end
-
-module URI::RFC2396_REGEXP
-  extend ::T::Sig
 end
 
 class URI::RFC3986_Parser
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   def join(*uris); end
 
   def parse(uri); end
@@ -15117,385 +8615,44 @@ class URI::RFC3986_Parser
   RFC3986_relative_ref = ::T.let(nil, ::T.untyped)
 end
 
-class URI::RFC3986_Parser
-  extend ::T::Sig
-end
-
 module URI::Util
-  extend ::T::Sig
   def self.make_components_hash(klass, array_hash); end
 end
 
 module URI
-  extend ::T::Sig
   extend ::URI::Escape
-  def self.decode_www_form(str, enc=T.unsafe(nil), separator: T.unsafe(nil), use__charset_: T.unsafe(nil), isindex: T.unsafe(nil)); end
-
-  def self.encode_www_form(enum, enc=T.unsafe(nil)); end
-
-  def self.encode_www_form_component(str, enc=T.unsafe(nil)); end
-
   def self.get_encoding(label); end
 end
 
 class UnboundMethod
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def clone(); end
-
-  def original_name(); end
-end
-
-class UnboundMethod
-  extend ::T::Sig
-end
-
-class UncaughtThrowError
-  def tag(); end
-
-  def value(); end
-end
-
-class UncaughtThrowError
-  extend ::T::Sig
+  def bind_call(*_); end
 end
 
 module UnicodeNormalize
 end
 
 module UnicodeNormalize
-  extend ::T::Sig
 end
 
 module Warning
-  def warn(_); end
-end
-
-module Warning
-  extend ::T::Sig
   extend ::Warning
-end
+  def self.[](_); end
 
-class ZeroDivisionError
-  extend ::T::Sig
-end
-
-module Zlib
-  ASCII = ::T.let(nil, ::T.untyped)
-  BEST_COMPRESSION = ::T.let(nil, ::T.untyped)
-  BEST_SPEED = ::T.let(nil, ::T.untyped)
-  BINARY = ::T.let(nil, ::T.untyped)
-  DEFAULT_COMPRESSION = ::T.let(nil, ::T.untyped)
-  DEFAULT_STRATEGY = ::T.let(nil, ::T.untyped)
-  DEF_MEM_LEVEL = ::T.let(nil, ::T.untyped)
-  FILTERED = ::T.let(nil, ::T.untyped)
-  FINISH = ::T.let(nil, ::T.untyped)
-  FIXED = ::T.let(nil, ::T.untyped)
-  FULL_FLUSH = ::T.let(nil, ::T.untyped)
-  HUFFMAN_ONLY = ::T.let(nil, ::T.untyped)
-  MAX_MEM_LEVEL = ::T.let(nil, ::T.untyped)
-  MAX_WBITS = ::T.let(nil, ::T.untyped)
-  NO_COMPRESSION = ::T.let(nil, ::T.untyped)
-  NO_FLUSH = ::T.let(nil, ::T.untyped)
-  OS_AMIGA = ::T.let(nil, ::T.untyped)
-  OS_ATARI = ::T.let(nil, ::T.untyped)
-  OS_CODE = ::T.let(nil, ::T.untyped)
-  OS_CPM = ::T.let(nil, ::T.untyped)
-  OS_MACOS = ::T.let(nil, ::T.untyped)
-  OS_MSDOS = ::T.let(nil, ::T.untyped)
-  OS_OS2 = ::T.let(nil, ::T.untyped)
-  OS_QDOS = ::T.let(nil, ::T.untyped)
-  OS_RISCOS = ::T.let(nil, ::T.untyped)
-  OS_TOPS20 = ::T.let(nil, ::T.untyped)
-  OS_UNIX = ::T.let(nil, ::T.untyped)
-  OS_UNKNOWN = ::T.let(nil, ::T.untyped)
-  OS_VMCMS = ::T.let(nil, ::T.untyped)
-  OS_VMS = ::T.let(nil, ::T.untyped)
-  OS_WIN32 = ::T.let(nil, ::T.untyped)
-  OS_ZSYSTEM = ::T.let(nil, ::T.untyped)
-  RLE = ::T.let(nil, ::T.untyped)
-  SYNC_FLUSH = ::T.let(nil, ::T.untyped)
-  TEXT = ::T.let(nil, ::T.untyped)
-  UNKNOWN = ::T.let(nil, ::T.untyped)
-  VERSION = ::T.let(nil, ::T.untyped)
-  ZLIB_VERSION = ::T.let(nil, ::T.untyped)
-end
-
-class Zlib::BufError
-end
-
-class Zlib::BufError
-end
-
-class Zlib::DataError
-end
-
-class Zlib::DataError
+  def self.[]=(_, _1); end
 end
 
 class Zlib::Deflate
-  def <<(_); end
-
-  def deflate(*_); end
-
-  def flush(*_); end
-
   def initialize(*_); end
-
-  def params(_, _1); end
-
-  def set_dictionary(_); end
-end
-
-class Zlib::Deflate
-  def self.deflate(*_); end
-end
-
-class Zlib::Error
-end
-
-class Zlib::Error
-end
-
-class Zlib::GzipFile
-  def close(); end
-
-  def closed?(); end
-
-  def comment(); end
-
-  def crc(); end
-
-  def finish(); end
-
-  def level(); end
-
-  def mtime(); end
-
-  def orig_name(); end
-
-  def os_code(); end
-
-  def sync(); end
-
-  def sync=(sync); end
-
-  def to_io(); end
-end
-
-class Zlib::GzipFile::CRCError
-end
-
-class Zlib::GzipFile::CRCError
-end
-
-class Zlib::GzipFile::Error
-  def input(); end
-end
-
-class Zlib::GzipFile::Error
-end
-
-class Zlib::GzipFile::LengthError
-end
-
-class Zlib::GzipFile::LengthError
-end
-
-class Zlib::GzipFile::NoFooter
-end
-
-class Zlib::GzipFile::NoFooter
-end
-
-class Zlib::GzipFile
-  def self.wrap(*_); end
 end
 
 class Zlib::GzipReader
-  include ::Enumerable
-  def bytes(); end
-
-  def each(*_, &blk); end
-
-  def each_byte(); end
-
-  def each_char(); end
-
-  def each_line(*_); end
-
-  def eof(); end
-
-  def eof?(); end
-
-  def external_encoding(); end
-
-  def getbyte(); end
-
-  def getc(); end
-
   def initialize(*_); end
-
-  def lineno(); end
-
-  def lineno=(lineno); end
-
-  def lines(*_); end
-
-  def pos(); end
-
-  def read(*_); end
-
-  def readbyte(); end
-
-  def readchar(); end
-
-  def readpartial(*_); end
-
-  def rewind(); end
-
-  def tell(); end
-
-  def ungetbyte(_); end
-
-  def ungetc(_); end
-
-  def unused(); end
-end
-
-class Zlib::GzipReader
 end
 
 class Zlib::GzipWriter
-  def <<(_); end
-
-  def comment=(comment); end
-
-  def flush(*_); end
-
   def initialize(*_); end
-
-  def mtime=(mtime); end
-
-  def orig_name=(orig_name); end
-
-  def pos(); end
-
-  def tell(); end
-
-  def write(*_); end
-end
-
-class Zlib::GzipWriter
 end
 
 class Zlib::Inflate
-  def <<(_); end
-
-  def add_dictionary(_); end
-
-  def inflate(_); end
-
   def initialize(*_); end
-
-  def set_dictionary(_); end
-
-  def sync(_); end
-
-  def sync_point?(); end
-end
-
-class Zlib::Inflate
-  def self.inflate(_); end
-end
-
-class Zlib::MemError
-end
-
-class Zlib::MemError
-end
-
-class Zlib::NeedDict
-end
-
-class Zlib::NeedDict
-end
-
-class Zlib::StreamEnd
-end
-
-class Zlib::StreamEnd
-end
-
-class Zlib::StreamError
-end
-
-class Zlib::StreamError
-end
-
-class Zlib::VersionError
-end
-
-class Zlib::VersionError
-end
-
-class Zlib::ZStream
-  def adler(); end
-
-  def avail_in(); end
-
-  def avail_out(); end
-
-  def avail_out=(avail_out); end
-
-  def close(); end
-
-  def closed?(); end
-
-  def data_type(); end
-
-  def end(); end
-
-  def ended?(); end
-
-  def finish(); end
-
-  def finished?(); end
-
-  def flush_next_in(); end
-
-  def flush_next_out(); end
-
-  def reset(); end
-
-  def stream_end?(); end
-
-  def total_in(); end
-
-  def total_out(); end
-end
-
-class Zlib::ZStream
-end
-
-module Zlib
-  extend ::T::Sig
-  def self.adler32(*_); end
-
-  def self.adler32_combine(_, _1, _2); end
-
-  def self.crc32(*_); end
-
-  def self.crc32_combine(_, _1, _2); end
-
-  def self.crc_table(); end
-
-  def self.deflate(*_); end
-
-  def self.gunzip(_); end
-
-  def self.gzip(*_); end
-
-  def self.inflate(_); end
-
-  def self.zlib_version(); end
 end

@@ -7,10 +7,12 @@
 #
 #   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/loofah/all/loofah.rbi
 #
-# loofah-2.2.3
+# loofah-2.8.0
+
 module Loofah
   def self.document(*args, &block); end
   def self.fragment(*args, &block); end
+  def self.remove_comments_before_html_element(doc); end
   def self.remove_extraneous_whitespace(string); end
   def self.scrub_document(string_or_io, method); end
   def self.scrub_fragment(string_or_io, method); end
@@ -26,7 +28,7 @@ module Loofah::Elements
 end
 module Loofah::HTML5
 end
-module Loofah::HTML5::WhiteList
+module Loofah::HTML5::SafeList
 end
 module Loofah::LibxmlWorkarounds
 end

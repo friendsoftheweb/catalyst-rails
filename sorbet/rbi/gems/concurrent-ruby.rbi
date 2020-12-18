@@ -7,7 +7,8 @@
 #
 #   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/concurrent-ruby/all/concurrent-ruby.rbi
 #
-# concurrent-ruby-1.1.5
+# concurrent-ruby-1.1.7
+
 module Concurrent
   def abort_transaction; end
   def atomically; end
@@ -44,6 +45,7 @@ module Concurrent
   def self.processor_counter; end
   def self.use_simple_logger(level = nil, output = nil); end
   def self.use_stdlib_logger(level = nil, output = nil); end
+  extend Concurrent::Concern::Deprecation
   extend Concurrent::Concern::Logging
   extend Concurrent::Utility::EngineDetector
   extend Concurrent::Utility::NativeExtensionLoader
@@ -61,14 +63,6 @@ module Concurrent::Utility::EngineDetector
   def on_windows?; end
   def ruby_engine; end
   def ruby_version(version = nil, comparison, major, minor, patch); end
-end
-module Concurrent::ThreadSafe
-end
-module Concurrent::ThreadSafe::Util
-end
-class Concurrent::Array < Array
-end
-class Concurrent::Hash < Hash
 end
 module Concurrent::Synchronization
 end
@@ -342,6 +336,12 @@ module Concurrent::Concern::Logging
   def log(level, progname, message = nil, &block); end
   include Logger::Severity
 end
+module Concurrent::Concern::Deprecation
+  def deprecated(message, strip = nil); end
+  def deprecated_method(old_name, new_name); end
+  extend Concurrent::Concern::Deprecation
+  include Concurrent::Concern::Logging
+end
 module Concurrent::ExecutorService
   def <<(task); end
   def can_overflow?; end
@@ -349,28 +349,14 @@ module Concurrent::ExecutorService
   def serialized?; end
   include Concurrent::Concern::Logging
 end
-class Concurrent::AtExitImplementation < Concurrent::Synchronization::LockableObject
-  def add(handler_id = nil, &handler); end
-  def delete(handler_id); end
-  def enabled=(value); end
-  def enabled?; end
-  def handler?(handler_id); end
-  def handlers; end
-  def initialize(*args); end
-  def install; end
-  def ns_initialize(enabled = nil); end
-  def run; end
-  def runner; end
-  include Logger::Severity
-end
 class Concurrent::AbstractExecutorService < Concurrent::Synchronization::LockableObject
   def auto_terminate=(value); end
   def auto_terminate?; end
   def fallback_policy; end
   def handle_fallback(*args); end
-  def initialize(*args, &block); end
+  def initialize(opts = nil, &block); end
   def kill; end
-  def ns_auto_terminate=(value); end
+  def name; end
   def ns_auto_terminate?; end
   def ns_execute(*args, &task); end
   def ns_kill_execution; end
@@ -379,8 +365,9 @@ class Concurrent::AbstractExecutorService < Concurrent::Synchronization::Lockabl
   def shutdown; end
   def shutdown?; end
   def shuttingdown?; end
-  def terminate_at_exit; end
+  def to_s; end
   def wait_for_termination(timeout = nil); end
+  include Concurrent::Concern::Deprecation
   include Concurrent::ExecutorService
 end
 module Concurrent::SerialExecutorService
@@ -479,6 +466,7 @@ class Concurrent::RubyThreadPoolExecutor < Concurrent::RubyExecutorService
   def remaining_capacity; end
   def remove_busy_worker(worker); end
   def scheduled_task_count; end
+  def synchronous; end
   def worker_died(worker); end
   def worker_not_old_enough(worker); end
   def worker_task_completed; end
@@ -486,7 +474,7 @@ end
 class Concurrent::RubyThreadPoolExecutor::Worker
   def <<(message); end
   def create_worker(queue, pool, idletime); end
-  def initialize(pool); end
+  def initialize(pool, id); end
   def kill; end
   def run_task(pool, task, args); end
   def stop; end
@@ -603,10 +591,12 @@ class Concurrent::AbstractThreadLocalVar
 end
 class Concurrent::RubyThreadLocalVar < Concurrent::AbstractThreadLocalVar
   def allocate_storage; end
-  def default_for(thread); end
+  def get_default; end
   def get_threadlocal_array(thread = nil); end
-  def self.thread_finalizer(array); end
-  def self.threadlocal_finalizer(index); end
+  def next_index; end
+  def self.semi_sync(&block); end
+  def self.thread_finalizer(id); end
+  def self.thread_local_finalizer(index); end
   def set_threadlocal_array(array, thread = nil); end
   def value; end
   def value=(value); end
@@ -653,7 +643,7 @@ end
 class Concurrent::SimpleExecutorService < Concurrent::RubyExecutorService
   def <<(task); end
   def kill; end
-  def ns_initialize; end
+  def ns_initialize(*args); end
   def post(*args, &task); end
   def running?; end
   def self.<<(task); end
@@ -916,6 +906,14 @@ class Concurrent::Atom < Concurrent::Synchronization::Object
   def value=(value); end
   include Concurrent::Concern::Observable
 end
+module Concurrent::ThreadSafe
+end
+module Concurrent::ThreadSafe::Util
+end
+class Concurrent::Array < Array
+end
+class Concurrent::Hash < Hash
+end
 class Concurrent::Set < Set
 end
 class Concurrent::Tuple
@@ -946,6 +944,7 @@ class Concurrent::Async::AsyncDelegator < Concurrent::Synchronization::LockableO
   def initialize(delegate); end
   def method_missing(method, *args, &block); end
   def perform; end
+  def reset_if_forked; end
   def respond_to_missing?(method, include_private = nil); end
 end
 class Concurrent::Async::AwaitDelegator
@@ -1025,6 +1024,7 @@ module Concurrent::Synchronization::AbstractStruct
   def ns_each_pair; end
   def ns_equality(other); end
   def ns_get(member); end
+  def ns_initialize_copy; end
   def ns_inspect; end
   def ns_merge(other, &block); end
   def ns_select; end
@@ -1040,6 +1040,7 @@ module Concurrent::ImmutableStruct
   def [](member); end
   def each(&block); end
   def each_pair(&block); end
+  def initialize_copy(original); end
   def inspect; end
   def merge(other, &block); end
   def select(&block); end
@@ -1058,6 +1059,7 @@ module Concurrent::MutableStruct
   def []=(member, value); end
   def each(&block); end
   def each_pair(&block); end
+  def initialize_copy(original); end
   def inspect; end
   def merge(other, &block); end
   def select(&block); end
@@ -1128,6 +1130,7 @@ module Concurrent::SettableStruct
   def []=(member, value); end
   def each(&block); end
   def each_pair(&block); end
+  def initialize_copy(original); end
   def inspect; end
   def merge(other, &block); end
   def select(&block); end

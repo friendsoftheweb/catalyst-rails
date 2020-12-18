@@ -7,7 +7,8 @@
 #
 #   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/nokogiri/all/nokogiri.rbi
 #
-# nokogiri-1.10.3
+# nokogiri-1.10.10
+
 class Nokogiri::XML::Document < Nokogiri::XML::Node
   def <<(node_or_tags); end
   def add_child(node_or_tags); end
@@ -657,7 +658,7 @@ class Nokogiri::XML::SAX::Parser
   def parse_io(io, encoding = nil); end
   def parse_memory(data); end
 end
-class Anonymous_Struct_1 < Struct
+class Anonymous_Struct_4 < Struct
   def localname; end
   def localname=(_); end
   def prefix; end
@@ -671,7 +672,7 @@ class Anonymous_Struct_1 < Struct
   def value; end
   def value=(_); end
 end
-class Nokogiri::XML::SAX::Parser::Attribute < Anonymous_Struct_1
+class Nokogiri::XML::SAX::Parser::Attribute < Anonymous_Struct_4
 end
 module Nokogiri::XML::Searchable
   def %(*args); end
@@ -770,7 +771,7 @@ class Nokogiri::XML::Builder::NodeBuilder
   def initialize(node, doc_builder); end
   def method_missing(method, *args, &block); end
 end
-class Anonymous_Struct_2 < Struct
+class Anonymous_Struct_5 < Struct
   def name; end
   def name=(_); end
   def public_id; end
@@ -782,13 +783,13 @@ class Anonymous_Struct_2 < Struct
   def system_id; end
   def system_id=(_); end
 end
-class Nokogiri::XML::Notation < Anonymous_Struct_2
+class Nokogiri::XML::Notation < Anonymous_Struct_5
 end
 module Nokogiri::HTML
   def self.fragment(string, encoding = nil); end
   def self.parse(thing, url = nil, encoding = nil, options = nil, &block); end
 end
-class Anonymous_Struct_3 < Struct
+class Anonymous_Struct_6 < Struct
   def description; end
   def description=(_); end
   def name; end
@@ -800,7 +801,7 @@ class Anonymous_Struct_3 < Struct
   def value; end
   def value=(_); end
 end
-class Nokogiri::HTML::EntityDescription < Anonymous_Struct_3
+class Nokogiri::HTML::EntityDescription < Anonymous_Struct_6
 end
 class Nokogiri::HTML::Document::EncodingFound < StandardError
   def found_encoding; end

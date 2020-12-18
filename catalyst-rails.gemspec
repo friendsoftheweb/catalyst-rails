@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'dry-configurable', '~> 0.7'
   spec.add_runtime_dependency 'actionview', '>= 3.0', '< 7.0'
-  spec.add_runtime_dependency 'sorbet-runtime', '~> 0.4.0'
+  spec.add_runtime_dependency 'sorbet-runtime', '~> 0.5.0'
 
-  spec.add_development_dependency 'sorbet', '~> 0.4.0'
+  spec.add_development_dependency 'sorbet', '~> 0.5.0'
 end
