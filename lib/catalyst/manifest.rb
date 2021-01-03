@@ -31,29 +31,21 @@ module Catalyst
     end
 
     def has?(path)
-      path = path.to_s.gsub(/\A\/+/, '')
+      path = path.to_s.gsub(%r{\A\/+}, '')
 
-      if Catalyst.development?
-        false
-      else
-        @manifest.key?(path)
-      end
+      Catalyst.development? ? false : @manifest.key?(path)
     end
 
     def [](path)
-      path = path.to_s.gsub(/\A\/+/, '')
+      path = path.to_s.gsub(%r{\A\/+}, '')
 
       if Catalyst.development?
         dev_server_host = Catalyst.config.dev_server_host
         dev_server_port = Catalyst.config.dev_server_port
 
-        if dev_server_host.nil?
-          raise 'Missing "dev_server_host" configuration.'
-        end
+        raise 'Missing "dev_server_host" configuration.' if dev_server_host.nil?
 
-        if dev_server_port.nil?
-          raise 'Missing "dev_server_port" configuration.'
-        end
+        raise 'Missing "dev_server_port" configuration.' if dev_server_port.nil?
 
         return "http://#{dev_server_host}:#{dev_server_port}/#{path}"
       else

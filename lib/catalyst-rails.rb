@@ -7,15 +7,17 @@ require 'open3'
 module Catalyst
   extend Dry::Configurable
 
-  default_environment = if ENV['NODE_ENV']
-    ENV['NODE_ENV'].to_sym
-  elsif defined? Rails
-    Rails.env.to_sym
-  end
+  default_environment =
+    if ENV['NODE_ENV']
+      ENV['NODE_ENV'].to_sym
+    elsif defined?(Rails)
+      Rails.env.to_sym
+    end
 
-  default_manifest_path = if defined? Rails
-    File.expand_path('./public/assets/manifest.json', Dir.pwd)
-  end
+  default_manifest_path =
+    if defined?(Rails)
+      File.expand_path('./public/assets/manifest.json', Dir.pwd)
+    end
 
   setting :environment, default_environment
   setting :manifest_path, default_manifest_path
@@ -23,16 +25,21 @@ module Catalyst
   setting :assets_host_protocol, 'https'
   setting :dev_server_host, ENV.fetch('DEV_SERVER_HOST') { 'localhost' }
   setting :dev_server_port, ENV.fetch('DEV_SERVER_PORT') { 8080 }.to_i
-  setting :running_feature_tests, -> {
-    !defined?(RSpec) || RSpec.world.all_example_groups.any? do |group|
-      group.metadata[:type] == :system
-    end
-  }
+  setting :running_feature_tests,
+          -> {
+            !defined?(RSpec) || RSpec
+              .world
+              .all_example_groups
+              .any? { |group| group.metadata[:type] == :system }
+          }
 
   def self.log(message, level = :info)
-    message = message.split("\n").reduce('') do |reduction, line|
-      reduction + "\e[35m[Catalyst]\e[0m #{line}\n"
-    end
+    message =
+      message
+        .split("\n")
+        .reduce('') do |reduction, line|
+          reduction + "\e[35m[Catalyst]\e[0m #{line}\n"
+        end
 
     puts message
   end
@@ -86,13 +93,11 @@ module Catalyst
   end
 
   def self.check_for_yarn!
-    unless system 'which yarn > /dev/null 2>&1'
-      raise NotInstalled, <<~MESSAGE
+    raise NotInstalled, <<~MESSAGE unless system 'which yarn > /dev/null 2>&1'
         The yarn binary is not available in this directory.
         Please follow the instructions here to install it:
         https://yarnpkg.com/lang/en/docs/install
       MESSAGE
-    end
   end
 
   def self.check_for_catalyst!
@@ -113,4 +118,4 @@ require_relative './catalyst/errors'
 require_relative './catalyst/builder'
 require_relative './catalyst/helpers'
 require_relative './catalyst/manifest'
-require_relative './catalyst/railtie' if defined? ::Rails::Railtie
+require_relative './catalyst/railtie' if defined?(::Rails::Railtie)

@@ -20,26 +20,30 @@ module Catalyst
       catalyst_referenced_files << path
 
       if !common
-        return content_tag(
-          :script,
-          nil,
-          type: 'text/javascript',
-          crossorigin: 'anonymous',
-          src: ::Catalyst::Manifest[path]
+        return(
+          content_tag(
+            :script,
+            nil,
+            type: 'text/javascript',
+            crossorigin: 'anonymous',
+            src: ::Catalyst::Manifest[path]
+          )
         )
       end
 
-      safe_join([
-        catalyst_javascript_vendor_include_tag,
-        catalyst_javascript_common_include_tag,
-        content_tag(
-          :script,
-          nil,
-          type: 'text/javascript',
-          crossorigin: 'anonymous',
-          src: ::Catalyst::Manifest[path]
-        )
-      ])
+      safe_join(
+        [
+          catalyst_javascript_vendor_include_tag,
+          catalyst_javascript_common_include_tag,
+          content_tag(
+            :script,
+            nil,
+            type: 'text/javascript',
+            crossorigin: 'anonymous',
+            src: ::Catalyst::Manifest[path]
+          )
+        ]
+      )
     end
 
     def catalyst_javascript_vendor_include_tag
@@ -73,16 +77,18 @@ module Catalyst
 
       catalyst_referenced_files << path
 
-      safe_join([
-        catalyst_common_stylesheet_link_tag,
-        content_tag(
-          :link,
-          nil,
-          href: ::Catalyst::Manifest[path],
-          media: 'screen',
-          rel: 'stylesheet'
-        )
-      ])
+      safe_join(
+        [
+          catalyst_common_stylesheet_link_tag,
+          content_tag(
+            :link,
+            nil,
+            href: ::Catalyst::Manifest[path],
+            media: 'screen',
+            rel: 'stylesheet'
+          )
+        ]
+      )
     end
 
     def catalyst_common_stylesheet_link_tag
@@ -90,9 +96,7 @@ module Catalyst
 
       return nil if catalyst_referenced_files.include?(path)
 
-      if ::Catalyst::Manifest.has?(path)
-        catalyst_stylesheet_link_tag(path)
-      end
+      catalyst_stylesheet_link_tag(path) if ::Catalyst::Manifest.has?(path)
     end
 
     def catalyst_asset_path(path)
@@ -103,7 +107,9 @@ module Catalyst
       if ::Catalyst.development? || ::Catalyst.config.assets_host.nil?
         catalyst_asset_path(path)
       else
-        "#{Catalyst.config.assets_host_protocol}://#{Catalyst.config.assets_host}#{catalyst_asset_path(path)}"
+        "#{Catalyst.config.assets_host_protocol}://#{
+          Catalyst.config.assets_host
+        }#{catalyst_asset_path(path)}"
       end
     end
 

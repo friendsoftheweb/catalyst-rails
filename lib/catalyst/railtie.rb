@@ -10,8 +10,6 @@ module Catalyst
       ActionView::Base.include(::Catalyst::Helpers)
     end
 
-    rake_tasks do
-      load File.expand_path('./tasks/build.rake', __dir__)
-    end
+    rake_tasks { load File.expand_path('./tasks/build.rake', __dir__) }
   end
 end

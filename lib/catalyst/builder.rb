@@ -78,16 +78,18 @@ module Catalyst
     end
 
     def assets_last_modified
-      asset_paths.lazy.select do |path|
-        File.exists?(path)
-      end.map do |path|
-        File.ctime(path)
-      end.max || Time.now
+      asset_paths
+        .lazy
+        .select { |path| File.exists?(path) }
+        .map { |path| File.ctime(path) }
+        .max || Time.now
     end
 
     def asset_paths
       if ::Catalyst::Config.context_path
-        Dir.glob(File.join(::Catalyst::Config.context_path, '**/*.{js,ts,tsx,scss}')) + [
+        Dir.glob(
+          File.join(::Catalyst::Config.context_path, '**/*.{js,ts,tsx,scss}')
+        ) + [
           File.join(Dir.pwd, 'package.json'),
           File.join(Dir.pwd, 'yarn.lock'),
           File.join(Dir.pwd, 'catalyst.config.json')
@@ -98,16 +100,18 @@ module Catalyst
     end
 
     def assets_last_built_file_path
-      if defined?(Rails)
-        Rails.root.join('tmp/assets-last-built')
-      end
+      Rails.root.join('tmp/assets-last-built') if defined?(Rails)
     end
 
     def assets_last_built
       if assets_last_built_file_path.nil?
         Time.at(0)
       else
-        File.mtime(assets_last_built_file_path) rescue Time.at(0)
+        begin
+          File.mtime(assets_last_built_file_path)
+        rescue StandardError
+          Time.at(0)
+        end
       end
     end
   end

@@ -1,0 +1,12 @@
+{
+  "name": "catalyst-rails",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:friendsoftheweb/catalyst-rails.git",
+  "author": "Dan Martens <dan@friendsoftheweb.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@prettier/plugin-ruby": "^1.2.2",
+    "prettier": "^2.2.1"
+  }
+}

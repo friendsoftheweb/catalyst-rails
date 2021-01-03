@@ -19,22 +19,23 @@ module Catalyst
     end
 
     def initialize
-      @values = if File.exists?(CATALYST_CONFIG_PATH)
-        JSON.parse(File.read(CATALYST_CONFIG_PATH))
-      elsif File.exists?(PACKAGE_PATH)
-        JSON.parse(File.read(PACKAGE_PATH))['catalyst']
-      else
-        raise ::Catalyst::MissingConfig,
-              "Missing 'catalyst.config.json' or 'package.json' file in: #{Dir.pwd}"
-      end
+      @values =
+        if File.exists?(CATALYST_CONFIG_PATH)
+          JSON.parse(File.read(CATALYST_CONFIG_PATH))
+        elsif File.exists?(PACKAGE_PATH)
+          JSON.parse(File.read(PACKAGE_PATH))['catalyst']
+        else
+          raise ::Catalyst::MissingConfig,
+                "Missing 'catalyst.config.json' or 'package.json' file in: #{
+                  Dir.pwd
+                }"
+        end
 
-      if @values.nil?
-        raise ::Catalyst::MissingConfig, <<~MESSAGE
+      raise ::Catalyst::MissingConfig, <<~MESSAGE if @values.nil?
           Missing "catalyst" config in package.json file.
           Please follow the instructions here to set up Catalyst:
           https://github.com/friendsoftheweb/catalyst
         MESSAGE
-      end
     end
 
     def context_path
