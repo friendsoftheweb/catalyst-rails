@@ -1,0 +1,38 @@
+AllCops:
+  TargetRubyVersion: 2.5
+
+Layout/MultilineMethodCallIndentation:
+  Enabled: false
+
+Lint/SuppressedException:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 24
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/ModuleLength:
+  Max: 200
+
+Naming/FileName:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/GlobalVars:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  Enabled: false
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false

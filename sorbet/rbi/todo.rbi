@@ -4,4 +4,6 @@
 # typed: strong
 module ActiveSupport::TimeWithZone::TZInfo::TimezonePeriod; end
 module Catalyst::RSpec; end
+module T::Private::Methods::MethodHooks; end
+module T::Private::Methods::SingletonMethodHooks; end
 module Time::TZInfo::Timezone; end
