@@ -3,6 +3,6 @@
 
 module Catalyst
   def self.version
-    Gem::Version.new('0.1.3')
+    Gem::Version.new('2.0.0.beta1')
   end
 end

@@ -848,8 +848,8 @@
 # wrong constant name /
 # wrong constant name <=>
 # uninitialized constant ActiveSupport::Duration::Scalar::EXABYTE
-# Did you mean?  ActiveSupport::Duration::Scalar::TERABYTE
-#                ActiveSupport::Duration::Scalar::MEGABYTE
+# Did you mean?  ActiveSupport::Duration::Scalar::MEGABYTE
+#                ActiveSupport::Duration::Scalar::TERABYTE
 # uninitialized constant ActiveSupport::Duration::Scalar::GIGABYTE
 # uninitialized constant ActiveSupport::Duration::Scalar::KILOBYTE
 # uninitialized constant ActiveSupport::Duration::Scalar::MEGABYTE
@@ -1345,8 +1345,8 @@
 # wrong constant name initialize
 # wrong constant name to_a
 # uninitialized constant BigDecimal::EXABYTE
-# Did you mean?  BigDecimal::TERABYTE
-#                BigDecimal::MEGABYTE
+# Did you mean?  BigDecimal::MEGABYTE
+#                BigDecimal::TERABYTE
 # uninitialized constant BigDecimal::GIGABYTE
 # uninitialized constant BigDecimal::KILOBYTE
 # uninitialized constant BigDecimal::MEGABYTE
@@ -2979,8 +2979,8 @@
 # wrong constant name since
 # wrong constant name to_default_s
 # uninitialized constant Date::Infinity::EXABYTE
-# Did you mean?  Date::Infinity::TERABYTE
-#                Date::Infinity::MEGABYTE
+# Did you mean?  Date::Infinity::MEGABYTE
+#                Date::Infinity::TERABYTE
 # uninitialized constant Date::Infinity::GIGABYTE
 # uninitialized constant Date::Infinity::KILOBYTE
 # uninitialized constant Date::Infinity::MEGABYTE
@@ -3219,8 +3219,8 @@
 # uninitialized constant FileUtils::Verbose::VERSION
 # Did you mean?  FileUtils::VERSION
 # uninitialized constant Float::EXABYTE
-# Did you mean?  Float::TERABYTE
-#                Float::MEGABYTE
+# Did you mean?  Float::MEGABYTE
+#                Float::TERABYTE
 # uninitialized constant Float::GIGABYTE
 # uninitialized constant Float::KILOBYTE
 # uninitialized constant Float::MEGABYTE
@@ -3434,7 +3434,6 @@
 # wrong constant name <=>
 # uninitialized constant Gem::Specification::GENERICS
 # uninitialized constant Gem::Specification::GENERIC_CACHE
-# wrong constant name removed_method_calls
 # wrong constant name to_ruby
 # wrong constant name initialize
 # wrong constant name packaging
@@ -3478,8 +3477,6 @@
 # wrong constant name slice!
 # wrong constant name to_options!
 # wrong constant name to_param
-# wrong constant name ruby2_keywords_hash
-# wrong constant name ruby2_keywords_hash?
 # wrong constant name try_convert
 # wrong constant name <Class:Backend>
 # wrong constant name <Class:Gettext>
@@ -3490,6 +3487,7 @@
 # wrong constant name <Class:Cache>
 # wrong constant name <Class:CacheFile>
 # wrong constant name <Class:Cascade>
+# wrong constant name <Class:Chain>
 # wrong constant name <Class:Fallbacks>
 # wrong constant name <Class:Flatten>
 # wrong constant name <Class:InterpolationCompiler>
@@ -3535,6 +3533,26 @@
 # wrong constant name path_roots=
 # wrong constant name <static-init>
 # wrong constant name lookup
+# wrong constant name <static-init>
+# uninitialized constant I18n::Backend::Chain::DEFAULT_REPLACEMENT_CHAR
+# wrong constant name <Class:Implementation>
+# uninitialized constant I18n::Backend::Chain::Implementation::DEFAULT_REPLACEMENT_CHAR
+# Did you mean?  I18n::Backend::Chain::DEFAULT_REPLACEMENT_CHAR
+# wrong constant name available_locales
+# wrong constant name backends
+# wrong constant name backends=
+# wrong constant name eager_load!
+# wrong constant name exists?
+# wrong constant name init_translations
+# wrong constant name initialize
+# wrong constant name initialized?
+# wrong constant name localize
+# wrong constant name namespace_lookup?
+# wrong constant name reload!
+# wrong constant name store_translations
+# wrong constant name translate
+# wrong constant name translations
+# wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name exists?
 # wrong constant name extract_non_symbol_default!
@@ -3776,8 +3794,8 @@
 # Did you mean?  DRb
 #                ERB
 # uninitialized constant Integer::EXABYTE
-# Did you mean?  Integer::TERABYTE
-#                Integer::MEGABYTE
+# Did you mean?  Integer::MEGABYTE
+#                Integer::TERABYTE
 # uninitialized constant Integer::GIGABYTE
 # uninitialized constant Integer::KILOBYTE
 # uninitialized constant Integer::MEGABYTE
@@ -4082,62 +4100,134 @@
 # uninitialized constant Nokogiri::CSS::Parser::Racc_Main_Parsing_Routine
 # uninitialized constant Nokogiri::CSS::Parser::Racc_Runtime_Core_Id_C
 # Did you mean?  Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_C
-# uninitialized constant Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision
-# Did you mean?  Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision_C
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision_R
-#                Nokogiri::CSS::Parser::Racc_Runtime_Revision
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_C
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_R
-#                Nokogiri::CSS::Parser::Racc_Runtime_Version
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Id_C
-# uninitialized constant Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision_C
-# Did you mean?  Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision_R
-#                Nokogiri::CSS::Parser::Racc_Runtime_Revision
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_C
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_R
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Id_C
-# uninitialized constant Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision_R
-# Did you mean?  Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision_C
-#                Nokogiri::CSS::Parser::Racc_Runtime_Revision
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_C
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_R
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version
 # uninitialized constant Nokogiri::CSS::Parser::Racc_Runtime_Core_Version
-# Did you mean?  Nokogiri::CSS::Parser::Racc_Runtime_Revision
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision
+# Did you mean?  Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_C
 #                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_R
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_C
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision_C
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision_R
 #                Nokogiri::CSS::Parser::Racc_Runtime_Version
 #                Nokogiri::CSS::Parser::Racc_Runtime_Core_Id_C
 # uninitialized constant Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_C
 # Did you mean?  Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_R
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision_C
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision_R
-#                Nokogiri::CSS::Parser::Racc_Runtime_Revision
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision
 #                Nokogiri::CSS::Parser::Racc_Runtime_Version
 #                Nokogiri::CSS::Parser::Racc_Runtime_Core_Id_C
 # uninitialized constant Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_R
 # Did you mean?  Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_C
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision_C
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision_R
-#                Nokogiri::CSS::Parser::Racc_Runtime_Revision
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision
 #                Nokogiri::CSS::Parser::Racc_Runtime_Version
 #                Nokogiri::CSS::Parser::Racc_Runtime_Core_Id_C
-# uninitialized constant Nokogiri::CSS::Parser::Racc_Runtime_Revision
-# Did you mean?  Nokogiri::CSS::Parser::Racc_Runtime_Version
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision
 # uninitialized constant Nokogiri::CSS::Parser::Racc_Runtime_Type
 # uninitialized constant Nokogiri::CSS::Parser::Racc_Runtime_Version
-# Did you mean?  Nokogiri::CSS::Parser::Racc_Runtime_Revision
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version
+# Did you mean?  Nokogiri::CSS::Parser::Racc_Runtime_Core_Version
 # uninitialized constant Nokogiri::CSS::Parser::Racc_YY_Parse_Method
+# wrong constant name <Class:Element>
+# uninitialized constant Nokogiri::XML::Document::ATTRIBUTE_DECL
+# Did you mean?  Nokogiri::XML::AttributeDecl
+#                Nokogiri::XML::Document::ATTRIBUTE_NODE
+# uninitialized constant Nokogiri::XML::Document::ATTRIBUTE_NODE
+# Did you mean?  Nokogiri::XML::Document::ATTRIBUTE_DECL
+# uninitialized constant Nokogiri::XML::Document::CDATA_SECTION_NODE
+# uninitialized constant Nokogiri::XML::Document::COMMENT_NODE
+# Did you mean?  Nokogiri::XML::Document::DOCUMENT_NODE
+# uninitialized constant Nokogiri::XML::Document::DOCB_DOCUMENT_NODE
+# Did you mean?  Nokogiri::XML::Document::DOCUMENT_NODE
+# uninitialized constant Nokogiri::XML::Document::DOCUMENT_FRAG_NODE
+# Did you mean?  Nokogiri::XML::Document::DOCUMENT_TYPE_NODE
+#                Nokogiri::XML::Document::DOCUMENT_NODE
+# uninitialized constant Nokogiri::XML::Document::DOCUMENT_NODE
+# Did you mean?  Nokogiri::XML::Document::COMMENT_NODE
+# uninitialized constant Nokogiri::XML::Document::DOCUMENT_TYPE_NODE
+# Did you mean?  Nokogiri::XML::Document::DOCUMENT_FRAG_NODE
+#                Nokogiri::XML::Document::DOCUMENT_NODE
+# uninitialized constant Nokogiri::XML::Document::DTD_NODE
+# uninitialized constant Nokogiri::XML::Document::ELEMENT_DECL
+# Did you mean?  Nokogiri::XML::ElementDecl
+# uninitialized constant Nokogiri::XML::Document::ELEMENT_NODE
+# uninitialized constant Nokogiri::XML::Document::ENTITY_DECL
+# Did you mean?  Nokogiri::XML::EntityDecl
+# uninitialized constant Nokogiri::XML::Document::ENTITY_NODE
+# uninitialized constant Nokogiri::XML::Document::ENTITY_REF_NODE
+# Did you mean?  Nokogiri::XML::Document::ENTITY_NODE
+# uninitialized constant Nokogiri::XML::Document::HTML_DOCUMENT_NODE
+# uninitialized constant Nokogiri::XML::Document::LOOKS_LIKE_XPATH
+# uninitialized constant Nokogiri::XML::Document::NAMESPACE_DECL
+# uninitialized constant Nokogiri::XML::Document::NOTATION_NODE
+# uninitialized constant Nokogiri::XML::Document::PI_NODE
+# uninitialized constant Nokogiri::XML::Document::TEXT_NODE
+# uninitialized constant Nokogiri::XML::Document::XINCLUDE_END
+# uninitialized constant Nokogiri::XML::Document::XINCLUDE_START
+# uninitialized constant Nokogiri::XML::Element::ATTRIBUTE_DECL
+# Did you mean?  Nokogiri::XML::AttributeDecl
+#                Nokogiri::XML::Element::ATTRIBUTE_NODE
+# uninitialized constant Nokogiri::XML::Element::ATTRIBUTE_NODE
+# Did you mean?  Nokogiri::XML::Element::ATTRIBUTE_DECL
+# uninitialized constant Nokogiri::XML::Element::CDATA_SECTION_NODE
+# uninitialized constant Nokogiri::XML::Element::COMMENT_NODE
+# Did you mean?  Nokogiri::XML::Element::DOCUMENT_NODE
+# uninitialized constant Nokogiri::XML::Element::DOCB_DOCUMENT_NODE
+# Did you mean?  Nokogiri::XML::Element::DOCUMENT_NODE
+# uninitialized constant Nokogiri::XML::Element::DOCUMENT_FRAG_NODE
+# Did you mean?  Nokogiri::XML::Element::DOCUMENT_TYPE_NODE
+#                Nokogiri::XML::Element::DOCUMENT_NODE
+# uninitialized constant Nokogiri::XML::Element::DOCUMENT_NODE
+# Did you mean?  Nokogiri::XML::Element::COMMENT_NODE
+# uninitialized constant Nokogiri::XML::Element::DOCUMENT_TYPE_NODE
+# Did you mean?  Nokogiri::XML::Element::DOCUMENT_FRAG_NODE
+#                Nokogiri::XML::Element::DOCUMENT_NODE
+# uninitialized constant Nokogiri::XML::Element::DTD_NODE
+# uninitialized constant Nokogiri::XML::Element::ELEMENT_DECL
+# Did you mean?  Nokogiri::XML::ElementDecl
+# uninitialized constant Nokogiri::XML::Element::ELEMENT_NODE
+# uninitialized constant Nokogiri::XML::Element::ENTITY_DECL
+# Did you mean?  Nokogiri::XML::EntityDecl
+# uninitialized constant Nokogiri::XML::Element::ENTITY_NODE
+# uninitialized constant Nokogiri::XML::Element::ENTITY_REF_NODE
+# Did you mean?  Nokogiri::XML::Element::ENTITY_NODE
+# uninitialized constant Nokogiri::XML::Element::Elem
+# uninitialized constant Nokogiri::XML::Element::HTML_DOCUMENT_NODE
+# uninitialized constant Nokogiri::XML::Element::IMPLIED_XPATH_CONTEXTS
+# uninitialized constant Nokogiri::XML::Element::LOOKS_LIKE_XPATH
+# uninitialized constant Nokogiri::XML::Element::NAMESPACE_DECL
+# uninitialized constant Nokogiri::XML::Element::NOTATION_NODE
+# uninitialized constant Nokogiri::XML::Element::PI_NODE
+# uninitialized constant Nokogiri::XML::Element::TEXT_NODE
+# uninitialized constant Nokogiri::XML::Element::XINCLUDE_END
+# uninitialized constant Nokogiri::XML::Element::XINCLUDE_START
+# wrong constant name <static-init>
+# uninitialized constant Nokogiri::XML::EntityDecl::ATTRIBUTE_DECL
+# Did you mean?  Nokogiri::XML::AttributeDecl
+#                Nokogiri::XML::EntityDecl::ATTRIBUTE_NODE
+# uninitialized constant Nokogiri::XML::EntityDecl::ATTRIBUTE_NODE
+# Did you mean?  Nokogiri::XML::EntityDecl::ATTRIBUTE_DECL
+# uninitialized constant Nokogiri::XML::EntityDecl::CDATA_SECTION_NODE
+# uninitialized constant Nokogiri::XML::EntityDecl::COMMENT_NODE
+# Did you mean?  Nokogiri::XML::EntityDecl::DOCUMENT_NODE
+# uninitialized constant Nokogiri::XML::EntityDecl::DOCB_DOCUMENT_NODE
+# Did you mean?  Nokogiri::XML::EntityDecl::DOCUMENT_NODE
+# uninitialized constant Nokogiri::XML::EntityDecl::DOCUMENT_FRAG_NODE
+# Did you mean?  Nokogiri::XML::EntityDecl::DOCUMENT_TYPE_NODE
+#                Nokogiri::XML::EntityDecl::DOCUMENT_NODE
+# uninitialized constant Nokogiri::XML::EntityDecl::DOCUMENT_NODE
+# Did you mean?  Nokogiri::XML::EntityDecl::COMMENT_NODE
+# uninitialized constant Nokogiri::XML::EntityDecl::DOCUMENT_TYPE_NODE
+# Did you mean?  Nokogiri::XML::EntityDecl::DOCUMENT_FRAG_NODE
+#                Nokogiri::XML::EntityDecl::DOCUMENT_NODE
+# uninitialized constant Nokogiri::XML::EntityDecl::DTD_NODE
+# uninitialized constant Nokogiri::XML::EntityDecl::ELEMENT_DECL
+# Did you mean?  Nokogiri::XML::ElementDecl
+# uninitialized constant Nokogiri::XML::EntityDecl::ELEMENT_NODE
+# uninitialized constant Nokogiri::XML::EntityDecl::ENTITY_DECL
+# uninitialized constant Nokogiri::XML::EntityDecl::ENTITY_NODE
+# uninitialized constant Nokogiri::XML::EntityDecl::ENTITY_REF_NODE
+# Did you mean?  Nokogiri::XML::EntityDecl::ENTITY_NODE
+# uninitialized constant Nokogiri::XML::EntityDecl::HTML_DOCUMENT_NODE
+# uninitialized constant Nokogiri::XML::EntityDecl::IMPLIED_XPATH_CONTEXTS
+# uninitialized constant Nokogiri::XML::EntityDecl::LOOKS_LIKE_XPATH
+# uninitialized constant Nokogiri::XML::EntityDecl::NAMESPACE_DECL
+# uninitialized constant Nokogiri::XML::EntityDecl::NOTATION_NODE
+# uninitialized constant Nokogiri::XML::EntityDecl::PI_NODE
+# uninitialized constant Nokogiri::XML::EntityDecl::TEXT_NODE
+# uninitialized constant Nokogiri::XML::EntityDecl::XINCLUDE_END
+# uninitialized constant Nokogiri::XML::EntityDecl::XINCLUDE_START
+# uninitialized constant Nokogiri::XML::Node::LOOKS_LIKE_XPATH
+# uninitialized constant Nokogiri::XML::NodeSet::LOOKS_LIKE_XPATH
 # uninitialized constant RUBYGEMS_ACTIVATION_MONITOR
 # wrong constant name html_safe?
 # wrong constant name presence_in
@@ -4209,120 +4299,42 @@
 # uninitialized constant Parser::Ruby24::Racc_Main_Parsing_Routine
 # uninitialized constant Parser::Ruby24::Racc_Runtime_Core_Id_C
 # Did you mean?  Parser::Ruby24::Racc_Runtime_Core_Version_C
-# uninitialized constant Parser::Ruby24::Racc_Runtime_Core_Revision
-# Did you mean?  Parser::Ruby24::Racc_Runtime_Core_Revision_C
-#                Parser::Ruby24::Racc_Runtime_Core_Revision_R
-#                Parser::Ruby24::Racc_Runtime_Revision
-#                Parser::Ruby24::Racc_Runtime_Core_Version
-#                Parser::Ruby24::Racc_Runtime_Core_Version_C
-#                Parser::Ruby24::Racc_Runtime_Core_Version_R
-#                Parser::Ruby24::Racc_Runtime_Version
-#                Parser::Ruby24::Racc_Runtime_Core_Id_C
-# uninitialized constant Parser::Ruby24::Racc_Runtime_Core_Revision_C
-# Did you mean?  Parser::Ruby24::Racc_Runtime_Core_Revision_R
-#                Parser::Ruby24::Racc_Runtime_Revision
-#                Parser::Ruby24::Racc_Runtime_Core_Version_C
-#                Parser::Ruby24::Racc_Runtime_Core_Version_R
-#                Parser::Ruby24::Racc_Runtime_Core_Version
-#                Parser::Ruby24::Racc_Runtime_Core_Id_C
-# uninitialized constant Parser::Ruby24::Racc_Runtime_Core_Revision_R
-# Did you mean?  Parser::Ruby24::Racc_Runtime_Core_Revision_C
-#                Parser::Ruby24::Racc_Runtime_Revision
-#                Parser::Ruby24::Racc_Runtime_Core_Version_C
-#                Parser::Ruby24::Racc_Runtime_Core_Version_R
-#                Parser::Ruby24::Racc_Runtime_Core_Version
 # uninitialized constant Parser::Ruby24::Racc_Runtime_Core_Version
-# Did you mean?  Parser::Ruby24::Racc_Runtime_Revision
-#                Parser::Ruby24::Racc_Runtime_Core_Revision
+# Did you mean?  Parser::Ruby24::Racc_Runtime_Core_Version_C
 #                Parser::Ruby24::Racc_Runtime_Core_Version_R
-#                Parser::Ruby24::Racc_Runtime_Core_Version_C
-#                Parser::Ruby24::Racc_Runtime_Core_Revision_C
-#                Parser::Ruby24::Racc_Runtime_Core_Revision_R
 #                Parser::Ruby24::Racc_Runtime_Version
 #                Parser::Ruby24::Racc_Runtime_Core_Id_C
 # uninitialized constant Parser::Ruby24::Racc_Runtime_Core_Version_C
 # Did you mean?  Parser::Ruby24::Racc_Runtime_Core_Version_R
-#                Parser::Ruby24::Racc_Runtime_Core_Revision_C
-#                Parser::Ruby24::Racc_Runtime_Core_Revision_R
-#                Parser::Ruby24::Racc_Runtime_Revision
-#                Parser::Ruby24::Racc_Runtime_Core_Revision
 #                Parser::Ruby24::Racc_Runtime_Version
 #                Parser::Ruby24::Racc_Runtime_Core_Id_C
 # uninitialized constant Parser::Ruby24::Racc_Runtime_Core_Version_R
 # Did you mean?  Parser::Ruby24::Racc_Runtime_Core_Version_C
-#                Parser::Ruby24::Racc_Runtime_Core_Revision_C
-#                Parser::Ruby24::Racc_Runtime_Core_Revision_R
-#                Parser::Ruby24::Racc_Runtime_Revision
-#                Parser::Ruby24::Racc_Runtime_Core_Revision
 #                Parser::Ruby24::Racc_Runtime_Version
 #                Parser::Ruby24::Racc_Runtime_Core_Id_C
-# uninitialized constant Parser::Ruby24::Racc_Runtime_Revision
-# Did you mean?  Parser::Ruby24::Racc_Runtime_Version
-#                Parser::Ruby24::Racc_Runtime_Core_Version
-#                Parser::Ruby24::Racc_Runtime_Core_Revision
 # uninitialized constant Parser::Ruby24::Racc_Runtime_Type
 # uninitialized constant Parser::Ruby24::Racc_Runtime_Version
-# Did you mean?  Parser::Ruby24::Racc_Runtime_Revision
-#                Parser::Ruby24::Racc_Runtime_Core_Version
+# Did you mean?  Parser::Ruby24::Racc_Runtime_Core_Version
 # uninitialized constant Parser::Ruby24::Racc_YY_Parse_Method
 # uninitialized constant Parser::Ruby27::Racc_Main_Parsing_Routine
 # uninitialized constant Parser::Ruby27::Racc_Runtime_Core_Id_C
 # Did you mean?  Parser::Ruby27::Racc_Runtime_Core_Version_C
-# uninitialized constant Parser::Ruby27::Racc_Runtime_Core_Revision
-# Did you mean?  Parser::Ruby27::Racc_Runtime_Core_Revision_C
-#                Parser::Ruby27::Racc_Runtime_Core_Revision_R
-#                Parser::Ruby27::Racc_Runtime_Revision
-#                Parser::Ruby27::Racc_Runtime_Core_Version
-#                Parser::Ruby27::Racc_Runtime_Core_Version_C
-#                Parser::Ruby27::Racc_Runtime_Core_Version_R
-#                Parser::Ruby27::Racc_Runtime_Version
-#                Parser::Ruby27::Racc_Runtime_Core_Id_C
-# uninitialized constant Parser::Ruby27::Racc_Runtime_Core_Revision_C
-# Did you mean?  Parser::Ruby27::Racc_Runtime_Core_Revision_R
-#                Parser::Ruby27::Racc_Runtime_Revision
-#                Parser::Ruby27::Racc_Runtime_Core_Version_C
-#                Parser::Ruby27::Racc_Runtime_Core_Version_R
-#                Parser::Ruby27::Racc_Runtime_Core_Version
-#                Parser::Ruby27::Racc_Runtime_Core_Id_C
-# uninitialized constant Parser::Ruby27::Racc_Runtime_Core_Revision_R
-# Did you mean?  Parser::Ruby27::Racc_Runtime_Core_Revision_C
-#                Parser::Ruby27::Racc_Runtime_Revision
-#                Parser::Ruby27::Racc_Runtime_Core_Version_C
-#                Parser::Ruby27::Racc_Runtime_Core_Version_R
-#                Parser::Ruby27::Racc_Runtime_Core_Version
 # uninitialized constant Parser::Ruby27::Racc_Runtime_Core_Version
-# Did you mean?  Parser::Ruby27::Racc_Runtime_Revision
-#                Parser::Ruby27::Racc_Runtime_Core_Revision
+# Did you mean?  Parser::Ruby27::Racc_Runtime_Core_Version_C
 #                Parser::Ruby27::Racc_Runtime_Core_Version_R
-#                Parser::Ruby27::Racc_Runtime_Core_Version_C
-#                Parser::Ruby27::Racc_Runtime_Core_Revision_C
-#                Parser::Ruby27::Racc_Runtime_Core_Revision_R
 #                Parser::Ruby27::Racc_Runtime_Version
 #                Parser::Ruby27::Racc_Runtime_Core_Id_C
 # uninitialized constant Parser::Ruby27::Racc_Runtime_Core_Version_C
 # Did you mean?  Parser::Ruby27::Racc_Runtime_Core_Version_R
-#                Parser::Ruby27::Racc_Runtime_Core_Revision_C
-#                Parser::Ruby27::Racc_Runtime_Core_Revision_R
-#                Parser::Ruby27::Racc_Runtime_Revision
-#                Parser::Ruby27::Racc_Runtime_Core_Revision
 #                Parser::Ruby27::Racc_Runtime_Version
 #                Parser::Ruby27::Racc_Runtime_Core_Id_C
 # uninitialized constant Parser::Ruby27::Racc_Runtime_Core_Version_R
 # Did you mean?  Parser::Ruby27::Racc_Runtime_Core_Version_C
-#                Parser::Ruby27::Racc_Runtime_Core_Revision_C
-#                Parser::Ruby27::Racc_Runtime_Core_Revision_R
-#                Parser::Ruby27::Racc_Runtime_Revision
-#                Parser::Ruby27::Racc_Runtime_Core_Revision
 #                Parser::Ruby27::Racc_Runtime_Version
 #                Parser::Ruby27::Racc_Runtime_Core_Id_C
-# uninitialized constant Parser::Ruby27::Racc_Runtime_Revision
-# Did you mean?  Parser::Ruby27::Racc_Runtime_Version
-#                Parser::Ruby27::Racc_Runtime_Core_Version
-#                Parser::Ruby27::Racc_Runtime_Core_Revision
 # uninitialized constant Parser::Ruby27::Racc_Runtime_Type
 # uninitialized constant Parser::Ruby27::Racc_Runtime_Version
-# Did you mean?  Parser::Ruby27::Racc_Runtime_Revision
-#                Parser::Ruby27::Racc_Runtime_Core_Version
+# Did you mean?  Parser::Ruby27::Racc_Runtime_Core_Version
 # uninitialized constant Parser::Ruby27::Racc_YY_Parse_Method
 # wrong constant name fnmatch?
 # wrong constant name glob
@@ -4501,61 +4513,22 @@
 # uninitialized constant RuboCop::AST::NodePattern::Parser::Racc_Main_Parsing_Routine
 # uninitialized constant RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Id_C
 # Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
-# uninitialized constant RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision
-# Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Version
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Id_C
-# uninitialized constant RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_C
-# Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Id_C
-# uninitialized constant RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_R
-# Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version
 # uninitialized constant RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version
-# Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision
+# Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_R
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Version
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Id_C
 # uninitialized constant RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
 # Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Version
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Id_C
 # uninitialized constant RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_R
 # Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Version
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Id_C
-# uninitialized constant RuboCop::AST::NodePattern::Parser::Racc_Runtime_Revision
-# Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Version
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision
 # uninitialized constant RuboCop::AST::NodePattern::Parser::Racc_Runtime_Type
 # uninitialized constant RuboCop::AST::NodePattern::Parser::Racc_Runtime_Version
-# Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version
+# Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version
 # uninitialized constant RuboCop::AST::NodePattern::Parser::Racc_YY_Parse_Method
 # wrong constant name <Class:WithMeta>
 # wrong constant name <Class:Builder>
@@ -4566,118 +4539,38 @@
 # Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Id_C
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
 #                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_C
-# uninitialized constant RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Revision
-# Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Revision_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_C
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Revision_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_C
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Version
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Version
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Id_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Id_C
-# uninitialized constant RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Revision_C
-# Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_C
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Revision_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_R
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Id_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Id_C
-# uninitialized constant RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Revision_R
-# Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_C
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Revision_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_R
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version
 # uninitialized constant RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version
 # Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Revision
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_R
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_R
 #                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_C
+#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_R
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Revision_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_R
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Revision_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Version
+#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_R
 #                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Version
+#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Version
 #                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Id_C
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Id_C
 # uninitialized constant RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_C
-# Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
+# Did you mean?  RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_R
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_R
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_R
+#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Revision_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_R
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Revision_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Revision
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision
 #                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Version
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Version
 #                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Id_C
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Id_C
 # uninitialized constant RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_R
-# Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_R
+# Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_R
 #                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_C
+#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Revision_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_R
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Revision_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Revision
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision
 #                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Version
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Version
 #                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Id_C
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Id_C
-# uninitialized constant RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Revision
-# Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Version
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Version
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Revision
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Revision
 # uninitialized constant RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Type
 # Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Type
 # uninitialized constant RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Version
 # Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Version
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Revision
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Revision
 #                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version
 # uninitialized constant RuboCop::AST::NodePattern::Parser::WithMeta::Racc_YY_Parse_Method

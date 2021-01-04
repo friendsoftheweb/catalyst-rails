@@ -724,6 +724,7 @@ module RuboCop::AST::CollectionNode
   def second_to_last(*args, &block); end
   def select!(*args, &block); end
   def select(*args, &block); end
+  def shelljoin(*args, &block); end
   def shift(*args, &block); end
   def shuffle!(*args, &block); end
   def shuffle(*args, &block); end
