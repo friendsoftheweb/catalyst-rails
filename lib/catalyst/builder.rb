@@ -3,6 +3,7 @@
 
 require 'singleton'
 require 'forwardable'
+require 'fileutils'
 require_relative './config'
 
 module Catalyst
@@ -17,18 +18,20 @@ module Catalyst
     end
 
     def build!(environment = nil)
-      Catalyst.check_for_catalyst!
-
       environment ||= Catalyst.config.environment
 
-      case environment
-      when :test
-        test_build!
-      when :production
-        production_build!
-      else
-        raise ArgumentError,
-              'Invalid environment. Must be one of: :test, :production.'
+      FileUtils.cd(Catalyst.config.pwd) do
+        Catalyst.check_for_catalyst!
+
+        case environment
+        when :test
+          test_build!
+        when :production
+          production_build!
+        else
+          raise ArgumentError,
+                'Invalid environment. Must be one of: :test, :production.'
+        end
       end
     end
 

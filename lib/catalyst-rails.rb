@@ -7,24 +7,40 @@ require 'open3'
 module Catalyst
   extend Dry::Configurable
 
-  default_environment =
+  def self.default_environment
     if ENV['NODE_ENV']
       ENV['NODE_ENV'].to_sym
     elsif defined?(Rails)
       Rails.env.to_sym
     end
+  end
 
-  default_manifest_path =
+  def self.default_manifest_path
     if defined?(Rails)
-      File.expand_path('./public/assets/manifest.json', Dir.pwd)
+      File.expand_path('./public/assets/catalyst.manifest.json', Dir.pwd)
     end
+  end
 
+  def self.default_assets_host
+    if defined?(Rails) && !Rails.env.production? && ENV['PORT']
+      "localhost:#{ENV['PORT']}"
+    else
+      ENV.fetch('HOST') { nil }
+    end
+  end
+
+  def self.default_assets_host_protocol
+    !defined?(Rails) || Rails.env.production? ? 'https' : 'http'
+  end
+
+  setting :pwd, Dir.pwd
   setting :environment, default_environment
   setting :manifest_path, default_manifest_path
-  setting :assets_host, ENV.fetch('HOST') { nil }
-  setting :assets_host_protocol, 'https'
+  setting :assets_host, default_assets_host
+  setting :assets_host_protocol, default_assets_host_protocol
   setting :dev_server_host, ENV.fetch('DEV_SERVER_HOST') { 'localhost' }
   setting :dev_server_port, ENV.fetch('DEV_SERVER_PORT') { 8080 }.to_i
+  setting :dev_server_protocol, ENV.fetch('DEV_SERVER_PROTOCOL') { 'http' }
   setting :running_feature_tests,
           -> {
             !defined?(RSpec) || RSpec

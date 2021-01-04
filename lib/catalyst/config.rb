@@ -1,6 +1,7 @@
-# typed: true
+# typed: strict
 # frozen_string_literal: true
 
+require 'sorbet-runtime'
 require 'singleton'
 require 'forwardable'
 require 'json'
@@ -8,8 +9,16 @@ require_relative './errors'
 
 module Catalyst
   class Config
-    CATALYST_CONFIG_PATH = File.expand_path('./catalyst.config.json', Dir.pwd)
-    PACKAGE_PATH = File.expand_path('./package.json', Dir.pwd)
+    extend T::Sig
+    sig {returns(String)}
+    def self.catalyst_config_path
+      File.expand_path('./catalyst.config.json', Catalyst.config.pwd)
+    end
+
+    sig {returns(String)}
+    def self.package_path
+      File.expand_path('./package.json', Catalyst.config.pwd)
+    end
 
     include Singleton
 
@@ -18,18 +27,22 @@ module Catalyst
       def_delegators :instance, :context_path
     end
 
+    sig {void}
     def initialize
       @values =
-        if File.exists?(CATALYST_CONFIG_PATH)
-          JSON.parse(File.read(CATALYST_CONFIG_PATH))
-        elsif File.exists?(PACKAGE_PATH)
-          JSON.parse(File.read(PACKAGE_PATH))['catalyst']
-        else
-          raise ::Catalyst::MissingConfig,
-                "Missing 'catalyst.config.json' or 'package.json' file in: #{
-                  Dir.pwd
-                }"
-        end
+        T.let(
+          if File.exists?(self.class.catalyst_config_path)
+            JSON.parse(File.read(self.class.catalyst_config_path))
+          elsif File.exists?(self.class.package_path)
+            JSON.parse(File.read(self.class.package_path))['catalyst']
+          else
+            raise ::Catalyst::MissingConfig,
+                  "Missing 'catalyst.config.json' or 'package.json' file in: #{
+                    Catalyst.config.pwd
+                  }"
+          end,
+          T::Hash[String, T.untyped]
+        )
 
       raise ::Catalyst::MissingConfig, <<~MESSAGE if @values.nil?
           Missing "catalyst" config in package.json file.
@@ -38,8 +51,12 @@ module Catalyst
         MESSAGE
     end
 
+    sig {returns(String)}
     def context_path
-      File.join(Dir.pwd, @values['contextPath'] || @values['rootPath'])
+      File.join(
+        Catalyst.config.pwd,
+        @values['contextPath'] || @values['rootPath']
+      )
     end
   end
 end

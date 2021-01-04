@@ -5221,10 +5221,24 @@ class Catalyst::Config
   def self.context_path(*args, &block); end
 end
 
+module Catalyst::Helpers
+  include ::ActiveSupport::ForkTracker::CoreExtPrivate
+  include ::ActiveSupport::ForkTracker::CoreExt
+end
+
+module Catalyst::Helpers
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
 class Catalyst::Manifest
   def self.[](*args, &block); end
 
   def self.has?(*args, &block); end
+
+  def self.prefetch_urls_for(*args, &block); end
+
+  def self.preload_urls_for(*args, &block); end
 end
 
 module Catalyst

@@ -848,8 +848,8 @@
 # wrong constant name /
 # wrong constant name <=>
 # uninitialized constant ActiveSupport::Duration::Scalar::EXABYTE
-# Did you mean?  ActiveSupport::Duration::Scalar::TERABYTE
-#                ActiveSupport::Duration::Scalar::MEGABYTE
+# Did you mean?  ActiveSupport::Duration::Scalar::MEGABYTE
+#                ActiveSupport::Duration::Scalar::TERABYTE
 # uninitialized constant ActiveSupport::Duration::Scalar::GIGABYTE
 # uninitialized constant ActiveSupport::Duration::Scalar::KILOBYTE
 # uninitialized constant ActiveSupport::Duration::Scalar::MEGABYTE
@@ -1346,8 +1346,8 @@
 # wrong constant name initialize
 # wrong constant name to_a
 # uninitialized constant BigDecimal::EXABYTE
-# Did you mean?  BigDecimal::TERABYTE
-#                BigDecimal::MEGABYTE
+# Did you mean?  BigDecimal::MEGABYTE
+#                BigDecimal::TERABYTE
 # uninitialized constant BigDecimal::GIGABYTE
 # uninitialized constant BigDecimal::KILOBYTE
 # uninitialized constant BigDecimal::MEGABYTE
@@ -2892,8 +2892,18 @@
 # uninitialized constant CSV
 # uninitialized constant CSV
 # wrong constant name context_path
+# uninitialized constant Catalyst::Helpers::ARIA_PREFIXES
+# Did you mean?  Catalyst::Helpers::DATA_PREFIXES
+# uninitialized constant Catalyst::Helpers::BOOLEAN_ATTRIBUTES
+# uninitialized constant Catalyst::Helpers::DATA_PREFIXES
+# Did you mean?  Catalyst::Helpers::ARIA_PREFIXES
+# uninitialized constant Catalyst::Helpers::PRE_CONTENT_STRINGS
+# uninitialized constant Catalyst::Helpers::RUBYGEMS_ACTIVATION_MONITOR
+# uninitialized constant Catalyst::Helpers::TAG_TYPES
 # wrong constant name []
 # wrong constant name has?
+# wrong constant name prefetch_urls_for
+# wrong constant name preload_urls_for
 # uninitialized constant Chalk
 # uninitialized constant Chalk
 # uninitialized constant Class::DELEGATION_RESERVED_KEYWORDS
@@ -2970,8 +2980,8 @@
 # wrong constant name since
 # wrong constant name to_default_s
 # uninitialized constant Date::Infinity::EXABYTE
-# Did you mean?  Date::Infinity::TERABYTE
-#                Date::Infinity::MEGABYTE
+# Did you mean?  Date::Infinity::MEGABYTE
+#                Date::Infinity::TERABYTE
 # uninitialized constant Date::Infinity::GIGABYTE
 # uninitialized constant Date::Infinity::KILOBYTE
 # uninitialized constant Date::Infinity::MEGABYTE
@@ -3212,8 +3222,8 @@
 # uninitialized constant Find
 # uninitialized constant Find
 # uninitialized constant Float::EXABYTE
-# Did you mean?  Float::TERABYTE
-#                Float::MEGABYTE
+# Did you mean?  Float::MEGABYTE
+#                Float::TERABYTE
 # uninitialized constant Float::GIGABYTE
 # uninitialized constant Float::KILOBYTE
 # uninitialized constant Float::MEGABYTE
@@ -3786,8 +3796,8 @@
 # Did you mean?  DRb
 #                ERB
 # uninitialized constant Integer::EXABYTE
-# Did you mean?  Integer::TERABYTE
-#                Integer::MEGABYTE
+# Did you mean?  Integer::MEGABYTE
+#                Integer::TERABYTE
 # uninitialized constant Integer::GIGABYTE
 # uninitialized constant Integer::KILOBYTE
 # uninitialized constant Integer::MEGABYTE
@@ -4050,28 +4060,28 @@
 #                Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision_R
 #                Nokogiri::CSS::Parser::Racc_Runtime_Revision
 #                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_R
 #                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_C
+#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_R
 #                Nokogiri::CSS::Parser::Racc_Runtime_Version
 #                Nokogiri::CSS::Parser::Racc_Runtime_Core_Id_C
 # uninitialized constant Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision_C
 # Did you mean?  Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision_R
 #                Nokogiri::CSS::Parser::Racc_Runtime_Revision
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_R
 #                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_C
+#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_R
 #                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version
 #                Nokogiri::CSS::Parser::Racc_Runtime_Core_Id_C
 # uninitialized constant Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision_R
 # Did you mean?  Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision_C
 #                Nokogiri::CSS::Parser::Racc_Runtime_Revision
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_R
 #                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_C
+#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_R
 #                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version
 # uninitialized constant Nokogiri::CSS::Parser::Racc_Runtime_Core_Version
 # Did you mean?  Nokogiri::CSS::Parser::Racc_Runtime_Revision
 #                Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision
-#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_R
 #                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_C
+#                Nokogiri::CSS::Parser::Racc_Runtime_Core_Version_R
 #                Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision_C
 #                Nokogiri::CSS::Parser::Racc_Runtime_Core_Revision_R
 #                Nokogiri::CSS::Parser::Racc_Runtime_Version
