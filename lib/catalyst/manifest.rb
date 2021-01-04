@@ -24,7 +24,7 @@ module Catalyst
                      :prefetch_urls_for
     end
 
-    sig {void}
+    sig { void }
     def initialize
       if Catalyst.development?
         @manifest = T.let({}, T::Hash[String, T.untyped])
@@ -41,16 +41,16 @@ module Catalyst
       end
     end
 
-    sig {params(path: T.any(String, Symbol)).returns(T::Boolean)}
+    sig { params(path: T.any(String, Symbol)).returns(T::Boolean) }
     def has?(path)
-      path = path.to_s.gsub(%r{\A\/+}, '')
+      path = path.to_s.gsub(%r{\A/+}, '')
 
       Catalyst.development? ? false : assets.key?(path)
     end
 
-    sig {params(path: T.any(String, Symbol)).returns(String)}
+    sig { params(path: T.any(String, Symbol)).returns(String) }
     def [](path)
-      path = path.to_s.gsub(%r{\A\/+}, '')
+      path = path.to_s.gsub(%r{\A/+}, '')
 
       if Catalyst.development?
         dev_server_protocol = Catalyst.config.dev_server_protocol
@@ -72,21 +72,15 @@ module Catalyst
                 'Missing "dev_server_port" configuration.'
         end
 
-        return(
-          "#{dev_server_protocol}://#{dev_server_host}:#{dev_server_port}/#{
-            path
-          }"
-        )
+        "#{dev_server_protocol}://#{dev_server_host}:#{dev_server_port}/#{path}"
+      elsif assets.key?(path)
+        T.must(assets[path])
       else
-        if assets.key?(path)
-          return T.must(assets[path])
-        else
-          raise AssetMissing, "Couldn't find an asset for path: #{path}"
-        end
+        raise AssetMissing, "Couldn't find an asset for path: #{path}"
       end
     end
 
-    sig {params(entry_name: T.any(String, Symbol)).returns(T::Array[String])}
+    sig { params(entry_name: T.any(String, Symbol)).returns(T::Array[String]) }
     def preload_urls_for(entry_name)
       return [] if Catalyst.development?
 
@@ -97,7 +91,7 @@ module Catalyst
       T.must(preload[entry_name])
     end
 
-    sig {params(entry_name: T.any(String, Symbol)).returns(T::Array[String])}
+    sig { params(entry_name: T.any(String, Symbol)).returns(T::Array[String]) }
     def prefetch_urls_for(entry_name)
       return [] if Catalyst.development?
 
@@ -110,17 +104,17 @@ module Catalyst
 
     private
 
-    sig {returns(T::Hash[String, String])}
+    sig { returns(T::Hash[String, String]) }
     def assets
       @manifest['assets'] || {}
     end
 
-    sig {returns(T::Hash[String, T::Array[String]])}
+    sig { returns(T::Hash[String, T::Array[String]]) }
     def preload
       @manifest['preload'] || {}
     end
 
-    sig {returns(T::Hash[String, T::Array[String]])}
+    sig { returns(T::Hash[String, T::Array[String]]) }
     def prefetch
       @manifest['prefetch'] || {}
     end

@@ -16,16 +16,16 @@ module Catalyst
   end
 
   def self.default_manifest_path
-    if defined?(Rails)
-      File.expand_path('./public/assets/catalyst.manifest.json', Dir.pwd)
-    end
+    return unless defined?(Rails)
+
+    File.expand_path('./public/assets/catalyst.manifest.json', Dir.pwd)
   end
 
   def self.default_assets_host
     if defined?(Rails) && !Rails.env.production? && ENV['PORT']
       "localhost:#{ENV['PORT']}"
     else
-      ENV.fetch('HOST') { nil }
+      ENV.fetch('HOST', nil)
     end
   end
 
@@ -38,18 +38,18 @@ module Catalyst
   setting :manifest_path, default_manifest_path
   setting :assets_host, default_assets_host
   setting :assets_host_protocol, default_assets_host_protocol
-  setting :dev_server_host, ENV.fetch('DEV_SERVER_HOST') { 'localhost' }
-  setting :dev_server_port, ENV.fetch('DEV_SERVER_PORT') { 8080 }.to_i
-  setting :dev_server_protocol, ENV.fetch('DEV_SERVER_PROTOCOL') { 'http' }
+  setting :dev_server_host, ENV.fetch('DEV_SERVER_HOST', 'localhost')
+  setting :dev_server_port, ENV.fetch('DEV_SERVER_PORT', 8080).to_i
+  setting :dev_server_protocol, ENV.fetch('DEV_SERVER_PROTOCOL', 'http')
   setting :running_feature_tests,
-          -> {
+          lambda {
             !defined?(RSpec) || RSpec
               .world
               .all_example_groups
               .any? { |group| group.metadata[:type] == :system }
           }
 
-  def self.log(message, level = :info)
+  def self.log(message)
     message =
       message
         .split("\n")
@@ -93,12 +93,10 @@ module Catalyst
     $catalyst_server_pid = wait_thr.pid
 
     Thread.new do
-      begin
-        while line = stdout.gets
-          puts line
-        end
-      rescue IOError
+      while (line = stdout.gets)
+        puts line
       end
+    rescue IOError
     end
 
     at_exit do
@@ -110,22 +108,25 @@ module Catalyst
 
   def self.check_for_yarn!
     raise NotInstalled, <<~MESSAGE unless system 'which yarn > /dev/null 2>&1'
-        The yarn binary is not available in this directory.
-        Please follow the instructions here to install it:
-        https://yarnpkg.com/lang/en/docs/install
-      MESSAGE
+      The yarn binary is not available in this directory.
+      Please follow the instructions here to install it:
+      https://yarnpkg.com/lang/en/docs/install
+    MESSAGE
   end
 
   def self.check_for_catalyst!
     check_for_yarn!
 
-    unless File.exist?(File.join(Dir.pwd, 'node_modules/catalyst/lib/index.js'))
-      raise NotInstalled, <<~MESSAGE
-        The catalyst binary is not available in this directory.
-        Please follow the instructions here to install it:
-        https://github.com/friendsoftheweb/catalyst
-      MESSAGE
+    if File.exist?(File.join(Dir.pwd, 'node_modules/catalyst/lib/bin.js'))
+      return
     end
+
+    raise NotInstalled, <<~MESSAGE
+      The Catalyst binary is not available in this directory or you are using an unsupported version of Catalyst.
+
+      Please follow the instructions here to install it:
+      https://github.com/friendsoftheweb/catalyst
+    MESSAGE
   end
 end
 

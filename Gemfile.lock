@@ -21,6 +21,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    ast (2.4.1)
     builder (3.2.4)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
@@ -41,17 +42,36 @@ GEM
     minitest (5.14.2)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
+    parallel (1.20.1)
+    parser (3.0.0.0)
+      ast (~> 2.4.1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.3.0)
       loofah (~> 2.3)
+    rainbow (3.0.0)
+    regexp_parser (2.0.3)
+    rexml (3.2.4)
+    rubocop (1.7.0)
+      parallel (~> 1.10)
+      parser (>= 2.7.1.5)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml
+      rubocop-ast (>= 1.2.0, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 2.0)
+    rubocop-ast (1.4.0)
+      parser (>= 2.7.1.5)
+    ruby-progressbar (1.11.0)
     sorbet (0.5.6161)
       sorbet-static (= 0.5.6161)
     sorbet-runtime (0.5.6161)
     sorbet-static (0.5.6161-universal-darwin-14)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    unicode-display_width (1.7.0)
     zeitwerk (2.4.2)
 
 PLATFORMS
@@ -59,6 +79,7 @@ PLATFORMS
 
 DEPENDENCIES
   catalyst-rails!
+  rubocop (~> 1.7)
   sorbet (~> 0.5.0)
 
 BUNDLED WITH

@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 namespace :catalyst do
   desc 'Build assets with Catalyst'
   task :build do
-    if File.exists?('./public/assets/manifest.json')
+    if File.exist?('./public/assets/manifest.json')
       Catalyst.log('Removing previous assets...')
 
       manifest = JSON.parse(File.read('./public/assets/manifest.json'))
 
-      manifest.values.each do |asset_path|
+      manifest.each_value do |asset_path|
         system "rm -f ./public/assets/#{asset_path}*"
       end
     end

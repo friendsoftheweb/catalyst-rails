@@ -15,7 +15,7 @@ module Catalyst
 
     sig { params(path: T.any(String, Symbol), common: T::Boolean).returns(String) }
     def catalyst_javascript_include_tag(path, common: true)
-      path = path.to_s.sub(/\.js\z/, '') + '.js'
+      path = "#{path.to_s.sub(/\.js\z/, '')}.js"
 
       if catalyst_referenced_files.include?(path)
         raise ::Catalyst::Manifest::DuplicateAssetReference,
@@ -24,7 +24,7 @@ module Catalyst
 
       catalyst_referenced_files << path
 
-      if !common
+      unless common
         return(
           content_tag(
             :script,
@@ -65,18 +65,17 @@ module Catalyst
     def catalyst_javascript_common_include_tag
       path = 'common.js'
 
-      return nil if catalyst_referenced_files.include?(path)
+      return if catalyst_referenced_files.include?(path)
+      return unless ::Catalyst.development? || ::Catalyst::Manifest.has?(path)
 
-      if ::Catalyst.development? || ::Catalyst::Manifest.has?(path)
-        catalyst_javascript_include_tag(path)
-      end
+      catalyst_javascript_include_tag(path)
     end
 
     sig { params(path: T.any(String, Symbol)).returns(T.nilable(String)) }
     def catalyst_stylesheet_link_tag(path)
       return nil if ::Catalyst.development?
 
-      path = path.to_s.sub(/\.css\z/, '') + '.css'
+      path = "#{path.to_s.sub(/\.css\z/, '')}.css"
 
       if catalyst_referenced_files.include?(path)
         raise ::Catalyst::Manifest::DuplicateAssetReference,
@@ -156,7 +155,7 @@ module Catalyst
       )
     end
 
-    sig {params(path: String).returns(T.untyped)}
+    sig { params(path: String).returns(T.untyped) }
     def catalyst_preload_link_tag(path)
       content_tag(
         :link,
@@ -169,7 +168,7 @@ module Catalyst
       )
     end
 
-    sig {params(path: String).returns(T.untyped)}
+    sig { params(path: String).returns(T.untyped) }
     def catalyst_prefetch_link_tag(path)
       content_tag(
         :link,

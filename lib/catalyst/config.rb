@@ -10,12 +10,12 @@ require_relative './errors'
 module Catalyst
   class Config
     extend T::Sig
-    sig {returns(String)}
+    sig { returns(String) }
     def self.catalyst_config_path
       File.expand_path('./catalyst.config.json', Catalyst.config.pwd)
     end
 
-    sig {returns(String)}
+    sig { returns(String) }
     def self.package_path
       File.expand_path('./package.json', Catalyst.config.pwd)
     end
@@ -27,13 +27,13 @@ module Catalyst
       def_delegators :instance, :context_path
     end
 
-    sig {void}
+    sig { void }
     def initialize
       @values =
         T.let(
-          if File.exists?(self.class.catalyst_config_path)
+          if File.exist?(self.class.catalyst_config_path)
             JSON.parse(File.read(self.class.catalyst_config_path))
-          elsif File.exists?(self.class.package_path)
+          elsif File.exist?(self.class.package_path)
             JSON.parse(File.read(self.class.package_path))['catalyst']
           else
             raise ::Catalyst::MissingConfig,
@@ -45,13 +45,13 @@ module Catalyst
         )
 
       raise ::Catalyst::MissingConfig, <<~MESSAGE if @values.nil?
-          Missing "catalyst" config in package.json file.
-          Please follow the instructions here to set up Catalyst:
-          https://github.com/friendsoftheweb/catalyst
-        MESSAGE
+        Missing "catalyst" config in package.json file.
+        Please follow the instructions here to set up Catalyst:
+        https://github.com/friendsoftheweb/catalyst
+      MESSAGE
     end
 
-    sig {returns(String)}
+    sig { returns(String) }
     def context_path
       File.join(
         Catalyst.config.pwd,

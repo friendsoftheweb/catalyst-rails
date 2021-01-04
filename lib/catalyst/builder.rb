@@ -73,17 +73,17 @@ module Catalyst
     end
 
     def production_build!
-      unless system("NODE_ENV=production #{BUILD_COMMAND}")
-        Catalyst.log('Failed to compile assets!')
+      return if system("NODE_ENV=production #{BUILD_COMMAND}")
 
-        exit 1
-      end
+      Catalyst.log('Failed to compile assets!')
+
+      exit 1
     end
 
     def assets_last_modified
       asset_paths
         .lazy
-        .select { |path| File.exists?(path) }
+        .select { |path| File.exist?(path) }
         .map { |path| File.ctime(path) }
         .max || Time.now
     end
