@@ -15,7 +15,7 @@ module Catalyst
         :script
       when /\.(css)\z/
         :style
-      when /\.(png|jpe?g|gif|webp)\z/
+      when /\.(png|jpe?g|gif|svg|webp)\z/
         :image
       when /\.(woff2?|ttf|eot)\z/
         :font
