@@ -34,28 +34,28 @@ GEM
     erubi (1.10.0)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
-    loofah (2.8.0)
+    loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    mini_portile2 (2.4.0)
     minitest (5.14.2)
-    nokogiri (1.10.10)
-      mini_portile2 (~> 2.4.0)
+    nokogiri (1.13.10-x86_64-linux)
+      racc (~> 1.4)
+    racc (1.6.1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.3.0)
-      loofah (~> 2.3)
+    rails-html-sanitizer (1.4.4)
+      loofah (~> 2.19, >= 2.19.1)
     sorbet (0.5.6161)
       sorbet-static (= 0.5.6161)
     sorbet-runtime (0.5.6161)
-    sorbet-static (0.5.6161-universal-darwin-14)
+    sorbet-static (0.5.6161-x86_64-linux)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     zeitwerk (2.4.2)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
   catalyst-rails!
